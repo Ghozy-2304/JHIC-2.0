@@ -1,0 +1,38 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../views/**/*.blade.php';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-heading: 'Funnel Display', 'Outfit', sans-serif;
+    --font-alt: 'Inter', sans-serif;
+
+    --color-brand-primary: #0c61cf;
+    --color-brand-hover: #094fa5;
+    --color-brand-orange: #ff7a29;
+    --color-text-title: #0b0d12;
+    --color-text-main: #181d27;
+    --color-text-muted: #717680;
+    --border-custom: #e9eaeb;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes chatBounce {
+    0%, 80%, 100% { transform: scale(0); }
+    40% { transform: scale(1); }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.25s ease forwards;
+}
+
+.animate-chat-bounce {
+    animation: chatBounce 1.4s infinite ease-in-out both;
+}
