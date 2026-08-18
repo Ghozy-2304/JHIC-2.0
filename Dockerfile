@@ -37,12 +37,10 @@ RUN mkdir -p storage/framework/views \
     touch database/database.sqlite && \
     chown -R www-data:www-data storage bootstrap/cache database
 
-# Add entrypoint script to auto-run migrations and caching on container start
-RUN echo '#!/bin/sh\n\
-php artisan migrate --force\n\
-php artisan storage:link --force 2>/dev/null || true\n\
-php artisan config:cache\n\
-php artisan route:cache\n\
-php artisan view:cache\n\
-' > /etc/entrypoint.d/99-laravel.sh && chmod +x /etc/entrypoint.d/99-laravel.sh
+# Set port variables for Nginx
+ENV HTTP_PORT=8080
+EXPOSE 8080
 
+# Copy startup entrypoint script
+COPY --chown=www-data:www-data entrypoint.sh /etc/entrypoint.d/99-laravel.sh
+RUN chmod +x /etc/entrypoint.d/99-laravel.sh
