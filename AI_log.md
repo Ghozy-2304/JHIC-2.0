@@ -42,5 +42,24 @@ DONE
 ### Catatan
 - Dengan menyertakan `public/build` langsung dalam repositori Git dan menambahkan CDN fallback, tampilan Tailwind CSS dijamin 100% muncul sempurna di Railway.
 
+
+## 2026-08-18 - Fix Mixed Content Blocking for Assets
+
+### Sedang / Sudah Membuat
+- Mengganti pemanggilan asset di `resources/views/welcome.blade.php` dengan link relatif `/build/assets/app-Br8wb-en.css` agar browser selalu memanggil file CSS dengan protokol yang sama (`https://`) dan terhindar dari `(blocked:mixed-content)`.
+- Mengatur `AppServiceProvider.php` agar tidak memaksa HTTPS saat dijalankan di `localhost` / `127.0.0.1` (`php artisan serve`).
+
+### File
+- `resources/views/welcome.blade.php`
+- `app/Providers/AppServiceProvider.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Log browser menunjukkan `(blocked:mixed-content)` pada file CSS/JS karena URL absolut diawali dengan `http://`. Dengan mengganti ke path relatif `/build/...`, browser secara otomatis mengambil asset menggunakan `https://`.
+
 ### Pekerjaan Selanjutnya
 - Melakukan Push perubahan ke GitHub.
+
