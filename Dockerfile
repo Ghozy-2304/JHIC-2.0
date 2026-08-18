@@ -2,7 +2,7 @@
 FROM node:20-alpine AS node-builder
 WORKDIR /app
 COPY package*.json ./
-RUN npm install
+RUN npm install --include=dev
 COPY . .
 RUN npm run build
 
@@ -35,7 +35,9 @@ RUN mkdir -p storage/framework/views \
              bootstrap/cache \
              database && \
     touch database/database.sqlite && \
-    chown -R www-data:www-data storage bootstrap/cache database
+    rm -rf public/hot && \
+    chmod -R 755 public && \
+    chown -R www-data:www-data storage bootstrap/cache database public
 
 # Set port variables for Nginx
 ENV HTTP_PORT=8080
@@ -44,4 +46,5 @@ EXPOSE 8080
 # Copy startup entrypoint script
 COPY --chown=www-data:www-data entrypoint.sh /etc/entrypoint.d/99-laravel.sh
 RUN sed -i 's/\r$//' /etc/entrypoint.d/99-laravel.sh && chmod +x /etc/entrypoint.d/99-laravel.sh
+
 
