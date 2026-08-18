@@ -4,7 +4,15 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-        <link rel="stylesheet" href="/css/tailwind.css">
+        @if(file_exists(public_path('hot')))
+            @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @elseif(file_exists(public_path('css/tailwind.css')))
+            <style>
+                {!! file_get_contents(public_path('css/tailwind.css')) !!}
+            </style>
+        @else
+            <link rel="stylesheet" href="{{ asset('css/tailwind.css') }}">
+        @endif
     </head>
     <body class="bg-white text-slate-800 min-h-screen w-screen overflow-x-hidden font-sans">
 
