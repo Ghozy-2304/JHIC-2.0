@@ -43,4 +43,5 @@ EXPOSE 8080
 
 # Copy startup entrypoint script
 COPY --chown=www-data:www-data entrypoint.sh /etc/entrypoint.d/99-laravel.sh
-RUN chmod +x /etc/entrypoint.d/99-laravel.sh
+RUN sed -i 's/\r$//' /etc/entrypoint.d/99-laravel.sh && chmod +x /etc/entrypoint.d/99-laravel.sh
+

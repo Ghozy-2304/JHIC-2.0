@@ -1,5 +1,7 @@
 #!/bin/sh
 
+echo "[INFO] Running Laravel startup entrypoint..."
+
 # Ensure storage & cache directories exist
 mkdir -p /var/www/html/storage/framework/views \
          /var/www/html/storage/framework/sessions \
@@ -9,13 +11,15 @@ mkdir -p /var/www/html/storage/framework/views \
 
 chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache 2>/dev/null || true
 
-# Run database migrations safely (don't exit on error so Nginx can start)
-php /var/www/html/artisan migrate --force || echo "Migration failed or database not ready"
+# Run database migrations safely
+php /var/www/html/artisan migrate --force 2>&1 || echo "[WARNING] Migration failed or database not ready yet."
 
 # Create storage link
 php /var/www/html/artisan storage:link --force 2>/dev/null || true
 
-# Clear and optimize cache safely
-php /var/www/html/artisan config:cache || true
-php /var/www/html/artisan route:cache || true
-php /var/www/html/artisan view:cache || true
+# Clear and optimize cache
+php /var/www/html/artisan config:clear 2>&1 || true
+php /var/www/html/artisan view:clear 2>&1 || true
+php /var/www/html/artisan route:clear 2>&1 || true
+
+echo "[INFO] Laravel startup entrypoint completed."
