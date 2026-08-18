@@ -136,5 +136,23 @@ DONE
 ### Catatan
 - Menggunakan file CSS lokal statis di `public/css/tailwind.css` dengan pemanggilan path relatif `/css/tailwind.css`. Tidak bergantung pada CDN, tidak bergantung pada hash Vite, dan 100% aman dari mixed content blocking di Railway maupun localhost.
 
+
+## 2026-08-18 - Clear Compiled Blade View Cache & Update Git Ignore
+
+### Sedang / Sudah Membuat
+- Menambahkan penghapusan file Blade terkompilasi lama (`storage/framework/views/*.php`) pada `entrypoint.sh` saat startup kontainer.
+- Menambahkan pola ignore `/storage/framework/views/*` pada `.gitignore` dan menghapus file view terkompilasi lama dari tracking Git agar server Railway tidak lagi menyajikan HTML cache lama.
+
+### File
+- `.gitignore`
+- `entrypoint.sh`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Ditemukan 45 file cache Blade terkompilasi lama yang ikut ter-commit ke Git. Hal ini menyebabkan server Railway terus menyajikan HTML cache versi lama. Dengan membersihkan cache view di Git dan menambahkan penghapusan otomatis di `entrypoint.sh`, Railway dipaksa merender file `welcome.blade.php` versi terbaru dengan `<link rel="stylesheet" href="/css/tailwind.css">`.
+
 ### Pekerjaan Selanjutnya
 - Melakukan Push perubahan ke GitHub.

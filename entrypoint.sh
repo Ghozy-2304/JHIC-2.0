@@ -2,8 +2,9 @@
 
 echo "[INFO] Running Laravel startup entrypoint..."
 
-# Remove hot reload file if exists
+# Remove hot reload file & old view cache if exists
 rm -f /var/www/html/public/hot
+rm -rf /var/www/html/storage/framework/views/*.php
 
 # Ensure storage & cache directories exist
 mkdir -p /var/www/html/storage/framework/views \
