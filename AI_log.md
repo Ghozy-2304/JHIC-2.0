@@ -60,10 +60,26 @@ DONE
 ### Catatan
 - Log browser menunjukkan `(blocked:mixed-content)` pada file CSS/JS karena URL absolut diawali dengan `http://`. Dengan mengganti ke path relatif `/build/...`, browser secara otomatis mengambil asset menggunakan `https://`.
 
+
+## 2026-08-18 - Local Static Tailwind CSS Setup
+
+### Sedang / Sudah Membuat
+- Membuat file CSS statis lokal `public/css/tailwind.css` dari hasil kompilasi Tailwind CSS v4 proyek.
+- Mengganti tag stylesheet pada `resources/views/welcome.blade.php` dengan pemanggilan lokal murni: `<link rel="stylesheet" href="/css/tailwind.css">`.
+
+### File
+- `public/css/tailwind.css`
+- `resources/views/welcome.blade.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Menggunakan file CSS lokal statis di `public/css/tailwind.css` dengan pemanggilan path relatif `/css/tailwind.css`. Tidak bergantung pada CDN, tidak bergantung pada hash Vite, dan 100% aman dari mixed content blocking di Railway maupun localhost.
+
 ### Pekerjaan Selanjutnya
 - Melakukan Push perubahan ke GitHub.
-
-
 ## 2026-08-18 - Add Content Security Policy Upgrade Insecure Requests
 
 ### Sedang / Sudah Membuat
@@ -102,3 +118,23 @@ DONE
 ### Pekerjaan Selanjutnya
 - Melakukan Push perubahan ke GitHub.
 
+
+## 2026-08-18 - Local Static Tailwind CSS Setup
+
+### Sedang / Sudah Membuat
+- Membuat file CSS statis lokal `public/css/tailwind.css` dari hasil kompilasi Tailwind CSS v4 proyek.
+- Mengganti tag stylesheet pada `resources/views/welcome.blade.php` dengan pemanggilan lokal murni: `<link rel="stylesheet" href="/css/tailwind.css">`.
+
+### File
+- `public/css/tailwind.css`
+- `resources/views/welcome.blade.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Menggunakan file CSS lokal statis di `public/css/tailwind.css` dengan pemanggilan path relatif `/css/tailwind.css`. Tidak bergantung pada CDN, tidak bergantung pada hash Vite, dan 100% aman dari mixed content blocking di Railway maupun localhost.
+
+### Pekerjaan Selanjutnya
+- Melakukan Push perubahan ke GitHub.
