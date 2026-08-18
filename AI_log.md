@@ -81,5 +81,24 @@ DONE
 ### Catatan
 - Meta tag `upgrade-insecure-requests` memaksa browser untuk secara otomatis meng-upgrade seluruh permintaan HTTP menjadi HTTPS sebelum dikirim ke jaringan. Ini secara permanen menghilangkan error `(blocked:mixed-content)`.
 
+
+## 2026-08-18 - Inline CSS Injection & Secure Asset Enforcement
+
+### Sedang / Sudah Membuat
+- Menginjeksi isi CSS `app-Br8wb-en.css` secara langsung ke dalam tag `<style>` pada `resources/views/welcome.blade.php`. Hal ini menghilangkan 100% permintaan jaringan eksternal untuk file CSS sehingga bebas sama sekali dari error mixed content/HTTP.
+- Menyetel `$this->app['request']->server->set('HTTPS', 'on');` di `AppServiceProvider.php` dan memperkuat `secure_asset()`.
+
+### File
+- `resources/views/welcome.blade.php`
+- `app/Providers/AppServiceProvider.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Dengan metode *Inline Style Injection*, CSS Tailwind dibaca langsung dari sistem file server lokal saat halaman di-render. Tidak ada request HTTP tambahan yang dilakukan oleh browser untuk CSS, sehingga tidak mungkin terkena mixed-content blocking.
+
 ### Pekerjaan Selanjutnya
 - Melakukan Push perubahan ke GitHub.
+

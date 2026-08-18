@@ -4,9 +4,14 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-        <link rel="stylesheet" href="/build/assets/app-Br8wb-en.css">
-        <script type="module" src="/build/assets/app-l0sNRNKZ.js"></script>
-        <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+        @if(file_exists(public_path('build/assets/app-Br8wb-en.css')))
+        <style>
+            {!! file_get_contents(public_path('build/assets/app-Br8wb-en.css')) !!}
+        </style>
+        @else
+        <link rel="stylesheet" href="{{ secure_asset('build/assets/app-Br8wb-en.css') }}">
+        @endif
+        <script type="module" src="{{ secure_asset('build/assets/app-l0sNRNKZ.js') }}"></script>
     </head>
     <body class="bg-white text-slate-800 min-h-screen w-screen overflow-x-hidden font-sans">
 
