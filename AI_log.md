@@ -23,5 +23,24 @@ DONE
 ### Pekerjaan Selanjutnya
 - Push perubahan ke GitHub.
 
+## 2026-08-18 - Commit Pre-compiled Assets & Add Fallback Tailwind CDN
 
+### Sedang / Sudah Membuat
+- Menghapus `/public/build` dari `.gitignore` dan melakukan komit langsung bundel `public/build/` (manifest & css) ke repository Git agar tidak bergantung pada proses Node build di dalam Docker Railway.
+- Menambahkan script fallback Tailwind CSS v4 CDN di `resources/views/welcome.blade.php`.
 
+### File
+- `.gitignore`
+- `resources/views/welcome.blade.php`
+- `public/build/manifest.json`
+- `public/build/assets/app-Br8wb-en.css`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Dengan menyertakan `public/build` langsung dalam repositori Git dan menambahkan CDN fallback, tampilan Tailwind CSS dijamin 100% muncul sempurna di Railway.
+
+### Pekerjaan Selanjutnya
+- Melakukan Push perubahan ke GitHub.

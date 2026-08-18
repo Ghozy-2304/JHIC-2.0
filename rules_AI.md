@@ -201,6 +201,7 @@ File `AI_Log.md` digunakan sebagai catatan pekerjaan Agent sehingga Agent pada p
 
 # 9. FORMAT AI_Log.md
 
+saat ada pekerjaan baru buat catatan baru di bawah log terakhir jadi bukan di ganti log awalnya
 Setiap pekerjaan harus dicatat dengan format berikut:
 
 ```markdown

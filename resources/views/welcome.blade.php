@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     </head>
     <body class="bg-white text-slate-800 min-h-screen w-screen overflow-x-hidden font-sans">
 
