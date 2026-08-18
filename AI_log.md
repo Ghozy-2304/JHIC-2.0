@@ -63,3 +63,23 @@ DONE
 ### Pekerjaan Selanjutnya
 - Melakukan Push perubahan ke GitHub.
 
+
+## 2026-08-18 - Add Content Security Policy Upgrade Insecure Requests
+
+### Sedang / Sudah Membuat
+- Menambahkan meta tag `<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">` di `<head>` pada `resources/views/welcome.blade.php`.
+- Menghapus tag `@vite` yang me-render URL HTTP absolut dan menggantikannya dengan path relatif murni `/build/assets/app-Br8wb-en.css` + Tailwind Browser Engine.
+
+### File
+- `resources/views/welcome.blade.php`
+- `app/Providers/AppServiceProvider.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Meta tag `upgrade-insecure-requests` memaksa browser untuk secara otomatis meng-upgrade seluruh permintaan HTTP menjadi HTTPS sebelum dikirim ke jaringan. Ini secara permanen menghilangkan error `(blocked:mixed-content)`.
+
+### Pekerjaan Selanjutnya
+- Melakukan Push perubahan ke GitHub.
