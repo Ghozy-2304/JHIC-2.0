@@ -198,3 +198,23 @@ DONE
 - Melakukan Push perubahan ke GitHub.
 
 
+## 2026-08-19 - Configure Explicit Trusted Proxies in Bootstrap
+
+### Sedang / Sudah Membuat
+- Mengonfigurasi `trustProxies` secara eksplisit pada `bootstrap/app.php` dengan mempercayai semua proxy (`at: '*'`) dan menyertakan seluruh header forwarding (`HEADER_X_FORWARDED_FOR`, `HEADER_X_FORWARDED_HOST`, `HEADER_X_FORWARDED_PORT`, `HEADER_X_FORWARDED_PROTO`, `HEADER_X_FORWARDED_AWS_ELB`).
+
+### File
+- `bootstrap/app.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Dengan mempercayai proxy Railway dan seluruh header `X-Forwarded-*`, Laravel secara tepat mengenali skema request HTTPS asli dari reverse proxy Railway, mencegah timbulnya redirect HTTP yang menyebabkan `(blocked: mixed-content)`.
+
+### Pekerjaan Selanjutnya
+- Commit dan Push perubahan ke GitHub.
+
+
+
