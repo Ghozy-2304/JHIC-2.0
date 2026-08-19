@@ -284,6 +284,26 @@ DONE
 - Commit dan Push perubahan ke GitHub.
 
 
+## 2026-08-19 - Add Automatic Database Seeder to Container Entrypoint
+
+### Sedang / Sudah Membuat
+- Menambahkan perintah `php /var/www/html/artisan db:seed --force` pada `entrypoint.sh` agar seeder (termasuk `ArticleSeeder`) secara otomatis dieksekusi setiap kali kontainer di-deploy/start di Railway.
+
+### File
+- `entrypoint.sh`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Dengan flag `--force`, seeder berjalan aman secara otomatis di lingkungan produksi tanpa membutuhkan input interaktif dari terminal.
+
+### Pekerjaan Selanjutnya
+- Commit dan Push perubahan ke GitHub.
+
+
+
 
 
 

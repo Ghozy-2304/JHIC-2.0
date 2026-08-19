@@ -16,8 +16,9 @@ mkdir -p /var/www/html/storage/framework/views \
 chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache /var/www/html/public 2>/dev/null || true
 chmod -R 755 /var/www/html/public 2>/dev/null || true
 
-# Run database migrations safely
+# Run database migrations & seeders safely
 php /var/www/html/artisan migrate --force 2>&1 || echo "[WARNING] Migration failed or database not ready yet."
+php /var/www/html/artisan db:seed --force 2>&1 || echo "[WARNING] Database seed failed or skipped."
 
 # Create storage link
 php /var/www/html/artisan storage:link --force 2>/dev/null || true
