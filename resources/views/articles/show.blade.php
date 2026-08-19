@@ -305,7 +305,7 @@
 
     <!-- Javascript Logic for Chatbot -->
     <script>
-        const BASE_URL = "https://fast-api-g0de.onrender.com";
+        const BASE_URL = "{{ rtrim(env('FASTAPI_CHATBOT_URL', 'https://fast-api-g0de.onrender.com'), '/') }}";
         const API_KEY = "fastapichatbotbackend@2026";
 
         let isChatOpen = false;

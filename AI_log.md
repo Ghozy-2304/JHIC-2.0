@@ -238,5 +238,28 @@ DONE
 - Commit dan Push ke GitHub.
 
 
+## 2026-08-19 - Bind ASSET_URL in Config and Dynamic Helpers
+
+### Sedang / Sudah Membuat
+- Menambahkan `'asset_url' => env('ASSET_URL')` pada `config/app.php` sehingga fungsi helper Laravel (`asset()`, `@vite()`, `url()`) secara dinamis membaca variabel lingkungan `ASSET_URL` dari Railway.
+- Mengganti URL hardcoded API FastAPI pada `resources/views/welcome.blade.php` dan `resources/views/articles/show.blade.php` dengan helper `env('FASTAPI_CHATBOT_URL')`.
+
+### File
+- `config/app.php`
+- `resources/views/welcome.blade.php`
+- `resources/views/articles/show.blade.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Seluruh asset dan URL API kini 100% bergantung pada variabel lingkungan (`ASSET_URL`, `APP_URL`, `FASTAPI_CHATBOT_URL`) dan helper bawaan Laravel tanpa ada URL hardcoded.
+
+### Pekerjaan Selanjutnya
+- Commit dan Push perubahan ke GitHub.
+
+
+
 
 

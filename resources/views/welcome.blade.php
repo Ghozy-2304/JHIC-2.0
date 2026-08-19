@@ -60,8 +60,8 @@
 
     <!-- Javascript Logic -->
     <script>
-        // Konfigurasi API tetap
-        const BASE_URL = "https://fast-api-g0de.onrender.com";
+        // Konfigurasi API dari env
+        const BASE_URL = "{{ rtrim(env('FASTAPI_CHATBOT_URL', 'https://fast-api-g0de.onrender.com'), '/') }}";
         const API_KEY = "fastapichatbotbackend@2026";
 
         // State management
