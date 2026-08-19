@@ -22,6 +22,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         if (
+            config('app.env') === 'production' ||
             app()->environment('production') ||
             (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') ||
             request()->header('x-forwarded-proto') === 'https' ||
@@ -30,10 +31,6 @@ class AppServiceProvider extends ServiceProvider
             URL::forceScheme('https');
             $this->app['request']->server->set('HTTPS', 'on');
         }
-
-        Vite::createAssetPathsUsing(function (string $path, ?bool $secure = null) {
-            return '/' . ltrim($path, '/');
-        });
     }
 }
 

@@ -217,4 +217,26 @@ DONE
 - Commit dan Push perubahan ke GitHub.
 
 
+## 2026-08-19 - Enforce HTTPS Scheme in AppServiceProvider for Production
+
+### Sedang / Sudah Membuat
+- Memperbarui `app/Providers/AppServiceProvider.php` untuk memanggil `URL::forceScheme('https')` secara global saat `config('app.env') === 'production'` atau `app()->environment('production')`.
+- Memastikan perintah pembersihan cache (`config:clear`, `view:clear`, `route:clear`) dieksekusi secara otomatis saat startup kontainer di `entrypoint.sh`.
+
+### File
+- `app/Providers/AppServiceProvider.php`
+- `entrypoint.sh`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Menghilangkan `mixed-content` blocking dengan memaksa seluruh generasi URL asset (`asset()`, `@vite()`, `url()`) menggunakan skema `https://` di lingkungan produksi Railway.
+
+### Pekerjaan Selanjutnya
+- Commit dan Push ke GitHub.
+
+
+
 
