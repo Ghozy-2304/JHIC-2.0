@@ -21,6 +21,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        $start = microtime(true);
+
+    app()->terminating(function () use ($start) {
+        $time = (microtime(true) - $start) * 1000;
+
+        Log::info('REQUEST TOTAL TIME', [
+            'time_ms' => round($time, 2),
+        ]);
+    });
         if (
             config('app.env') === 'production' ||
             app()->environment('production') ||
