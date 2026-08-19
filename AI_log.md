@@ -303,6 +303,28 @@ DONE
 - Commit dan Push perubahan ke GitHub.
 
 
+## 2026-08-19 - Move Faker Dependency to Require for Production Seeder Execution
+
+### Sedang / Sudah Membuat
+- Memindahkan `fakerphp/faker` dari `require-dev` ke `require` pada `composer.json` untuk memastikan pustaka Faker tersedia di lingkungan produksi Railway yang menggunakan `composer install --no-dev`.
+- Menggunakan `$this->faker` pada `UserFactory.php` untuk mencegah error `Call to undefined function fake()`.
+
+### File
+- `composer.json`
+- `database/factories/UserFactory.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Menghilangkan `Call to undefined function Database\Factories\fake()` di server Railway saat `db:seed` dieksekusi secara otomatis maupun manual.
+
+### Pekerjaan Selanjutnya
+- Commit dan Push perubahan ke GitHub.
+
+
+
 
 
 
