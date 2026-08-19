@@ -260,6 +260,31 @@ DONE
 - Commit dan Push perubahan ke GitHub.
 
 
+## 2026-08-19 - Fix FastAPI CORS & Preflight by Proxying via Laravel ChatbotController
+
+### Sedang / Sudah Membuat
+- Menyesuaikan `app/Http/Controllers/ChatbotController.php` untuk menangani pembuatan sesi percakapan (`createConversation`) dan pengiriman pesan (`sendMessage`) ke backend FastAPI secara server-to-server.
+- Mendaftarkan route proxy `/api/chatbot/conversations` dan `/api/chatbot/chat` di `routes/web.php`.
+- Memperbarui skrip frontend pada `resources/views/welcome.blade.php` dan `resources/views/articles/show.blade.php` untuk memanggil endpoint proxy Laravel lokal bukannya memanggil langsung FastAPI external.
+
+### File
+- `app/Http/Controllers/ChatbotController.php`
+- `routes/web.php`
+- `resources/views/welcome.blade.php`
+- `resources/views/articles/show.blade.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Panggilan langsung dari browser ke Render FastAPI menyebabkan error CORS dan status `400 Bad Request` pada HTTP OPTIONS preflight karena header `X-API-Key`. Dengan mem-proxy permintaan melalui Laravel backend (`ChatbotController`), browser memanggil domain sendiri (Same-Origin) tanpa preflight OPTIONS, menghilangkan error CORS 100%, serta menyembunyikan API Key dari skrip client-side.
+
+### Pekerjaan Selanjutnya
+- Commit dan Push perubahan ke GitHub.
+
+
+
 
 
 

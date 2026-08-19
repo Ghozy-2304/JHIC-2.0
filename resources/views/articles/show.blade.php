@@ -354,11 +354,11 @@
             try {
                 if (!activeConversationId) {
                     try {
-                        const initRes = await fetch(`${BASE_URL}/api/v1/conversations`, {
+                        const initRes = await fetch('/api/chatbot/conversations', {
                             method: "POST",
                             headers: {
                                 "Content-Type": "application/json",
-                                "X-API-Key": API_KEY
+                                "X-CSRF-TOKEN": "{{ csrf_token() }}"
                             }
                         });
                         if (initRes.ok) {
@@ -374,11 +374,11 @@
                 if (activeConversationId) payload.conversation_id = activeConversationId;
                 if (activeResponseId) payload.previous_response_id = activeResponseId;
 
-                const response = await fetch(`${BASE_URL}/api/v1/chat`, {
+                const response = await fetch('/api/chatbot/chat', {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
-                        "X-API-Key": API_KEY
+                        "X-CSRF-TOKEN": "{{ csrf_token() }}"
                     },
                     body: JSON.stringify(payload)
                 });

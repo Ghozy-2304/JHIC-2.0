@@ -115,14 +115,14 @@
             scrollToBottom();
 
             try {
-                // Step 1 (Opsional): Jika belum ada activeConversationId, inisialisasi sesi ke /api/v1/conversations
+                // Step 1: Jika belum ada activeConversationId, inisialisasi sesi via Laravel proxy
                 if (!activeConversationId) {
                     try {
-                        const initRes = await fetch(`${BASE_URL}/api/v1/conversations`, {
+                        const initRes = await fetch('/api/chatbot/conversations', {
                             method: "POST",
                             headers: {
                                 "Content-Type": "application/json",
-                                "X-API-Key": API_KEY
+                                "X-CSRF-TOKEN": "{{ csrf_token() }}"
                             }
                         });
                         if (initRes.ok) {
@@ -134,7 +134,7 @@
                     }
                 }
 
-                // Step 2: Kirim obrolan ke /api/v1/chat
+                // Step 2: Kirim obrolan via Laravel proxy
                 const payload = {
                     message: text
                 };
@@ -145,11 +145,11 @@
                     payload.previous_response_id = activeResponseId;
                 }
 
-                const response = await fetch(`${BASE_URL}/api/v1/chat`, {
+                const response = await fetch('/api/chatbot/chat', {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
-                        "X-API-Key": API_KEY
+                        "X-CSRF-TOKEN": "{{ csrf_token() }}"
                     },
                     body: JSON.stringify(payload)
                 });
