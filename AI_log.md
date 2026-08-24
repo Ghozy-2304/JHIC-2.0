@@ -353,7 +353,8 @@ DONE
 ### Catatan
 - Semua komponen responsif dan mengikuti aturan Tailwind CSS.
 - Fitur input suara (Speech Recognition) terintegrasi pada tombol mikrofon.
-- Mengatasi masalah deployment Railway image build failure.
+- Memperbaiki `Dockerfile` dengan menghapus build stage nodejs berlebih untuk mencegah `exit code: 137` (Out of Memory saat `npm install`) di server Railway karena file `public/build/` sudah siap & ter-commit di repository git.
 
 ### Pekerjaan Selanjutnya
 - Lakukan Commit & Push perubahan ke GitHub.
+

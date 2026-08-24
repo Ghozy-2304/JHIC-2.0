@@ -1,12 +1,4 @@
-# Stage 1: Build Frontend Assets (Vite / Tailwind)
-FROM node:20-alpine AS node-builder
-WORKDIR /app
-COPY package*.json ./
-RUN npm install --include=dev
-COPY . .
-RUN npm run build
-
-# Stage 2: Production PHP + Nginx Environment
+# Production PHP + Nginx Environment
 FROM serversideup/php:8.3-fpm-nginx
 
 # Environment settings
@@ -21,10 +13,8 @@ USER root
 RUN install-php-extensions bcmath gd
 USER www-data
 
-# Copy source code with correct permissions
+# Copy source code with correct permissions (including compiled public/build assets)
 COPY --chown=www-data:www-data . .
-# Copy compiled assets from node build stage
-COPY --chown=www-data:www-data --from=node-builder /app/public/build ./public/build
 
 # Install PHP dependencies for production
 RUN composer install --no-dev --optimize-autoloader
