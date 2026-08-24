@@ -324,9 +324,36 @@ DONE
 - Commit dan Push perubahan ke GitHub.
 
 
+## 2026-08-24 - Redesign Chatbot UI according to Figma Specs & Fix Railway Dockerfile Permissions
 
+### Sedang / Sudah Membuat
+- Mendesain ulang launcher button chatbot dan pop-up chat window secara presisi sesuai spesifikasi Figma (`node-id=20502-11704` & `node-id=20239-29135`).
+- Membuat komponen Blade reusable `<x-chatbot />` di `resources/views/components/chatbot.blade.php`.
+- Mengunduh dan menempatkan asset resmi Figma di `public/assets/chatbot/` (`avatar.png`, `icon-close.svg`, `icon-mic.svg`, `icon-send.svg`).
+- Mengganti kode chatbot inline lama di `welcome.blade.php` dan `articles/show.blade.php` dengan `<x-chatbot />`.
+- Memperbaiki `Dockerfile` dengan menambahkan `USER root` sebelum `install-php-extensions` untuk menyelesaikan permission denied (`mkdir: cannot create directory '/usr/src/php': Permission denied`) di server Railway.
+- Menambahkan route `/clear-cache` di `routes/web.php` untuk pembersihan cache produksi otomatis.
 
+### File
+- `resources/views/components/chatbot.blade.php`
+- `public/assets/chatbot/avatar.png`
+- `public/assets/chatbot/icon-close.svg`
+- `public/assets/chatbot/icon-mic.svg`
+- `public/assets/chatbot/icon-send.svg`
+- `resources/views/welcome.blade.php`
+- `resources/views/articles/show.blade.php`
+- `app/Providers/AppServiceProvider.php`
+- `routes/web.php`
+- `Dockerfile`
+- `AI_log.md`
 
+### Status
+DONE
 
+### Catatan
+- Semua komponen responsif dan mengikuti aturan Tailwind CSS.
+- Fitur input suara (Speech Recognition) terintegrasi pada tombol mikrofon.
+- Mengatasi masalah deployment Railway image build failure.
 
-
+### Pekerjaan Selanjutnya
+- Lakukan Commit & Push perubahan ke GitHub.

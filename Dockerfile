@@ -16,8 +16,10 @@ ENV PORT=8080
 
 WORKDIR /var/www/html
 
-# Install required PHP extensions for MySQL & PostgreSQL
-RUN install-php-extensions pdo_mysql pdo_pgsql bcmath gd zip
+# Switch to root to install required PHP extensions
+USER root
+RUN install-php-extensions bcmath gd
+USER www-data
 
 # Copy source code with correct permissions
 COPY --chown=www-data:www-data . .
