@@ -47,7 +47,7 @@
                        autocomplete="off">
                 
                 <div class="flex items-center gap-2 shrink-0">
-                    <!-- Microphone Button -->
+                    <!-- Microphone Button
                     <button type="button" 
                             id="chatbotMicBtn" 
                             onclick="toggleVoiceInput()" 
@@ -55,7 +55,7 @@
                             title="Input Suara">
                         <img src="{{ asset('assets/chatbot/icon-mic.svg') }}" class="w-4 h-4" alt="Mic">
                         <span id="chatbotMicPulse" class="hidden absolute inset-0 rounded-full border-2 border-red-500 animate-ping"></span>
-                    </button>
+                    </button> -->
                     
                     <!-- Send Button -->
                     <button type="button" 
