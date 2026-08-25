@@ -380,3 +380,24 @@ DONE
 - Melakukan Commit & Push file `composer.lock` dan `AI_log.md` ke GitHub.
 
 
+## 2026-08-25 - Fix Railway Dockerfile Entrypoint Permission Denied Error
+
+### Sedang / Sudah Membuat
+- Memindahkan proses penyalinan `entrypoint.sh` ke `/etc/entrypoint.d/99-laravel.sh` serta eksekusi `sed -i` & `chmod +x` ke posisi `USER root` di `Dockerfile` sebelum beralih ke `USER www-data`.
+
+### File
+- `Dockerfile`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Error `sed: couldn't open temporary file /etc/entrypoint.d/sedpo84K1: Permission denied` terjadi karena instruksi `sed -i` dijalankan di bawah user non-root (`USER www-data`). Direktori `/etc/entrypoint.d/` dimiliki oleh root sehingga `www-data` tidak memiliki izin membuat file temporer di sana.
+- Dengan memindahkan eksekusi penyalinan dan modifikasi skrip entrypoint di bawah `USER root` (sebelum perintah `USER www-data`), proses `sed` dan `chmod` berjalan sukses tanpa error permission denied.
+
+### Pekerjaan Selanjutnya
+- Lakukan Commit & Push perubahan file `Dockerfile` dan `AI_log.md` ke GitHub (`git add Dockerfile AI_log.md`, `git commit`, `git push origin main`).
+
+
+

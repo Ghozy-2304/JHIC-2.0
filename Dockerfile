@@ -8,9 +8,15 @@ ENV PORT=8080
 
 WORKDIR /var/www/html
 
-# Switch to root to install required PHP extensions
+# Switch to root to install required PHP extensions and setup system entrypoint script
 USER root
 RUN install-php-extensions bcmath gd
+
+# Copy startup entrypoint script to system directory as root
+COPY entrypoint.sh /etc/entrypoint.d/99-laravel.sh
+RUN sed -i 's/\r$//' /etc/entrypoint.d/99-laravel.sh && chmod +x /etc/entrypoint.d/99-laravel.sh
+
+# Switch to www-data for application files and composer
 USER www-data
 
 # Copy source code with correct permissions (including compiled public/build assets)
@@ -29,14 +35,11 @@ RUN mkdir -p storage/framework/views \
     touch database/database.sqlite && \
     rm -rf public/hot && \
     chmod -R 755 public && \
-    chown -R www-data:www-data storage bootstrap/cache database public
+    chown -R www-data:www-data storage bootstrap/cache database public 2>/dev/null || true
 
 # Set port variables for Nginx
 ENV HTTP_PORT=8080
 EXPOSE 8080
 
-# Copy startup entrypoint script
-COPY --chown=www-data:www-data entrypoint.sh /etc/entrypoint.d/99-laravel.sh
-RUN sed -i 's/\r$//' /etc/entrypoint.d/99-laravel.sh && chmod +x /etc/entrypoint.d/99-laravel.sh
 
 
