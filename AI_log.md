@@ -358,3 +358,25 @@ DONE
 ### Pekerjaan Selanjutnya
 - Lakukan Commit & Push perubahan ke GitHub.
 
+
+## 2026-08-25 - Fix Railway Composer Install Exit Code 4 by Syncing composer.lock
+
+### Sedang / Sudah Membuat
+- Memperbarui `composer.lock` menggunakan `composer update --lock` / `composer update fakerphp/faker` agar package `fakerphp/faker` berpindah dari `packages-dev` ke section `packages` produksi di `composer.lock`.
+
+### File
+- `composer.lock`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Pemindahan `fakerphp/faker` ke `"require"` pada `composer.json` sebelumnya belum menyinkronkan `composer.lock`.
+- Hal ini menyebabkan build Docker Railway yang menjalankan `composer install --no-dev` gagal (exit code 4) karena `fakerphp/faker` berada di `packages-dev` bukan `packages` utama `composer.lock`.
+- Setelah dilakukan update lock, `fakerphp/faker` sekarang terdaftar resmi di `packages` (produksi) pada `composer.lock`.
+
+### Pekerjaan Selanjutnya
+- Melakukan Commit & Push file `composer.lock` dan `AI_log.md` ke GitHub.
+
+
