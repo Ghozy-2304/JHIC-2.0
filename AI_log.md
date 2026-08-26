@@ -429,5 +429,26 @@ DONE
 - Melakukan Commit & Push perubahan ke repositori Git / GitHub.
 
 
+## 2026-08-26 - Enforce Full Desktop Navbar Layout
+
+### Sedang / Sudah Membuat
+- Menghapus class responsive hide (`hidden lg:flex` dan `lg:hidden`) pada `resources/views/components/navbar.blade.php` agar komponen navbar **selalu menyajikan tampilan desktop penuh** tanpa ciut/tersembunyi di balik tombol hamburger.
+- Memastikan semua 7 item menu navigasi (Beranda, PPDB, Tentang Kami, Program, Career Center, Artikel, Kontak) beserta tombol "Daftar PPDB" selalu terbentang rapi dalam kontainer `1120px` di desktop.
+
+### File
+- `resources/views/components/navbar.blade.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Navbar sekarang 100% selalu menampilkan mode desktop secara utuh sesuai instruksi pengembang.
+
+### Pekerjaan Selanjutnya
+- Commit dan push ke GitHub.
+
+
+
 
 
