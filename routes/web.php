@@ -8,7 +8,28 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/ppdb', function () {
+    return view('welcome', ['pageTitle' => 'PPDB']);
+});
+
+Route::get('/tentang-kami', function () {
+    return view('welcome', ['pageTitle' => 'Tentang Kami']);
+});
+
+Route::get('/program/{slug?}', function ($slug = null) {
+    return view('welcome', ['pageTitle' => 'Program: ' . ($slug ? strtoupper($slug) : 'Utama')]);
+});
+
+Route::get('/career-center', function () {
+    return view('welcome', ['pageTitle' => 'Career Center']);
+});
+
+Route::get('/kontak', function () {
+    return view('welcome', ['pageTitle' => 'Kontak']);
+});
+
 Route::get('/artikel/{slug}', [ArticleController::class, 'show'])->name('articles.show');
+
 
 Route::get('/clear-cache', function () {
     \Illuminate\Support\Facades\Artisan::call('optimize:clear');

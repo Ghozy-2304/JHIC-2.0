@@ -400,4 +400,34 @@ DONE
 - Lakukan Commit & Push perubahan file `Dockerfile` dan `AI_log.md` ke GitHub (`git add Dockerfile AI_log.md`, `git commit`, `git push origin main`).
 
 
+## 2026-08-26 - Implementation of Reusable Navbar Component with Figma Specs & Active Page Detection
+
+### Sedang / Sudah Membuat
+- Membuat komponen Blade reusable `<x-navbar />` pada `resources/views/components/navbar.blade.php` berdasarkan desain Figma (`node-id=20514-11332`).
+- Mengimplementasikan deteksi otomatis route/halaman aktif (`active` & `activeSub`) untuk menyorot menu navigasi yang sedang dibuka oleh user.
+- Mengatur style menu utama dan dropdown opsi Program sesuai dengan 4 status state Figma (Normal, Hover, Selected, dan Selected_Hover) dengan indikator border kiri 2px warna `#0c61cf` dan latar belakang `#f5f5f5`.
+- Mengganti elemen header navbar hardcoded pada `resources/views/articles/show.blade.php` dan `resources/views/welcome.blade.php` dengan komponen reusable `<x-navbar />`.
+- Mendaftarkan rute navigasi pendukung di `routes/web.php` untuk memfasilitasi pengujian status aktif navbar pada semua menu/sub-menu.
+
+### File
+- `resources/views/components/navbar.blade.php`
+- `resources/views/welcome.blade.php`
+- `resources/views/articles/show.blade.php`
+- `routes/web.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Ukuran container navbar `1120px` x `60px`, `rounded-full`, dan `shadow-[0px_4px_15px_rgba(0,0,0,0.04)]` telah disesuaikan presisi dengan Figma.
+- Dropdown menu Program berukuran `200px`, `rounded-[16px]`, dengan efek `shadow-[0px_4px_25px_0px_rgba(0,0,0,0.15)]`.
+- Opsi dropdown mendukung 4 state tampilan (Normal: `bg-white border-l-2 border-transparent`, Hover: `bg-[#f5f5f5] border-l-2 border-transparent`, Selected: `bg-white border-l-2 border-[#0c61cf] font-semibold`, Selected_Hover: `bg-[#f5f5f5] border-l-2 border-[#0c61cf] font-semibold`).
+- Responsive navbar mobile menggunakan hamburger button & drawer accordion.
+
+### Pekerjaan Selanjutnya
+- Melakukan Commit & Push perubahan ke repositori Git / GitHub.
+
+
+
 

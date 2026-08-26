@@ -15,24 +15,9 @@
 </head>
 <body class="bg-[#fafafa] text-text-main font-sans min-height-screen overflow-x-hidden leading-normal">
 
-    <!-- NAVBAR HEADER -->
-    <div class="w-full flex justify-center pt-8 pb-3.5 px-5 fixed top-0 left-0 z-50 backdrop-blur-md bg-white/40 border-b border-border-custom/40">
-        <div class="w-[1120px] bg-white flex justify-between items-center py-2.5 px-6 rounded-full shadow-[0px_4px_15px_rgba(0,0,0,0.04)]">
-            <a href="/" class="h-8 block">
-                <img src="{{ asset('assets/logo_idn.png') }}" alt="Logo IDN" class="h-8 block">
-            </a>
-            <div class="flex gap-8 items-center max-md:hidden">
-                <a href="/" class="text-base font-semibold text-text-muted transition-colors duration-200 hover:text-brand-primary">Beranda</a>
-                <a href="#" class="text-base font-semibold text-text-muted transition-colors duration-200 hover:text-brand-primary">PPDB</a>
-                <a href="#" class="text-base font-semibold text-text-muted transition-colors duration-200 hover:text-brand-primary">Tentang Kami</a>
-                <a href="#" class="text-base font-semibold text-text-muted transition-colors duration-200 hover:text-brand-primary">Program</a>
-                <a href="#" class="text-base font-semibold text-text-muted transition-colors duration-200 hover:text-brand-primary">Career Center</a>
-                <a href="/artikel/idn-relawan-dan-markaz-bersama-as-sunnah-salurkan-bantuan-bencana-banjir-di-bali" class="text-base font-semibold text-brand-primary transition-colors duration-200">Artikel</a>
-                <a href="#" class="text-base font-semibold text-text-muted transition-colors duration-200 hover:text-brand-primary">Kontak</a>
-            </div>
-            <a href="#" class="bg-brand-primary text-white py-2.5 px-5 rounded-full text-sm font-semibold shadow-[0px_2px_6px_rgba(12,97,207,0.32)] transition-all duration-200 hover:bg-brand-hover hover:-translate-y-px">Daftar PPDB</a>
-        </div>
-    </div>
+    <!-- REUSABLE NAVBAR COMPONENT -->
+    <x-navbar active="artikel" />
+
 
     <!-- MAIN BODY -->
     <div class="mt-[106px] w-full flex flex-col items-center">
