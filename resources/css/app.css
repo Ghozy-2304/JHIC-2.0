@@ -36,3 +36,72 @@
 .animate-chat-bounce {
     animation: chatBounce 1.4s infinite ease-in-out both;
 }
+
+/* Continuous Infinite Marquee Ticker */
+@keyframes marqueeScroll {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.animate-marquee {
+    display: flex;
+    width: max-content;
+    animation: marqueeScroll 25s linear infinite;
+}
+
+.animate-marquee:hover {
+    animation-play-state: paused;
+}
+
+/* University Floating Tooltip Box on Hover */
+.univ-card {
+    position: relative;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.univ-card:hover {
+    border-color: #0c61cf !important;
+    background-color: #f0f6fe !important;
+    transform: translateY(-2px);
+    box-shadow: 0px 8px 24px -4px rgba(12, 97, 207, 0.2) !important;
+}
+
+.univ-tooltip {
+    position: absolute;
+    bottom: -38px;
+    left: 50%;
+    transform: translateX(-50%) translateY(4px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    white-space: nowrap;
+    z-index: 40;
+    pointer-events: none;
+}
+
+.univ-card:hover .univ-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Generic Section Card Hover Effect (Example card in Figma triggers this hover state) */
+.feature-card {
+    transition: all 0.25s ease;
+}
+
+.feature-card:hover {
+    border-color: #0c61cf !important;
+    box-shadow: 0px 12px 28px -4px rgba(0, 0, 0, 0.1) !important;
+    transform: translateY(-2px);
+}
+
+.feature-card:hover .feature-icon-btn {
+    background-color: #f0f6fe !important;
+    border-color: #0c61cf !important;
+    color: #0c61cf !important;
+}

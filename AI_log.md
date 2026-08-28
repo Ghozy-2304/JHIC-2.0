@@ -474,6 +474,92 @@ DONE
 - Melakukan Commit & Push ke GitHub (`git add .`, `git commit`, `git push`).
 
 
+## 2026-08-27 - Full Home Page Implementation (Figma Node 19900:12340 & User Specs)
+
+### Sedang / Sudah Membuat
+- Mengimplementasikan seluruh struktur dan section Halaman Beranda (Home Page) secara presisi berdasarkan Figma node `19900:12340` dan spesifikasi khusus dari user.
+- Mempertahankan komponen Navbar Desktop (`<x-navbar />`) secara utuh dengan dimensi kontainer `1120px` x `60px`, `rounded-full`, shadow `shadow-[0px_4px_15px_rgba(0,0,0,0.04)]`, serta link navigasi dan dropdown Program.
+- Mengimplementasikan section Kerjasama Industri dengan animasi infinite marquee horizontal ticker berjalan kesamping secara continuous pada kecepatan sedang, dan melambat secara otomatis saat kursor di-hover (`animation-play-state: paused`).
+- Membuat section Universitas Alumni berisi 50 universitas dalam 5 baris lengkap dengan efek hover active border `#0c61cf`, background highlight `rgba(12,97,207,0.04)`, serta kemunculan nama universitas di bawah logo saat di-hover.
+- Mengimplementasikan section Testimoni ("Apa Kata Mereka Tentang IDN?") dengan filter tab interaktif (`Perusahaan`, `Wali Santri`, `Alumni`) menggunakan Alpine.js.
+- Menggantikan gambar statis peta pada footer dengan peta Google Maps interaktif yang dapat digerakkan, di-zoom, dan di-pan secara langsung.
+- Menambahkan efek hover panah kanan (`->`) pada seluruh tombol "Selengkapnya" / tombol aksi (seperti "Mulai Pendaftaran", "Tanya Via WhatsApp", "Daftar Sekarang", "Lihat Semua Artikel", dll.).
+- Mengatur 6 Card "Mengapa Memilih IDN Boarding School?", 3 Card "Pilihan Program Pendidikan", 8 Card "Pengajar Profesional", Rincian Biaya, dan Banner CTA Pendaftaran.
+
+### File
+- `resources/views/welcome.blade.php`
+- `resources/css/app.css`
+- `resources/views/components/navbar.blade.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Marquee ticker pada Kerjasama Industri diproses menggunakan CSS keyframe `@keyframes marqueeScroll` dengan perlambatan saat hover (`hover:animation-play-state: paused`).
+- Grid Universitas Alumni memuat seluruh 50 universitas sesuai gambar yang diberikan (Baris 1 s/d Baris 5).
+- Filter testimoni 100% responsif dan interaktif menggunakan Alpine.js tab state `x-data="{ activeTab: 'Perusahaan' }"`.
+- Peta footer menggunakan iframe Google Maps resmi IDN Boarding School Bogor.
+- Semua tombol dan card interaktif mengikuti spesifikasi hover effect dari Figma.
+
+### Pekerjaan Selanjutnya
+- Melakukan Commit & Push perubahan ke GitHub repositori.
+
+
+## 2026-08-27 - Exact Figma Design Alignment & Structure Rectification (Figma Node 19900:12340)
+
+### Sedang / Sudah Membuat
+- Memperbaiki dan menyelaraskan 100% struktur halaman Home (`welcome.blade.php`) dengan desain persis dari node Figma `19900:12340` (tanpa mengganti/menambah/menghapus section sembarangan).
+- Section 2: Mengoreksi judul menjadi **"Kenapa Memilih IDN Boarding School?"** dengan subtitel *"Lebih dari Sekadar Sekolah. Tapi menjadi tempat untuk Membangun Masa Depanmu."* serta 6 card persis (Sekolah IT Terbaik, Ekstrakurikuler Menarik, Pengajar Profesional, Program Unggulan, Pesantren Berbasis IT, Full Praktik). Card 3 dipasang border biru & shadow sebagai acuan state hover.
+- Section 3: Mengganti section dengan **"Jurusan yang ada di IDN Boarding School"** (RPL, TKJ, DKV) lengkap dengan pill tag keahlian (`Web Development`, `Mobile App`, `Cisco CCNA`, `UI/UX`, dll.) dan tombol Selengkapnya.
+- Section 4: Mengembalikan section asli Figma **"Pencapaian Wisudawan dari IDN Boarding School"** berisi 8 card gambar wisudawan.
+- Section 5: Menyelaraskan **"Kerjasama Industri"** dengan deskripsi resmi dari Figma dan menyajikan logo-logo perusahaan dalam kontainer logo (`w-[160px] h-[100px]`) pada marquee ticker.
+- Section 6: Mengganti section dengan **"Prestasi Siswa IDN Boarding School"** berisi 3 card prestasi santri (Ahmad Bilal Al Fatih, Sharul Azzam, Siswi DKV Akhwat) dan tombol "Lihat Lebih Banyak".
+- Section 7: Mengoreksi **"Universitas Alumni IDN Boarding School"** dengan menampilkan logo kampus (badge icon `w-[94px] h-[94px]`) untuk seluruh 50 universitas, serta memunculkan **floating rectangular tooltip textbox** nama universitas berwarna biru melayang di bawah/atas logo saat di-hover.
+- Section 8: Menyelaraskan **"Apa Kata Mereka Tentang IDN?"** (Testimoni) dengan tab `Perusahaan`, `Wali Santri`, `Alumni` serta card berukuran `550px` & `360px` persis Figma.
+- Section 9 & 10: Mengatur **Biaya Pendidikan** (*Transparan, tanpa biaya tersembunyi*) dan **PPDB 2027/2028** (*Kuota terbatas. Ambil langkahmu hari ini.*) dengan harga & teks presisi.
+- Section 11: Menyesuaikan **Footer** dengan tagline `#Jagoan IT Pinter Ngaji` & `#Muda Mendunia`, link navigasi, informasi kontak, Google Maps interaktif, copyright `© Copyright | 2026 IDN Boarding School.`, serta baris logo sponsor (JHIC 2.0, Jagoan Hosting, Komdigi, Garuda Spark, Ngalup).
+
+### File
+- `resources/views/welcome.blade.php`
+- `resources/css/app.css`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Semua judul section, warna (`#0c61cf`, `#ff7a29`, `#181d27`, `#717680`, `#545e6f`), ukuran font (`56px`, `48px`, `32px`, `24px`, `20px`, `18px`, `16px`, `14px`), spacing, dan ikon disesuaikan 100% dari MCP data Figma node `19900:12340`.
+- Efek hover universitas alumni diproses via CSS `.univ-card:hover .univ-tooltip` dengan kotak melayang melengkung.
+- Marquee logo perusahaan melambat otomatis saat hover.
+
+### Pekerjaan Selanjutnya
+- Push perubahan ke repositori GitHub.
+
+
+## 2026-08-27 - Section Spacing & Layout Centering Update (py-[110px] & w-[1120px] mx-auto)
+
+### Sedang / Sudah Membuat
+- Mengatur seluruh `<section>` pada `resources/views/welcome.blade.php` agar memiliki jarak vertikal `py-[110px]` (margin-y / padding-y 110px) sesuai spesifikasi tinggi section di Figma.
+- Mengatur kontainer konten utama tiap section menjadi `w-[1120px] max-w-full mx-auto` sehingga saat tampilan layar melebar (desktop monitor resolusi tinggi), seluruh section tetap berada tepat di tengah (*center-aligned*) dengan margin kiri dan kanan yang seimbang (`160px` pada layar `1440px`).
+
+### File
+- `resources/views/welcome.blade.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Pembungkus section dipasangi `w-full flex flex-col items-center` dan kontainer dalam dipasangi `w-[1120px] max-w-full mx-auto` untuk menjamin kerapian posisi di tengah pada layar lebar.
+
+### Pekerjaan Selanjutnya
+- Melakukan push perubahan ke repositori GitHub.
+
+
+
+
+
 
 
 

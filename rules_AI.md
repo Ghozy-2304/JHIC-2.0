@@ -24,6 +24,8 @@ Wajib menggunakan **Tailwind CSS** untuk styling.
 
 Jangan menggunakan CSS biasa jika kebutuhan tersebut masih dapat dilakukan menggunakan Tailwind.
 
+Jangan membuat semau anda untuk bagian front-end atau tampilan, anda diminta untuk mengikuti apa yang ada di Figma/MCP. tanpa merubahnya sedikitpun.
+
 CSS custom hanya diperbolehkan apabila:
 
 * Tailwind benar-benar tidak dapat menangani kebutuhan tersebut dengan baik.
