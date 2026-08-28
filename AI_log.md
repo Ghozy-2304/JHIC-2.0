@@ -557,6 +557,28 @@ DONE
 - Melakukan push perubahan ke repositori GitHub.
 
 
+## 2026-08-28 - Hide Inactive Chatbot Message Container
+
+### Sedang / Sudah Membuat
+- Menambahkan class `hidden` secara default pada `#chatbotWindow` di `resources/views/components/chatbot.blade.php`.
+- Memperbarui fungsi `window.toggleChatbot` agar secara otomatis menghapus class `hidden` saat membuka chat (dengan `void chatbotWindow.offsetWidth` untuk reflow animasi) dan menambahkan kembali class `hidden` setelah transisi penutupan (300ms) selesai.
+
+### File
+- `resources/views/components/chatbot.blade.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Perubahan ini memastikan bahwa saat chatbot belum/tidak aktif (ditutup), kontainer window chatbot berstatus `display: none` (`hidden`), sehingga tidak lagi memblokir interaksi kursor / hover mouse pada elemen-elemen di belakangnya.
+- Efek transisi pembukaan dan penutupan tetap berjalan dengan mulus (smooth scale & opacity transition).
+
+### Pekerjaan Selanjutnya
+- Melakukan Push perubahan ke repositori Git / GitHub jika diperlukan.
+
+
+
 
 
 

@@ -41,7 +41,7 @@
 <div class="fixed top-0 left-0 right-0 z-50 flex justify-center pt-8 pb-3.5 px-4 pointer-events-none">
     
     <!-- NAVBAR CARD (Figma Spec: 1120px width, 60px height, rounded-full, drop-shadow 0px 4px 15px rgba(0,0,0,0.04)) -->
-    <div class="pointer-events-auto w-[1120px] max-w-full bg-white h-[60px] flex items-center justify-between px-2.5 rounded-full shadow-[0px_4px_15px_rgba(0,0,0,0.04)] border border-slate-100 relative">
+    <div class="pointer-events-auto w-[1120px] max-w-full bg-white h-[60px] flex items-center justify-between px-3 rounded-full shadow-[0px_4px_15px_rgba(0,0,0,0.04)] border border-slate-100 relative">
         
         <!-- LOGO BRAND -->
         <a href="/" class="flex items-center shrink-0">

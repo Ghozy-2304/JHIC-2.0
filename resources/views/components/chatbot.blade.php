@@ -3,7 +3,7 @@
     
     <!-- Chat Window Card -->
     <div id="chatbotWindow" 
-         class="w-[380px] sm:w-[400px] h-[560px] max-h-[calc(100vh-100px)] max-sm:w-[calc(100vw-32px)] max-sm:h-[500px] bg-white rounded-[22px] shadow-[0_12px_45px_rgba(0,0,0,0.18)] mb-3 flex flex-col overflow-hidden origin-bottom-right scale-0 opacity-0 pointer-events-none transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] [&.active]:scale-100 [&.active]:opacity-100 [&.active]:pointer-events-auto border border-[#e9eaeb]">
+         class="hidden w-[380px] sm:w-[400px] h-[560px] max-h-[calc(100vh-100px)] max-sm:w-[calc(100vw-32px)] max-sm:h-[500px] bg-white rounded-[22px] shadow-[0_12px_45px_rgba(0,0,0,0.18)] mb-3 flex flex-col overflow-hidden origin-bottom-right scale-0 opacity-0 pointer-events-none transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] [&.active]:scale-100 [&.active]:opacity-100 [&.active]:pointer-events-auto border border-[#e9eaeb]">
         
         <!-- Header Bar -->
         <div class="bg-[#052753] text-white px-4 py-3.5 flex items-center justify-between shrink-0">
@@ -108,11 +108,18 @@
         window.toggleChatbot = function() {
             isChatOpen = !isChatOpen;
             if (isChatOpen) {
+                chatbotWindow.classList.remove("hidden");
+                void chatbotWindow.offsetWidth; // Force layout reflow before animation
                 chatbotWindow.classList.add("active");
                 setTimeout(() => chatbotUserInput.focus(), 300);
             } else {
                 chatbotWindow.classList.remove("active");
                 if (isRecording) stopVoiceInput();
+                setTimeout(() => {
+                    if (!isChatOpen) {
+                        chatbotWindow.classList.add("hidden");
+                    }
+                }, 300);
             }
         };
 

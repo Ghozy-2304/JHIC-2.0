@@ -69,8 +69,8 @@
 
             <!-- RIGHT HERO IMAGE (449px x 456px) -->
             <div class="w-[449px] h-[456px] shrink-0 relative">
-                <div class="w-full h-full rounded-[18px] border-8 border-white/40 shadow-[12px_12px_56px_0px_rgba(0,4,45,0.16)] overflow-hidden bg-slate-200">
-                    <img src="{{ asset('assets/main_bali.png') }}" alt="Gedung IDN Boarding School" class="w-full h-full object-cover">
+                <div class="w-full h-full rounded-[18px] shadow-[12px_12px_56px_0px_rgba(0,4,45,0.16)] overflow-hidden bg-slate-200">
+                    <img src="{{ asset('assets/Main Image.avif') }}" alt="Gedung IDN Boarding School" class="w-full h-full object-cover">
                 </div>
             </div>
 
@@ -143,8 +143,8 @@
                 </div>
 
                 <!-- Card 3: Pengajar Profesional (Hover Example in Figma with Active Blue Border & Shadow) -->
-                <div class="feature-card bg-white border-2 border-[#0c61cf] shadow-[0px_4px_20px_rgba(0,0,0,0.1)] rounded-[18px] p-4 flex flex-col gap-4 items-start w-[360px] max-w-full">
-                    <div class="feature-icon-btn bg-[#f0f6fe] border border-[#0c61cf] w-12 h-12 rounded-full flex items-center justify-center text-[#0c61cf] shrink-0">
+                <div class="feature-card bg-white border-2 border-[#e9eaeb] rounded-[18px] p-4 flex flex-col gap-4 items-start w-[360px] max-w-full">
+                    <div class="feature-icon-btn bg-white border-2 border-[#e9eaeb] w-12 h-12 rounded-full flex items-center justify-center text-[#414651] shrink-0">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"/>
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0112 20.055a11.952 11.952 0 01-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
@@ -353,28 +353,28 @@
             <!-- AWARDS GRID (2 cols x 4 rows = 8 Wisudawan Image Cards, 550px x 312px each) -->
             <div class="grid grid-cols-2 gap-5 w-full">
                 <div class="w-[550px] max-w-full h-[312px] rounded-[14px] overflow-hidden bg-slate-200 shadow-sm border border-[#e9eaeb] transition-all duration-300 hover:shadow-md hover:-translate-y-1">
-                    <img src="{{ asset('assets/rel_basket.png') }}" alt="Pencapaian Wisudawan 1" class="w-full h-full object-cover">
+                    <img src="{{ asset('assets/Award Image 1.avif') }}" alt="Pencapaian Wisudawan 1" class="w-full h-full object-cover">
                 </div>
                 <div class="w-[550px] max-w-full h-[312px] rounded-[14px] overflow-hidden bg-slate-200 shadow-sm border border-[#e9eaeb] transition-all duration-300 hover:shadow-md hover:-translate-y-1">
-                    <img src="{{ asset('assets/rel_medlab.png') }}" alt="Pencapaian Wisudawan 2" class="w-full h-full object-cover">
+                    <img src="{{ asset('assets/Award Image 2.avif') }}" alt="Pencapaian Wisudawan 2" class="w-full h-full object-cover">
                 </div>
                 <div class="w-[550px] max-w-full h-[312px] rounded-[14px] overflow-hidden bg-slate-200 shadow-sm border border-[#e9eaeb] transition-all duration-300 hover:shadow-md hover:-translate-y-1">
-                    <img src="{{ asset('assets/rel_bullying.png') }}" alt="Pencapaian Wisudawan 3" class="w-full h-full object-cover">
+                    <img src="{{ asset('assets/Award Image 3.avif') }}" alt="Pencapaian Wisudawan 3" class="w-full h-full object-cover">
                 </div>
                 <div class="w-[550px] max-w-full h-[312px] rounded-[14px] overflow-hidden bg-slate-200 shadow-sm border border-[#e9eaeb] transition-all duration-300 hover:shadow-md hover:-translate-y-1">
-                    <img src="{{ asset('assets/main_bali.png') }}" alt="Pencapaian Wisudawan 4" class="w-full h-full object-cover">
+                    <img src="{{ asset('assets/Award Image 4.avif') }}" alt="Pencapaian Wisudawan 4" class="w-full h-full object-cover">
                 </div>
                 <div class="w-[550px] max-w-full h-[312px] rounded-[14px] overflow-hidden bg-slate-200 shadow-sm border border-[#e9eaeb] transition-all duration-300 hover:shadow-md hover:-translate-y-1">
-                    <img src="{{ asset('assets/rel_basket_alt.png') }}" alt="Pencapaian Wisudawan 5" class="w-full h-full object-cover">
+                    <img src="{{ asset('assets/Award Image 5.avif') }}" alt="Pencapaian Wisudawan 5" class="w-full h-full object-cover">
                 </div>
                 <div class="w-[550px] max-w-full h-[312px] rounded-[14px] overflow-hidden bg-slate-200 shadow-sm border border-[#e9eaeb] transition-all duration-300 hover:shadow-md hover:-translate-y-1">
-                    <img src="{{ asset('assets/rel_basket.png') }}" alt="Pencapaian Wisudawan 6" class="w-full h-full object-cover">
+                    <img src="{{ asset('assets/Award Image 6.avif') }}" alt="Pencapaian Wisudawan 6" class="w-full h-full object-cover">
                 </div>
                 <div class="w-[550px] max-w-full h-[312px] rounded-[14px] overflow-hidden bg-slate-200 shadow-sm border border-[#e9eaeb] transition-all duration-300 hover:shadow-md hover:-translate-y-1">
-                    <img src="{{ asset('assets/rel_medlab.png') }}" alt="Pencapaian Wisudawan 7" class="w-full h-full object-cover">
+                    <img src="{{ asset('assets/Award Image 7.avif') }}" alt="Pencapaian Wisudawan 7" class="w-full h-full object-cover">
                 </div>
                 <div class="w-[550px] max-w-full h-[312px] rounded-[14px] overflow-hidden bg-slate-200 shadow-sm border border-[#e9eaeb] transition-all duration-300 hover:shadow-md hover:-translate-y-1">
-                    <img src="{{ asset('assets/rel_bullying.png') }}" alt="Pencapaian Wisudawan 8" class="w-full h-full object-cover">
+                    <img src="{{ asset('assets/Award Image 8.avif') }}" alt="Pencapaian Wisudawan 8" class="w-full h-full object-cover">
                 </div>
             </div>
 
@@ -406,45 +406,53 @@
                 <div class="animate-marquee flex gap-6 items-center">
                     @php
                         $partners = [
-                            ['name' => 'Fast Response', 'code' => 'FR', 'color' => '#e11d48'],
-                            ['name' => 'PLN', 'code' => 'PLN', 'color' => '#0284c7'],
-                            ['name' => 'Sisindokom', 'code' => 'SISINDOKOM', 'color' => '#ea580c'],
-                            ['name' => 'Jatelindo', 'code' => 'JATELINDO', 'color' => '#0284c7'],
-                            ['name' => 'IGNITE', 'code' => 'IGNITE', 'color' => '#dc2626'],
-                            ['name' => 'JICT', 'code' => 'JICT', 'color' => '#1e3a8a'],
-                            ['name' => 'FIM Piston', 'code' => 'FIM', 'color' => '#b91c1c'],
-                            ['name' => 'Atlasat', 'code' => 'ATLASAT', 'color' => '#0369a1'],
-                            ['name' => 'METRO TV', 'code' => 'METRO TV', 'color' => '#1e40af'],
-                            ['name' => 'DIGMAZA', 'code' => 'DIGMAZA', 'color' => '#d97706'],
-                            ['name' => 'bayarind', 'code' => 'BAYARIND', 'color' => '#65a30d'],
-                            ['name' => 'addOn finance', 'code' => 'ADDON', 'color' => '#c2410c'],
-                            ['name' => 'IASA Multi Integrator', 'code' => 'IASA', 'color' => '#1d4ed8'],
-                            ['name' => 'ICS', 'code' => 'ICS', 'color' => '#b91c1c'],
-                            ['name' => 'PT. Lintas Data Prima', 'code' => 'LDP', 'color' => '#0284c7'],
-                            ['name' => 'FiberStar', 'code' => 'FIBERSTAR', 'color' => '#ea580c'],
-                            ['name' => 'MULTIINTEGRA', 'code' => 'MULTIINTEGRA', 'color' => '#991b1b'],
-                            ['name' => 'INDOWIPI', 'code' => 'INDOWIPI', 'color' => '#991b1b'],
-                            ['name' => 'mtm', 'code' => 'MTM', 'color' => '#1d4ed8']
+                            ['name' => 'Fast Response', 'code' => 'FR', 'color' => '#e11d48', 'img' => 'FR.avif'],
+                            ['name' => 'PLN', 'code' => 'PLN', 'color' => '#0284c7', 'img' => 'PLN.avif'],
+                            ['name' => 'Sisindokom', 'code' => 'SISINDOKOM', 'color' => '#ea580c', 'img' => 'Sisindokom.avif'],
+                            ['name' => 'Jatelindo', 'code' => 'JATELINDO', 'color' => '#0284c7', 'img' => 'JATELINDO.avif'],
+                            ['name' => 'IGNITE', 'code' => 'IGNITE', 'color' => '#dc2626', 'img' => 'IGNITE.avif'],
+                            ['name' => 'JICT', 'code' => 'JICT', 'color' => '#1e3a8a', 'img' => 'JICT.avif'],
+                            ['name' => 'FIM Piston', 'code' => 'FIM', 'color' => '#b91c1c', 'img' => 'FIM.avif'],
+                            ['name' => 'Atlasat', 'code' => 'ATLASAT', 'color' => '#0369a1', 'img' => 'ATLASAT.avif'],
+                            ['name' => 'METRO TV', 'code' => 'METRO TV', 'color' => '#1e40af', 'img' => 'METRO TV.avif'],
+                            ['name' => 'DIGMAZA', 'code' => 'DIGMAZA', 'color' => '#d97706', 'img' => 'DIGMAZA.avif'],
+                            ['name' => 'bayarind', 'code' => 'BAYARIND', 'color' => '#65a30d', 'img' => 'bayarind.avif'],
+                            ['name' => 'addOn finance', 'code' => 'ADDON', 'color' => '#c2410c', 'img' => 'ADDON.avif'],
+                            ['name' => 'IASA Multi Integrator', 'code' => 'IASA', 'color' => '#1d4ed8', 'img' => 'IASA.avif'],
+                            ['name' => 'ICS', 'code' => 'ICS', 'color' => '#b91c1c', 'img' => 'ICS.avif'],
+                            ['name' => 'PT. Lintas Data Prima', 'code' => 'LDP', 'color' => '#0284c7', 'img' => 'LDP.avif'],
+                            ['name' => 'FiberStar', 'code' => 'FIBERSTAR', 'color' => '#ea580c', 'img' => 'FIBERSTAR.avif'],
+                            ['name' => 'MULTIINTEGRA', 'code' => 'MULTIINTEGRA', 'color' => '#991b1b', 'img' => 'MULTIINTEGRA.avif'],
+                            ['name' => 'INDOWIPI', 'code' => 'INDOWIPI', 'color' => '#991b1b', 'img' => 'INDOWIPI.avif'],
+                            ['name' => 'mtm', 'code' => 'MTM', 'color' => '#1d4ed8', 'img' => 'MTM.avif']
                         ];
                     @endphp
 
                     <!-- Loop 1 -->
                     @foreach($partners as $p)
-                    <div class="bg-white border border-[#e9eaeb] rounded-[14px] w-[160px] h-[100px] p-4 flex flex-col items-center justify-center shrink-0 shadow-2xs transition-all duration-200 hover:border-[#0c61cf] hover:shadow-md">
-                        <div class="w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs mb-1" style="background-color: {{ $p['color'] }}20; color: {{ $p['color'] }};">
-                            🏢
-                        </div>
-                        <span class="font-bold text-[13px] text-[#181d27] text-center line-clamp-1" style="color: {{ $p['color'] }};">{{ $p['name'] }}</span>
+                    <div class="bg-white rounded-[14px] w-[160px] h-[100px] flex flex-col items-center justify-center shrink-0 shadow-2xs transition-all duration-200 hover:border-[#0c61cf] hover:shadow-md">
+                        @if(isset($p['img']))
+                            <img src="{{ asset('assets/' . $p['img']) }}" alt="{{ $p['name'] }}" class="max-h-[60px] max-w-[120px] object-contain">
+                        @else
+                            <div class="w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs mb-1" style="background-color: {{ $p['color'] }}20; color: {{ $p['color'] }};">
+                                🏢
+                            </div>
+                            <span class="font-bold text-[13px] text-[#181d27] text-center line-clamp-1" style="color: {{ $p['color'] }};">{{ $p['name'] }}</span>
+                        @endif
                     </div>
                     @endforeach
 
                     <!-- Loop 2 for Seamless Loop -->
                     @foreach($partners as $p)
-                    <div class="bg-white border border-[#e9eaeb] rounded-[14px] w-[160px] h-[100px] p-4 flex flex-col items-center justify-center shrink-0 shadow-2xs transition-all duration-200 hover:border-[#0c61cf] hover:shadow-md">
-                        <div class="w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs mb-1" style="background-color: {{ $p['color'] }}20; color: {{ $p['color'] }};">
-                            🏢
-                        </div>
-                        <span class="font-bold text-[13px] text-[#181d27] text-center line-clamp-1" style="color: {{ $p['color'] }};">{{ $p['name'] }}</span>
+                    <div class="bg-white rounded-[14px] w-[160px] h-[100px] flex flex-col items-center justify-center shrink-0 transition-all duration-200 hover:border-[#0c61cf] hover:shadow-md">
+                        @if(isset($p['img']))
+                            <img src="{{ asset('assets/' . $p['img']) }}" alt="{{ $p['name'] }}" class="max-h-[60px] max-w-[120px] object-contain">
+                        @else
+                            <div class="w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs mb-1" style="background-color: {{ $p['color'] }}20; color: {{ $p['color'] }};">
+                                🏢
+                            </div>
+                            <span class="font-bold text-[13px] text-[#181d27] text-center line-clamp-1" style="color: {{ $p['color'] }};">{{ $p['name'] }}</span>
+                        @endif
                     </div>
                     @endforeach
                 </div>
@@ -474,7 +482,7 @@
                 <!-- Card 1 -->
                 <div class="bg-white rounded-[18px] overflow-hidden border border-[#e9eaeb] flex flex-col shadow-2xs transition-all duration-300 hover:border-[#0c61cf] hover:shadow-lg hover:-translate-y-1">
                     <div class="h-[300px] w-full overflow-hidden bg-slate-100 relative">
-                        <img src="{{ asset('assets/rel_basket.png') }}" alt="Award 1" class="w-full h-full object-cover transition-transform duration-300 hover:scale-105">
+                        <img src="{{ asset('assets/rel_IIBS.avif') }}" alt="Award 1" class="w-full h-full object-cover">
                     </div>
                     <div class="p-4 flex flex-col gap-6 justify-between bg-white flex-1">
                         <div class="flex flex-col gap-3">
@@ -494,7 +502,7 @@
                 <!-- Card 2 -->
                 <div class="bg-white rounded-[18px] overflow-hidden border border-[#e9eaeb] flex flex-col shadow-2xs transition-all duration-300 hover:border-[#0c61cf] hover:shadow-lg hover:-translate-y-1">
                     <div class="h-[300px] w-full overflow-hidden bg-slate-100 relative">
-                        <img src="{{ asset('assets/rel_medlab.png') }}" alt="Award 2" class="w-full h-full object-cover transition-transform duration-300 hover:scale-105">
+                        <img src="{{ asset('assets/rel_jamnyut.avif') }}" alt="Award 2" class="w-full h-full object-cover">
                     </div>
                     <div class="p-4 flex flex-col gap-6 justify-between bg-white flex-1">
                         <div class="flex flex-col gap-3">
@@ -514,7 +522,7 @@
                 <!-- Card 3 -->
                 <div class="bg-white rounded-[18px] overflow-hidden border border-[#e9eaeb] flex flex-col shadow-2xs transition-all duration-300 hover:border-[#0c61cf] hover:shadow-lg hover:-translate-y-1">
                     <div class="h-[300px] w-full overflow-hidden bg-slate-100 relative">
-                        <img src="{{ asset('assets/rel_bullying.png') }}" alt="Award 3" class="w-full h-full object-cover transition-transform duration-300 hover:scale-105">
+                        <img src="{{ asset('assets/rel_TFI.avif') }}" alt="Award 3" class="w-full h-full object-cover">
                     </div>
                     <div class="p-4 flex flex-col gap-6 justify-between bg-white flex-1">
                         <div class="flex flex-col gap-3">
@@ -533,9 +541,9 @@
 
             </div>
 
-            <!-- BUTTON: Lihat Lebih Banyak (149px width x 48px height) -->
+            <!-- BUTTON: Selengkapnya (149px width x 48px height) -->
             <a href="/artikel/idn-relawan-dan-markaz-bersama-as-sunnah-salurkan-bantuan-bencana-banjir-di-bali" class="group bg-[#0c61cf] text-white w-[149px] h-[48px] rounded-full font-semibold text-[16px] flex items-center justify-center gap-2 shadow-md transition-all duration-200 hover:bg-[#094fa5]">
-                <span>Lihat Lebih Banyak</span>
+                <span>Selengkapnya</span>
             </a>
 
         </div>
@@ -1036,7 +1044,7 @@
             <!-- REAL INTERACTIVE MAP EMBED (460px height with border 8px rgba(0,0,0,0.2) rounded-3xl) -->
             <div class="w-full h-[460px] rounded-[24px] overflow-hidden border-8 border-black/20 relative shadow-sm">
                 <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.473523175402!2d107.0347313!3d-6.5879792!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69c5c2d3345869%3A0xb35a09b4566f120!2sIDN%20Boarding%20School%20Bogor!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" 
+                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d16020.98488009986!2d107.04213275!3d-6.52736515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69bc6e5be3d9bd%3A0x6b9881dabd801476!2sSMK%20IDN%20Boarding%20School!5e1!3m2!1sid!2sid!4v1787887529975!5m2!1sid!2sid"
                     class="w-full h-full border-0" 
                     allowfullscreen="" 
                     loading="lazy" 
