@@ -574,15 +574,129 @@ DONE
 - Perubahan ini memastikan bahwa saat chatbot belum/tidak aktif (ditutup), kontainer window chatbot berstatus `display: none` (`hidden`), sehingga tidak lagi memblokir interaksi kursor / hover mouse pada elemen-elemen di belakangnya.
 - Efek transisi pembukaan dan penutupan tetap berjalan dengan mulus (smooth scale & opacity transition).
 
+
+## 2026-08-29 - Alumni Tooltip Cursor Follow & Testimonial Filter Slide Transition
+
+### Sedang / Sudah Membuat
+- Meningkatkan `z-index` card universitas alumni saat di-hover (`z-index: 50`) dan tooltip text box (`z-index: 100`) agar posisi tooltip berada 100% di atas seluruh logo universitas.
+- Menambahkan pelacakan pergerakan kursor mouse (`onmousemove`) pada card universitas alumni sehingga tooltip text box bergerak mengikuti pergerakan kursor secara real-time selama kursor berada di dalam area logo universitas.
+- Mengubah kontainer section testimoni ("Apa Kata Mereka Tentang IDN?") menjadi slider track horizontal dengan animasi transisi geser ke samping (`transition-transform duration-500 ease-in-out`) saat tombol filter ("Perusahaan", "Wali Santri", "Alumni") dipencet.
+
+### File
+- `resources/views/welcome.blade.php`
+- `resources/css/app.css`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Tooltip universitas alumni kini menggunakan variabel CSS `--mouse-x` & `--mouse-y` yang di-update secara responsif via event mousemove.
+- Kontainer testimoni berpindah posisi menggunakan CSS transform `translateX` (0%, -100%, -200%) secara mulus tanpa jumpy layout shift.
+- Aset produksi telah dikompilasi ulang menggunakan `npm run build`.
+
+
+## 2026-08-29 - Support Custom Image Logo for University Alumni Grid
+
+### Sedang / Sudah Membuat
+- Mengubah struktur array `$allUniversities` pada `resources/views/welcome.blade.php` agar mendukung format objek/array `['name' => '...', 'img' => '...']` serta string biasa sebagai fallback badge 🎓.
+- Mengimplementasikan `univ cina 1.avif` dari folder `public/assets/` untuk logo 'Nanjing University of Information Science & Technology'.
+
+### File
+- `resources/views/welcome.blade.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Kampus yang sudah memiliki file gambar logo dapat langsung dipasangi key `'img' => 'nama_file.avif'`. Kampus yang belum memiliki file logo tetap menggunakan tampilan badge emoji 🎓.
+
+
+## 2026-08-29 - Make University Logo Image Fill Full Card (No Padding / Border-to-Border)
+
+### Sedang / Sudah Membuat
+- Mengatur elemen `<img>` logo universitas alumni di `resources/views/welcome.blade.php` dengan kelas `w-full h-full rounded-[17px] object-cover` sehingga gambar logo mengisi 100% kontainer (`94px` x `94px`) secara penuh tanpa padding/ruang kosong di pinggirannya.
+
+### File
+- `resources/views/welcome.blade.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Gambar dipasangi `rounded-[17px]` agar sudut melengkungnya mengikuti kontainer `rounded-[18px]` dengan border 1px tanpa merusak posisi melayang tooltip `univ-tooltip`.
+- Aset telah dikompilasi ulang via `npm run build`.
+
+
+## 2026-08-29 - Map All 50 Universities to Their Respective .avif Logo Asset Files
+
+### Sedang / Sudah Membuat
+- Memetakan seluruh 50 universitas alumni pada `$allUniversities` di `resources/views/welcome.blade.php` dengan file gambar `.avif` masing-masing dari folder `public/assets/`.
+
+### File
+- `resources/views/welcome.blade.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Seluruh 50 logo universitas kini tampil sempurna menggunakan file gambar `.avif` asli.
+
+
+## 2026-08-29 - Harmonize Footer Social Media Buttons Default and Hover States
+
+### Sedang / Sudah Membuat
+- Menyamakan kondisi default seluruh 4 icon sosial media di footer (Instagram, YouTube, Facebook, WhatsApp) pada `resources/views/welcome.blade.php` dengan border abu-abu terang `border-[#e9eaeb]` dan icon abu-abu `text-[#717680]`.
+- Mengimplementasikan efek hover seragam untuk ke-4 icon sosial media: saat di-hover, border berubah menjadi biru brand `#0c61cf`, icon berubah warna menjadi biru `#0c61cf`, dan dilengkapi efek pendaran bayangan biru `shadow-[0px_4px_20px_rgba(12,97,207,0.15)]` seperti tombol WhatsApp pada screenshot referensi user.
+
+### File
+- `resources/views/welcome.blade.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Icon menggunakan inline SVG dengan `fill="currentColor"` agar warna icon merespons transisi kelas Tailwind secara mulus saat di-hover.
+- Aset diproduksi ulang via `npm run build`.
+
+
+## 2026-08-29 - Convert Footer Social Media Icons to Solid Fill Style
+
+### Sedang / Sudah Membuat
+- Mengganti path SVG seluruh icon sosial media di footer (Instagram, YouTube, Facebook, WhatsApp) pada `resources/views/welcome.blade.php` ke bentuk solid fill icon (`fill-current` dengan path padat).
+
+### File
+- `resources/views/welcome.blade.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Icon sosial media kini tampil menggunakan bentuk solid fill padat yang selaras dan merespons perubahan warna abu-abu ke biru `#0c61cf` secara instan saat di-hover.
+- Aset diproduksi ulang via `npm run build`.
+
+
+## 2026-08-29 - Add Full-Width Backdrop Blur Glassmorphism Container to Navbar
+
+### Sedang / Sudah Membuat
+- Memperbarui komponen `<x-navbar />` pada `resources/views/components/navbar.blade.php` dengan kontainer *full-width fixed* yang memiliki efek *backdrop blur* (`bg-white/75 backdrop-blur-md border-b border-slate-200/50 shadow-2xs`).
+- Menempatkan kartu navbar melayang (`1120px` x `60px`, `rounded-full`) di dalam kontainer yang ber-efek blur sesuai spesifikasi gambar referensi pengguna.
+
+### File
+- `resources/views/components/navbar.blade.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Efek `backdrop-blur-md` memberikan tampilan glassmorphism modern saat pengguna melakukan *scroll* halaman.
+- Aset diproduksi ulang via `npm run build`.
+
 ### Pekerjaan Selanjutnya
-- Melakukan Push perubahan ke repositori Git / GitHub jika diperlukan.
-
-
-
-
-
-
-
-
-
-
+- Melakukan Push perubahan ke repositori Git / GitHub.

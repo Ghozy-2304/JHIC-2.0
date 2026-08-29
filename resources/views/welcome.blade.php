@@ -568,70 +568,80 @@
             @php
                 $allUniversities = [
                     // Baris 1
-                    'Nanjing University of Information Science & Technology',
-                    'National Dong Hwa University (NDHU)',
-                    'University of Malaya (UM)',
-                    'Universiti Utara Malaysia (UUM)',
-                    'Universitas Indonesia (UI)',
-                    'Universitas Tanjungpura (UNTAN)',
-                    'Universitas Bina Sarana Informatika (BSI)',
-                    'Program Studi Ilmu Hadits (STIU)',
-                    'STIT Al-Marhalah Al-Aliyyah (STITMA)',
-                    'Universitas Negeri Semarang (UNNES)',
+                    ['name' => 'Nanjing University of Information Science & Technology', 'img' => 'univ cina 1.avif'],
+                    ['name' => 'National Dong Hwa University (NDHU)', 'img' => 'univ cina 2.avif'],
+                    ['name' => 'University of Malaya (UM)', 'img' => 'UTM.avif'],
+                    ['name' => 'Universiti Utara Malaysia (UUM)', 'img' => 'uum.avif'],
+                    ['name' => 'Universitas Indonesia (UI)', 'img' => 'UI.avif'],
+                    ['name' => 'Universitas Tanjungpura (UNTAN)', 'img' => 'UTP.avif'],
+                    ['name' => 'Universitas Bina Sarana Informatika (BSI)', 'img' => 'BSI.avif'],
+                    ['name' => 'Program Studi Ilmu Hadits (STIU)', 'img' => 'STDIIS.avif'],
+                    ['name' => 'STIT Al-Marhalah Al-Aliyyah (STITMA)', 'img' => 'STITMA.avif'],
+                    ['name' => 'Universitas Negeri Semarang (UNNES)', 'img' => 'UNNES.avif'],
                     // Baris 2
-                    'Universitas Brawijaya (UB)',
-                    'President University',
-                    'Universitas Gunadarma',
-                    'Politeknik IDN',
-                    'Telkom University',
-                    'Universitas Muhammadiyah Malang (UMM)',
-                    'Universitas Sriwijaya (UNSRI)',
-                    'Universitas Negeri Surabaya (UNESA)',
-                    'Politeknik Elektronika Negeri Surabaya (PENS)',
-                    'Universitas Tarumanagara (UNTAR)',
+                    ['name' => 'Universitas Brawijaya (UB)', 'img' => 'univ brawijaya.avif'],
+                    ['name' => 'President University', 'img' => 'president university.avif'],
+                    ['name' => 'Universitas Gunadarma', 'img' => 'univ gunadarma.avif'],
+                    ['name' => 'Politeknik IDN', 'img' => 'poltek idn.avif'],
+                    ['name' => 'Telkom University', 'img' => 'telkom.avif'],
+                    ['name' => 'Universitas Muhammadiyah Malang (UMM)', 'img' => 'UMM.avif'],
+                    ['name' => 'Universitas Sriwijaya (UNSRI)', 'img' => 'US.avif'],
+                    ['name' => 'Universitas Negeri Surabaya (UNESA)', 'img' => 'UNESA.avif'],
+                    ['name' => 'Politeknik Elektronika Negeri Surabaya (PENS)', 'img' => 'PENS.avif'],
+                    ['name' => 'Universitas Tarumanagara (UNTAR)', 'img' => 'UNTAR.avif'],
                     // Baris 3
-                    'Universitas Pertamina',
-                    'Politeknik Negeri Media Kreatif (Polimedia)',
-                    'BINUS University',
-                    'Istanbul Zaim Üniversitesi (IZU)',
-                    'Universitas Bakrie',
-                    'Politeknik Negeri Indramayu (POLINDRA)',
-                    'Universitas Multimedia Nusantara (UMN)',
-                    'CEP-CCIT Fakultas Teknik Universitas Indonesia',
-                    'Bursa Uludağ Üniversitesi',
-                    'Cheng Shiu University (CSU)',
+                    ['name' => 'Universitas Pertamina', 'img' => 'univ pertamina.avif'],
+                    ['name' => 'Politeknik Negeri Media Kreatif (Polimedia)', 'img' => 'Poltek negeri media keratif.avif'],
+                    ['name' => 'BINUS University', 'img' => 'binus.avif'],
+                    ['name' => 'Istanbul Zaim Üniversitesi (IZU)', 'img' => 'univ di istanbul.avif'],
+                    ['name' => 'Universitas Bakrie', 'img' => 'univ bakrie.avif'],
+                    ['name' => 'Politeknik Negeri Indramayu (POLINDRA)', 'img' => 'PNI.avif'],
+                    ['name' => 'Universitas Multimedia Nusantara (UMN)', 'img' => 'UMN.avif'],
+                    ['name' => 'CEP-CCIT Fakultas Teknik Universitas Indonesia', 'img' => 'UI Teknik.avif'],
+                    ['name' => 'Bursa Uludağ Üniversitesi', 'img' => 'BUU.avif'],
+                    ['name' => 'Cheng Shiu University (CSU)', 'img' => 'CHINA.avif'],
                     // Baris 4
-                    'IDS Digital College',
-                    'Universitas Muhammadiyah Jakarta (UMJ)',
-                    'Universitas Diponegoro (UNDIP)',
-                    'Kütahya Dumlupınar Üniversitesi',
-                    'Swiss German University (SGU)',
-                    'Universitas Negeri Jakarta (UNJ)',
-                    'Universitas Pembangunan Nasional "Veteran" Jakarta (UPNVJ)',
-                    'Universitas Indraprasta PGRI (UNINDRA)',
-                    'Universitas Komputer Indonesia (UNIKOM)',
-                    'Institut Pertanian Bogor (IPB University)',
+                    ['name' => 'IDS Digital College', 'img' => 'IDF.avif'],
+                    ['name' => 'Universitas Muhammadiyah Jakarta (UMJ)', 'img' => 'UMJ.avif'],
+                    ['name' => 'Universitas Diponegoro (UNDIP)', 'img' => 'Univ diponegoro.avif'],
+                    ['name' => 'Kütahya Dumlupınar Üniversitesi', 'img' => 'dumlupinar universitesi kutahya.avif'],
+                    ['name' => 'Swiss German University (SGU)', 'img' => 'SGU.avif'],
+                    ['name' => 'Universitas Negeri Jakarta (UNJ)', 'img' => 'UJ.avif'],
+                    ['name' => 'Universitas Pembangunan Nasional "Veteran" Jakarta (UPNVJ)', 'img' => 'UNIJA.avif'],
+                    ['name' => 'Universitas Indraprasta PGRI (UNINDRA)', 'img' => 'PGRI.avif'],
+                    ['name' => 'Universitas Komputer Indonesia (UNIKOM)', 'img' => 'UNIKOM.avif'],
+                    ['name' => 'Institut Pertanian Bogor (IPB University)', 'img' => 'IPB.avif'],
                     // Baris 5
-                    'Politeknik Negeri Jakarta (PNJ)',
-                    'Universitas Primagraha (UPG)',
-                    'Harbour.Space University',
-                    'Universitas Lampung (UNILA)',
-                    'Universitas Borneo Tarakan (UBT)',
-                    'Universitas Gadjah Mada (UGM)',
-                    'Universitas Esa Unggul (UAI / UEU)',
-                    'Universitas Teknologi Sumbawa (UTS)',
-                    'Universitas Airlangga (UNAIR)',
-                    'Universiti Putra Malaysia (UPM)'
+                    ['name' => 'Politeknik Negeri Jakarta (PNJ)', 'img' => 'PNJ.avif'],
+                    ['name' => 'Universitas Primagraha (UPG)', 'img' => 'Universitas Primagraha (UPG) .avif'],
+                    ['name' => 'Harbour.Space University', 'img' => 'harbour space university.avif'],
+                    ['name' => 'Universitas Lampung (UNILA)', 'img' => 'univ lampung.avif'],
+                    ['name' => 'Universitas Borneo Tarakan (UBT)', 'img' => 'univ borneo tarakan.avif'],
+                    ['name' => 'Universitas Gadjah Mada (UGM)', 'img' => 'UP.avif'],
+                    ['name' => 'Universitas Esa Unggul (UAI / UEU)', 'img' => 'UAI.avif'],
+                    ['name' => 'Universitas Teknologi Sumbawa (UTS)', 'img' => 'UTS.avif'],
+                    ['name' => 'Universitas Airlangga (UNAIR)', 'img' => 'UNAIR.avif'],
+                    ['name' => 'Universiti Putra Malaysia (UPM)', 'img' => 'UPM.avif']
                 ];
             @endphp
 
             <div class="grid grid-cols-10 gap-5 w-[1120px] max-w-full justify-items-center">
-                @foreach($allUniversities as $index => $uName)
-                <div class="univ-card bg-white border border-[#e9eaeb] w-[94px] h-[94px] rounded-[18px] flex items-center justify-center p-3 cursor-pointer shadow-2xs">
+                @foreach($allUniversities as $index => $u)
+                @php
+                    $uName = is_array($u) ? $u['name'] : $u;
+                    $uImg = is_array($u) && isset($u['img']) ? $u['img'] : null;
+                @endphp
+                <div class="univ-card bg-white w-[94px] h-[94px] rounded-[18px] flex items-center justify-center cursor-pointer shadow-2xs"
+                     onmousemove="const r=this.getBoundingClientRect(); this.style.setProperty('--mouse-x', (event.clientX-r.left)+'px'); this.style.setProperty('--mouse-y', (event.clientY-r.top)+'px');">
+                    
                     <!-- University Logo Badge / Emblem -->
-                    <div class="w-12 h-12 rounded-full bg-[#f0f6fe] border border-[#c2d8f5] text-[#0c61cf] flex items-center justify-center font-bold text-lg shrink-0">
-                        🎓
-                    </div>
+                    @if($uImg)
+                        <img src="{{ asset('assets/' . $uImg) }}" alt="{{ $uName }}" class="w-full h-full rounded-[17px] object-cover shrink-0">
+                    @else
+                        <div class="w-12 h-12 rounded-full bg-[#f0f6fe] border border-[#c2d8f5] text-[#0c61cf] flex items-center justify-center font-bold text-lg shrink-0">
+                            🎓
+                        </div>
+                    @endif
 
                     <!-- Floating Rectangular Tooltip Textbox on Hover -->
                     <div class="univ-tooltip bg-[#0c61cf] text-white px-3 py-1.5 rounded-md text-[12px] font-semibold shadow-lg border border-white/20">
@@ -675,184 +685,187 @@
                 </button>
             </div>
 
-            <!-- TESTIMONIAL CARDS CONTAINER -->
-            <div class="w-full flex justify-center min-h-[340px]">
-                
-                <!-- TAB 1: PERUSAHAAN TESTIMONIALS (550px width cards per Figma) -->
-                <div x-show="activeTab === 'Perusahaan'" x-transition:enter="transition ease-out duration-300" class="flex gap-5 justify-center w-full">
+            <!-- TESTIMONIAL CARDS SLIDER CONTAINER -->
+            <div class="w-full overflow-hidden min-h-[340px]">
+                <div class="flex w-full transition-transform duration-500 ease-in-out"
+                     :style="activeTab === 'Perusahaan' ? 'transform: translateX(0%);' : (activeTab === 'Wali Santri' ? 'transform: translateX(-100%);' : 'transform: translateX(-200%);')">
                     
-                    <!-- Perusahaan 1 -->
-                    <div class="bg-white rounded-[18px] p-6 flex flex-col h-[340px] justify-between w-[550px] max-w-full border border-[#e9eaeb] shadow-sm">
-                        <div class="flex flex-col gap-5">
-                            <div class="flex justify-between items-center">
-                                <div class="w-8 h-8 text-[#0c61cf] text-3xl font-bold leading-none">“</div>
-                                <div class="flex text-[#ff7a29] gap-1 text-sm">★★★★★</div>
+                    <!-- TAB 1: PERUSAHAAN TESTIMONIALS (550px width cards per Figma) -->
+                    <div class="w-full shrink-0 flex gap-5 justify-center">
+                        
+                        <!-- Perusahaan 1 -->
+                        <div class="bg-white rounded-[18px] p-6 flex flex-col h-[340px] justify-between w-[550px] max-w-full border border-[#e9eaeb] shadow-sm">
+                            <div class="flex flex-col gap-5">
+                                <div class="flex justify-between items-center">
+                                    <div class="w-8 h-8 text-[#0c61cf] text-3xl font-bold leading-none">“</div>
+                                    <div class="flex text-[#ff7a29] gap-1 text-sm">★★★★★</div>
+                                </div>
+                                <p class="text-[#414651] text-[14px] leading-[20px]">
+                                    “Team alumni SMK IDN siap untuk diberikan Tugas, dapat task dan mampu belajar cepat untuk menyesuaikan Tugas Technical yang cukup dynamis. Adanya team IDN sangat membantu akselerasi Teknis dan kompetensi terhadap kebutuhan Mobile Developer dan Kebutuhan Network Operation Center, IT & Internet Service . Semoga IDN Terus menghasilkan SDM yang terlatih baik soft skill atau pun hardskill.”
+                                </p>
                             </div>
-                            <p class="text-[#414651] text-[14px] leading-[20px]">
-                                “Team alumni SMK IDN siap untuk diberikan Tugas, dapat task dan mampu belajar cepat untuk menyesuaikan Tugas Technical yang cukup dynamis. Adanya team IDN sangat membantu akselerasi Teknis dan kompetensi terhadap kebutuhan Mobile Developer dan Kebutuhan Network Operation Center, IT & Internet Service . Semoga IDN Terus menghasilkan SDM yang terlatih baik soft skill atau pun hardskill.”
-                            </p>
-                        </div>
-                        <div class="pt-4 border-t border-[#e9eaeb] flex items-center gap-3">
-                            <div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center font-bold text-xs text-[#0c61cf]">👤</div>
-                            <div class="flex flex-col">
-                                <h4 class="font-semibold text-[16px] text-[#414651]">Nugroho Wibisono</h4>
-                                <span class="text-[#717680] text-[12px]">General Manager IT & Cyber Security Telkomsat</span>
+                            <div class="pt-4 border-t border-[#e9eaeb] flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center font-bold text-xs text-[#0c61cf]">👤</div>
+                                <div class="flex flex-col">
+                                    <h4 class="font-semibold text-[16px] text-[#414651]">Nugroho Wibisono</h4>
+                                    <span class="text-[#717680] text-[12px]">General Manager IT & Cyber Security Telkomsat</span>
+                                </div>
                             </div>
                         </div>
+
+                        <!-- Perusahaan 2 -->
+                        <div class="bg-white rounded-[18px] p-6 flex flex-col h-[340px] justify-between w-[550px] max-w-full border border-[#e9eaeb] shadow-sm">
+                            <div class="flex flex-col gap-5">
+                                <div class="flex justify-between items-center">
+                                    <div class="w-8 h-8 text-[#0c61cf] text-3xl font-bold leading-none">“</div>
+                                    <div class="flex text-[#ff7a29] gap-1 text-sm">★★★★★</div>
+                                </div>
+                                <p class="text-[#414651] text-[14px] leading-[20px]">
+                                    MobileCom telah beberapa kali merekrut siswa dan alumni IDN, dan yang dapat kami sampaikan adalah bahwa kami benar-benar puas dan bangga dengan pendidikan yang diberikan IDN Boarding School kepada para siswanya; kami sangat yakin bahwa IDN telah berhasil menumbuhkan ketangguhan mental dan kemampuan mereka untuk memasuki dunia kerja dengan lancar. Para lulusan IDN memiliki karakter yang bertanggung jawab terhadap tugas yang diberikan, kepribadian yang baik, serta mampu bekerja sama dalam tim dengan sangat baik.
+                                </p>
+                            </div>
+                            <div class="pt-4 border-t border-[#e9eaeb] flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center font-bold text-xs text-[#0c61cf]">👤</div>
+                                <div class="flex flex-col">
+                                    <h4 class="font-semibold text-[16px] text-[#414651]">Suryanto Hinarto</h4>
+                                    <span class="text-[#717680] text-[12px]">CTO MobileCom</span>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
 
-                    <!-- Perusahaan 2 -->
-                    <div class="bg-white rounded-[18px] p-6 flex flex-col h-[340px] justify-between w-[550px] max-w-full border border-[#e9eaeb] shadow-sm">
-                        <div class="flex flex-col gap-5">
-                            <div class="flex justify-between items-center">
-                                <div class="w-8 h-8 text-[#0c61cf] text-3xl font-bold leading-none">“</div>
-                                <div class="flex text-[#ff7a29] gap-1 text-sm">★★★★★</div>
+                    <!-- TAB 2: WALI SANTRI TESTIMONIALS (360px width cards per Figma) -->
+                    <div class="w-full shrink-0 flex gap-5 justify-center">
+                        
+                        <!-- Wali Santri 1 -->
+                        <div class="bg-white rounded-[18px] p-6 flex flex-col h-[340px] justify-between w-[360px] max-w-full border border-[#e9eaeb] shadow-sm">
+                            <div class="flex flex-col gap-4">
+                                <div class="flex justify-between items-center">
+                                    <div class="w-8 h-8 text-[#0c61cf] text-3xl font-bold leading-none">“</div>
+                                    <div class="flex text-[#ff7a29] gap-1 text-sm">★★★★★</div>
+                                </div>
+                                <p class="font-medium text-[#414651] text-[14px] leading-[20px]">
+                                    "Awalnya ragu, tapi sekarang sangat bersyukur! Setelah beberapa bulan di IDN Boarding School, anak saya jadi jauh lebih mandiri, disiplin, dan sopan. Kemampuan IT-nya pun melesat hingga sudah bisa bikin website sendiri. Sekolah yang luar biasa dalam menyeimbangkan agama dan teknologi."
+                                </p>
                             </div>
-                            <p class="text-[#414651] text-[14px] leading-[20px]">
-                                MobileCom telah beberapa kali merekrut siswa dan alumni IDN, dan yang dapat kami sampaikan adalah bahwa kami benar-benar puas dan bangga dengan pendidikan yang diberikan IDN Boarding School kepada para siswanya; kami sangat yakin bahwa IDN telah berhasil menumbuhkan ketangguhan mental dan kemampuan mereka untuk memasuki dunia kerja dengan lancar. Para lulusan IDN memiliki karakter yang bertanggung jawab terhadap tugas yang diberikan, kepribadian yang baik, serta mampu bekerja sama dalam tim dengan sangat baik.
-                            </p>
-                        </div>
-                        <div class="pt-4 border-t border-[#e9eaeb] flex items-center gap-3">
-                            <div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center font-bold text-xs text-[#0c61cf]">👤</div>
-                            <div class="flex flex-col">
-                                <h4 class="font-semibold text-[16px] text-[#414651]">Suryanto Hinarto</h4>
-                                <span class="text-[#717680] text-[12px]">CTO MobileCom</span>
+                            <div class="pt-4 border-t border-[#e9eaeb] flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center font-bold text-xs text-[#0c61cf]">👤</div>
+                                <div class="flex flex-col">
+                                    <h4 class="font-semibold text-[16px] text-[#414651]">Abu Athallah</h4>
+                                    <span class="text-[#717680] text-[12px]">Walisantri SMK IDN</span>
+                                </div>
                             </div>
                         </div>
+
+                        <!-- Wali Santri 2 -->
+                        <div class="bg-white rounded-[18px] p-6 flex flex-col h-[340px] justify-between w-[360px] max-w-full border border-[#e9eaeb] shadow-sm">
+                            <div class="flex flex-col gap-4">
+                                <div class="flex justify-between items-center">
+                                    <div class="w-8 h-8 text-[#0c61cf] text-3xl font-bold leading-none">“</div>
+                                    <div class="flex text-[#ff7a29] gap-1 text-sm">★★★★★</div>
+                                </div>
+                                <p class="font-medium text-[#414651] text-[14px] leading-[20px]">
+                                    'IDN Boarding School pilihan tepat! Kedua anak kami (kelas 7 & 9) makin mandiri dan percaya diri berkat pendidikan adab, IT, hingga public speaking dan entrepreneurship. Sangat terasa peningkatan positif di bidang rohani, akademik, dan sosialnya. Terima kasih para ustadz IDN, Jazaakallahu khairan katsiran.'
+                                </p>
+                            </div>
+                            <div class="pt-4 border-t border-[#e9eaeb] flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center font-bold text-xs text-[#0c61cf]">👤</div>
+                                <div class="flex flex-col">
+                                    <h4 class="font-semibold text-[16px] text-[#414651]">Abu Kuswandi</h4>
+                                    <span class="text-[#717680] text-[12px]">Walisantri SMP IDN</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Wali Santri 3 -->
+                        <div class="bg-white rounded-[18px] p-6 flex flex-col h-[340px] justify-between w-[360px] max-w-full border border-[#e9eaeb] shadow-sm">
+                            <div class="flex flex-col gap-4">
+                                <div class="flex justify-between items-center">
+                                    <div class="w-8 h-8 text-[#0c61cf] text-3xl font-bold leading-none">“</div>
+                                    <div class="flex text-[#ff7a29] gap-1 text-sm">★★★★★</div>
+                                </div>
+                                <p class="font-medium text-[#414651] text-[14px] leading-[20px]">
+                                    'Bersekolah di IDN Boarding School membawa dampak luar biasa. Anak kami yang tadinya pendiam kini tumbuh menjadi lebih percaya diri dan berani tampil. Lingkungan yang positif serta bimbingan para ustadz yang penuh kepedulian tidak hanya mendidik karakter anak, tetapi juga menginspirasi kami sebagai orang tua tentang pentingnya pendidikan berkarakter.'
+                                </p>
+                            </div>
+                            <div class="pt-4 border-t border-[#e9eaeb] flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center font-bold text-xs text-[#0c61cf]">👤</div>
+                                <div class="flex flex-col">
+                                    <h4 class="font-semibold text-[16px] text-[#414651]">Abu Fauzan</h4>
+                                    <span class="text-[#717680] text-[12px]">Walisantri SMK IDN</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- TAB 3: ALUMNI TESTIMONIALS (360px width cards per Figma) -->
+                    <div class="w-full shrink-0 flex gap-5 justify-center">
+                        
+                        <!-- Alumni 1 -->
+                        <div class="bg-white rounded-[18px] p-6 flex flex-col h-[340px] justify-between w-[360px] max-w-full border border-[#e9eaeb] shadow-sm">
+                            <div class="flex flex-col gap-4">
+                                <div class="flex justify-between items-center">
+                                    <div class="w-8 h-8 text-[#0c61cf] text-3xl font-bold leading-none">“</div>
+                                    <div class="flex text-[#ff7a29] gap-1 text-sm">★★★★★</div>
+                                </div>
+                                <p class="font-medium text-[#414651] text-[14px] leading-[20px]">
+                                    IDN adalah starting point saya di dunia IT, disana saya pertama kali mengenal pemrograman, pertama kali terjun ke dunia industri (PKL), dan pertama kali public speaking di depan banyak orang yang mayoritas diatas saya dari segi umur dan pengalaman. Jadi bersekolah di IDN sangat menyenangkan pun juga bermanfaat.
+                                </p>
+                            </div>
+                            <div class="pt-4 border-t border-[#e9eaeb] flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center font-bold text-xs text-[#0c61cf]">👤</div>
+                                <div class="flex flex-col">
+                                    <h4 class="font-semibold text-[16px] text-[#414651]">Hafidz Naufal</h4>
+                                    <span class="text-[#717680] text-[12px]">Alumni SMK IDN · Angkatan 0</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Alumni 2 -->
+                        <div class="bg-white rounded-[18px] p-6 flex flex-col h-[340px] justify-between w-[360px] max-w-full border border-[#e9eaeb] shadow-sm">
+                            <div class="flex flex-col gap-4">
+                                <div class="flex justify-between items-center">
+                                    <div class="w-8 h-8 text-[#0c61cf] text-3xl font-bold leading-none">“</div>
+                                    <div class="flex text-[#ff7a29] gap-1 text-sm">★★★★★</div>
+                                </div>
+                                <p class="font-medium text-[#414651] text-[14px] leading-[20px]">
+                                    3 tahun di IDN merupakan 3 tahun yang sangat berwarna, karena tidak hanya belajar IT dan Ngaji, kami juga mendapatkan lingkungan dan pertemanan yang dapat membentuk karakter, komunikasi, sosialisasi, problem solving, serta bekal-bekal lainnya yang dibutuhkan untuk survive.
+                                </p>
+                            </div>
+                            <div class="pt-4 border-t border-[#e9eaeb] flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center font-bold text-xs text-[#0c61cf]">👤</div>
+                                <div class="flex flex-col">
+                                    <h4 class="font-semibold text-[16px] text-[#414651]">Joe Renaldi F.</h4>
+                                    <span class="text-[#717680] text-[12px]">Alumni SMK IDN · Angkatan 0</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Alumni 3 -->
+                        <div class="bg-white rounded-[18px] p-6 flex flex-col h-[340px] justify-between w-[360px] max-w-full border border-[#e9eaeb] shadow-sm">
+                            <div class="flex flex-col gap-4">
+                                <div class="flex justify-between items-center">
+                                    <div class="w-8 h-8 text-[#0c61cf] text-3xl font-bold leading-none">“</div>
+                                    <div class="flex text-[#ff7a29] gap-1 text-sm">★★★★★</div>
+                                </div>
+                                <p class="font-medium text-[#414651] text-[14px] leading-[20px]">
+                                    Bersekolah di IDN Sangat membentuk mental salah satunya adalah mental kemandirian yang mungkin hanya di dapat dari perpaduan antara SMK dan Boarding School, magang, Public Speaking yang mungkin tidak akan saya dapat jika bersekolah diluar dan juga, mental preparation untuk bekerja dibidang industri.
+                                </p>
+                            </div>
+                            <div class="pt-4 border-t border-[#e9eaeb] flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center font-bold text-xs text-[#0c61cf]">👤</div>
+                                <div class="flex flex-col">
+                                    <h4 class="font-semibold text-[16px] text-[#414651]">Abdul Hadi</h4>
+                                    <span class="text-[#717680] text-[12px]">Alumni SMK IDN · Angkatan 3</span>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
 
                 </div>
-
-                <!-- TAB 2: WALI SANTRI TESTIMONIALS (360px width cards per Figma) -->
-                <div x-show="activeTab === 'Wali Santri'" x-transition:enter="transition ease-out duration-300" class="flex gap-5 justify-center w-full">
-                    
-                    <!-- Wali Santri 1 -->
-                    <div class="bg-white rounded-[18px] p-6 flex flex-col h-[340px] justify-between w-[360px] max-w-full border border-[#e9eaeb] shadow-sm">
-                        <div class="flex flex-col gap-4">
-                            <div class="flex justify-between items-center">
-                                <div class="w-8 h-8 text-[#0c61cf] text-3xl font-bold leading-none">“</div>
-                                <div class="flex text-[#ff7a29] gap-1 text-sm">★★★★★</div>
-                            </div>
-                            <p class="font-medium text-[#414651] text-[14px] leading-[20px]">
-                                "Awalnya ragu, tapi sekarang sangat bersyukur! Setelah beberapa bulan di IDN Boarding School, anak saya jadi jauh lebih mandiri, disiplin, dan sopan. Kemampuan IT-nya pun melesat hingga sudah bisa bikin website sendiri. Sekolah yang luar biasa dalam menyeimbangkan agama dan teknologi."
-                            </p>
-                        </div>
-                        <div class="pt-4 border-t border-[#e9eaeb] flex items-center gap-3">
-                            <div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center font-bold text-xs text-[#0c61cf]">👤</div>
-                            <div class="flex flex-col">
-                                <h4 class="font-semibold text-[16px] text-[#414651]">Abu Athallah</h4>
-                                <span class="text-[#717680] text-[12px]">Walisantri SMK IDN</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Wali Santri 2 -->
-                    <div class="bg-white rounded-[18px] p-6 flex flex-col h-[340px] justify-between w-[360px] max-w-full border border-[#e9eaeb] shadow-sm">
-                        <div class="flex flex-col gap-4">
-                            <div class="flex justify-between items-center">
-                                <div class="w-8 h-8 text-[#0c61cf] text-3xl font-bold leading-none">“</div>
-                                <div class="flex text-[#ff7a29] gap-1 text-sm">★★★★★</div>
-                            </div>
-                            <p class="font-medium text-[#414651] text-[14px] leading-[20px]">
-                                'IDN Boarding School pilihan tepat! Kedua anak kami (kelas 7 & 9) makin mandiri dan percaya diri berkat pendidikan adab, IT, hingga public speaking dan entrepreneurship. Sangat terasa peningkatan positif di bidang rohani, akademik, dan sosialnya. Terima kasih para ustadz IDN, Jazaakallahu khairan katsiran.'
-                            </p>
-                        </div>
-                        <div class="pt-4 border-t border-[#e9eaeb] flex items-center gap-3">
-                            <div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center font-bold text-xs text-[#0c61cf]">👤</div>
-                            <div class="flex flex-col">
-                                <h4 class="font-semibold text-[16px] text-[#414651]">Abu Kuswandi</h4>
-                                <span class="text-[#717680] text-[12px]">Walisantri SMP IDN</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Wali Santri 3 -->
-                    <div class="bg-white rounded-[18px] p-6 flex flex-col h-[340px] justify-between w-[360px] max-w-full border border-[#e9eaeb] shadow-sm">
-                        <div class="flex flex-col gap-4">
-                            <div class="flex justify-between items-center">
-                                <div class="w-8 h-8 text-[#0c61cf] text-3xl font-bold leading-none">“</div>
-                                <div class="flex text-[#ff7a29] gap-1 text-sm">★★★★★</div>
-                            </div>
-                            <p class="font-medium text-[#414651] text-[14px] leading-[20px]">
-                                'Bersekolah di IDN Boarding School membawa dampak luar biasa. Anak kami yang tadinya pendiam kini tumbuh menjadi lebih percaya diri dan berani tampil. Lingkungan yang positif serta bimbingan para ustadz yang penuh kepedulian tidak hanya mendidik karakter anak, tetapi juga menginspirasi kami sebagai orang tua tentang pentingnya pendidikan berkarakter.'
-                            </p>
-                        </div>
-                        <div class="pt-4 border-t border-[#e9eaeb] flex items-center gap-3">
-                            <div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center font-bold text-xs text-[#0c61cf]">👤</div>
-                            <div class="flex flex-col">
-                                <h4 class="font-semibold text-[16px] text-[#414651]">Abu Fauzan</h4>
-                                <span class="text-[#717680] text-[12px]">Walisantri SMK IDN</span>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <!-- TAB 3: ALUMNI TESTIMONIALS (360px width cards per Figma) -->
-                <div x-show="activeTab === 'Alumni'" x-transition:enter="transition ease-out duration-300" class="flex gap-5 justify-center w-full">
-                    
-                    <!-- Alumni 1 -->
-                    <div class="bg-white rounded-[18px] p-6 flex flex-col h-[340px] justify-between w-[360px] max-w-full border border-[#e9eaeb] shadow-sm">
-                        <div class="flex flex-col gap-4">
-                            <div class="flex justify-between items-center">
-                                <div class="w-8 h-8 text-[#0c61cf] text-3xl font-bold leading-none">“</div>
-                                <div class="flex text-[#ff7a29] gap-1 text-sm">★★★★★</div>
-                            </div>
-                            <p class="font-medium text-[#414651] text-[14px] leading-[20px]">
-                                IDN adalah starting point saya di dunia IT, disana saya pertama kali mengenal pemrograman, pertama kali terjun ke dunia industri (PKL), dan pertama kali public speaking di depan banyak orang yang mayoritas diatas saya dari segi umur dan pengalaman. Jadi bersekolah di IDN sangat menyenangkan pun juga bermanfaat.
-                            </p>
-                        </div>
-                        <div class="pt-4 border-t border-[#e9eaeb] flex items-center gap-3">
-                            <div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center font-bold text-xs text-[#0c61cf]">👤</div>
-                            <div class="flex flex-col">
-                                <h4 class="font-semibold text-[16px] text-[#414651]">Hafidz Naufal</h4>
-                                <span class="text-[#717680] text-[12px]">Alumni SMK IDN · Angkatan 0</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Alumni 2 -->
-                    <div class="bg-white rounded-[18px] p-6 flex flex-col h-[340px] justify-between w-[360px] max-w-full border border-[#e9eaeb] shadow-sm">
-                        <div class="flex flex-col gap-4">
-                            <div class="flex justify-between items-center">
-                                <div class="w-8 h-8 text-[#0c61cf] text-3xl font-bold leading-none">“</div>
-                                <div class="flex text-[#ff7a29] gap-1 text-sm">★★★★★</div>
-                            </div>
-                            <p class="font-medium text-[#414651] text-[14px] leading-[20px]">
-                                3 tahun di IDN merupakan 3 tahun yang sangat berwarna, karena tidak hanya belajar IT dan Ngaji, kami juga mendapatkan lingkungan dan pertemanan yang dapat membentuk karakter, komunikasi, sosialisasi, problem solving, serta bekal-bekal lainnya yang dibutuhkan untuk survive.
-                            </p>
-                        </div>
-                        <div class="pt-4 border-t border-[#e9eaeb] flex items-center gap-3">
-                            <div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center font-bold text-xs text-[#0c61cf]">👤</div>
-                            <div class="flex flex-col">
-                                <h4 class="font-semibold text-[16px] text-[#414651]">Joe Renaldi F.</h4>
-                                <span class="text-[#717680] text-[12px]">Alumni SMK IDN · Angkatan 0</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Alumni 3 -->
-                    <div class="bg-white rounded-[18px] p-6 flex flex-col h-[340px] justify-between w-[360px] max-w-full border border-[#e9eaeb] shadow-sm">
-                        <div class="flex flex-col gap-4">
-                            <div class="flex justify-between items-center">
-                                <div class="w-8 h-8 text-[#0c61cf] text-3xl font-bold leading-none">“</div>
-                                <div class="flex text-[#ff7a29] gap-1 text-sm">★★★★★</div>
-                            </div>
-                            <p class="font-medium text-[#414651] text-[14px] leading-[20px]">
-                                Bersekolah di IDN Sangat membentuk mental salah satunya adalah mental kemandirian yang mungkin hanya di dapat dari perpaduan antara SMK dan Boarding School, magang, Public Speaking yang mungkin tidak akan saya dapat jika bersekolah diluar dan juga, mental preparation untuk bekerja dibidang industri.
-                            </p>
-                        </div>
-                        <div class="pt-4 border-t border-[#e9eaeb] flex items-center gap-3">
-                            <div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center font-bold text-xs text-[#0c61cf]">👤</div>
-                            <div class="flex flex-col">
-                                <h4 class="font-semibold text-[16px] text-[#414651]">Abdul Hadi</h4>
-                                <span class="text-[#717680] text-[12px]">Alumni SMK IDN · Angkatan 3</span>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
             </div>
 
         </div>
@@ -960,17 +973,29 @@
                     </div>
                     <!-- SOCIAL BUTTONS -->
                     <div class="flex items-center gap-3">
-                        <a href="#" class="w-12 h-12 rounded-full border-2 border-[#e9eaeb] bg-white flex items-center justify-center text-[#414651] hover:border-[#0c61cf]">
-                            <img src="{{ asset('assets/instagram.svg') }}" alt="Instagram" class="w-5 h-5">
+                        <!-- Instagram -->
+                        <a href="#" class="group w-12 h-12 rounded-full border-2 border-[#e9eaeb] bg-white flex items-center justify-center text-[#717680] transition-all duration-200 hover:border-[#0c61cf] hover:text-[#0c61cf] hover:shadow-[0px_4px_20px_rgba(12,97,207,0.15)]">
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
                         </a>
-                        <a href="#" class="w-12 h-12 rounded-full border-2 border-[#e9eaeb] bg-white flex items-center justify-center text-[#414651] hover:border-[#0c61cf]">
-                            <img src="{{ asset('assets/youtube.svg') }}" alt="YouTube" class="w-5 h-5">
+                        <!-- YouTube -->
+                        <a href="#" class="group w-12 h-12 rounded-full border-2 border-[#e9eaeb] bg-white flex items-center justify-center text-[#717680] transition-all duration-200 hover:border-[#0c61cf] hover:text-[#0c61cf] hover:shadow-[0px_4px_20px_rgba(12,97,207,0.15)]">
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                                <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                            </svg>
                         </a>
-                        <a href="#" class="w-12 h-12 rounded-full border-2 border-[#e9eaeb] bg-white flex items-center justify-center text-[#414651] hover:border-[#0c61cf]">
-                            <img src="{{ asset('assets/facebook.svg') }}" alt="Facebook" class="w-5 h-5">
+                        <!-- Facebook -->
+                        <a href="#" class="group w-12 h-12 rounded-full border-2 border-[#e9eaeb] bg-white flex items-center justify-center text-[#717680] transition-all duration-200 hover:border-[#0c61cf] hover:text-[#0c61cf] hover:shadow-[0px_4px_20px_rgba(12,97,207,0.15)]">
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm3 8h-1.35c-.538 0-.65.221-.65.778v1.222h2l-.209 2h-1.791v7h-3v-7h-2v-2h2v-2.308c0-1.769.931-2.692 3.029-2.692 1.005 0 1.971.074 1.971.074v2.926z"/>
+                            </svg>
                         </a>
-                        <a href="#" class="w-12 h-12 rounded-full border-2 border-[#0c61cf] bg-white shadow-[0px_4px_40px_rgba(0,0,0,0.1)] flex items-center justify-center text-[#0c61cf]">
-                            <img src="{{ asset('assets/whatsapp.svg') }}" alt="WhatsApp" class="w-5 h-5">
+                        <!-- WhatsApp -->
+                        <a href="#" class="group w-12 h-12 rounded-full border-2 border-[#e9eaeb] bg-white flex items-center justify-center text-[#717680] transition-all duration-200 hover:border-[#0c61cf] hover:text-[#0c61cf] hover:shadow-[0px_4px_20px_rgba(12,97,207,0.15)]">
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                            </svg>
                         </a>
                     </div>
                 </div>

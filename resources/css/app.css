@@ -60,10 +60,15 @@
 /* University Floating Tooltip Box on Hover */
 .univ-card {
     position: relative;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+                border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;
 }
 
 .univ-card:hover {
+    z-index: 50 !important;
     border-color: #0c61cf !important;
     background-color: #f0f6fe !important;
     transform: translateY(-2px);
@@ -72,21 +77,23 @@
 
 .univ-tooltip {
     position: absolute;
-    bottom: -38px;
-    left: 50%;
-    transform: translateX(-50%) translateY(4px);
+    top: calc(var(--mouse-y, 50%) - 40px);
+    left: var(--mouse-x, 50%);
+    transform: translateX(-50%);
     opacity: 0;
     visibility: hidden;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     white-space: nowrap;
-    z-index: 40;
+    z-index: 100;
     pointer-events: none;
+    transition: opacity 0.15s ease,
+                visibility 0.15s ease,
+                top 0.05s ease-out,
+                left 0.05s ease-out;
 }
 
 .univ-card:hover .univ-tooltip {
     opacity: 1;
     visibility: visible;
-    transform: translateX(-50%) translateY(0);
 }
 
 /* Generic Section Card Hover Effect (Example card in Figma triggers this hover state) */
