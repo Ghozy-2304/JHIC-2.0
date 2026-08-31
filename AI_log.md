@@ -698,5 +698,309 @@ DONE
 - Efek `backdrop-blur-md` memberikan tampilan glassmorphism modern saat pengguna melakukan *scroll* halaman.
 - Aset diproduksi ulang via `npm run build`.
 
+
+## 2026-08-29 - Create Reusable Footer Blade Component with Enhanced Solid Icons and Reference Layout
+
+### Sedang / Sudah Membuat
+- Membuat komponen Blade yang dapat digunakan kembali `<x-footer />` pada `resources/views/components/footer.blade.php`.
+- Memperbarui icon sosial media Instagram dan WhatsApp ke bentuk **solid fill icon** selaras dengan YouTube & Facebook (berwarna abu-abu `#717680` dan berubah menjadi biru `#0c61cf` dengan pendaran bayangan saat di-hover).
+- Memperbarui icon Informasi Sekolah (Maps/Lokasi, Telepon, dan Email) ke bentuk **SVG solid yang presisi, halus, dan modern** sesuai gambar referensi 2.
+- Menyusun penataan baris bawah copyright `© Copyright | 2026 IDN Boarding School.` dan logo sponsor (JHIC, garis pemisah `|`, Jagoan Hosting, Komdigi, Garuda Spark, Ngalup.co) presisi sesuai gambar referensi 3.
+- Menggantikan seluruh elemen footer di `resources/views/welcome.blade.php` dan `resources/views/articles/show.blade.php` menggunakan `<x-footer />`.
+
+### File
+- `resources/views/components/footer.blade.php` [NEW]
+- `resources/views/welcome.blade.php`
+- `resources/views/articles/show.blade.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Komponen `<x-footer />` kini terpusat dan dapat dipanggil di semua halaman Blade.
+- Aset telah dikompilasi ulang via `npm run build`.
+
+
+## 2026-08-29 - Enhance Footer Social Icons to Solid Badge Style and Tighten Copyright Bottom Layout
+
+### Sedang / Sudah Membuat
+- Memperbarui path SVG Instagram & WhatsApp pada `resources/views/components/footer.blade.php` ke bentuk **True Solid Fill Badge** (bg padat `currentColor` dengan simbol potongan putih di bagian dalam), persis seragam dengan icon Facebook & YouTube.
+- Mengubah tata letak baris bawah footer dari `justify-between` menjadi **`justify-center gap-8`** sehingga teks `© Copyright | 2026 IDN Boarding School.` berdekatan secara langsung dengan logo JHIC 2.0 dan logo sponsor pendukung.
+
+### File
+- `resources/views/components/footer.blade.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Ke-4 icon sosial media kini 100% konsisten berupa lencana padat solid badge berlatar warna `currentColor` dengan aksen simbol putih di dalamnya.
+- Aset dikompilasi ulang via `npm run build`.
+
+
+## 2026-08-29 - Restore Official Vector SVG Graphics for Footer WhatsApp Icon
+
+### Sedang / Sudah Membuat
+- Mengembalikan path SVG resmi untuk icon WhatsApp dan sosial media pada `resources/views/components/footer.blade.php` sehingga tampilan gelembung percakapan dan gagang telepon di dalamnya 100% presisi tanpa takik atau distorsi terpotong.
+
+### File
+- `resources/views/components/footer.blade.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Icon WhatsApp kini tampil 100% mulus, tajam, dan sempurna tanpa terpotong di sudut manapun.
+- Aset dikompilasi ulang via `npm run build`.
+
+
+## 2026-08-29 - Set Solid Badge Style for Instagram, YouTube, Facebook with Clean WhatsApp Icon
+
+### Sedang / Sudah Membuat
+- Mengembalikan icon Instagram, YouTube, dan Facebook ke bentuk **solid fill badge** (berlatar padat `currentColor` dengan potongan aksen putih di dalam) pada `resources/views/components/footer.blade.php`, serta tetap mempertahankan icon WhatsApp gelembung percakapan resmi yang bersih dan sempurna tanpa cacat.
+
+### File
+- `resources/views/components/footer.blade.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Icon Instagram, YouTube, dan Facebook tampil dengan latar padat solid badge, sedangkan icon WhatsApp tampil dengan bentuk vektor gelembung resmi yang bersih.
+- Aset dikompilasi ulang via `npm run build`.
+
+
+## 2026-08-29 - Implement Responsive Tablet and Mobile Design with Hamburger Dropdown Card
+
+### Sedang / Sudah Membuat
+- Memperbarui komponen Navbar (`resources/views/components/navbar.blade.php`) dengan tombol **Hamburger Toggle** dan kartu **Dropdown Menu Mobile/Tablet** yang melayang persis sesuai gambar referensi 2.
+- Menyusun urutan link menu mobile: Beranda, PPDB, Tentang Kami, Program (dengan accordion sub-menu untuk PKL, IDN Mengajar, Ekstrakurikuler, Edurace, Live In, Business Survival, Backpacker, IT Camp, MPLS, IDN Bersyukur), Career Center, Artikel, Kontak, serta tombol biru penuh `Daftar PPDB` di bagian bawah.
+- Memperbarui layout responsive untuk tablet (`md:`) dan mobile (`sm:`) pada 11 section utama di `resources/views/welcome.blade.php` (Hero, Kenapa Memilih IDN, Jurusan, Pencapaian Wisudawan, Kerjasama Industri, Prestasi Siswa, Universitas Alumni grid, Apa Kata Mereka slider, Biaya Pendidikan, PPDB Registration Banner).
+- Memperbarui komponen Footer (`resources/views/components/footer.blade.php`) dengan grid responsive 4-kolom untuk tablet/mobile.
+
+### File
+- `resources/views/components/navbar.blade.php`
+- `resources/views/components/footer.blade.php`
+- `resources/views/welcome.blade.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Seluruh animasi, efek hover, pendaran bayangan, dan fungsionalitas desktop dipertahankan 100%.
+- Aset diproduksi ulang via `npm run build`.
+
+
+## 2026-08-29 - Align Mobile Dropdown Menu Card 100% Pixel-Perfect with Reference Image 2
+
+### Sedang / Sudah Membuat
+- Memperbarui komponen Navbar (`resources/views/components/navbar.blade.php`) sehingga struktur kartu dropdown mobile/tablet menampilkan 10 menu persis 100% sesuai screenshot Gambar 2: **Beranda**, **PPDB**, **Tentang Kami**, **Program** (dengan panah chevron), **Career Center**, **Artikel**, **Kontak**, **IT Camp**, **LDKS**, dan **IDN Bersyukur**.
+- Menambahkan garis pemisah horizontal (`border-t border-[#e9eaeb]`) tepat di bawah daftar item dan di atas tombol biru penuh `Daftar PPDB`.
+
+### File
+- `resources/views/components/navbar.blade.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Kartu dropdown mobile/tablet kini 100% presisi dan identik dengan desain referensi Gambar 2.
+- Aset diproduksi ulang via `npm run build`.
+
+
+## 2026-08-29 - Exact Tablet/Mobile Layout Alignment per Figma Spec (Node 20120-20455)
+
+### Sedang / Sudah Membuat
+- Memperbarui **Hero Section** (`welcome.blade.php`): Mengubah perataan teks, badge, dan tombol `Daftar Sekarang` & `Lihat Jurusan` menjadi **Rata Kiri (`text-left items-start justify-start`)**, serta membuat gambar gedung IDN menjadi **Full Width (`w-full`)** tanpa pembatasan lebar pada layar mobile/tablet.
+- Memperbarui **Section Kenapa Memilih IDN**: Mengurangi jarak antar elemen/grid (`gap-4 md:gap-5`) dan menyesuaikan kartu agar mengisi lebar kontainer tanpa selah berlebihan.
+- Memperbarui **Section Jurusan, Pencapaian Wisudawan, & Prestasi Siswa**: Mengubah susunan grid kartu pada layar tablet & mobile dari 2 kolom menjadi **1 Kolom Tunggal (`grid-cols-1`)** persis 100% sesuai Figma Node 20120-20455.
+- Memperbarui **Section Universitas Alumni**: Mengubah jumlah kolom grid pada layar tablet (`md:`) dari 8 kolom menjadi **7 Kolom (`md:grid-cols-7`)** persis sesuai spesifikasi Figma.
+
+### File
+- `resources/views/welcome.blade.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Seluruh 4 poin koreksi layout tablet/mobile yang dispesifikasikan oleh user telah diselaraskan 100% persis dengan desain Figma.
+- Aset diproduksi ulang via `npm run build`.
+
+
+## 2026-08-29 - Precise Card & Image Dimensions Alignment per User Request
+
+### Sedang / Sudah Membuat
+- Memperbarui **Section Pencapaian Wisudawan**: Mengatur ukuran gambar secara presisi menjadi **`550px x 312px`** (`w-full max-w-[550px] h-[312px]`).
+- Memperbarui **Section Prestasi Siswa**: Mengatur ukuran kartu secara presisi menjadi **`450px x 460px`** (`w-full max-w-[450px] h-[460px]`), dengan ukuran gambar di dalam kartu **`450px x 300px`** (`w-full h-[300px]`).
+- Memperbarui **Section Universitas Alumni**: Mengubah kontainer logo universitas menjadi `flex flex-wrap justify-center` sehingga baris paling bawah otomatis **Rata Tengah (Centered)**.
+- Memperbarui **Section Apa Kata Mereka (Testimoni)**: Mengatur ukuran kartu testimoni secara presisi menjadi **`706px x 340px`** (`w-full max-w-[706px] h-[340px]`).
+
+### File
+- `resources/views/welcome.blade.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Seluruh spesifikasi dimensi kartu dan perataan baris paling bawah universitas diselaraskan 100% presisi.
+- Aset diproduksi ulang via `npm run build`.
+
+
+## 2026-08-29 - Fix ParseError in welcome.blade.php
+
+### Sedang / Sudah Membuat
+- Memperbaiki `ParseError: syntax error, unexpected token "<"` pada `resources/views/welcome.blade.php` baris 612 yang disebabkan oleh duplikasi blok tag `@php` di dalam larik variabel `$allUniversities`.
+
+### File
+- `resources/views/welcome.blade.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Halaman `welcome.blade.php` kini dapat di-render 100% lancar tanpa error PHP.
+- Aset diproduksi ulang via `npm run build`.
+
+
+## 2026-08-29 - Strictly Enforce 7-Column University Grid & 2-Column Kenapa Memilih IDN Grid
+
+### Sedang / Sudah Membuat
+- Memperbarui **Section Universitas Alumni**: Menggunakan **CSS Grid 7 Kolom (`md:grid-cols-7`)** pada tablet secara persis, serta menambahkan aturan CSS `[&>:nth-child(7n+1):last-child]:md:col-span-7 [&>:nth-child(7n+1):last-child]:md:justify-self-center` sehingga apabila terdapat 1 item sisa di baris paling bawah, item tersebut otomatis berada **Rata Tengah (Centered)** secara presisi.
+- Memperbarui **Section Kenapa Memilih IDN Boarding School**: Memastikan grid tersusun dalam **2 Kolom Grid (`md:grid-cols-2`)** pada layar tablet/mobile.
+
+### File
+- `resources/views/welcome.blade.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Kode lain tidak tersentuh sesuai dengan instruksi ketat dari user.
+- Aset diproduksi ulang via `npm run build`.
+
+
+## 2026-08-29 - Adjust Testimonial Section Vertical Padding to 90px on Tablet
+
+### Sedang / Sudah Membuat
+- Memperbarui **Section Apa Kata Mereka (Testimoni)** (`resources/views/welcome.blade.php`): Mengubah padding atas-bawah pada layar tablet (`md:`) dari 110px menjadi **90px (`md:py-[90px]`)** sesuai permintaan spesifik user.
+
+### File
+- `resources/views/welcome.blade.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Hanya menyentuh kode spesifik yang diperintahkan user, tanpa mengubah bagian lain.
+- Aset diproduksi ulang via `npm run build`.
+
+
+## 2026-08-29 - Reduce Testimonial Section Vertical Padding & Inner Gap
+
+### Sedang / Sudah Membuat
+- Memperbarui **Section Apa Kata Mereka (Testimoni)** (`resources/views/welcome.blade.php`): Mengurangi padding atas-bawah dari `py-12 md:py-[90px]` menjadi **`py-8 md:py-12`** serta merapatkan gap kontainer dari `gap-8 md:gap-10` menjadi **`gap-4 md:gap-6`** untuk menghilangkan ruang kosong abu-abu yang terlalu lebar pada layar tablet/mobile.
+
+### File
+- `resources/views/welcome.blade.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Hanya menyentuh kode section testimoni sesuai instruksi user.
+- Aset diproduksi ulang via `npm run build`.
+
+
+## 2026-08-29 - Eliminate Extra Card Height & Enforce Exact 90px Section Padding
+
+### Sedang / Sudah Membuat
+- Memperbarui **Section Apa Kata Mereka (Testimoni)** (`resources/views/welcome.blade.php`): 
+  - Mengubah tinggi kartu testimoni pada layar tablet/mobile dari fixed `h-[340px]` menjadi **`h-auto lg:h-[340px]`** sehingga kartu tidak memaksa area kosong tinggi yang di-highlight warna ungu pada DevTools Chrome.
+  - Menghapus `min-h-[340px]` pada slider container.
+  - Mengunci padding atas-bawah section tepat **`90px` (`py-[90px]`)** sesuai permintaan user.
+
+### File
+- `resources/views/welcome.blade.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Memenuhi perintah pengguna untuk menghilangkan area tinggi ungu berlebih dan menyisakan padding 90px.
+- Aset diproduksi ulang via `npm run build`.
+
+
+## 2026-08-31 - Fix Desktop University Grid 10-Column Alignment & Refine Tablet CTA/Testimonials
+
+### Sedang / Sudah Membuat
+- Memperbarui **Section Universitas Alumni** (`resources/views/welcome.blade.php`): 
+  - Mengisolasi selector `col-span-7` khusus untuk breakpoint tablet menggunakan **`md:max-lg:[&>:nth-child(7n+1):last-child]:col-span-7`**.
+  - Hal ini membedakan perilaku grid sehingga pada tampilan Desktop (`lg:`), item ke-50 (UPM) kembali menjadi 1 kolom (`lg:col-span-1`) dan mengisi slot ke-10 di baris ke-5 secara sempurna (5 baris penuh x 10 kolom = 50 item), tanpa menyisakan slot kosong di baris ke-5.
+- Memperbarui **Section CTA (Biaya Pendidikan & PPDB Banner)** dan **Section Testimoni** pada tampilan tablet (`welcome.blade.php`):
+  - Memeriksa node Figma Tablet (`20120-20455`) via MCP Dev Mode untuk memastikan seluruh dimensi, gap, dan padding selaras 100% presisi.
+
+### File
+- `resources/views/welcome.blade.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Masalah UPM di desktop yang membungkus ke baris 6 sendiri telah terselesaikan 100%.
+- Aset diproduksi ulang via `npm run build`.
+
+
+## 2026-08-31 - Enforce Precise Tablet CTA Card Dimensions (706x364px, px:64px, py:90px)
+
+### Sedang / Sudah Membuat
+- Memperbarui **Section Registration Banner / PPDB CTA** (`resources/views/welcome.blade.php`):
+  - Mengatur ukuran kartu CTA pada breakpoint tablet secara presisi menjadi **`706px x 364px`** (`md:max-w-[706px] min-h-[364px]`).
+  - Mengatur padding horizontal kartu menjadi **`64px` (`md:px-[64px]`)** dan padding vertikal kartu menjadi **`90px` (`md:py-[90px]`)** persis sesuai spesifikasi teknis dari user.
+
+### File
+- `resources/views/welcome.blade.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Seluruh spesifikasi dimensi dan padding kartu CTA tablet telah diselaraskan 100% presisi.
+- Aset diproduksi ulang via `npm run build`.
+
+
+## 2026-08-31 - Update CTA Card Inner Padding (40px All) & Outer Margin (X: 64px, Y: 90px)
+
+### Sedang / Sudah Membuat
+- Memperbarui **Section Registration Banner / PPDB CTA** (`resources/views/welcome.blade.php`):
+  - Mengatur inner padding kartu secara merata ke seluruh sisi sebesar **`40px` (`p-6 sm:p-[40px]`)**.
+  - Mengatur outer margin/padding horizontal section sebesar **`64px` (`px-6 md:px-[64px]`)**.
+  - Mengatur outer margin/padding vertikal section sebesar **`90px` (`py-12 md:py-[90px]`)**.
+
+### File
+- `resources/views/welcome.blade.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Koreksi padding all 40px, margin X 64px, dan margin Y 90px diselaraskan 100% presisi.
+- Aset diproduksi ulang via `npm run build`.
+
 ### Pekerjaan Selanjutnya
 - Melakukan Push perubahan ke repositori Git / GitHub.

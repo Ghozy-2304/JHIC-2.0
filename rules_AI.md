@@ -26,6 +26,10 @@ Jangan menggunakan CSS biasa jika kebutuhan tersebut masih dapat dilakukan mengg
 
 Jangan membuat semau anda untuk bagian front-end atau tampilan, anda diminta untuk mengikuti apa yang ada di Figma/MCP. tanpa merubahnya sedikitpun.
 
+Jangan menyetuh code lain yang tidak di perintah kalaupun berhubungan bilang dulu ke saya
+PERHATIKAN dengan seksama ukuran component, padding, margin dll dengan ukuran yang sangat pas.Jangan pernah merubah ukuran component, padding, margin dll dengan ukuran yang sedikitpun berbeda dengan design Figma/MCP
+
+
 CSS custom hanya diperbolehkan apabila:
 
 * Tailwind benar-benar tidak dapat menangani kebutuhan tersebut dengan baik.
