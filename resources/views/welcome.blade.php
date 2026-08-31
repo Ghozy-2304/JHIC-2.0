@@ -15,13 +15,13 @@
 
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="bg-[#fafafa] text-[#181d27] min-h-screen w-screen overflow-x-hidden font-sans antialiased flex flex-col items-center">
+    <body class="bg-[#fafafa] text-[#181d27] min-h-screen w-full max-w-full overflow-x-hidden font-sans antialiased flex flex-col items-center">
 
     <!-- 1. REUSABLE NAVBAR COMPONENT (Desktop Specs strictly per Figma) -->
     <x-navbar active="beranda" />
 
     <!-- 2. HERO HEADER SECTION (Figma Node 19900:12342) -->
-    <section class="w-full flex flex-col items-center py-12 md:py-[110px] bg-[#fafafa]">
+    <section class="w-full max-w-full overflow-hidden flex flex-col items-center mt-16 md:mt-0 py-12 md:py-[110px] bg-[#fafafa]">
         
         <!-- MAIN CONTENT CONTAINER (1120px width, centered) -->
         <div class="w-[1120px] max-w-full mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 md:gap-14 py-4 px-4 sm:px-6">
@@ -54,6 +54,9 @@
                 <div class="flex flex-wrap items-center justify-start gap-4 pt-2 w-full">
                     <a href="/ppdb" class="group bg-[#0c61cf] text-white w-[195px] h-[48px] px-5 py-3 rounded-full font-semibold text-[16px] leading-[24px] flex items-center justify-center gap-2 shadow-[0px_2px_6px_rgba(12,97,207,0.32)] transition-all duration-200 hover:bg-[#094fa5] hover:shadow-md shrink-0">
                         <span>Daftar Sekarang</span>
+                        <svg class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1 block lg:hidden lg:group-hover:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                        </svg>
                     </a>
                     <a href="/program" class="group bg-white border-2 border-[#e9eaeb] text-[#414651] w-[145px] h-[48px] px-5 py-3 rounded-full font-semibold text-[16px] leading-[24px] flex items-center justify-center gap-2 transition-all duration-200 hover:bg-slate-50 hover:border-[#0c61cf] shrink-0">
                         <span>Lihat Jurusan</span>
@@ -94,7 +97,7 @@
 
 
     <!-- 3. KENAPA MEMILIH IDN BOARDING SCHOOL? (Figma Node 19900:12369) -->
-    <section class="w-full flex flex-col items-center py-12 md:py-[90px] bg-white">
+    <section class="w-full max-w-full overflow-hidden flex flex-col items-center py-12 md:py-[90px] bg-white">
         <div class="w-[1120px] max-w-full mx-auto flex flex-col items-center gap-6 md:gap-8 px-4 sm:px-6">
             
             <!-- SECTION HEADER -->
@@ -196,7 +199,7 @@
 
 
     <!-- 4. JURUSAN YANG ADA DI IDN BOARDING SCHOOL (Figma Node 19900:12404) -->
-    <section class="w-full flex flex-col items-center py-16 md:py-[110px] bg-[#fafafa]">
+    <section class="w-full max-w-full overflow-hidden flex flex-col items-center py-16 md:py-[110px] bg-[#fafafa]">
         <div class="w-[1120px] max-w-full mx-auto flex flex-col items-center gap-8 md:gap-12 px-4 sm:px-6">
             
             <!-- SECTION HEADER -->
@@ -229,15 +232,15 @@
                                 Membentuk developer muda yang menguasai web, mobile, dan pemrograman modern yang profesional.
                             </p>
                         </div>
-                        <div class="flex flex-col gap-3 w-full">
-                            <div class="flex gap-3 flex-wrap">
-                                <span class="bg-white border border-[#e9eaeb] px-3.5 py-2 rounded-full text-[14px] text-black">Web Development</span>
-                                <span class="bg-white border border-[#e9eaeb] px-3.5 py-2 rounded-full text-[14px] text-black">Mobile App</span>
+                        <div class="flex flex-col gap-2.5 w-full">
+                            <div class="flex gap-2 flex-wrap items-center">
+                                <span class="bg-white border border-[#e9eaeb] px-3 py-1.5 rounded-full text-[13px] text-[#181d27] font-medium">Web Development</span>
+                                <span class="bg-white border border-[#e9eaeb] px-3 py-1.5 rounded-full text-[13px] text-[#181d27] font-medium">Mobile App</span>
                             </div>
-                            <div class="flex gap-3 flex-wrap">
-                                <span class="bg-white border border-[#e9eaeb] px-3.5 py-2 rounded-full text-[14px] text-black">Database</span>
-                                <span class="bg-white border border-[#e9eaeb] px-3.5 py-2 rounded-full text-[14px] text-black">Front-End</span>
-                                <span class="bg-white border border-[#e9eaeb] px-3.5 py-2 rounded-full text-[14px] text-black">Back-End</span>
+                            <div class="flex gap-2 flex-wrap items-center">
+                                <span class="bg-white border border-[#e9eaeb] px-3 py-1.5 rounded-full text-[13px] text-[#181d27] font-medium">Database</span>
+                                <span class="bg-white border border-[#e9eaeb] px-3 py-1.5 rounded-full text-[13px] text-[#181d27] font-medium">Front-End</span>
+                                <span class="bg-white border border-[#e9eaeb] px-3 py-1.5 rounded-full text-[13px] text-[#181d27] font-medium">Back-End</span>
                             </div>
                         </div>
                     </div>
@@ -266,16 +269,16 @@
                                 Menyiapkan network engineer, administrator server, dan spesialis cybersecurity yang profesional.
                             </p>
                         </div>
-                        <div class="flex flex-col gap-3 w-full">
-                            <div class="flex gap-3 flex-wrap">
-                                <span class="bg-white border border-[#e9eaeb] px-3.5 py-2 rounded-full text-[14px] text-black">Cisco CCNA</span>
-                                <span class="bg-white border border-[#e9eaeb] px-3.5 py-2 rounded-full text-[14px] text-black">CCNP</span>
-                                <span class="bg-white border border-[#e9eaeb] px-3.5 py-2 rounded-full text-[14px] text-black">AWS Cloud</span>
+                        <div class="flex flex-col gap-2.5 w-full">
+                            <div class="flex gap-2 flex-wrap items-center">
+                                <span class="bg-white border border-[#e9eaeb] px-3 py-1.5 rounded-full text-[13px] text-[#181d27] font-medium">Cisco CCNA</span>
+                                <span class="bg-white border border-[#e9eaeb] px-3 py-1.5 rounded-full text-[13px] text-[#181d27] font-medium">CCNP</span>
+                                <span class="bg-white border border-[#e9eaeb] px-3 py-1.5 rounded-full text-[13px] text-[#181d27] font-medium">AWS Cloud</span>
                             </div>
-                            <div class="flex gap-3 flex-wrap">
-                                <span class="bg-white border border-[#e9eaeb] px-3.5 py-2 rounded-full text-[14px] text-black">CCIE</span>
-                                <span class="bg-white border border-[#e9eaeb] px-3.5 py-2 rounded-full text-[14px] text-black">Mikrotik</span>
-                                <span class="bg-white border border-[#e9eaeb] px-3.5 py-2 rounded-full text-[14px] text-black">DevOps</span>
+                            <div class="flex gap-2 flex-wrap items-center">
+                                <span class="bg-white border border-[#e9eaeb] px-3 py-1.5 rounded-full text-[13px] text-[#181d27] font-medium">CCIE</span>
+                                <span class="bg-white border border-[#e9eaeb] px-3 py-1.5 rounded-full text-[13px] text-[#181d27] font-medium">Mikrotik</span>
+                                <span class="bg-white border border-[#e9eaeb] px-3 py-1.5 rounded-full text-[13px] text-[#181d27] font-medium">DevOps</span>
                             </div>
                         </div>
                     </div>
@@ -304,15 +307,15 @@
                                 Melahirkan UI/UX Designer, kreator konten, motion designer, dan visual storyteller yang profesional.
                             </p>
                         </div>
-                        <div class="flex flex-col gap-3 w-full">
-                            <div class="flex gap-3 flex-wrap">
-                                <span class="bg-white border border-[#e9eaeb] px-3.5 py-2 rounded-full text-[14px] text-black">UI/UX</span>
-                                <span class="bg-white border border-[#e9eaeb] px-3.5 py-2 rounded-full text-[14px] text-black">3D Design</span>
-                                <span class="bg-white border border-[#e9eaeb] px-3.5 py-2 rounded-full text-[14px] text-black">Graphic Design</span>
+                        <div class="flex flex-col gap-2.5 w-full">
+                            <div class="flex gap-2 flex-wrap items-center">
+                                <span class="bg-white border border-[#e9eaeb] px-3 py-1.5 rounded-full text-[13px] text-[#181d27] font-medium">UI/UX</span>
+                                <span class="bg-white border border-[#e9eaeb] px-3 py-1.5 rounded-full text-[13px] text-[#181d27] font-medium">3D Design</span>
+                                <span class="bg-white border border-[#e9eaeb] px-3 py-1.5 rounded-full text-[13px] text-[#181d27] font-medium">Graphic Design</span>
                             </div>
-                            <div class="flex gap-3 flex-wrap">
-                                <span class="bg-white border border-[#e9eaeb] px-3.5 py-2 rounded-full text-[14px] text-black">Video Editing</span>
-                                <span class="bg-white border border-[#e9eaeb] px-3.5 py-2 rounded-full text-[14px] text-black">Motion Graphic</span>
+                            <div class="flex gap-2 flex-wrap items-center">
+                                <span class="bg-white border border-[#e9eaeb] px-3 py-1.5 rounded-full text-[13px] text-[#181d27] font-medium">Video Editing</span>
+                                <span class="bg-white border border-[#e9eaeb] px-3 py-1.5 rounded-full text-[13px] text-[#181d27] font-medium">Motion Graphic</span>
                             </div>
                         </div>
                     </div>
@@ -331,7 +334,7 @@
 
 
     <!-- 5. PENCAPAIAN WISUDAWAN DARI IDN BOARDING SCHOOL (Figma Node 19900:12412) -->
-    <section class="w-full flex flex-col items-center py-16 md:py-[110px] bg-white">
+    <section class="w-full max-w-full overflow-hidden flex flex-col items-center py-16 md:py-[110px] bg-white">
         <div class="w-[1120px] max-w-full mx-auto flex flex-col items-center gap-8 md:gap-12 px-4 sm:px-6">
             
             <!-- SECTION HEADER -->
@@ -346,29 +349,29 @@
 
             <!-- AWARDS GRID (1 column on mobile/tablet, 2 on desktop - 550x312px) -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 w-full justify-items-center">
-                <div class="w-full max-w-[550px] h-[312px] rounded-[14px] overflow-hidden bg-slate-200 shadow-sm border border-[#e9eaeb] transition-all duration-300 hover:shadow-md hover:-translate-y-1">
-                    <img src="{{ asset('assets/Award Image 1.avif') }}" alt="Pencapaian Wisudawan 1" class="w-full h-full object-cover">
+                <div class="group w-full max-w-[550px] h-[200px] sm:h-[260px] md:h-[312px] rounded-[14px] overflow-hidden bg-slate-200 shadow-sm border border-[#e9eaeb] transition-all duration-300 hover:shadow-md">
+                    <img src="{{ asset('assets/Award Image 1.avif') }}" alt="Pencapaian Wisudawan 1" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105">
                 </div>
-                <div class="w-full max-w-[550px] h-[312px] rounded-[14px] overflow-hidden bg-slate-200 shadow-sm border border-[#e9eaeb] transition-all duration-300 hover:shadow-md hover:-translate-y-1">
-                    <img src="{{ asset('assets/Award Image 2.avif') }}" alt="Pencapaian Wisudawan 2" class="w-full h-full object-cover">
+                <div class="group w-full max-w-[550px] h-[200px] sm:h-[260px] md:h-[312px] rounded-[14px] overflow-hidden bg-slate-200 shadow-sm border border-[#e9eaeb] transition-all duration-300 hover:shadow-md">
+                    <img src="{{ asset('assets/Award Image 2.avif') }}" alt="Pencapaian Wisudawan 2" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105">
                 </div>
-                <div class="w-full max-w-[550px] h-[312px] rounded-[14px] overflow-hidden bg-slate-200 shadow-sm border border-[#e9eaeb] transition-all duration-300 hover:shadow-md hover:-translate-y-1">
-                    <img src="{{ asset('assets/Award Image 3.avif') }}" alt="Pencapaian Wisudawan 3" class="w-full h-full object-cover">
+                <div class="group w-full max-w-[550px] h-[200px] sm:h-[260px] md:h-[312px] rounded-[14px] overflow-hidden bg-slate-200 shadow-sm border border-[#e9eaeb] transition-all duration-300 hover:shadow-md">
+                    <img src="{{ asset('assets/Award Image 3.avif') }}" alt="Pencapaian Wisudawan 3" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105">
                 </div>
-                <div class="w-full max-w-[550px] h-[312px] rounded-[14px] overflow-hidden bg-slate-200 shadow-sm border border-[#e9eaeb] transition-all duration-300 hover:shadow-md hover:-translate-y-1">
-                    <img src="{{ asset('assets/Award Image 4.avif') }}" alt="Pencapaian Wisudawan 4" class="w-full h-full object-cover">
+                <div class="group w-full max-w-[550px] h-[200px] sm:h-[260px] md:h-[312px] rounded-[14px] overflow-hidden bg-slate-200 shadow-sm border border-[#e9eaeb] transition-all duration-300 hover:shadow-md">
+                    <img src="{{ asset('assets/Award Image 4.avif') }}" alt="Pencapaian Wisudawan 4" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105">
                 </div>
-                <div class="w-full max-w-[550px] h-[312px] rounded-[14px] overflow-hidden bg-slate-200 shadow-sm border border-[#e9eaeb] transition-all duration-300 hover:shadow-md hover:-translate-y-1">
-                    <img src="{{ asset('assets/Award Image 5.avif') }}" alt="Pencapaian Wisudawan 5" class="w-full h-full object-cover">
+                <div class="group w-full max-w-[550px] h-[200px] sm:h-[260px] md:h-[312px] rounded-[14px] overflow-hidden bg-slate-200 shadow-sm border border-[#e9eaeb] transition-all duration-300 hover:shadow-md">
+                    <img src="{{ asset('assets/Award Image 5.avif') }}" alt="Pencapaian Wisudawan 5" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105">
                 </div>
-                <div class="w-full max-w-[550px] h-[312px] rounded-[14px] overflow-hidden bg-slate-200 shadow-sm border border-[#e9eaeb] transition-all duration-300 hover:shadow-md hover:-translate-y-1">
-                    <img src="{{ asset('assets/Award Image 6.avif') }}" alt="Pencapaian Wisudawan 6" class="w-full h-full object-cover">
+                <div class="group w-full max-w-[550px] h-[200px] sm:h-[260px] md:h-[312px] rounded-[14px] overflow-hidden bg-slate-200 shadow-sm border border-[#e9eaeb] transition-all duration-300 hover:shadow-md">
+                    <img src="{{ asset('assets/Award Image 6.avif') }}" alt="Pencapaian Wisudawan 6" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105">
                 </div>
-                <div class="w-full max-w-[550px] h-[312px] rounded-[14px] overflow-hidden bg-slate-200 shadow-sm border border-[#e9eaeb] transition-all duration-300 hover:shadow-md hover:-translate-y-1">
-                    <img src="{{ asset('assets/Award Image 7.avif') }}" alt="Pencapaian Wisudawan 7" class="w-full h-full object-cover">
+                <div class="group w-full max-w-[550px] h-[200px] sm:h-[260px] md:h-[312px] rounded-[14px] overflow-hidden bg-slate-200 shadow-sm border border-[#e9eaeb] transition-all duration-300 hover:shadow-md">
+                    <img src="{{ asset('assets/Award Image 7.avif') }}" alt="Pencapaian Wisudawan 7" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105">
                 </div>
-                <div class="w-full max-w-[550px] h-[312px] rounded-[14px] overflow-hidden bg-slate-200 shadow-sm border border-[#e9eaeb] transition-all duration-300 hover:shadow-md hover:-translate-y-1">
-                    <img src="{{ asset('assets/Award Image 8.avif') }}" alt="Pencapaian Wisudawan 8" class="w-full h-full object-cover">
+                <div class="group w-full max-w-[550px] h-[200px] sm:h-[260px] md:h-[312px] rounded-[14px] overflow-hidden bg-slate-200 shadow-sm border border-[#e9eaeb] transition-all duration-300 hover:shadow-md">
+                    <img src="{{ asset('assets/Award Image 8.avif') }}" alt="Pencapaian Wisudawan 8" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105">
                 </div>
             </div>
 
@@ -377,7 +380,7 @@
 
 
     <!-- 6. KERJASAMA INDUSTRI (Figma Node 19900:12425) -->
-    <section class="w-full flex flex-col items-center py-16 md:py-[110px] bg-[#fafafa] overflow-hidden">
+    <section class="w-full max-w-full overflow-hidden flex flex-col items-center py-16 md:py-[110px] bg-[#fafafa]">
         <div class="w-[1120px] max-w-full mx-auto flex flex-col items-center gap-8 md:gap-10 px-4 sm:px-6">
             
             <!-- SECTION HEADER -->
@@ -454,7 +457,7 @@
 
 
     <!-- 7. PRESTASI SISWA IDN BOARDING SCHOOL (Figma Node 19900:12470) -->
-    <section class="w-full flex flex-col items-center py-16 md:py-[110px] bg-white">
+    <section class="w-full max-w-full overflow-hidden flex flex-col items-center py-16 md:py-[110px] bg-white">
         <div class="w-[1120px] max-w-full mx-auto flex flex-col items-center gap-8 md:gap-12 px-4 sm:px-6">
             
             <!-- SECTION HEADER -->
@@ -542,7 +545,7 @@
 
 
     <!-- 8. UNIVERSITAS ALUMNI IDN BOARDING SCHOOL (Figma Node 19900:12504) -->
-    <section class="w-full flex flex-col items-center py-16 md:py-[110px] bg-[#fafafa]">
+    <section class="w-full max-w-full overflow-hidden flex flex-col items-center py-16 md:py-[110px] bg-[#fafafa]">
         <div class="w-[1120px] max-w-full mx-auto flex flex-col items-center gap-8 md:gap-10 px-4 sm:px-6">
             
             <!-- SECTION HEADER -->
@@ -640,7 +643,7 @@
 
 
     <!-- 9. APA KATA MEREKA TENTANG IDN? (Figma Node 19900:12609) -->
-    <section class="w-full flex flex-col items-center py-[90px] bg-[#f5f5f5]" x-data="{ activeTab: 'Perusahaan' }">
+    <section class="w-full max-w-full overflow-hidden flex flex-col items-center py-[90px] bg-[#f5f5f5]" x-data="{ activeTab: 'Perusahaan' }">
         <div class="w-[1120px] max-w-full mx-auto flex flex-col items-center gap-6 md:gap-8 px-4 sm:px-6">
             
             <!-- SECTION HEADER -->
@@ -857,12 +860,12 @@
 
 
     <!-- 10. BIAYA PENDIDIKAN (Figma Node 19900:12612) -->
-    <section class="w-full flex flex-col items-center py-16 md:py-[110px] bg-[#fafafa]">
+    <section class="w-full max-w-full overflow-hidden flex flex-col items-center py-16 md:py-[110px] bg-[#fafafa]">
         <div class="w-[1120px] max-w-full mx-auto flex flex-col gap-8 items-start px-4 sm:px-6">
             <div class="flex flex-col md:flex-row items-center md:items-start justify-between gap-10 md:gap-14 w-full">
                 
                 <!-- LEFT TUITION INFO -->
-                <div class="flex-1 flex flex-col gap-4 items-start w-full text-center md:text-left">
+                <div class="flex-1 flex flex-col gap-4 items-start w-full text-left">
                     <div class="flex flex-col gap-2 w-full">
                         <span class="text-[#717680] text-[14px] font-normal">Biaya Pendidikan</span>
                         <h2 class="font-heading font-semibold text-[32px] sm:text-[40px] md:text-[48px] leading-[40px] sm:leading-[50px] md:leading-[60px] tracking-[-1.5px] md:tracking-[-1.92px] text-[#0b0d12]">
@@ -899,7 +902,7 @@
             </div>
 
             <!-- BUTTON: Selengkapnya -->
-            <a href="/ppdb" class="group bg-[#0c61cf] text-white w-[149px] h-[48px] rounded-full font-semibold text-[16px] flex items-center justify-center gap-2 border border-[#d5d7da] shadow-md transition-all duration-200 hover:bg-[#094fa5] mx-auto md:mx-0">
+            <a href="/ppdb" class="group bg-[#0c61cf] text-white w-[149px] h-[48px] rounded-full font-semibold text-[16px] flex items-center justify-center gap-2 border border-[#d5d7da] shadow-md transition-all duration-200 hover:bg-[#094fa5] mx-0">
                 <span>Selengkapnya</span>
             </a>
         </div>
@@ -907,7 +910,7 @@
 
 
     <!-- 11. REGISTRATION BANNER / PPDB 2027/2028 (Figma Node 19900:12633) -->
-    <section class="w-full flex flex-col items-center py-12 md:py-[90px] px-6 md:px-[64px] bg-[#fafafa]">
+    <section class="w-full max-w-full overflow-hidden flex flex-col items-center py-12 md:py-[90px] px-6 md:px-[64px] bg-[#fafafa]">
         <div class="w-full max-w-[1120px] md:max-w-[706px] lg:max-w-[1120px] mx-auto bg-[#0c61cf] rounded-[20px] p-6 sm:p-[40px] min-h-[364px] text-white flex flex-col justify-between gap-6 md:gap-8 relative overflow-hidden shadow-lg">
             <div class="w-[390px] h-[423px] rounded-full bg-white/20 blur-[64px] absolute -right-20 -top-40 pointer-events-none"></div>
 

@@ -28,6 +28,7 @@ Jangan membuat semau anda untuk bagian front-end atau tampilan, anda diminta unt
 
 Jangan menyetuh code lain yang tidak di perintah kalaupun berhubungan bilang dulu ke saya
 PERHATIKAN dengan seksama ukuran component, padding, margin dll dengan ukuran yang sangat pas.Jangan pernah merubah ukuran component, padding, margin dll dengan ukuran yang sedikitpun berbeda dengan design Figma/MCP
+Perhatikan juga ukuran font nya
 
 
 CSS custom hanya diperbolehkan apabila:

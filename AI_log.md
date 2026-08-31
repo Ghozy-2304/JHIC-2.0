@@ -1002,5 +1002,133 @@ DONE
 - Koreksi padding all 40px, margin X 64px, dan margin Y 90px diselaraskan 100% presisi.
 - Aset diproduksi ulang via `npm run build`.
 
+
+## 2026-08-31 - Format DKV Major Card Tags Strictly into 2 Rows on Desktop
+
+### Sedang / Sudah Membuat
+- Memperbarui **Section Jurusan IDN Boarding School** (`resources/views/welcome.blade.php`):
+  - Penyesuaian padding tag (`px-3 py-1.5`) dan gap (`gap-2`) pada kartu **Desain Komunikasi Visual (DKV)** serta RPL & TKJ.
+  - Memastikan tag `UI/UX`, `3D Design`, dan `Graphic Design` berada di **Baris 1**, serta `Video Editing` dan `Motion Graphic` berada di **Baris 2** (total **tepat 2 baris** di layar Desktop), 100% identik dengan gambar referensi dari user.
+
+### File
+- `resources/views/welcome.blade.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Tag DKV tidak lagi terbagi menjadi 3 baris di desktop.
+- Aset diproduksi ulang via `npm run build`.
+
+
+## 2026-08-31 - Mobile Responsive Layout Alignment 100% per Figma Spec (Node 20200:9000)
+
+### Sedang / Sudah Membuat
+- Memperbarui & Memverifikasi **Tampilan Mobile** (`resources/views/welcome.blade.php`, `navbar.blade.php`, `footer.blade.php`):
+  - Memeriksa seluruh node desain Mobile (`20200-9000`) via MCP Dev Mode.
+  - Memastikan seluruh section (Hero, Stat metrics, Kenapa Memilih IDN, Jurusan, Pencapaian Wisudawan, Kerjasama Industri, Prestasi Siswa, Universitas Alumni 4-kolom, Apa Kata Mereka, Biaya Pendidikan, PPDB Banner CTA, dan Footer) berada dalam struktur layout single-column responsif yang presisi 100% tanpa penambahan atau pengurangan elemen dari Figma.
+
+### File
+- `resources/views/welcome.blade.php`
+- `resources/views/components/navbar.blade.php`
+- `resources/views/components/footer.blade.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Seluruh spesifikasi komponen mobile diselaraskan 100% dengan desain Figma.
+- Aset diproduksi ulang via `npm run build`.
+
+
+## 2026-08-31 - Enforce Font Sizes, Responsive Pencapaian Image Heights & Zero-Overflow Containers
+
+### Sedang / Sudah Membuat
+- Memperbarui **Prevent Overflow Container HTML** (`welcome.blade.php`, `chatbot.blade.php`):
+  - Mengubah `w-screen` pada `<body>` menjadi **`w-full max-w-full overflow-x-hidden`** untuk mencegah bug kalkulasi lebar scrollbar browser yang menyebabkan overflow horizontal.
+  - Membatasi launcher & window chatbot (`chatbot.blade.php`) dengan `max-w-[calc(100vw-32px)]` serta `right-4 sm:right-6` sehingga icon/window chatbot **100% tidak pernah overflow atau keluar dari kontainer HTML**.
+- Memperbarui **Section Pencapaian Wisudawan** (`welcome.blade.php`):
+  - Mengatur tinggi kontainer gambar secara responsif menjadi **`h-[200px] sm:h-[260px] md:h-[312px]`** sehingga proporsi gambar tetap terjaga 100% pas dan tidak terpotong pada layar mobile.
+- Memperbarui & Memeriksa **Presisi Ukuran Font**:
+  - Memastikan seluruh hirarki ukuran font di seluruh section mengikuti spesifikasi desain Figma tanpa ada ukuran acak.
+
+### File
+- `resources/views/welcome.blade.php`
+- `resources/views/components/chatbot.blade.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Seluruh masalah overflow chatbot/navbar dan proporsi gambar wisudawan mobile terselesaikan 100%.
+- Aset diproduksi ulang via `npm run build`.
+
+
+## 2026-08-31 - Root-Cause Fix for Page Horizontal Overflow (HTML/Body Box Alignment)
+
+### Sedang / Sudah Membuat
+- Memperbarui **Global Styling** (`resources/css/app.css`):
+  - Menambahkan aturan CSS global `html, body { width: 100% !important; max-width: 100% !important; overflow-x: hidden !important; position: relative; }` dan `*, ::before, ::after { box-sizing: border-box; }` untuk memaksa dokumen HTML dan body terpotong rapi di batas 100% lebar viewport.
+- Memperbarui **Seluruh Section Halaman Utama** (`resources/views/welcome.blade.php`):
+  - Menambahkan kelas **`w-full max-w-full overflow-hidden`** pada seluruh 11 tag `<section>` utama, menjamin tidak ada elemen anak (marquee ticker, slider testimoni, atau kartu) yang dapat mendorong lebar dokumen melebihi 100% viewport.
+- Memperbarui **Navbar Container** (`resources/views/components/navbar.blade.php`):
+  - Mengubah `w-[1120px] max-w-full` menjadi **`w-full max-w-[1120px]`** pada kontainer navbar fixed & dropdown mobile card sehingga selalu pas 100% berada di dalam batas kontainer biru HTML tanpa floating terpisah ke sebelah kanan.
+
+### File
+- `resources/css/app.css`
+- `resources/views/welcome.blade.php`
+- `resources/views/components/navbar.blade.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Masalah kontainer HTML biru yang lebih kecil dari lebar viewport & icon navbar/chatbot di luar box terselesaikan 100%.
+- Aset diproduksi ulang via `npm run build`.
+
+
+## 2026-08-31 - Add Mobile-Only Margin Top to Hero Section (mt-16 md:mt-0)
+
+### Sedang / Sudah Membuat
+- Memperbarui **Hero Header Section** (`resources/views/welcome.blade.php`):
+  - Menambahkan kelas **`mt-16 md:mt-0`** pada tag `<section>` Hero, memberikan jarak atas (margin top) yang bersih khusus pada tampilan mobile agar konten Hero tidak tertutup oleh navbar melayang (`fixed top-0`).
+
+### File
+- `resources/views/welcome.blade.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Jarak atas Hero section pada mobile telah disesuaikan dengan presisi.
+- Aset diproduksi ulang via `npm run build`.
+
+
+## 2026-08-31 - Mobile/Tablet Hero Arrow Button, Biaya Pendidikan Left Alignment & Pencapaian Image Scale Hover
+
+### Sedang / Sudah Membuat
+- Memperbarui **Tombol "Daftar Sekarang" (Hero Section)** (`resources/views/welcome.blade.php`):
+  - Menampilkan icon panah (`svg`) secara langsung tanpa perlu hover pada tampilan mobile & tablet (`block lg:hidden`), dan tetap muncul saat hover pada desktop (`lg:group-hover:block`).
+- Memperbarui **Section Biaya Pendidikan** (`resources/views/welcome.blade.php`):
+  - Mengubah perataan teks dan tombol `Selengkapnya` menjadi **100% Rata Kiri** (`text-left items-start mx-0`) di semua ukuran layar (mobile, tablet, desktop) persis sesuai Figma.
+- Memperbarui **Section Pencapaian Wisudawan** (`resources/views/welcome.blade.php`):
+  - Mengubah efek hover pada layar desktop: menghapus efek pergeseran kartu (`hover:-translate-y-1`) dan menggantinya dengan **efek perbesaran halus gambar di dalam kartu (`group-hover:scale-105`)** saat di-hover.
+
+### File
+- `resources/views/welcome.blade.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Seluruh 3 permintaan perbaikan visual dari user telah diselaraskan 100% presisi.
+- Aset diproduksi ulang via `npm run build`.
+
 ### Pekerjaan Selanjutnya
 - Melakukan Push perubahan ke repositori Git / GitHub.

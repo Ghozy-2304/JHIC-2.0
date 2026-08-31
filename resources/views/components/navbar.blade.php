@@ -38,10 +38,10 @@
 @endphp
 
 <!-- FIXED TOP BAR CONTAINER WITH BACKDROP BLUR -->
-<div x-data="{ mobileOpen: false, mobileProgramOpen: false }" class="fixed top-0 left-0 right-0 z-50 flex flex-col items-center py-4 px-4 bg-white/75 backdrop-blur-md">
+<div x-data="{ mobileOpen: false, mobileProgramOpen: false }" class="fixed top-0 left-0 right-0 z-50 flex flex-col items-center py-4 px-4 bg-white/75 backdrop-blur-md max-w-full">
     
     <!-- NAVBAR CARD (Figma Spec: 1120px width, 60px height, rounded-full, drop-shadow 0px 4px 15px rgba(0,0,0,0.04)) -->
-    <div class="w-[1120px] max-w-full bg-white h-[60px] flex items-center justify-between px-4 sm:px-6 rounded-full shadow-[0px_4px_15px_rgba(0,0,0,0.05)] border border-slate-100 relative">
+    <div class="w-full max-w-[1120px] bg-white h-[60px] flex items-center justify-between px-4 sm:px-6 rounded-full shadow-[0px_4px_15px_rgba(0,0,0,0.05)] border border-slate-100 relative">
         
         <!-- LOGO BRAND -->
         <a href="/" class="flex items-center shrink-0">
@@ -143,7 +143,7 @@
          x-transition:leave="transition ease-in duration-150"
          x-transition:leave-start="opacity-100 transform translate-y-0"
          x-transition:leave-end="opacity-0 transform -translate-y-2"
-         class="w-[1120px] max-w-full bg-white rounded-[24px] shadow-[0px_12px_40px_rgba(0,0,0,0.12)] border border-slate-100 p-6 flex flex-col gap-4 mt-3 z-50 lg:hidden"
+         class="w-full max-w-[1120px] bg-white rounded-[24px] shadow-[0px_12px_40px_rgba(0,0,0,0.12)] border border-slate-100 p-6 flex flex-col gap-4 mt-3 z-50 lg:hidden"
          x-cloak>
         
         <div class="flex flex-col gap-3.5">

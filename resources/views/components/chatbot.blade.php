@@ -1,5 +1,5 @@
 <!-- FLOATING AI CHATBOT COMPONENT (Figma Design Implementation) -->
-<div id="chatbotComponentRoot" class="fixed bottom-6 right-6 z-[9999] flex flex-col items-end max-sm:bottom-4 max-sm:right-4 font-sans select-none">
+<div id="chatbotComponentRoot" class="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 z-[9999] flex flex-col items-end max-w-[calc(100vw-32px)] font-sans select-none pointer-events-none [&>*]:pointer-events-auto">
     
     <!-- Chat Window Card -->
     <div id="chatbotWindow" 
