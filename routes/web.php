@@ -9,7 +9,7 @@ Route::get('/', function () {
 });
 
 Route::get('/ppdb', function () {
-    return view('welcome', ['pageTitle' => 'PPDB']);
+    return view('ppdb');
 });
 
 Route::get('/tentang-kami', function () {

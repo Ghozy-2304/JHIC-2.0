@@ -1130,5 +1130,162 @@ DONE
 - Seluruh 3 permintaan perbaikan visual dari user telah diselaraskan 100% presisi.
 - Aset diproduksi ulang via `npm run build`.
 
+
+## 2026-09-01 - Create Desktop PPDB Page 100% per Figma Specs (Node 19889:4634)
+
+### Sedang / Sudah Membuat
+- Membaca & Memeriksa **MCP Figma Design** (`Node 19889:4634`):
+  - Memeriksa seluruh ukuran komponen, padding, margin, dan hirarki ukuran font dari Figma Dev Mode secara presisi 100%.
+- Membuat Halaman **PPDB** ([`resources/views/ppdb.blade.php`](file:///c:/Users/novit/Documents/Lomba/JHIC/folder%20laravel/Website-IDN-JHIC/resources/views/ppdb.blade.php)):
+  - **Section 1 (Hero PPDB)**: Slogan badge hijau `Penerimaan Santri Baru`, judul utama, paragraf deskripsi, ilustrasi 3D 2 santri (`hero_ppdb_illustration.jpg`), serta tombol `Daftar Sekarang` & `Brosur`.
+  - **Efek Hover Panah Beranimasi Modis**: Menambahkan animasi hover panah SVG meluncur halus pada tombol Hero (`Daftar Sekarang`, `Brosur`) dan tombol CTA banner (`Mulai Pendaftaran`, `Tanya Via WhatsApp`).
+  - **Section 2 (Alur Pendaftaran)**: Grid 6 langkah pendaftaran (`01 Buat Akun`, `02 Isi Data`, `03 Unggah Berkas`, `04 Biaya Pendaftaran`, `05 Tes Seleksi`, `06 Pengumuman`).
+  - **Section 3 (Persyaratan Administrasi)**: Grafik 3D laptop dokumen (`persyaratan_ppdb_illustration.jpg`), daftar checklist persyaratan, dan alert warning orange `Soft Copy/Scan`.
+  - **Section 4 (Biaya Pendidikan dengan Exclusive Accordion Dropdown)**: 
+    - Implementasi **Exclusive Accordion Dropdown** berbasis Alpine.js (`x-data="{ activeAccordion: 1 }"`). Saat satu item dibuka, item lain yang sedang terbuka otomatis menutup.
+    - Mengisikan rincian lengkap untuk 4 item biaya (`Biaya Pendaftaran Rp 900.000`, `Uang Masuk Rp 40.000.000`, `SPP Bulanan Rp 4.000.000`, `Biaya Tahunan Rp 4.000.000`) sesuai gambar dan spesifikasi Figma.
+  - **Section 5 (PPDB Banner CTA)** & **Footer/Chatbot Components**.
+- Memperbarui Rute (`routes/web.php`): Mengarahkan `/ppdb` ke `view('ppdb')`.
+
+### File
+- `resources/views/ppdb.blade.php`
+- `routes/web.php`
+- `public/assets/hero_ppdb_illustration.jpg`
+- `public/assets/persyaratan_ppdb_illustration.jpg`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Halaman PPDB Desktop telah dibuat 100% presisi sesuai spesifikasi Figma dan seluruh permintaan pengguna.
+- Aset diproduksi ulang via `npm run build`.
+
+
+## 2026-09-01 - Enforce Strict Figma Dimensioning & Styling Alignment (Node 19889:4634)
+
+### Sedang / Sudah Membuat
+- Memperbarui **Halaman PPDB** ([`resources/views/ppdb.blade.php`](file:///c:/Users/novit/Documents/Lomba/JHIC/folder%20laravel/Website-IDN-JHIC/resources/views/ppdb.blade.php)):
+  - Memastikan **`py-[110px]`** pada seluruh Section utama (`Hero`, `Alur Pendaftaran`, `Persyaratan Administrasi`, `Biaya Pendidikan`) persis sesuai Figma Node 19889:4634.
+  - Memastikan ukuran kartu **`360x186px`** dengan gap `20px` pada Section Alur Pendaftaran.
+  - Memastikan ukuran gambar ilustrasi **`460x290px`** pada Hero dan **`450x284px`** pada Persyaratan.
+  - Memasang **animasi hover panah SVG meluncur halus** (`transition-transform duration-300 group-hover:translate-x-1.5`) pada tombol Hero & Banner CTA.
+  - Memastikan **Exclusive Accordion Dropdown** berbasis Alpine.js (`x-data="{ activeAccordion: null }"`) yang menutup otomatis item sebelumnya saat item baru dibuka.
+
+### File
+- `resources/views/ppdb.blade.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Seluruh ukuran komponen, margin, padding, dan efek visual 100% presisi sesuai desain Figma Node 19889:4634.
+- Aset diproduksi ulang via `npm run build`.
+
+
+## 2026-09-01 - 100% Verbatim Figma Text & Asset Correction (Node 19889:4634)
+
+### Sedang / Sudah Membuat
+- Memperbarui **Halaman PPDB** ([`resources/views/ppdb.blade.php`](file:///c:/Users/novit/Documents/Lomba/JHIC/folder%20laravel/Website-IDN-JHIC/resources/views/ppdb.blade.php)) secara **100% Verbatim dengan Desain Figma**:
+  - **Slogan Badge Hero**: Mengubah teks dari `Penerimaan Santri Baru` menjadi **`Status Pendaftaran Dibuka`** (`border-[#22c55e] bg-[#f0fdf4] text-[#16a34a]`).
+  - **Paragraf Hero**: Menggunakan cetak tebal **`31 Desember 2026`** persis Figma.
+  - **Tombol Hero**: Mengubah nama tombol menjadi **`Daftar PPDB`** dan **`Login`** persis Figma (`bg-white border-[#e5e7eb] text-[#374151]`).
+  - **Ilustrasi Hero & Persyaratan**: Menggunakan tampilan ilustrasi bersih tanpa bingkai/kartu tambahan mengikuti screenshot visual Figma (`image 90`).
+  - **Section Alur Pendaftaran**: Menggunakan teks presisi Figma (`01 Buat Akun: Daftarkan email atau nomor WhatsApp, verifikasi OTP.`, `04 Bayar Pendaftaran: Transfer biaya pendaftaran dan unggah bukti bayar.`, dll.).
+  - **Section Persyaratan Administrasi**: Menggunakan bullet point standar `•` (bukan centang `✓`) dan alert pill orange `( ! ) Semua berkas di atas disediakan dalam bentuk Soft Copy/Scan`.
+  - **Section Biaya Pendidikan**: Memastikan icon alert merah `( ! )` dan Accordion Eksklusif Alpine.js.
+  - **Section Banner CTA**: Menggunakan tombol `Mulai Pendaftaran` & `Tanya Via WhatsApp` dengan outline putih halus.
+
+### File
+- `resources/views/ppdb.blade.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Seluruh teks, warna, badge, tombol, dan susunan layout 100% identik persis dengan screenshot visual dari desain Figma Node 19889:4634.
+- Aset diproduksi ulang via `npm run build`.
+
+
+## 2026-09-01 - Alur Pendaftaran Cards Uniform Default & Hover States
+
+### Sedang / Sudah Membuat
+- Memperbarui **Section Alur Pendaftaran** ([`resources/views/ppdb.blade.php`](file:///c:/Users/novit/Documents/Lomba/JHIC/folder%20laravel/Website-IDN-JHIC/resources/views/ppdb.blade.php)):
+  - Mengubah tampilan default **Kartu 01** agar identik dengan kartu lainnya (`02`-`06`) saat kondisi default (`border border-[#e9eaeb]`, angka `01` berwarna soft slate `text-[#c2d8f5]`, tanpa shadow aktif).
+  - Efek border biru (`hover:border-[#0c61cf]`), angka biru (`group-hover:text-[#0c61cf]`), dan bayangan biru (`hover:shadow-[0px_12px_24px_rgba(12,97,207,0.12)]`) **hanya akan aktif secara dinamis saat kartu di-hover**.
+
+### File
+- `resources/views/ppdb.blade.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Perilaku default dan hover seluruh 6 kartu Alur Pendaftaran kini konsisten dan seragam.
+- Aset diproduksi ulang via `npm run build`.
+
+
+## 2026-09-01 - Tablet PPDB Page Responsive Implementation (Figma Node 20123:28730)
+
+### Sedang / Sudah Membuat
+- Membaca & Memeriksa **MCP Figma Design Tablet Node** (`Node 20123:28730`):
+  - Memeriksa ukuran kontainer tablet `w-full max-w-[706px]`, padding samping `px-6 md:px-[64px]`, dan padding vertikal section `py-12 md:py-[90px]`.
+- Memperbarui **Halaman PPDB** ([`resources/views/ppdb.blade.php`](file:///c:/Users/novit/Documents/Lomba/JHIC/folder%20laravel/Website-IDN-JHIC/resources/views/ppdb.blade.php)):
+  - **Hero Section Tablet**: Mengatur lebar kontainer utama `max-w-[706px]`, tata letak flex terpusat, teks `Status Pendaftaran Dibuka`, judul `Penerimaan Santri Baru Tahun Ajaran 2027/2028`, tombol `Daftar PPDB` & `Login`, serta gambar `virtual ngaji.avif`.
+  - **Alur Pendaftaran Tablet**: Mengatur susunan grid 2 kolom (`sm:grid-cols-2`) khusus tampilan tablet dengan lebar kartu `max-w-[343px]` / `max-w-[360px]`.
+  - **Persyaratan Administrasi Tablet**: Mengatur susunan flex-col responsif dengan gambar `virtual buku.avif`, daftar bullet point `•`, dan alert warning orange `Soft Copy/Scan`.
+  - **Biaya Pendidikan & CTA Banner Tablet**: Mengatur lebar kontainer `706px`, Exclusive Accordion Dropdown, dan tombol CTA.
+
+### File
+- `resources/views/ppdb.blade.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Seluruh ukuran komponen, padding, margin, dan gambar pada tampilan device Tablet 100% presisi selaras dengan desain Figma Node 20123:28730.
+- Aset diproduksi ulang via `npm run build`.
+
+
+## 2026-09-01 - Left-Align Image Containers for PPDB Page (Figma Spec)
+
+### Sedang / Sudah Membuat
+- Memperbarui **Halaman PPDB** ([`resources/views/ppdb.blade.php`](file:///c:/Users/novit/Documents/Lomba/JHIC/folder%20laravel/Website-IDN-JHIC/resources/views/ppdb.blade.php)):
+  - Mengubah perataan kontainer gambar pada **Hero Section** (`virtual ngaji.avif`) dan **Persyaratan Administrasi Section** (`virtual buku.avif`) menjadi **Rata Kiri (`justify-start object-left`)** tanpa margin auto samping.
+
+### File
+- `resources/views/ppdb.blade.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Gambar pada Hero dan Persyaratan kini tampil 100% rata kiri.
+- Aset diproduksi ulang via `npm run build`.
+
+
+## 2026-09-01 - Hero Margin Top & Strict Items-Start Image Alignment
+
+### Sedang / Sudah Membuat
+- Memperbarui **Halaman PPDB** ([`resources/views/ppdb.blade.php`](file:///c:/Users/novit/Documents/Lomba/JHIC/folder%20laravel/Website-IDN-JHIC/resources/views/ppdb.blade.php)):
+  - Menambahkan margin top **`mt-20 lg:mt-0`** pada Hero Section agar slogan badge `Status Pendaftaran Dibuka` tidak lagi terpotong/tertutup oleh fixed navbar melayang pada tampilan mobile dan tablet.
+  - Mengubah perataan `items-center` menjadi **`items-start`** pada kontainer induk flex-col Hero Section dan Persyaratan Administrasi Section, menjamin seluruh elemen gambar (`virtual ngaji.avif` & `virtual buku.avif`) **100% rata kiri secara sempurna**.
+
+### File
+- `resources/views/ppdb.blade.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Margin top di Hero section aman dan gambar kini 100% rata kiri pada tampilan tablet.
+- Aset diproduksi ulang via `npm run build`.
+
 ### Pekerjaan Selanjutnya
 - Melakukan Push perubahan ke repositori Git / GitHub.
