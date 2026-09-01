@@ -1510,5 +1510,92 @@ DONE
 - Materi Utama dan Prospek Karier pada kartu Jurusan kini tampil berdampingan secara horizontal pada tampilan tablet selaras dengan Figma.
 - Aset diproduksi ulang via `npm run build`.
 
+
+## 2026-09-01 - Create Kontak Desktop Page (Figma Node 19889-5495)
+
+### Sedang / Sudah Membuat
+- Membaca & Memeriksa **MCP Figma Design Desktop Node** (`Node 19889-5495`):
+  - Memeriksa seluruh teks verbatim, 6 kartu kontak media sosial, padding, margin, dan warna brand `#0c61cf`.
+- Membuat **Halaman Kontak** ([`resources/views/kontak.blade.php`](file:///c:/Users/novit/Documents/Lomba/JHIC/folder%20laravel/Website-IDN-JHIC/resources/views/kontak.blade.php)):
+  - **Header Section**: Judul verbatim `Kami senang mendengar kabar dari Anda.`, subjudul, dan navigasi breadcrumb/tag `Kontak`.
+  - **6 Contact Cards Grid**:
+    1. **WhatsApp Card**: Border brand `#0c61cf`, bayangan `shadow-md`, nomor `+62 822-1010-2006`, dan tombol `Chat Whatsapp` dengan ikon panah.
+    2. **Instagram Card**: Username `@idnboardingschool`, tombol `Buka Instagram`.
+    3. **Email Card**: Email `info@idn.sch.id`, tombol `Kirim Email`.
+    4. **Facebook Card**: Name `IDN Boarding School`, tombol `Buka Facebook`.
+    5. **TikTok Card**: Name `IDN Boarding School`, tombol `Buka Tiktok`.
+    6. **YouTube Card**: Name `IDN TV`, tombol `Buka Youtube`.
+  - **Registration Banner CTA**: Banner biru pendaftaran PPDB 2027/2028 dengan 2 tombol CTA (`Mulai Pendaftaran` & `Tanya Via WhatsApp`).
+  - **Komponen Standar**: Menghubungkan Navbar aktif (`kontak`), Footer lengkap, dan Widget Chatbot.
+- Memperbarui Route di [`routes/web.php`](file:///c:/Users/novit/Documents/Lomba/JHIC/folder%20laravel/Website-IDN-JHIC/routes/web.php) agar `/kontak` mengembalikan `view('kontak')`.
+
+### File
+- `resources/views/kontak.blade.php`
+- `routes/web.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Halaman Kontak 100% presisi dan selaras dengan acuan node Figma 19889-5495.
+- Aset diproduksi ulang via `npm run build`.
+
+
+## 2026-09-01 - Update Contact Cards Hover Effects & Template Image Tags (kontak.blade.php)
+
+### Sedang / Sudah Membuat
+- Memperbarui **Halaman Kontak** ([`resources/views/kontak.blade.php`](file:///c:/Users/novit/Documents/Lomba/JHIC/folder%20laravel/Website-IDN-JHIC/resources/views/kontak.blade.php)):
+  - **Efek Hover Kartu Kontak**: Seluruh 6 kartu kontak (WhatsApp, Instagram, Email, Facebook, TikTok, YouTube) memiliki kondisi default ber-border standar `border-[#e9eaeb]`. Ketika di-hover, kartu berubah efeknya seperti WhatsApp (`hover:border-[#0c61cf] hover:shadow-[0px_4px_20px_rgba(0,0,0,0.1)]`) dan tombol berubah menjadi warna brand biru (`group-hover:bg-[#0c61cf] group-hover:text-white`).
+  - **Template Tag `<img>`**: Seluruh ikon media sosial diubah menjadi tag `<img src="{{ asset('assets/icon-...') }}" ...>` agar pengguna dapat dengan mudah mengganti file gambar ikon langsung di folder assets.
+
+### File
+- `resources/views/kontak.blade.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Efek hover kartu kontak kini seragam dan interaktif, serta tag `<img>` sudah disiapkan untuk seluruh ikon media sosial.
+- Aset diproduksi ulang via `npm run build`.
+
+
+## 2026-09-01 - Restore Native Chatbot Component (kontak.blade.php)
+
+### Sedang / Sudah Membuat
+- Memperbarui **Halaman Kontak** ([`resources/views/kontak.blade.php`](file:///c:/Users/novit/Documents/Lomba/JHIC/folder%20laravel/Website-IDN-JHIC/resources/views/kontak.blade.php)):
+  - Mengembalikan penggunaan komponen asli **`<x-chatbot />`** ([`resources/views/components/chatbot.blade.php`](file:///c:/Users/novit/Documents/Lomba/JHIC/folder%20laravel/Website-IDN-JHIC/resources/views/components/chatbot.blade.php)) lengkap dengan avatar maskot IDN AI Assistant (`assets/chatbot/avatar.png`), status indikator hijau, dan jendela obrolan AI yang interaktif.
+
+### File
+- `resources/views/kontak.blade.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Ikon launcher dan fungsionalitas Chatbot AI Assistant di halaman Kontak telah kembali seperti semula selaras dengan halaman lainnya.
+- Aset diproduksi ulang via `npm run build`.
+
+
+## 2026-09-01 - Fix Mobile & Tablet Navbar Dropdown on Kontak Page (kontak.blade.php)
+
+### Sedang / Sudah Membuat
+- Memperbarui **Halaman Kontak** ([`resources/views/kontak.blade.php`](file:///c:/Users/novit/Documents/Lomba/JHIC/folder%20laravel/Website-IDN-JHIC/resources/views/kontak.blade.php)):
+  - Menambahkan script tag **Alpine.js** (`<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>`) serta deklarasi font lengkap pada tag `<head>`.
+  - Komponen `<x-navbar />` mengandalkan Alpine.js (`x-data="{ mobileOpen: false }"`) untuk tombol hamburger menu pada tampilan Tablet dan Mobile.
+
+### File
+- `resources/views/kontak.blade.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Navbar pada tampilan mobile dan tablet di Halaman Kontak kini berjalan normal dan responsif 100% selaras dengan halaman lainnya.
+- Aset diproduksi ulang via `npm run build`.
+
 ### Pekerjaan Selanjutnya
 - Melakukan Push perubahan ke repositori Git / GitHub.

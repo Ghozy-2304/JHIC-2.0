@@ -25,7 +25,7 @@ Route::get('/career-center', function () {
 });
 
 Route::get('/kontak', function () {
-    return view('welcome', ['pageTitle' => 'Kontak']);
+    return view('kontak');
 });
 
 Route::get('/artikel/{slug}', [ArticleController::class, 'show'])->name('articles.show');
