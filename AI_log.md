@@ -1287,5 +1287,228 @@ DONE
 - Margin top di Hero section aman dan gambar kini 100% rata kiri pada tampilan tablet.
 - Aset diproduksi ulang via `npm run build`.
 
+
+## 2026-09-01 - Create Desktop Tentang Kami Page (Figma Node 19889:6004)
+
+### Sedang / Sudah Membuat
+- Membaca & Memeriksa **MCP Figma Design Desktop Node** (`Node 19889:6004`):
+  - Memeriksa seluruh ukuran komponen, padding, margin, dan hirarki teks verbatim.
+- Membuat **Halaman Tentang Kami** ([`resources/views/tentang-kami.blade.php`](file:///c:/Users/novit/Documents/Lomba/JHIC/folder%20laravel/Website-IDN-JHIC/resources/views/tentang-kami.blade.php)):
+  - **Hero Section**: Judul `Pesantren yang melek dengan kemajuan zaman.`, paragraf `Berdiri sejak 2017...`, dan kontainer placeholder gambar.
+  - **Sambutan Kepala Sekolah**: Teks sambutan `Mr Beny Fitriyanto, S.S., Gr.` dan kontainer placeholder gambar.
+  - **Visi & Misi Section**: Visi quote `Menjadi pesantren teknologi rujukan...`, 4 butir poin Misi, dan kontainer placeholder gambar kartu melayang.
+  - **Jurusan SMK Section**: 3 kartu jurusan penuh (`01 TKJ`, `02 RPL`, `03 DKV`) lengkap dengan Materi Utama (icon), Prospek Karier (pill tag), dan Banner `Belum yakin pilih jurusan yang mana?`.
+  - **Sekolah Kami Section**: `Lima Sekolah, Satu Keluarga Besar.` mencakup 1 kartu utama `IDN Jonggol` (Full Width) dan 4 kartu cabang `IDN Akhwat`, `IDN Solo`, `IDN Pamijahan`, `IDN Sentul` (Grid 2x2).
+  - **Banner PPDB CTA & Reusable Navbar & Footer**: `<x-navbar active="tentang-kami" />`, `<x-footer />`, dan `<x-chatbot />`.
+- Memperbarui **Rute Web** ([`routes/web.php`](file:///c:/Users/novit/Documents/Lomba/JHIC/folder%20laravel/Website-IDN-JHIC/routes/web.php#L15)) agar memetakan `/tentang-kami` ke `view('tentang-kami')`.
+
+### File
+- `resources/views/tentang-kami.blade.php`
+- `routes/web.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Gambar dikosongkan terlebih dahulu sesuai instruksi pengguna ("untuk img di kosongkan terlebih dahulu").
+- Seluruh teks, warna, margin, padding, dan struktur komponen 100% presisi selaras dengan desain Figma Node 19889:6004.
+- Aset diproduksi ulang via `npm run build`.
+
+
+## 2026-09-01 - Vertical Text Centering for Hero & Sambutan (tentang-kami.blade.php)
+
+### Sedang / Sudah Membuat
+- Memperbarui **Halaman Tentang Kami** ([`resources/views/tentang-kami.blade.php`](file:///c:/Users/novit/Documents/Lomba/JHIC/folder%20laravel/Website-IDN-JHIC/resources/views/tentang-kami.blade.php)):
+  - Mengubah perataan induk kontainer flex `items-start` menjadi **`items-center`** pada **Hero Section** dan **Sambutan Kepala Sekolah Section**.
+  - Teks deskripsi dan judul kini **terpenuhi secara simetris di tengah secara vertikal (tidak menempel ke atas)** relatif terhadap tinggi gambar.
+
+### File
+- `resources/views/tentang-kami.blade.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Perataan teks di Hero dan Sambutan kini seimbang dan berada tepat di tengah tinggi gambar.
+- Aset diproduksi ulang via `npm run build`.
+
+
+## 2026-09-01 - Add Image Tag Templates for Image Containers (tentang-kami.blade.php)
+
+### Sedang / Sudah Membuat
+- Memperbarui **Halaman Tentang Kami** ([`resources/views/tentang-kami.blade.php`](file:///c:/Users/novit/Documents/Lomba/JHIC/folder%20laravel/Website-IDN-JHIC/resources/views/tentang-kami.blade.php)):
+  - Menambahkan template tag `<img src="{{ asset('assets/nama-file.avif') }}" ...>` pada seluruh kontainer gambar (Visi Misi, IDN Jonggol, IDN Akhwat, IDN Solo, IDN Pamijahan, dan IDN Sentul) sehingga pengguna tinggal mengganti nama file gambar sesuai kebutuhan.
+
+### File
+- `resources/views/tentang-kami.blade.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Seluruh kontainer gambar kini siap pakai dengan sintaks `{{ asset('assets/...') }}`.
+- Aset diproduksi ulang via `npm run build`.
+
+
+## 2026-09-01 - Visi Misi 3-Card Floating Overlay Images Structure (tentang-kami.blade.php)
+
+### Sedang / Sudah Membuat
+- Memperbarui **Halaman Tentang Kami** ([`resources/views/tentang-kami.blade.php`](file:///c:/Users/novit/Documents/Lomba/JHIC/folder%20laravel/Website-IDN-JHIC/resources/views/tentang-kami.blade.php)):
+  - Mengubah struktur kontainer gambar Visi & Misi menjadi **3-Card Floating Overlay Layout**:
+    - Kartu Utama (Center): `jonggol ikhwan.avif` (500x374px, border putih 8px, rounded 18px, shadow-2xl).
+    - Kartu Melayang Kanan Atas (`rotate-6`): `backpacker.avif` (border putih 4px, rounded 12px, shadow-xl).
+    - Kartu Melayang Kiri Bawah (`-rotate-6`): `basket.avif` (border putih 4px, rounded 12px, shadow-xl).
+
+### File
+- `resources/views/tentang-kami.blade.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Efek kartu melayang dengan rotasi presisi 100% identik dengan desain referensi Figma.
+- Aset diproduksi ulang via `npm run build`.
+
+
+## 2026-09-01 - Set Floating Cards Dimensions to 160x100px (tentang-kami.blade.php)
+
+### Sedang / Sudah Membuat
+- Memperbarui **Halaman Tentang Kami** ([`resources/views/tentang-kami.blade.php`](file:///c:/Users/novit/Documents/Lomba/JHIC/folder%20laravel/Website-IDN-JHIC/resources/views/tentang-kami.blade.php)):
+  - Menyesuaikan ukuran kedua kartu melayang (Top-Right dan Bottom-Left) di bagian Visi Misi menjadi tepat **`160x100px`** (`w-[160px] h-[100px]`) dengan border putih `border-4 border-white`.
+
+### File
+- `resources/views/tentang-kami.blade.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Ukuran kedua kartu melayang kini persis 160x100px sesuai spesifikasi instruksi.
+- Aset diproduksi ulang via `npm run build`.
+
+
+## 2026-09-01 - Responsive Tablet View Implementation for Tentang Kami (Figma Node 20200-12545)
+
+### Sedang / Sudah Membuat
+- Membaca & Memeriksa **MCP Figma Design Tablet Node** (`Node 20200-12545`):
+  - Memeriksa seluruh ukuran komponen tablet (`max-w-[706px]`), padding (`px-6 md:px-[64px]`), margin, dan hirarki teks verbatim.
+- Memperbarui **Halaman Tentang Kami** ([`resources/views/tentang-kami.blade.php`](file:///c:/Users/novit/Documents/Lomba/JHIC/folder%20laravel/Website-IDN-JHIC/resources/views/tentang-kami.blade.php)):
+  - **Kontainer Utama Tablet**: Menyesuaikan `max-w-[706px]` pada breakpoint `md:`, `px-6 md:px-[64px]` dan `py-12 md:py-[90px]` sesuai standar `rules_AI.md`.
+  - **Flex Layouts**: Mengatur perataan teks dan gambar pada Hero, Sambutan, Visi Misi, Jurusan SMK, dan Sekolah Kami agar bertransisi secara mulus dari Desktop (`1440px`), Tablet (`768px`), hingga Mobile (`440px`).
+
+### File
+- `resources/views/tentang-kami.blade.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Tampilan Tablet 100% presisi dan selaras dengan Figma Node 20200-12545.
+- Aset diproduksi ulang via `npm run build`.
+
+
+## 2026-09-01 - Reorder Sambutan Section (Text First, Image Below on Mobile/Tablet)
+
+### Sedang / Sudah Membuat
+- Memperbarui **Halaman Tentang Kami** ([`resources/views/tentang-kami.blade.php`](file:///c:/Users/novit/Documents/Lomba/JHIC/folder%20laravel/Website-IDN-JHIC/resources/views/tentang-kami.blade.php)):
+  - Mengatur urutan elemen pada **Sambutan Kepala Sekolah Section**:
+    - **Tampilan Mobile & Tablet** (`flex-col`): Teks sambutan berada di **Atas** (`order-1`) dan foto `Mr Beny.avif` di **Bawah** (`order-2`).
+    - **Tampilan Desktop** (`lg:flex-row`): Foto di **Kiri** (`lg:order-1`) dan Teks sambutan di **Kanan** (`lg:order-2`).
+
+### File
+- `resources/views/tentang-kami.blade.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Urutan elemen pada tampilan mobile/tablet kini menyajikan teks sambutan terlebih dahulu, diikuti dengan foto Mr. Beny di bawahnya selaras dengan Figma.
+- Aset diproduksi ulang via `npm run build`.
+
+
+## 2026-09-01 - Update Responsive Image Sizes & Aspect Ratios (tentang-kami.blade.php)
+
+### Sedang / Sudah Membuat
+- Memperbarui **Halaman Tentang Kami** ([`resources/views/tentang-kami.blade.php`](file:///c:/Users/novit/Documents/Lomba/JHIC/folder%20laravel/Website-IDN-JHIC/resources/views/tentang-kami.blade.php)):
+  - Menyesuaikan ukuran dan rasio gambar responsif pada **Hero Header** dan **Sambutan Kepala Sekolah** agar persis 100% selaras dengan Figma Node `20200-12545`:
+    - Gambar Hero & Sambutan menggunakan `aspect-square`, `max-w-[400px] lg:w-[410px]`, dan `object-cover` untuk mengisi penuh bingkai tanpa garis kosong/terpotong.
+
+### File
+- `resources/views/tentang-kami.blade.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Ukuran gambar pada tampilan responsif mobile dan tablet kini 100% presisi selaras dengan Figma.
+- Aset diproduksi ulang via `npm run build`.
+
+
+## 2026-09-01 - Set Responsive Image Container Widths to w-full (tentang-kami.blade.php)
+
+### Sedang / Sudah Membuat
+- Memperbarui **Halaman Tentang Kami** ([`resources/views/tentang-kami.blade.php`](file:///c:/Users/novit/Documents/Lomba/JHIC/folder%20laravel/Website-IDN-JHIC/resources/views/tentang-kami.blade.php)):
+  - Mengubah lebar kontainer gambar **Hero Section** (`ojan.avif`) dan **Sambutan Kepala Sekolah** (`Mr Beny.avif`) pada tampilan responsif (Mobile & Tablet) dari `max-w-[400px]` menjadi **`w-full lg:w-[410px] lg:max-w-[410px]`**.
+  - Lebar gambar pada layar responsif kini **100% selebar (setara) dengan komponen teks** di atas/bawahnya.
+
+### File
+- `resources/views/tentang-kami.blade.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Gambar pada tampilan responsif kini membentang penuh 100% selebar blok teks di atas/bawahnya.
+- Aset diproduksi ulang via `npm run build`.
+
+
+## 2026-09-01 - Complete Tablet View Implementation per Figma Node 20123-29917 (tentang-kami.blade.php)
+
+### Sedang / Sudah Membuat
+- Membaca & Memeriksa **MCP Figma Design Tablet Node** (`Node 20123-29917`):
+  - Memeriksa seluruh tata letak tablet (`834px` width), padding, margin, dan urutan komponen.
+- Memperbarui **Halaman Tentang Kami** ([`resources/views/tentang-kami.blade.php`](file:///c:/Users/novit/Documents/Lomba/JHIC/folder%20laravel/Website-IDN-JHIC/resources/views/tentang-kami.blade.php)):
+  - **Hero Header Section**: Gambar `ojan.avif` membentang penuh di bawah paragraf deskripsi (`w-full max-w-[706px] h-[300px] sm:h-[400px] md:h-[450px]`).
+  - **Sambutan Kepala Sekolah Section**: Teks Sambutan di posisi **Atas** (terpusat), diikuti oleh Foto `Mr Beny.avif` dan Badge Nama `Beny Fitriyanto, S.S., Gr.` terpusat di **Bawah** sesuai desain Node 20123-29917.
+
+### File
+- `resources/views/tentang-kami.blade.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Tampilan Tablet kini 100% presisi selaras dengan node referensi Figma 20123-29917.
+- Aset diproduksi ulang via `npm run build`.
+
+
+## 2026-09-01 - Fix Jurusan SMK Cards Layout on Tablet (Figma Node 20123-29917)
+
+### Sedang / Sudah Membuat
+- Memperbarui **Halaman Tentang Kami** ([`resources/views/tentang-kami.blade.php`](file:///c:/Users/novit/Documents/Lomba/JHIC/folder%20laravel/Website-IDN-JHIC/resources/views/tentang-kami.blade.php)):
+  - Menyesuaikan tata letak 3 Kartu Jurusan SMK (TKJ, RPL, DKV) pada tampilan Tablet (`sm:` dan `md:`):
+    - Mengelompokkan **Materi Utama** dan **Prospek Karier** dalam kontainer `flex flex-col sm:flex-row gap-8 sm:gap-12 lg:gap-[56px]` sehingga berdampingan secara **Horizontal (Side-by-Side)** di bawah deskripsi jurusan pada layar tablet, persis 100% selaras dengan acuan node Figma `20123-29917`.
+
+### File
+- `resources/views/tentang-kami.blade.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Materi Utama dan Prospek Karier pada kartu Jurusan kini tampil berdampingan secara horizontal pada tampilan tablet selaras dengan Figma.
+- Aset diproduksi ulang via `npm run build`.
+
 ### Pekerjaan Selanjutnya
 - Melakukan Push perubahan ke repositori Git / GitHub.

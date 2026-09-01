@@ -13,7 +13,7 @@ Route::get('/ppdb', function () {
 });
 
 Route::get('/tentang-kami', function () {
-    return view('welcome', ['pageTitle' => 'Tentang Kami']);
+    return view('tentang-kami');
 });
 
 Route::get('/program/{slug?}', function ($slug = null) {
