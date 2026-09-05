@@ -1599,3 +1599,28 @@ DONE
 
 ### Pekerjaan Selanjutnya
 - Melakukan Push perubahan ke repositori Git / GitHub.
+
+
+## 2026-09-05 - Memasukkan Seluruh Data Artikel dari Figma ke ArticleSeeder
+
+### Sedang / Sudah Membuat
+- Membaca dan mengekstrak seluruh 22 data artikel lengkap (judul, kategori, tanggal rilis, estimasi waktu baca, serta struktur paragraf & sub-heading) secara presisi 100% dari desain Figma MCP (`node-id=20856-8335`).
+- Mengatur kolom `image` menjadi string kosong (`''`) sesuai instruksi.
+- Memperbarui `database/seeders/ArticleSeeder.php` dengan format `Article::updateOrCreate()` untuk seluruh 22 artikel agar teks dan paragraf 100% identik dengan desain Figma.
+- Mengeksekusi verifikasi seeder `php artisan db:seed --class=ArticleSeeder` dan memastikan seluruh record terisi dengan sukses tanpa syntax/runtime error.
+
+### File
+- `database/seeders/ArticleSeeder.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Seluruh 22 artikel (termasuk judul, sub-heading `<h3>`, dan paragraf `<p>`) dari Figma telah masuk ke seeder.
+- Nilai `image` dikosongkan (`''`) terlebih dahulu sesuai instruksi.
+- Seeder menggunakan `updateOrCreate` berbasis `slug` unik sehingga aman dijalankan berulang kali.
+
+### Pekerjaan Selanjutnya
+- Lakukan Commit & Push perubahan ke repositori Git / GitHub.
+
