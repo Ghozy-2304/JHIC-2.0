@@ -45,7 +45,7 @@
         
         <!-- LOGO BRAND -->
         <a href="/" class="flex items-center shrink-0">
-            <img src="{{ asset('assets/logos/logo_idn.png') }}" alt="Logo IDN Boarding School" class="h-7 sm:h-8 w-auto block">
+            <img src="{{ asset('assets/logos/logo_idn.png') }}" alt="Logo IDN Boarding School" width="128" height="32" class="h-7 sm:h-8 w-auto block">
         </a>
 
         <!-- NAVIGATION MENU (DESKTOP) -->

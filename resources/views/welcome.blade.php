@@ -9,10 +9,17 @@
             description="IDN Boarding School adalah Sekolah SMP & SMA IT Terbaik di Bogor yang berfokus pada Menghafal Al-Qur'an dan Penguasaan Teknologi (IT), Coding, Cyber Security, dan UI/UX."
         />
         
-        <!-- Fonts -->
+        <!-- Non-blocking Fonts & Preconnect -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&family=Inter:ital,wght@0,400;0,500;0,600;1,500&family=Funnel+Display:wght@500;600;700;800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+        <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&family=Inter:ital,wght@0,400;0,500;0,600;1,500&family=Funnel+Display:wght@500;600;700;800&family=Figtree:wght@400;500;600;700&display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&family=Inter:ital,wght@0,400;0,500;0,600;1,500&family=Funnel+Display:wght@500;600;700;800&family=Figtree:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
+        <noscript>
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&family=Inter:ital,wght@0,400;0,500;0,600;1,500&family=Funnel+Display:wght@500;600;700;800&family=Figtree:wght@400;500;600;700&display=swap">
+        </noscript>
+
+        <!-- Preload LCP Hero Image -->
+        <link rel="preload" as="image" href="{{ asset('assets/pages/home/main-image.avif') }}" type="image/avif" fetchpriority="high">
         
         <!-- Alpine.js for Interactive Component State -->
         <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -66,7 +73,7 @@
             <!-- RIGHT HERO IMAGE (Full width on mobile/tablet) -->
             <div class="w-full lg:w-[449px] h-[320px] sm:h-[400px] lg:h-[456px] shrink-0 relative mt-4 lg:mt-0">
                 <div class="w-full h-full rounded-[18px] shadow-[12px_12px_56px_0px_rgba(0,4,45,0.16)] overflow-hidden bg-slate-200">
-                    <img src="{{ asset('assets/pages/home/main-image.avif') }}" alt="Gedung IDN Boarding School" class="w-full h-full object-cover">
+                    <img src="{{ asset('assets/pages/home/main-image.avif') }}" alt="Gedung IDN Boarding School" width="449" height="456" fetchpriority="high" loading="eager" decoding="async" class="w-full h-full object-cover">
                 </div>
             </div>
 
@@ -369,28 +376,28 @@
             <!-- AWARDS GRID (1 column on mobile/tablet, 2 on desktop - 550x312px) -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 w-full justify-items-center">
                 <div class="group w-full max-w-[550px] aspect-[550/312] rounded-[14px] overflow-hidden bg-slate-200 shadow-sm border border-[#e9eaeb] transition-all duration-300 hover:shadow-md">
-                    <img src="{{ asset('assets/prestasi/award-image-1.avif') }}" alt="Pencapaian Wisudawan 1" class="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105">
+                    <img src="{{ asset('assets/prestasi/award-image-1.avif') }}" alt="Pencapaian Wisudawan 1" loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105">
                 </div>
                 <div class="group w-full max-w-[550px] aspect-[550/312] rounded-[14px] overflow-hidden bg-slate-200 shadow-sm border border-[#e9eaeb] transition-all duration-300 hover:shadow-md">
-                    <img src="{{ asset('assets/prestasi/award-image-2.avif') }}" alt="Pencapaian Wisudawan 2" class="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105">
+                    <img src="{{ asset('assets/prestasi/award-image-2.avif') }}" alt="Pencapaian Wisudawan 2" loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105">
                 </div>
                 <div class="group w-full max-w-[550px] aspect-[550/312] rounded-[14px] overflow-hidden bg-slate-200 shadow-sm border border-[#e9eaeb] transition-all duration-300 hover:shadow-md">
-                    <img src="{{ asset('assets/prestasi/award-image-3.avif') }}" alt="Pencapaian Wisudawan 3" class="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105">
+                    <img src="{{ asset('assets/prestasi/award-image-3.avif') }}" alt="Pencapaian Wisudawan 3" loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105">
                 </div>
                 <div class="group w-full max-w-[550px] aspect-[550/312] rounded-[14px] overflow-hidden bg-slate-200 shadow-sm border border-[#e9eaeb] transition-all duration-300 hover:shadow-md">
-                    <img src="{{ asset('assets/prestasi/award-image-4.avif') }}" alt="Pencapaian Wisudawan 4" class="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105">
+                    <img src="{{ asset('assets/prestasi/award-image-4.avif') }}" alt="Pencapaian Wisudawan 4" loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105">
                 </div>
                 <div class="group w-full max-w-[550px] aspect-[550/312] rounded-[14px] overflow-hidden bg-slate-200 shadow-sm border border-[#e9eaeb] transition-all duration-300 hover:shadow-md">
-                    <img src="{{ asset('assets/prestasi/award-image-5.avif') }}" alt="Pencapaian Wisudawan 5" class="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105">
+                    <img src="{{ asset('assets/prestasi/award-image-5.avif') }}" alt="Pencapaian Wisudawan 5" loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105">
                 </div>
                 <div class="group w-full max-w-[550px] aspect-[550/312] rounded-[14px] overflow-hidden bg-slate-200 shadow-sm border border-[#e9eaeb] transition-all duration-300 hover:shadow-md">
-                    <img src="{{ asset('assets/prestasi/award-image-6.avif') }}" alt="Pencapaian Wisudawan 6" class="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105">
+                    <img src="{{ asset('assets/prestasi/award-image-6.avif') }}" alt="Pencapaian Wisudawan 6" loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105">
                 </div>
                 <div class="group w-full max-w-[550px] aspect-[550/312] rounded-[14px] overflow-hidden bg-slate-200 shadow-sm border border-[#e9eaeb] transition-all duration-300 hover:shadow-md">
-                    <img src="{{ asset('assets/prestasi/award-image-7.avif') }}" alt="Pencapaian Wisudawan 7" class="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105">
+                    <img src="{{ asset('assets/prestasi/award-image-7.avif') }}" alt="Pencapaian Wisudawan 7" loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105">
                 </div>
                 <div class="group w-full max-w-[550px] aspect-[550/312] rounded-[14px] overflow-hidden bg-slate-200 shadow-sm border border-[#e9eaeb] transition-all duration-300 hover:shadow-md">
-                    <img src="{{ asset('assets/prestasi/award-image-8.avif') }}" alt="Pencapaian Wisudawan 8" class="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105">
+                    <img src="{{ asset('assets/prestasi/award-image-8.avif') }}" alt="Pencapaian Wisudawan 8" loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105">
                 </div>
             </div>
 
@@ -458,7 +465,7 @@
                     @foreach($partners as $p)
                     <div class="bg-white rounded-[14px] w-[130px] sm:w-[160px] h-[80px] sm:h-[100px] flex flex-col items-center justify-center shrink-0 shadow-2xs transition-all duration-200 hover:border-[#0c61cf] hover:shadow-md overflow-hidden">
                         @if(isset($p['img']))
-                            <img src="{{ asset('assets/partners/' . rawurlencode($p['img'])) }}" alt="{{ $p['name'] }}" class="w-full h-full object-contain">
+                            <img src="{{ asset('assets/partners/' . rawurlencode($p['img'])) }}" alt="{{ $p['name'] }}" loading="lazy" decoding="async" class="w-full h-full object-contain">
                         @else
                             <div class="w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs mb-1" style="background-color: {{ $p['color'] }}20; color: {{ $p['color'] }};">
                                 🏢
@@ -471,7 +478,7 @@
                     @foreach($partners as $p)
                     <div class="bg-white rounded-[14px] w-[130px] sm:w-[160px] h-[80px] sm:h-[100px] flex flex-col items-center justify-center shrink-0 transition-all duration-200 hover:border-[#0c61cf] hover:shadow-md overflow-hidden">
                         @if(isset($p['img']))
-                            <img src="{{ asset('assets/partners/' . rawurlencode($p['img'])) }}" alt="{{ $p['name'] }}" class="w-full h-full object-contain">
+                            <img src="{{ asset('assets/partners/' . rawurlencode($p['img'])) }}" alt="{{ $p['name'] }}" loading="lazy" decoding="async" class="w-full h-full object-contain">
                         @else
                             <div class="w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs mb-1" style="background-color: {{ $p['color'] }}20; color: {{ $p['color'] }};">
                                 🏢
@@ -507,7 +514,7 @@
                 <!-- Card 1 -->
                 <div class="bg-white rounded-[18px] overflow-hidden border border-[#e9eaeb] flex flex-col justify-between w-full max-w-[450px] h-[460px] shadow-2xs transition-all duration-300 hover:border-[#0c61cf] hover:shadow-lg hover:-translate-y-1">
                     <div class="h-[300px] w-full overflow-hidden bg-slate-100 relative shrink-0">
-                        <img src="{{ asset('assets/pages/home/rel_IIBS.avif') }}" alt="Award 1" class="w-full h-full object-cover object-top">
+                        <img src="{{ asset('assets/pages/home/rel_IIBS.avif') }}" alt="Award 1" loading="lazy" decoding="async" class="w-full h-full object-cover object-top">
                     </div>
                     <div class="p-5 flex flex-col justify-between bg-white flex-1">
                         <div class="flex flex-col gap-2">
@@ -527,7 +534,7 @@
                 <!-- Card 2 -->
                 <div class="bg-white rounded-[18px] overflow-hidden border border-[#e9eaeb] flex flex-col justify-between w-full max-w-[450px] h-[460px] shadow-2xs transition-all duration-300 hover:border-[#0c61cf] hover:shadow-lg hover:-translate-y-1">
                     <div class="h-[300px] w-full overflow-hidden bg-slate-100 relative shrink-0">
-                        <img src="{{ asset('assets/pages/home/rel_jamnyut.avif') }}" alt="Award 2" class="w-full h-full object-cover object-top">
+                        <img src="{{ asset('assets/pages/home/rel_jamnyut.avif') }}" alt="Award 2" loading="lazy" decoding="async" class="w-full h-full object-cover object-top">
                     </div>
                     <div class="p-5 flex flex-col justify-between bg-white flex-1">
                         <div class="flex flex-col gap-2">
@@ -547,7 +554,7 @@
                 <!-- Card 3 -->
                 <div class="bg-white rounded-[18px] overflow-hidden border border-[#e9eaeb] flex flex-col justify-between w-full max-w-[450px] h-[460px] shadow-2xs transition-all duration-300 hover:border-[#0c61cf] hover:shadow-lg hover:-translate-y-1">
                     <div class="h-[300px] w-full overflow-hidden bg-slate-100 relative shrink-0">
-                        <img src="{{ asset('assets/pages/home/rel_TFI.avif') }}" alt="Award 3" class="w-full h-full object-cover object-top">
+                        <img src="{{ asset('assets/pages/home/rel_TFI.avif') }}" alt="Award 3" loading="lazy" decoding="async" class="w-full h-full object-cover object-top">
                     </div>
                     <div class="p-5 flex flex-col justify-between bg-white flex-1">
                         <div class="flex flex-col gap-2">
@@ -655,7 +662,7 @@
                      onmousemove="const r=this.getBoundingClientRect(); this.style.setProperty('--mouse-x', (event.clientX-r.left)+'px'); this.style.setProperty('--mouse-y', (event.clientY-r.top)+'px');">
                     
                     @if($uImg)
-                        <img src="{{ asset('assets/universities/' . rawurlencode($uImg)) }}" alt="{{ $uName }}" class="w-full h-full rounded-[13px] sm:rounded-[17px] object-cover shrink-0">
+                        <img src="{{ asset('assets/universities/' . rawurlencode($uImg)) }}" alt="{{ $uName }}" loading="lazy" decoding="async" class="w-full h-full rounded-[13px] sm:rounded-[17px] object-cover shrink-0">
                     @else
                         <div class="w-10 sm:w-12 h-10 sm:h-12 rounded-full bg-[#f0f6fe] border border-[#c2d8f5] text-[#0c61cf] flex items-center justify-center font-bold text-base sm:text-lg shrink-0">
                             🎓
