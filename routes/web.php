@@ -55,32 +55,36 @@ Route::get('/program/{slug?}', function ($slug = null) {
 
 Route::get('/career-center', function () {
     $jobs = \App\Models\CareerJob::active()
-        ->orderBy('id', 'asc')
+        ->orderByRaw('COALESCE(posted_at, created_at) DESC')
+        ->orderBy('id', 'desc')
         ->get()
         ->map(function ($j) {
             return [
                 'id' => $j->id,
                 'title' => $j->title,
                 'major' => $j->major,
-                'salary' => $j->salary,
+                'salary' => $j->salary ?: 'Kompetitif',
                 'workLocation' => $j->work_location,
                 'workType' => $j->work_type,
                 'companyName' => $j->company_name,
-                'companyLogo' => $j->company_logo_char,
+                'companyLogo' => $j->company_logo_char ?: strtoupper(substr($j->company_name, 0, 1)),
                 'companyImg' => $j->company_img ? asset($j->company_img) : null,
-                'companyBg' => $j->company_bg,
+                'companyBg' => $j->company_bg ?: 'bg-[#0c61cf]',
                 'location' => $j->location,
                 'locationGroup' => $j->location_group,
-                'postedTime' => $j->posted_time,
-                'postTimeCategory' => $j->post_time_category,
+                'postedTime' => $j->posted_time_ago,
+                'postTimeCategory' => $j->calculated_time_category,
                 'applyUrl' => $j->apply_url,
+                'sourcePlatform' => $j->source_platform ?: 'Mitra Resmi IDN',
+                'requirements' => $j->requirements,
             ];
         });
     return view('career-center', compact('jobs'));
 });
 
-Route::get('/kontak', [App\Http\Controllers\ContactController::class, 'index'])->name('contact.index');
-Route::post('/kontak', [App\Http\Controllers\ContactController::class, 'store'])->name('contact.store');
+Route::get('/kontak', function () {
+    return view('kontak');
+})->name('contact.index');
 
 Route::get('/artikel', [ArticleController::class, 'index'])->name('articles.index');
 Route::get('/artikel/{slug}', [ArticleController::class, 'show'])->name('articles.show');
@@ -107,11 +111,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
         });
         Route::get('/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
         Route::resource('articles', App\Http\Controllers\Admin\ArticleController::class)->except(['show']);
-        Route::resource('career', App\Http\Controllers\Admin\CareerJobController::class)->except(['show']);
+        
+        // Career Center Admin Routes
+        Route::post('career/fetch-meta', [App\Http\Controllers\Admin\CareerJobController::class, 'fetchMeta'])->name('career.fetch-meta');
+        Route::post('career/{career}/duplicate', [App\Http\Controllers\Admin\CareerJobController::class, 'duplicate'])->name('career.duplicate');
         Route::patch('career/{career}/toggle', [App\Http\Controllers\Admin\CareerJobController::class, 'toggle'])->name('career.toggle');
-        Route::resource('messages', App\Http\Controllers\Admin\ContactMessageController::class)->only(['index', 'show', 'destroy']);
-        Route::patch('messages/{message}/toggle', [App\Http\Controllers\Admin\ContactMessageController::class, 'toggle'])->name('messages.toggle');
-        Route::patch('messages/{message}/notes', [App\Http\Controllers\Admin\ContactMessageController::class, 'updateNotes'])->name('messages.notes');
+        Route::resource('career', App\Http\Controllers\Admin\CareerJobController::class)->except(['show']);
     });
 });
 

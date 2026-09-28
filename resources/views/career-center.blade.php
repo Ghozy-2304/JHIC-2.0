@@ -308,10 +308,11 @@
                                         <p class="text-[#0c61cf] font-semibold text-sm lg:text-base" x-text="job.salary"></p>
                                     </div>
 
-                                    <!-- Job Tags (Jurusan Badge Hidden as requested) -->
+                                    <!-- Job Tags & Source Platform -->
                                     <div class="flex flex-wrap items-center gap-2 my-3">
                                         <span class="bg-[#f8fafc] border border-[#e2e8f0] text-[#475569] text-xs font-medium px-2.5 py-1 rounded-md" x-text="job.workLocation"></span>
                                         <span class="bg-[#f8fafc] border border-[#e2e8f0] text-[#475569] text-xs font-medium px-2.5 py-1 rounded-md" x-text="job.workType"></span>
+                                        <span class="bg-blue-50 border border-blue-200 text-[#0c61cf] text-xs font-semibold px-2.5 py-1 rounded-md" x-text="job.sourcePlatform || 'Mitra IDN'"></span>
                                     </div>
 
                                     <!-- Company Info -->
@@ -406,29 +407,49 @@
                                 <span class="font-semibold text-[#181d27]" x-text="selectedJobModal.major"></span>
                             </div>
                             <div class="flex justify-between">
-                                <span class="text-[#717680]">Tipe Pekerjaan:</span>
+                                <span class="text-[#717680]">Tipe & Mode:</span>
                                 <span class="font-semibold text-[#181d27]" x-text="`${selectedJobModal.workLocation} · ${selectedJobModal.workType}`"></span>
                             </div>
                             <div class="flex justify-between">
-                                <span class="text-[#717680]">Waktu Post:</span>
+                                <span class="text-[#717680]">Platform:</span>
+                                <span class="font-semibold text-[#0c61cf]" x-text="selectedJobModal.sourcePlatform || 'Mitra Resmi IDN'"></span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-[#717680]">Waktu Rilis:</span>
                                 <span class="font-semibold text-[#181d27]" x-text="selectedJobModal.postedTime"></span>
                             </div>
                         </div>
 
                         <div class="space-y-2 text-sm text-[#414651]">
-                            <h4 class="font-semibold text-[#181d27]">Persyaratan Singkat:</h4>
-                            <ul class="list-disc pl-5 space-y-1 text-xs md:text-sm">
-                                <li>Lulusan SMK IDN (TKJ / RPL / DKV) atau sederajat.</li>
-                                <li>Memiliki portofolio karya / sertifikasi internasional pendukung.</li>
-                                <li>Mampu bekerja secara mandiri maupun dalam tim.</li>
-                            </ul>
+                            <h4 class="font-semibold text-[#181d27]">Kualifikasi / Persyaratan:</h4>
+                            <template x-if="selectedJobModal.requirements">
+                                <p class="text-xs md:text-sm text-[#475569] whitespace-pre-line leading-relaxed" x-text="selectedJobModal.requirements"></p>
+                            </template>
+                            <template x-if="!selectedJobModal.requirements">
+                                <ul class="list-disc pl-5 space-y-1 text-xs md:text-sm">
+                                    <li>Lulusan atau santri aktif SMK IDN (RPL / TKJ / DKV).</li>
+                                    <li>Memiliki portofolio karya / sertifikasi internasional pendukung.</li>
+                                    <li>Mampu bekerja secara mandiri maupun dalam tim dengan akhlak mulia.</li>
+                                </ul>
+                            </template>
                         </div>
 
                         <div class="pt-2 flex gap-3">
-                            <button @click="alert('Lamaran Anda berhasil dikirim ke mitra IDN!'); selectedJobModal = null;" 
-                                    class="flex-1 bg-[#0c61cf] hover:bg-[#094fa5] hover:shadow-lg text-white py-3 rounded-full font-semibold text-center text-sm md:text-base shadow-md transition-all duration-200">
-                                Lamar Pekerjaan Ini
-                            </button>
+                            <template x-if="selectedJobModal.applyUrl">
+                                <a :href="selectedJobModal.applyUrl" target="_blank" rel="noopener noreferrer"
+                                   class="flex-1 bg-[#0c61cf] hover:bg-[#094fa5] hover:shadow-lg text-white py-3 rounded-full font-semibold text-center text-sm md:text-base shadow-md transition-all duration-200 flex items-center justify-center gap-2">
+                                    <span>Lamar di <span x-text="selectedJobModal.sourcePlatform || 'Portal Resmi'"></span></span>
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                                    </svg>
+                                </a>
+                            </template>
+                            <template x-if="!selectedJobModal.applyUrl">
+                                <a href="https://wa.me/6282210102006?text=Halo%20Admin%20Career%20Center%20IDN,%20saya%20ingin%20melamar%20posisi%20pekerjaan%20ini" target="_blank" rel="noopener noreferrer"
+                                   class="flex-1 bg-[#0c61cf] hover:bg-[#094fa5] hover:shadow-lg text-white py-3 rounded-full font-semibold text-center text-sm md:text-base shadow-md transition-all duration-200 flex items-center justify-center gap-2">
+                                    <span>Hubungi Admin IDN</span>
+                                </a>
+                            </template>
                             <button @click="selectedJobModal = null" 
                                     class="px-5 border border-[#e9eaeb] text-[#414651] hover:bg-slate-100 hover:border-[#0c61cf] hover:text-[#0c61cf] py-3 rounded-full font-semibold text-sm transition-all duration-200">
                                 Tutup

@@ -88,7 +88,7 @@
                             <!-- Thumbnail -->
                             <td class="py-3.5 pl-6">
                                 <div class="w-14 h-11 rounded-lg overflow-hidden bg-slate-100 border border-[#e2e8f0] shrink-0">
-                                    <img src="{{ asset('assets/' . rawurlencode($art->image)) }}" alt="{{ $art->title }}" class="w-full h-full object-cover">
+                                    <img src="{{ asset('assets/' . $art->image) }}" alt="{{ $art->title }}" class="w-full h-full object-cover">
                                 </div>
                             </td>
 

@@ -1,3 +1,137 @@
+## 2026-09-28 - Fix Article Images 404 on Linux VPS (Remove rawurlencode from path)
+
+### Sedang / Sudah Membuat
+- Memperbaiki masalah gambar artikel tidak muncul (404 Not Found) pada deployment VPS Linux (Nginx/Apache):
+  - Menghapus pembungkusan `rawurlencode()` pada path gambar artikel (`$article->image` dan `$article->detail_image`) di seluruh view artikel publik dan admin.
+  - Pada Linux/Nginx, `rawurlencode('ekskul/basket-hitam.avif')` menghasilkan `ekskul%2Fbasket-hitam.avif`. Web server Linux memperlakukan `%2F` secara literal dan gagal memetakan subdirektori, menyebabkan gambar berstatus 404 Not Found.
+  - File yang diperbaiki:
+    - [articles/index.blade.php](file:///c:/Users/novit/Documents/Lomba/JHIC/folder%20laravel/Website-IDN-JHIC/resources/views/articles/index.blade.php): Featured article cover & grid article cards.
+    - [articles/show.blade.php](file:///c:/Users/novit/Documents/Lomba/JHIC/folder%20laravel/Website-IDN-JHIC/resources/views/articles/show.blade.php): Detail hero image & related articles sidebar.
+    - [admin/articles/index.blade.php](file:///c:/Users/novit/Documents/Lomba/JHIC/folder%20laravel/Website-IDN-JHIC/resources/views/admin/articles/index.blade.php): Thumbnail artikel di tabel admin.
+    - [admin/articles/edit.blade.php](file:///c:/Users/novit/Documents/Lomba/JHIC/folder%20laravel/Website-IDN-JHIC/resources/views/admin/articles/edit.blade.php): Preview gambar aktif pada form edit.
+    - [admin/dashboard.blade.php](file:///c:/Users/novit/Documents/Lomba/JHIC/folder%20laravel/Website-IDN-JHIC/resources/views/admin/dashboard.blade.php): Thumbnail artikel terbaru di dashboard admin.
+
+### File
+- `resources/views/articles/index.blade.php`
+- `resources/views/articles/show.blade.php`
+- `resources/views/admin/articles/index.blade.php`
+- `resources/views/admin/articles/edit.blade.php`
+- `resources/views/admin/dashboard.blade.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Gambar artikel kini menggunakan path URL bersih `asset('assets/' . $article->image)` yang kompatibel penuh dengan Nginx/Apache di VPS Linux.
+
+## 2026-09-26 - Implement Career Center Smart Auto-Fetch, Realtime Dates, Expiration & Duplication
+
+### Sedang / Sudah Membuat
+- Mengimplementasikan sistem **Career Center Smart Automation** pada Admin Panel dan Halaman Publik Career Center IDN:
+  - **Database Migration ([2026_09_26_015057_add_platform_and_dates_to_career_jobs_table.php](file:///c:/Users/novit/Documents/Lomba/JHIC/folder%20laravel/Website-IDN-JHIC/database/migrations/2026_09_26_015057_add_platform_and_dates_to_career_jobs_table.php))**:
+    - Menambahkan kolom `source_platform`, `posted_at`, `expires_at`, dan `requirements`.
+  - **Model ([CareerJob.php](file:///c:/Users/novit/Documents/Lomba/JHIC/folder%20laravel/Website-IDN-JHIC/app/Models/CareerJob.php))**:
+    - Menambahkan accessor `posted_time_ago` (kalkulasi dinamis Carbon berbahasa Indonesia `"2 hari yang lalu"`, `"Baru saja"`).
+    - Menambahkan accessor `calculated_time_category` (kategori filter dinamis `Hari ini`, `Minggu ini`, dll).
+    - Menambahkan accessor `is_expired` dan memperbarui `scopeActive()` agar lowongan yang telah melewati deadline (`expires_at`) otomatis disembunyikan dari publik.
+  - **Fitur Cerdas Auto-Fetch URL ([CareerJobController.php](file:///c:/Users/novit/Documents/Lomba/JHIC/folder%20laravel/Website-IDN-JHIC/app/Http/Controllers/Admin/CareerJobController.php))**:
+    - Menambahkan method `fetchMeta()` yang secara otomatis memindai OpenGraph metadata & tag judul dari tautan lowongan eksternal (Glints, Jobstreet, LinkedIn, Kalibrr, KitaLulus, Dealls, dsb).
+    - Otomatis mendeteksi platform sumber, nama perusahaan, posisi pekerjaan, jurusan yang cocok (RPL/TKJ/DKV), tipe kerja (Internship/Full-time), sistem kerja (Remote/Hybrid/Onsite), dan deskripsi pekerjaan.
+  - **Fitur 1-Klik Duplikat Lowongan ([CareerJobController.php](file:///c:/Users/novit/Documents/Lomba/JHIC/folder%20laravel/Website-IDN-JHIC/app/Http/Controllers/Admin/CareerJobController.php))**:
+    - Menambahkan method `duplicate()` untuk menyalin lowongan yang ada secara instan sebagai draf agar admin tidak perlu menginput ulang data perusahaan berulang kali.
+  - **Tampilan Admin ([admin/career/index.blade.php](file:///c:/Users/novit/Documents/Lomba/JHIC/folder%20laravel/Website-IDN-JHIC/resources/views/admin/career/index.blade.php), [create.blade.php](file:///c:/Users/novit/Documents/Lomba/JHIC/folder%20laravel/Website-IDN-JHIC/resources/views/admin/career/create.blade.php), [edit.blade.php](file:///c:/Users/novit/Documents/Lomba/JHIC/folder%20laravel/Website-IDN-JHIC/resources/views/admin/career/edit.blade.php))**:
+    - Menambahkan 4 Kartu Metrik Ringkas di atas tabel (Total Lowongan, Lowongan Aktif, Khusus Magang, dan Kedaluwarsa).
+    - Menambahkan bar interaktif **"Tarik Data Otomatis dari URL"** dengan indikator loading real-time menggunakan Alpine.js.
+    - Menambahkan badge platform sumber beserta tautan uji coba eksternal, indikator batas waktu kedaluwarsa, dan tombol duplikat 1-klik.
+  - **Tampilan Publik ([career-center.blade.php](file:///c:/Users/novit/Documents/Lomba/JHIC/folder%20laravel/Website-IDN-JHIC/resources/views/career-center.blade.php))**:
+    - Menampilkan badge platform pada setiap kartu lowongan.
+    - Tombol "Lamar Pekerjaan" pada modal detail kini langsung mengarahkan pelamar ke halaman lowongan asli di tab baru (`target="_blank" rel="noopener noreferrer"`).
+    - Menampilkan persyaratan kualifikasi dinamis dari database.
+  - **Automated Testing & Build**:
+    - Seluruh 19 unit & feature tests pada [AdminPanelTest.php](file:///c:/Users/novit/Documents/Lomba/JHIC/folder%20laravel/Website-IDN-JHIC/tests/Feature/AdminPanelTest.php) lulus (100% Passed).
+    - `npm run build` berhasil dikompilasi dengan sukses (`Exit code 0`).
+
+### File
+- `database/migrations/2026_09_26_015057_add_platform_and_dates_to_career_jobs_table.php`
+- `app/Models/CareerJob.php`
+- `app/Http/Controllers/Admin/CareerJobController.php`
+- `routes/web.php`
+- `resources/views/admin/career/index.blade.php`
+- `resources/views/admin/career/create.blade.php`
+- `resources/views/admin/career/edit.blade.php`
+- `resources/views/career-center.blade.php`
+- `tests/Feature/AdminPanelTest.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Admin kini dapat membuat lowongan baru hanya dalam hitungan detik cukup dengan menempelkan tautan lowongan eksternal (Auto-Fill).
+- Seluruh data lowongan publik terhubung secara aman langsung ke portal karir aslinya.
+
+## 2026-09-26 - Remove Send Message Feature from Contact Page & Admin Panel
+
+### Sedang / Sudah Membuat
+- Menghapus fitur kirim pesan / formulir konsultasi online dari halaman kontak publik ([kontak.blade.php](file:///c:/Users/novit/Documents/Lomba/JHIC/folder%20laravel/Website-IDN-JHIC/resources/views/kontak.blade.php)) dan Admin Panel tanpa mengganggu maupun merusak fitur lainnya.
+- **Halaman Kontak ([kontak.blade.php](file:///c:/Users/novit/Documents/Lomba/JHIC/folder%20laravel/Website-IDN-JHIC/resources/views/kontak.blade.php))**:
+  - Menghapus section formulir pesan `#form-pesan` (form input nama, whatsapp, email, topik, dan pesan).
+  - Menyesuaikan deskripsi hero kontak untuk berfokus pada kanal resmi.
+  - Mempertahankan seluruh 6 kartu kontak resmi (WhatsApp, Instagram, Email, Facebook, TikTok, YouTube) dan banner pendaftaran PPDB.
+- **Admin Panel**:
+  - Menghapus navigasi menu "Pesan Masuk" dan badge notifikasi pesan belum dibaca dari sidebar layout admin ([resources/views/admin/layouts/app.blade.php](file:///c:/Users/novit/Documents/Lomba/JHIC/folder%20laravel/Website-IDN-JHIC/resources/views/admin/layouts/app.blade.php)).
+  - Menghapus kartu statistik "Pesan Masuk Kontak" dari grid ringkasan dashboard (disesuaikan menjadi 3 kolom: Total Artikel, Lowongan Karir, Kategori Konten).
+  - Menghapus tabel "Pesan Kontak & Konsultasi Terbaru" dari dashboard admin ([resources/views/admin/dashboard.blade.php](file:///c:/Users/novit/Documents/Lomba/JHIC/folder%20laravel/Website-IDN-JHIC/resources/views/admin/dashboard.blade.php)).
+  - Membersihkan `DashboardController.php` dari pemanggilan model `ContactMessage` dan query pesan.
+- **Routing & Pengujian**:
+  - Merapikan `routes/web.php` dengan menghapus rute POST `/kontak` dan rute admin resource `messages`.
+  - Memperbarui `tests/Feature/AdminPanelTest.php` dan memastikan seluruh 17 unit/feature test lulus (`Exit code 0`).
+  - Menjalankan `npm run build` dengan hasil sukses.
+
+### File
+- `resources/views/kontak.blade.php`
+- `routes/web.php`
+- `resources/views/admin/layouts/app.blade.php`
+- `resources/views/admin/dashboard.blade.php`
+- `app/Http/Controllers/Admin/DashboardController.php`
+- `tests/Feature/AdminPanelTest.php`
+- `AI_log.md`
+
+### Status
+DONE
+
+### Catatan
+- Fitur kirim pesan telah bersih dihapus dari sisi UI kontak maupun admin panel.
+- Fitur Artikel, Career Center, PPDB, Autentikasi Admin, dan Chatbot AI tetap berfungsi 100% normal dan stabil.
+
+## 2026-09-26 - Fix Admin Login Page Layout & Tailwind CSS Compilation
+
+### Sedang / Sudah Membuat
+
+- Menyelidiki dan memperbaiki masalah tampilan halaman login admin (`/admin/login`) yang melebar dan elemen form (ikon @, gembok, dan mata) yang bertumpuk berantakan.
+- **Penyebab Masalah**:
+  - Setelah `git pull origin main`, file bundle asset produksi (`public/build/assets/app-CUtWL-r5.css`) yang ter-commit berasal dari build lama yang belum menyertakan utilitas Tailwind CSS untuk folder `resources/views/admin/` (seperti `max-w-[440px]`, `inset-y-0`, `pl-10`, `pr-10`, dll).
+  - Akibat hilangnya class `max-w-[440px]`, kontainer kartu form melebar hingga 100% layar. Serta akibat hilangnya utilitas `inset-y-0`, ikon absolut di dalam input tergeser ke alur blok standar (*misplaced*) dan saling bertumpuk dengan teks/checkbox.
+- **Solusi**:
+  - Menambahkan aturan glob eksplisit `@source '../views/**/*.blade.php';` pada [resources/css/app.css](file:///c:/Users/novit/Documents/Lomba/JHIC/folder%20laravel/Website-IDN-JHIC/resources/css/app.css) agar seluruh template Blade di dalam subdirektori (termasuk `resources/views/admin/`) selalu dipindai oleh Vite & Tailwind CSS v4.
+  - Menjalankan `npm run build` ulang untuk mengompilasi seluruh utility class yang dibutuhkan (ukuran CSS bertambah dari 79 kB menjadi 94 kB dengan file baru `app-B6y-b8SX.css`).
+  - Memverifikasi halaman `http://127.0.0.1:8000/admin/login` kini merender CSS terbaru dengan benar.
+
+### File
+
+- `resources/css/app.css`
+- `public/build/manifest.json`
+- `AI_log.md`
+
+### Status
+
+DONE
+
+### Catatan
+
+- Halaman login admin kini tampil rapi di tengah layar (*compact & centered*) dengan input terpadu dan ikon terposisi tepat.
+
 ## 2026-09-25 - Match 'Kenapa Memilih IDN' Section with Figma & User Reference Image
 
 ### Sedang / Sudah Membuat

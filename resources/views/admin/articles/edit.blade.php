@@ -120,7 +120,7 @@
                 <div class="sm:col-span-4 bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl p-3 flex flex-col items-center">
                     <span class="text-[11px] font-semibold text-[#64748b] mb-2">Gambar Saat Ini</span>
                     <div class="h-28 w-full rounded-xl overflow-hidden border border-[#cbd5e1] bg-slate-200 shadow-sm">
-                        <img src="{{ asset('assets/' . rawurlencode($article->image)) }}" alt="{{ $article->title }}" class="w-full h-full object-cover">
+                        <img src="{{ asset('assets/' . $article->image) }}" alt="{{ $article->title }}" class="w-full h-full object-cover">
                     </div>
                 </div>
 

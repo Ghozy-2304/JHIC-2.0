@@ -1,6 +1,7 @@
 @import 'tailwindcss';
 
 @source '../views';
+@source '../views/**/*.blade.php';
 @source '../../app';
 
 html, body {

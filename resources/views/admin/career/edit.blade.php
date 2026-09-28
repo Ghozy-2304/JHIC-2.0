@@ -39,7 +39,62 @@
 
     <!-- Form Box -->
     <form action="{{ route('admin.career.update', $career->id) }}" method="POST" enctype="multipart/form-data" 
-        x-data="{ logoPreview: null }" class="bg-white border border-[#e2e8f0] rounded-2xl shadow-sm p-6 md:p-8 space-y-6">
+        x-data="{ 
+            logoPreview: null,
+            fetchUrl: '',
+            fetching: false,
+            fetchSuccess: false,
+            fetchMessage: '',
+            title: '{{ old('title', $career->title) }}',
+            major: '{{ old('major', $career->major) }}',
+            company_name: '{{ old('company_name', $career->company_name) }}',
+            salary: '{{ old('salary', $career->salary) }}',
+            work_type: '{{ old('work_type', $career->work_type) }}',
+            work_location: '{{ old('work_location', $career->work_location) }}',
+            location_group: '{{ old('location_group', $career->location_group) }}',
+            location: '{{ old('location', $career->location) }}',
+            apply_url: '{{ old('apply_url', $career->apply_url) }}',
+            source_platform: '{{ old('source_platform', $career->source_platform ?: 'Mitra Resmi IDN') }}',
+            posted_at: '{{ old('posted_at', $career->posted_at ? $career->posted_at->format('Y-m-d') : ($career->created_at ? $career->created_at->format('Y-m-d') : date('Y-m-d'))) }}',
+            expires_at: '{{ old('expires_at', $career->expires_at ? $career->expires_at->format('Y-m-d') : '') }}',
+            requirements: `{{ old('requirements', $career->requirements) }}`,
+            async autoFetch() {
+                if (!this.fetchUrl) return;
+                this.fetching = true;
+                this.fetchSuccess = false;
+                this.fetchMessage = '';
+                try {
+                    const res = await fetch('{{ route('admin.career.fetch-meta') }}', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        },
+                        body: JSON.stringify({ url: this.fetchUrl })
+                    });
+                    const json = await res.json();
+                    if (json.success && json.data) {
+                        const d = json.data;
+                        if (d.title) this.title = d.title;
+                        if (d.company_name) this.company_name = d.company_name;
+                        if (d.apply_url) this.apply_url = d.apply_url;
+                        if (d.source_platform) this.source_platform = d.source_platform;
+                        if (d.major) this.major = d.major;
+                        if (d.work_type) this.work_type = d.work_type;
+                        if (d.work_location) this.work_location = d.work_location;
+                        if (d.location) this.location = d.location;
+                        if (d.location_group) this.location_group = d.location_group;
+                        if (d.requirements) this.requirements = d.requirements;
+                        this.fetchSuccess = true;
+                        this.fetchMessage = 'Alhamdulillah! Data berhasil ditarik otomatis dari ' + d.source_platform + '.';
+                    }
+                } catch(e) {
+                    this.fetchMessage = 'Gagal menarik metadata secara otomatis. Anda tetap dapat mengedit form secara manual.';
+                } finally {
+                    this.fetching = false;
+                }
+            }
+        }" class="bg-white border border-[#e2e8f0] rounded-2xl shadow-sm p-6 md:p-8 space-y-6">
         @csrf
         @method('PUT')
 
@@ -52,25 +107,60 @@
             </p>
         </div>
 
+        <!-- SMART AUTO-FETCH BAR -->
+        <div class="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200/80 rounded-2xl p-4 md:p-5 space-y-3">
+            <div class="flex items-center gap-2">
+                <div class="w-6 h-6 rounded-lg bg-[#0c61cf] text-white flex items-center justify-center shrink-0">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                    </svg>
+                </div>
+                <h3 class="text-xs md:text-sm font-bold text-[#0f172a]">
+                    Otomatisasi: Tarik Data Baru dari URL
+                </h3>
+                <span class="ml-auto inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#0c61cf] text-white">
+                    Auto-Fill
+                </span>
+            </div>
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
+                <input type="url" x-model="fetchUrl" @keydown.enter.prevent="autoFetch()"
+                    placeholder="https://glints.com/... atau link Jobstreet / LinkedIn baru"
+                    class="flex-1 px-4 py-2.5 bg-white border border-blue-200 rounded-xl text-xs md:text-sm text-[#0f172a] placeholder-[#94a3b8] focus:outline-none focus:border-[#0c61cf] focus:ring-4 focus:ring-[#0c61cf]/10 transition-all">
+                <button type="button" @click="autoFetch()" :disabled="fetching || !fetchUrl"
+                    class="px-5 py-2.5 bg-[#0c61cf] hover:bg-[#0b54b5] active:scale-[0.99] disabled:opacity-50 text-white text-xs md:text-sm font-semibold rounded-xl shadow-sm transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer shrink-0">
+                    <svg x-show="fetching" class="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    <svg x-show="!fetching" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/>
+                    </svg>
+                    <span x-text="fetching ? 'Mengambil Data...' : 'Perbarui dari URL'"></span>
+                </button>
+            </div>
+            <div x-show="fetchMessage" x-cloak class="text-xs font-medium pt-1" 
+                :class="fetchSuccess ? 'text-emerald-700' : 'text-amber-700'" x-text="fetchMessage"></div>
+        </div>
+
         <!-- Row 1: Posisi & Jurusan -->
         <div class="grid grid-cols-1 md:grid-cols-12 gap-5">
             <div class="md:col-span-8">
                 <label for="title" class="block text-xs font-bold text-[#334155] uppercase tracking-wider mb-2">
                     Posisi / Judul Pekerjaan <span class="text-rose-500">*</span>
                 </label>
-                <input type="text" id="title" name="title" value="{{ old('title', $career->title) }}" required
+                <input type="text" id="title" name="title" x-model="title" required
                     class="w-full px-4 py-2.5 bg-[#f8fafc] border border-[#e2e8f0] rounded-xl text-sm text-[#0f172a] placeholder-[#94a3b8] focus:outline-none focus:border-[#0c61cf] focus:ring-4 focus:ring-[#0c61cf]/10 transition-all">
             </div>
 
             <div class="md:col-span-4">
                 <label for="major" class="block text-xs font-bold text-[#334155] uppercase tracking-wider mb-2">
-                    Jurusan <span class="text-rose-500">*</span>
+                    Jurusan IDN <span class="text-rose-500">*</span>
                 </label>
-                <select id="major" name="major" required
+                <select id="major" name="major" x-model="major" required
                     class="w-full px-4 py-2.5 bg-[#f8fafc] border border-[#e2e8f0] rounded-xl text-sm text-[#0f172a] focus:outline-none focus:border-[#0c61cf] focus:ring-4 focus:ring-[#0c61cf]/10 transition-all cursor-pointer font-semibold">
-                    <option value="RPL" {{ old('major', $career->major) === 'RPL' ? 'selected' : '' }}>RPL (Software / Coding)</option>
-                    <option value="TKJ" {{ old('major', $career->major) === 'TKJ' ? 'selected' : '' }}>TKJ (Network & Cloud)</option>
-                    <option value="DKV" {{ old('major', $career->major) === 'DKV' ? 'selected' : '' }}>DKV (Design & Creative)</option>
+                    <option value="RPL">RPL (Software / Coding)</option>
+                    <option value="TKJ">TKJ (Network & Cloud)</option>
+                    <option value="DKV">DKV (Design & Creative)</option>
                 </select>
             </div>
         </div>
@@ -81,15 +171,15 @@
                 <label for="company_name" class="block text-xs font-bold text-[#334155] uppercase tracking-wider mb-2">
                     Nama Perusahaan / Mitra Industri <span class="text-rose-500">*</span>
                 </label>
-                <input type="text" id="company_name" name="company_name" value="{{ old('company_name', $career->company_name) }}" required
+                <input type="text" id="company_name" name="company_name" x-model="company_name" required
                     class="w-full px-4 py-2.5 bg-[#f8fafc] border border-[#e2e8f0] rounded-xl text-sm text-[#0f172a] placeholder-[#94a3b8] focus:outline-none focus:border-[#0c61cf] focus:ring-4 focus:ring-[#0c61cf]/10 transition-all">
             </div>
 
             <div class="md:col-span-4">
                 <label for="salary" class="block text-xs font-bold text-[#334155] uppercase tracking-wider mb-2">
-                    Gaji / Tunjangan
+                    Gaji / Tunjangan (Opsional)
                 </label>
-                <input type="text" id="salary" name="salary" value="{{ old('salary', $career->salary) }}"
+                <input type="text" id="salary" name="salary" x-model="salary"
                     class="w-full px-4 py-2.5 bg-[#f8fafc] border border-[#e2e8f0] rounded-xl text-sm text-[#0f172a] placeholder-[#94a3b8] focus:outline-none focus:border-[#0c61cf] focus:ring-4 focus:ring-[#0c61cf]/10 transition-all">
             </div>
         </div>
@@ -100,13 +190,13 @@
                 <label for="work_type" class="block text-xs font-bold text-[#334155] uppercase tracking-wider mb-2">
                     Tipe Pekerjaan <span class="text-rose-500">*</span>
                 </label>
-                <select id="work_type" name="work_type" required
+                <select id="work_type" name="work_type" x-model="work_type" required
                     class="w-full px-4 py-2.5 bg-[#f8fafc] border border-[#e2e8f0] rounded-xl text-sm text-[#0f172a] focus:outline-none focus:border-[#0c61cf] focus:ring-4 focus:ring-[#0c61cf]/10 transition-all cursor-pointer">
-                    <option value="Full-time" {{ old('work_type', $career->work_type) === 'Full-time' ? 'selected' : '' }}>Full-time</option>
-                    <option value="Internship" {{ old('work_type', $career->work_type) === 'Internship' ? 'selected' : '' }}>Internship (Magang)</option>
-                    <option value="Contract" {{ old('work_type', $career->work_type) === 'Contract' ? 'selected' : '' }}>Contract</option>
-                    <option value="Part-time" {{ old('work_type', $career->work_type) === 'Part-time' ? 'selected' : '' }}>Part-time</option>
-                    <option value="Freelance" {{ old('work_type', $career->work_type) === 'Freelance' ? 'selected' : '' }}>Freelance</option>
+                    <option value="Full-time">Full-time</option>
+                    <option value="Internship">Internship (Magang/PKL)</option>
+                    <option value="Contract">Contract</option>
+                    <option value="Part-time">Part-time</option>
+                    <option value="Freelance">Freelance</option>
                 </select>
             </div>
 
@@ -114,11 +204,11 @@
                 <label for="work_location" class="block text-xs font-bold text-[#334155] uppercase tracking-wider mb-2">
                     Sistem Kerja <span class="text-rose-500">*</span>
                 </label>
-                <select id="work_location" name="work_location" required
+                <select id="work_location" name="work_location" x-model="work_location" required
                     class="w-full px-4 py-2.5 bg-[#f8fafc] border border-[#e2e8f0] rounded-xl text-sm text-[#0f172a] focus:outline-none focus:border-[#0c61cf] focus:ring-4 focus:ring-[#0c61cf]/10 transition-all cursor-pointer">
-                    <option value="Onsite" {{ old('work_location', $career->work_location) === 'Onsite' ? 'selected' : '' }}>Onsite (Di Kantor)</option>
-                    <option value="Hybrid" {{ old('work_location', $career->work_location) === 'Hybrid' ? 'selected' : '' }}>Hybrid (Fleksibel)</option>
-                    <option value="Remote/WFH" {{ old('work_location', $career->work_location) === 'Remote/WFH' ? 'selected' : '' }}>Remote / WFH</option>
+                    <option value="Onsite">Onsite (Di Kantor)</option>
+                    <option value="Hybrid">Hybrid (Fleksibel)</option>
+                    <option value="Remote/WFH">Remote / WFH</option>
                 </select>
             </div>
 
@@ -126,40 +216,87 @@
                 <label for="location_group" class="block text-xs font-bold text-[#334155] uppercase tracking-wider mb-2">
                     Wilayah <span class="text-rose-500">*</span>
                 </label>
-                <select id="location_group" name="location_group" required
+                <select id="location_group" name="location_group" x-model="location_group" required
                     class="w-full px-4 py-2.5 bg-[#f8fafc] border border-[#e2e8f0] rounded-xl text-sm text-[#0f172a] focus:outline-none focus:border-[#0c61cf] focus:ring-4 focus:ring-[#0c61cf]/10 transition-all cursor-pointer">
-                    <option value="Jabodetabek" {{ old('location_group', $career->location_group) === 'Jabodetabek' ? 'selected' : '' }}>Jabodetabek</option>
-                    <option value="Jawa" {{ old('location_group', $career->location_group) === 'Jawa' ? 'selected' : '' }}>Jawa</option>
-                    <option value="Kalimantan" {{ old('location_group', $career->location_group) === 'Kalimantan' ? 'selected' : '' }}>Kalimantan</option>
-                    <option value="Sumatra" {{ old('location_group', $career->location_group) === 'Sumatra' ? 'selected' : '' }}>Sumatra</option>
-                    <option value="Sulawesi" {{ old('location_group', $career->location_group) === 'Sulawesi' ? 'selected' : '' }}>Sulawesi</option>
-                    <option value="Papua" {{ old('location_group', $career->location_group) === 'Papua' ? 'selected' : '' }}>Papua</option>
-                    <option value="Other" {{ old('location_group', $career->location_group) === 'Other' ? 'selected' : '' }}>Lainnya</option>
+                    <option value="Jabodetabek">Jabodetabek</option>
+                    <option value="Jawa">Jawa</option>
+                    <option value="Kalimantan">Kalimantan</option>
+                    <option value="Sumatra">Sumatra</option>
+                    <option value="Sulawesi">Sulawesi</option>
+                    <option value="Papua">Papua</option>
+                    <option value="Other">Lainnya</option>
                 </select>
             </div>
         </div>
 
-        <!-- Row 4: Kota Penempatan & Link Lamar -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-            <div>
+        <!-- Row 4: Kota Penempatan & Platform Sumber -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-5">
+            <div class="md:col-span-6">
                 <label for="location" class="block text-xs font-bold text-[#334155] uppercase tracking-wider mb-2">
                     Kota / Alamat Penempatan <span class="text-rose-500">*</span>
                 </label>
-                <input type="text" id="location" name="location" value="{{ old('location', $career->location) }}" required
+                <input type="text" id="location" name="location" x-model="location" required
                     class="w-full px-4 py-2.5 bg-[#f8fafc] border border-[#e2e8f0] rounded-xl text-sm text-[#0f172a] placeholder-[#94a3b8] focus:outline-none focus:border-[#0c61cf] focus:ring-4 focus:ring-[#0c61cf]/10 transition-all">
             </div>
 
-            <div>
-                <label for="apply_url" class="block text-xs font-bold text-[#334155] uppercase tracking-wider mb-2">
-                    Tautan Pendaftaran (URL Website / Form)
+            <div class="md:col-span-6">
+                <label for="source_platform" class="block text-xs font-bold text-[#334155] uppercase tracking-wider mb-2">
+                    Platform Sumber Lowongan <span class="text-rose-500">*</span>
                 </label>
-                <input type="url" id="apply_url" name="apply_url" value="{{ old('apply_url', $career->apply_url) }}"
-                    placeholder="https://karir.perusahaan.com/apply"
-                    class="w-full px-4 py-2.5 bg-[#f8fafc] border border-[#e2e8f0] rounded-xl text-sm text-[#0f172a] placeholder-[#94a3b8] focus:outline-none focus:border-[#0c61cf] focus:ring-4 focus:ring-[#0c61cf]/10 transition-all">
+                <select id="source_platform" name="source_platform" x-model="source_platform" required
+                    class="w-full px-4 py-2.5 bg-[#f8fafc] border border-[#e2e8f0] rounded-xl text-sm text-[#0f172a] focus:outline-none focus:border-[#0c61cf] focus:ring-4 focus:ring-[#0c61cf]/10 transition-all cursor-pointer">
+                    <option value="Mitra Resmi IDN">Mitra Resmi IDN (Eksklusif)</option>
+                    <option value="Glints">Glints</option>
+                    <option value="Jobstreet">Jobstreet</option>
+                    <option value="LinkedIn">LinkedIn</option>
+                    <option value="Kalibrr">Kalibrr</option>
+                    <option value="KitaLulus">KitaLulus</option>
+                    <option value="Dealls">Dealls</option>
+                    <option value="Website Resmi Perusahaan">Website Resmi Perusahaan</option>
+                </select>
             </div>
         </div>
 
-        <!-- Row 5: Logo Perusahaan -->
+        <!-- Row 5: Link Lamar & Tanggal Deadline -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-5">
+            <div class="md:col-span-6">
+                <label for="apply_url" class="block text-xs font-bold text-[#334155] uppercase tracking-wider mb-2">
+                    Tautan Pendaftaran (URL Website / Form Lamaran)
+                </label>
+                <input type="url" id="apply_url" name="apply_url" x-model="apply_url"
+                    placeholder="https://karir.perusahaan.com/apply"
+                    class="w-full px-4 py-2.5 bg-[#f8fafc] border border-[#e2e8f0] rounded-xl text-sm text-[#0f172a] placeholder-[#94a3b8] focus:outline-none focus:border-[#0c61cf] focus:ring-4 focus:ring-[#0c61cf]/10 transition-all">
+            </div>
+
+            <div class="md:col-span-3">
+                <label for="posted_at" class="block text-xs font-bold text-[#334155] uppercase tracking-wider mb-2">
+                    Tanggal Posting
+                </label>
+                <input type="date" id="posted_at" name="posted_at" x-model="posted_at"
+                    class="w-full px-4 py-2.5 bg-[#f8fafc] border border-[#e2e8f0] rounded-xl text-sm text-[#0f172a] focus:outline-none focus:border-[#0c61cf] focus:ring-4 focus:ring-[#0c61cf]/10 transition-all">
+            </div>
+
+            <div class="md:col-span-3">
+                <label for="expires_at" class="block text-xs font-bold text-[#334155] uppercase tracking-wider mb-2">
+                    Batas Akhir / Deadline
+                </label>
+                <input type="date" id="expires_at" name="expires_at" x-model="expires_at"
+                    class="w-full px-4 py-2.5 bg-[#f8fafc] border border-[#e2e8f0] rounded-xl text-sm text-[#0f172a] focus:outline-none focus:border-[#0c61cf] focus:ring-4 focus:ring-[#0c61cf]/10 transition-all">
+                <span class="text-[10px] text-[#94a3b8] mt-1 block">Kosongkan jika tanpa deadline</span>
+            </div>
+        </div>
+
+        <!-- Row 6: Persyaratan Singkat / Kualifikasi -->
+        <div>
+            <label for="requirements" class="block text-xs font-bold text-[#334155] uppercase tracking-wider mb-2">
+                Persyaratan & Kualifikasi Singkat (Opsional)
+            </label>
+            <textarea id="requirements" name="requirements" x-model="requirements" rows="3"
+                placeholder="Contoh: Menguasai HTML/CSS & dasar Flutter, Terbuka untuk santri aktif kelas 11-12, Disiplin dan berakhlak mulia."
+                class="w-full px-4 py-2.5 bg-[#f8fafc] border border-[#e2e8f0] rounded-xl text-sm text-[#0f172a] placeholder-[#94a3b8] focus:outline-none focus:border-[#0c61cf] focus:ring-4 focus:ring-[#0c61cf]/10 transition-all"></textarea>
+        </div>
+
+        <!-- Row 7: Logo Perusahaan -->
         <div>
             <label class="block text-xs font-bold text-[#334155] uppercase tracking-wider mb-2">
                 Logo Mitra Perusahaan
@@ -168,11 +305,11 @@
                 <!-- Current Logo -->
                 <div class="sm:col-span-4 bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl p-4 flex flex-col items-center">
                     <span class="text-[11px] font-semibold text-[#64748b] mb-2">Logo Saat Ini</span>
-                    <div class="w-14 h-14 rounded-xl overflow-hidden bg-white border border-[#e2e8f0] shadow-sm flex items-center justify-center font-bold text-sm {{ $career->company_img ? '' : $career->company_bg . ' text-white' }}">
+                    <div class="w-14 h-14 rounded-xl overflow-hidden bg-white border border-[#e2e8f0] shadow-sm flex items-center justify-center font-bold text-sm {{ $career->company_img ? '' : ($career->company_bg ?: 'bg-[#0c61cf]') . ' text-white' }}">
                         @if($career->company_img)
                             <img src="{{ asset($career->company_img) }}" alt="{{ $career->company_name }}" class="w-full h-full object-contain p-1">
                         @else
-                            <span>{{ $career->company_logo_char ?: substr($career->company_name, 0, 1) }}</span>
+                            <span>{{ $career->company_logo_char ?: strtoupper(substr($career->company_name, 0, 1)) }}</span>
                         @endif
                     </div>
                 </div>

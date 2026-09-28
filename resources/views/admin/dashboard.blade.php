@@ -41,7 +41,7 @@
     </div>
 
     <!-- Quick Stats Cards Grid -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
         
         <!-- Card 1: Total Artikel -->
         <div class="bg-white p-5 rounded-2xl border border-[#e2e8f0] shadow-sm flex items-center justify-between">
@@ -71,23 +71,7 @@
             </div>
         </div>
 
-        <!-- Card 3: Pesan Masuk Kontak -->
-        <a href="{{ route('admin.messages.index') }}" class="bg-white p-5 rounded-2xl border border-[#e2e8f0] hover:border-[#0c61cf] shadow-sm flex items-center justify-between transition-all group">
-            <div>
-                <span class="text-xs font-semibold text-[#64748b] block mb-1">Pesan Masuk Kontak</span>
-                <span class="text-2xl font-bold text-[#0f172a] font-['Funnel_Display',sans-serif]">{{ $totalMessages }}</span>
-                <span class="text-[11px] font-medium block mt-1 {{ $unreadMessagesCount > 0 ? 'text-amber-600 font-bold' : 'text-slate-500' }}">
-                    {{ $unreadMessagesCount }} Belum Dibaca
-                </span>
-            </div>
-            <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-600 group-hover:bg-[#0c61cf] group-hover:text-white flex items-center justify-center shrink-0 transition-colors">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                </svg>
-            </div>
-        </a>
-
-        <!-- Card 4: Kategori Konten -->
+        <!-- Card 3: Kategori Konten -->
         <div class="bg-white p-5 rounded-2xl border border-[#e2e8f0] shadow-sm flex items-center justify-between">
             <div>
                 <span class="text-xs font-semibold text-[#64748b] block mb-1">Kategori Konten</span>
@@ -137,7 +121,7 @@
                                 <td class="py-3.5 pl-2 max-w-[280px]">
                                     <div class="flex items-center gap-3">
                                         <div class="w-12 h-10 rounded-lg overflow-hidden bg-slate-100 shrink-0 border border-[#e2e8f0]">
-                                            <img src="{{ asset('assets/' . rawurlencode($art->image)) }}" alt="{{ $art->title }}" class="w-full h-full object-cover">
+                                            <img src="{{ asset('assets/' . $art->image) }}" alt="{{ $art->title }}" class="w-full h-full object-cover">
                                         </div>
                                         <div class="min-w-0">
                                             <a href="{{ route('articles.show', $art->slug) }}" target="_blank" class="font-semibold text-[#0f172a] group-hover:text-[#0c61cf] transition-colors line-clamp-1 block">
@@ -226,89 +210,6 @@
 
         </div>
 
-    </div>
-
-    <!-- Section: Pesan Masuk Terbaru -->
-    <div class="bg-white border border-[#e2e8f0] rounded-2xl p-6 shadow-sm">
-        <div class="flex items-center justify-between mb-5">
-            <div class="flex items-center gap-3">
-                <div class="w-8 h-8 rounded-xl bg-amber-500/10 text-amber-600 flex items-center justify-center shrink-0">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                    </svg>
-                </div>
-                <div>
-                    <h2 class="text-base font-bold text-[#0f172a] font-['Funnel_Display',sans-serif]">
-                        Pesan Kontak & Konsultasi Terbaru
-                    </h2>
-                    <span class="text-xs text-[#64748b]">Pengunjung yang mengirimkan pertanyaan melalui formulir website</span>
-                </div>
-            </div>
-
-            <a href="{{ route('admin.messages.index') }}" class="text-xs font-semibold text-[#0c61cf] hover:underline flex items-center gap-1">
-                Buka Kotak Masuk
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-            </a>
-        </div>
-
-        <div class="overflow-x-auto">
-            <table class="w-full text-left text-xs">
-                <thead>
-                    <tr class="border-b border-[#f1f5f9] text-[#64748b] font-semibold">
-                        <th class="pb-3 pl-2 w-8 text-center">Status</th>
-                        <th class="pb-3 px-3">Pengirim</th>
-                        <th class="pb-3 px-3">WhatsApp</th>
-                        <th class="pb-3 px-3">Topik</th>
-                        <th class="pb-3 px-3 max-w-[280px]">Pesan</th>
-                        <th class="pb-3 px-3">Waktu</th>
-                        <th class="pb-3 pr-2 text-right">Aksi</th>
-                    </tr>
-                </thead>
-                <tbody class="divide-y divide-[#f8fafc]">
-                    @forelse($recentMessages as $msg)
-                        <tr class="hover:bg-[#f8fafc] transition-colors group {{ !$msg->is_read ? 'bg-amber-50/20 font-medium' : '' }}">
-                            <td class="py-3 pl-2 text-center">
-                                @if(!$msg->is_read)
-                                    <span class="inline-flex w-2.5 h-2.5 rounded-full bg-amber-500 animate-pulse" title="Belum dibaca"></span>
-                                @else
-                                    <span class="inline-flex w-2 h-2 rounded-full bg-slate-300" title="Sudah dibaca"></span>
-                                @endif
-                            </td>
-                            <td class="py-3 px-3 font-semibold text-[#0f172a]">
-                                {{ $msg->name }}
-                            </td>
-                            <td class="py-3 px-3">
-                                <a href="{{ $msg->whatsapp_url }}" target="_blank" class="inline-flex items-center gap-1 text-emerald-600 font-mono hover:underline">
-                                    <span>{{ $msg->phone }}</span>
-                                </a>
-                            </td>
-                            <td class="py-3 px-3">
-                                <span class="inline-flex px-2 py-0.5 rounded-md text-[11px] font-medium bg-[#0c61cf]/10 text-[#0c61cf]">
-                                    {{ $msg->subject }}
-                                </span>
-                            </td>
-                            <td class="py-3 px-3 max-w-[280px] text-[#64748b] truncate">
-                                {{ Str::limit($msg->message, 60) }}
-                            </td>
-                            <td class="py-3 px-3 text-[#64748b] whitespace-nowrap">
-                                {{ $msg->created_at->diffForHumans() }}
-                            </td>
-                            <td class="py-3 pr-2 text-right whitespace-nowrap">
-                                <a href="{{ route('admin.messages.show', $msg->id) }}" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-[#0c61cf] hover:text-white text-[#475569] text-[11px] font-semibold transition-colors">
-                                    Detail
-                                </a>
-                            </td>
-                        </tr>
-                    @empty
-                        <tr>
-                            <td colspan="7" class="py-6 text-center text-[#94a3b8]">
-                                Belum ada pesan masuk dari pengunjung.
-                            </td>
-                        </tr>
-                    @endforelse
-                </tbody>
-            </table>
-        </div>
     </div>
 
 </div>

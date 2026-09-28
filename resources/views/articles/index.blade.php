@@ -92,7 +92,7 @@
                 @if($featuredArticle && request('page', 1) == 1 && (!$search))
                     <div class="border border-[#e9eaeb] bg-white rounded-[18px] overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 group">
                         <div class="h-[280px] sm:h-[380px] lg:h-[500px] w-full overflow-hidden relative bg-slate-100">
-                            <img src="{{ asset('assets/' . rawurlencode($featuredArticle->image)) }}" alt="{{ $featuredArticle->title }}" 
+                            <img src="{{ asset('assets/' . $featuredArticle->image) }}" alt="{{ $featuredArticle->title }}" 
                                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                         </div>
                         
@@ -139,7 +139,7 @@
                             <div class="border border-[#e9eaeb] bg-white rounded-[18px] overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between group">
                                 <!-- Card Image -->
                                 <div class="h-[220px] sm:h-[260px] md:h-[300px] w-full overflow-hidden relative shrink-0 bg-slate-100">
-                                    <img src="{{ asset('assets/' . rawurlencode($article->image)) }}" alt="{{ $article->title }}" 
+                                    <img src="{{ asset('assets/' . $article->image) }}" alt="{{ $article->title }}" 
                                          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                                 </div>
 
