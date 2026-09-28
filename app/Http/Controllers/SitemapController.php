@@ -30,9 +30,11 @@ class SitemapController extends Controller
             '/artikel',
         ];
 
-        $xml = view('sitemap', compact('staticUrls', 'articles'))->render();
+        $baseUrl = rtrim(request()->schemeAndHttpHost() ?: config('app.url', 'https://idnbs.my.id'), '/');
+
+        $xml = view('sitemap', compact('staticUrls', 'articles', 'baseUrl'))->render();
 
         return response($xml, 200)
-            ->header('Content-Type', 'text/xml');
+            ->header('Content-Type', 'application/xml; charset=utf-8');
     }
 }
