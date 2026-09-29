@@ -29,24 +29,6 @@ class PerformanceOptimizationMiddleware
             }
         }
 
-        // Optional: Compress output buffer if client supports gzip and response is HTML
-        if (
-            function_exists('gzencode') &&
-            str_contains($request->header('Accept-Encoding', ''), 'gzip') &&
-            !$response->headers->has('Content-Encoding') &&
-            str_contains($response->headers->get('Content-Type', ''), 'text/html')
-        ) {
-            $content = $response->getContent();
-            if ($content !== false && strlen($content) > 1024) {
-                $compressed = gzencode($content, 6);
-                if ($compressed !== false) {
-                    $response->setContent($compressed);
-                    $response->headers->set('Content-Encoding', 'gzip');
-                    $response->headers->set('Content-Length', (string) strlen($compressed));
-                }
-            }
-        }
-
         return $response;
     }
 }
