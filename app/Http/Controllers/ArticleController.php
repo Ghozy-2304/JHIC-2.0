@@ -40,30 +40,17 @@ class ArticleController extends Controller
                 ->paginate(9)
                 ->withQueryString();
         } else {
-            // Cache default article page listing for 60 minutes
-            $cacheKey = "articles_index_page_{$page}";
+        // Fetch featured article and paginated grid
+        $featuredArticle = Article::where('slug', 'izin-operasional-smk-idn-bogor-resmi-terbit')->first()
+            ?? Article::latest('published_at')->first();
 
-            $data = Cache::remember($cacheKey, 3600, function () {
-                $featuredArticle = Article::where('slug', 'izin-operasional-smk-idn-bogor-resmi-terbit')->first()
-                    ?? Article::latest('published_at')->first();
-
-                $gridQuery = Article::query();
-                if ($featuredArticle) {
-                    $gridQuery->where('id', '!=', $featuredArticle->id);
-                }
-
-                $articles = $gridQuery->orderBy('published_at', 'desc')
-                    ->paginate(9);
-
-                return [
-                    'featuredArticle' => $featuredArticle,
-                    'articles' => $articles,
-                ];
-            });
-
-            $featuredArticle = $data['featuredArticle'];
-            $articles = $data['articles'];
+        $gridQuery = Article::query();
+        if ($featuredArticle) {
+            $gridQuery->where('id', '!=', $featuredArticle->id);
         }
+
+        $articles = $gridQuery->orderBy('published_at', 'desc')
+            ->paginate(9);
 
         $categories = ['Semua', 'Prestasi', 'News & Event'];
 
@@ -72,23 +59,14 @@ class ArticleController extends Controller
 
     public function show($slug)
     {
-        $cacheKey = "article_show_{$slug}";
+        $article = Article::where('slug', $slug)->firstOrFail();
 
-        $cached = Cache::remember($cacheKey, 3600, function () use ($slug) {
-            $article = Article::where('slug', $slug)->firstOrFail();
+        $relatedArticles = Article::where('slug', '!=', $slug)
+                                  ->orderBy('published_at', 'desc')
+                                  ->take(3)
+                                  ->get();
 
-            $relatedArticles = Article::where('slug', '!=', $slug)
-                                      ->orderBy('published_at', 'desc')
-                                      ->take(3)
-                                      ->get();
-
-            return [
-                'article' => $article,
-                'relatedArticles' => $relatedArticles,
-            ];
-        });
-
-        return view('articles.show', $cached);
+        return view('articles.show', compact('article', 'relatedArticles'));
     }
 }
 
