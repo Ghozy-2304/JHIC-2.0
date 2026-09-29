@@ -178,7 +178,7 @@
             <div class="flex flex-col gap-8 w-full">
                 
                 <!-- CARD 01: TKJ -->
-                <div class="bg-white border border-[#e9eaeb] rounded-[20px] p-6 md:p-8 lg:p-[48px] flex flex-col xl:flex-row items-start justify-between gap-8 xl:gap-[40px] w-full max-w-full overflow-hidden">
+                <div id="jurusan-tkj" class="bg-white border border-[#e9eaeb] rounded-[20px] p-6 md:p-8 lg:p-[48px] flex flex-col xl:flex-row items-start justify-between gap-8 xl:gap-[40px] w-full max-w-full overflow-hidden scroll-mt-28">
                     <!-- LEFT COLUMN -->
                     <div class="flex flex-col gap-4 items-start text-left w-full xl:w-[300px] shrink-0">
                         <div class="flex flex-col gap-0.5 w-full">
@@ -248,7 +248,7 @@
                 </div>
 
                 <!-- CARD 02: RPL -->
-                <div class="bg-white border border-[#e9eaeb] rounded-[20px] p-6 md:p-8 lg:p-[48px] flex flex-col xl:flex-row items-start justify-between gap-8 xl:gap-[40px] w-full max-w-full overflow-hidden">
+                <div id="jurusan-rpl" class="bg-white border border-[#e9eaeb] rounded-[20px] p-6 md:p-8 lg:p-[48px] flex flex-col xl:flex-row items-start justify-between gap-8 xl:gap-[40px] w-full max-w-full overflow-hidden scroll-mt-28">
                     <!-- LEFT COLUMN -->
                     <div class="flex flex-col gap-4 items-start text-left w-full xl:w-[300px] shrink-0">
                         <div class="flex flex-col gap-0.5 w-full">
@@ -318,7 +318,7 @@
                 </div>
 
                 <!-- CARD 03: DKV -->
-                <div class="bg-white border border-[#e9eaeb] rounded-[20px] p-6 md:p-8 lg:p-[48px] flex flex-col xl:flex-row items-start justify-between gap-8 xl:gap-[40px] w-full max-w-full overflow-hidden">
+                <div id="jurusan-dkv" class="bg-white border border-[#e9eaeb] rounded-[20px] p-6 md:p-8 lg:p-[48px] flex flex-col xl:flex-row items-start justify-between gap-8 xl:gap-[40px] w-full max-w-full overflow-hidden scroll-mt-28">
                     <!-- LEFT COLUMN -->
                     <div class="flex flex-col gap-4 items-start text-left w-full xl:w-[300px] shrink-0">
                         <div class="flex flex-col gap-0.5 w-full">

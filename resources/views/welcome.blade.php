@@ -269,7 +269,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="/program" class="group bg-[#0c61cf] text-white w-full h-[48px] rounded-full font-semibold text-[16px] leading-none flex items-center justify-center gap-2 transition-all duration-200 hover:bg-[#094fa5]">
+                    <a href="/tentang-kami#jurusan-rpl" class="group bg-[#0c61cf] text-white w-full h-[48px] rounded-full font-semibold text-[16px] leading-none flex items-center justify-center gap-2 transition-all duration-200 hover:bg-[#094fa5]">
                         <span>Selengkapnya</span>
                         <svg class="w-4 h-4 transition-transform duration-200 ease-out group-hover:translate-x-1 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
@@ -307,7 +307,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="/program" class="group bg-[#0c61cf] text-white w-full h-[48px] rounded-full font-semibold text-[16px] leading-none flex items-center justify-center gap-2 transition-all duration-200 hover:bg-[#094fa5]">
+                    <a href="/tentang-kami#jurusan-tkj" class="group bg-[#0c61cf] text-white w-full h-[48px] rounded-full font-semibold text-[16px] leading-none flex items-center justify-center gap-2 transition-all duration-200 hover:bg-[#094fa5]">
                         <span>Selengkapnya</span>
                         <svg class="w-4 h-4 transition-transform duration-200 ease-out group-hover:translate-x-1 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
@@ -347,7 +347,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="/program" class="group bg-[#0c61cf] text-white w-full h-[48px] rounded-full font-semibold text-[16px] leading-none flex items-center justify-center gap-2 transition-all duration-200 hover:bg-[#094fa5]">
+                    <a href="/tentang-kami#jurusan-dkv" class="group bg-[#0c61cf] text-white w-full h-[48px] rounded-full font-semibold text-[16px] leading-none flex items-center justify-center gap-2 transition-all duration-200 hover:bg-[#094fa5]">
                         <span>Selengkapnya</span>
                         <svg class="w-4 h-4 transition-transform duration-200 ease-out group-hover:translate-x-1 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
