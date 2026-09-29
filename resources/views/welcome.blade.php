@@ -9,13 +9,16 @@
             description="IDN Boarding School adalah Sekolah SMP & SMA IT Terbaik di Bogor yang berfokus pada Menghafal Al-Qur'an dan Penguasaan Teknologi (IT), Coding, Cyber Security, dan UI/UX."
         />
         
-        <!-- Fast Fonts with display=swap -->
+        <!-- Preload LCP Hero Image first -->
+        <link rel="preload" as="image" href="{{ asset('assets/pages/home/main-image.avif') }}" type="image/avif" fetchpriority="high">
+
+        <!-- Non-blocking Fonts & Preconnect -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@600;700&family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap">
-
-        <!-- Preload LCP Hero Image -->
-        <link rel="preload" as="image" href="{{ asset('assets/pages/home/main-image.avif') }}" type="image/avif" fetchpriority="high">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@600;700&family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+        <noscript>
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@600;700&family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap">
+        </noscript>
         
         <!-- Alpine.js for Interactive Component State -->
         <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
