@@ -4,17 +4,20 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
+        <!-- Preload LCP Hero Image Immediately -->
+        <link rel="preload" as="image" href="{{ asset('assets/pages/home/main-image.avif') }}" type="image/avif" fetchpriority="high">
+
         <x-seo-head 
             title="IDN Boarding School - Menghafal Al-Qur'an, Membangun Teknologi"
             description="IDN Boarding School adalah Sekolah SMP & SMA IT Terbaik di Bogor yang berfokus pada Menghafal Al-Qur'an dan Penguasaan Teknologi (IT), Coding, Cyber Security, dan UI/UX."
         />
-        
-        <!-- Preload LCP Hero Image first -->
-        <link rel="preload" as="image" href="{{ asset('assets/pages/home/main-image.avif') }}" type="image/avif" fetchpriority="high">
 
-        <!-- Non-blocking Fonts & Preconnect -->
+        <!-- Non-blocking Google Fonts with Early Connections -->
+        <link rel="dns-prefetch" href="//fonts.googleapis.com">
+        <link rel="dns-prefetch" href="//fonts.gstatic.com">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@600;700&family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@600;700&family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
         <noscript>
             <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@600;700&family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap">
