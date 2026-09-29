@@ -21,6 +21,10 @@ return Application::configure(basePath: dirname(__DIR__))
                      Request::HEADER_X_FORWARDED_AWS_ELB
         );
 
+        $middleware->web(append: [
+            \App\Http\Middleware\PerformanceOptimizationMiddleware::class,
+        ]);
+
         $middleware->alias([
             'super_admin' => \App\Http\Middleware\SuperAdminMiddleware::class,
         ]);
