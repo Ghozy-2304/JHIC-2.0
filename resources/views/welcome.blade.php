@@ -9,13 +9,10 @@
             description="IDN Boarding School adalah Sekolah SMP & SMA IT Terbaik di Bogor yang berfokus pada Menghafal Al-Qur'an dan Penguasaan Teknologi (IT), Coding, Cyber Security, dan UI/UX."
         />
         
-        <!-- Non-blocking Fonts & Preconnect -->
+        <!-- Fast Fonts with display=swap -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Funnel+Display:wght@600;700&family=Figtree:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
-        <noscript>
-            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Funnel+Display:wght@600;700&family=Figtree:wght@400;500;600&display=swap">
-        </noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap">
 
         <!-- Preload LCP Hero Image -->
         <link rel="preload" as="image" href="{{ asset('assets/pages/home/main-image.avif') }}" type="image/avif" fetchpriority="high">
