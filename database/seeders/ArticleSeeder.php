@@ -795,7 +795,7 @@ Instagram: @idnboardingschool</p>"
             ['slug' => 'siswi-smk-idn-akhwat-raih-juara-2-kompetisi-uiux-tech-fest-instiki'],
             [
                 'title' => "Siswi SMK IDN Akhwat Raih Juara 2 Kompetisi UI/UX Tech Fest INSTIKI",
-                'image' => 'prestasi/juara-2-akhwat.avif',
+                'image' => 'pages/home/rel_TFI.avif',
                 'category' => 'Prestasi',
                 'read_time' => '3 menit',
                 'published_at' => '2025-10-02',
@@ -849,7 +849,7 @@ Follow sosial media kami:<br>
             ['slug' => 'siswa-smk-idn-juara-2-nasional-networking-di-universitas-udayana'],
             [
                 'title' => "Siswa SMK IDN Juara 2 Nasional Networking di Universitas Udayana",
-                'image' => 'pages/tentang-kami/azzam.avif',
+                'image' => 'pages/home/rel_jamnyut.avif',
                 'category' => 'Prestasi',
                 'read_time' => '3 menit',
                 'published_at' => '2024-05-12',
@@ -899,7 +899,7 @@ Fasilitas lengkap:</p>
             ['slug' => 'siswa-idn-juara-1-coding-scratch-nasional-di-iibs-almaahira-malang'],
             [
                 'title' => "Siswa IDN Juara 1 Coding Scratch Nasional di IIBS Almaahira Malang",
-                'image' => 'prestasi/juara-rayyan.avif',
+                'image' => 'pages/home/rel_IIBS.avif',
                 'category' => 'Prestasi',
                 'read_time' => '3 menit',
                 'published_at' => '2026-04-11',

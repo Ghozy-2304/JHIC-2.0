@@ -40,8 +40,8 @@
 <!-- FIXED TOP BAR CONTAINER WITH BACKDROP BLUR -->
 <div x-data="{ mobileOpen: false, mobileProgramOpen: false }" class="fixed top-0 left-0 right-0 z-50 flex flex-col items-center py-4 px-4 bg-white/75 backdrop-blur-md max-w-full">
     
-    <!-- NAVBAR CARD (Figma Spec: 1120px width, 60px height, rounded-full, drop-shadow 0px 4px 15px rgba(0,0,0,0.04)) -->
-    <div class="w-full max-w-[1120px] bg-white h-[60px] flex items-center justify-between px-4 sm:px-6 rounded-full shadow-[0px_4px_15px_rgba(0,0,0,0.05)] border border-slate-100 relative">
+    <!-- NAVBAR CARD (Figma Spec: 1120px base width, fluid up to 1360px on large monitors) -->
+    <div class="w-full max-w-[1120px] xl:max-w-[1280px] 2xl:max-w-[1360px] bg-white h-[60px] flex items-center justify-between px-4 sm:px-6 rounded-full shadow-[0px_4px_15px_rgba(0,0,0,0.05)] border border-slate-100 relative">
         
         <!-- LOGO BRAND -->
         <a href="/" class="flex items-center shrink-0">

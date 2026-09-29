@@ -246,29 +246,7 @@
         </div>
 
         <!-- PPDB BANNER SECTION -->
-        <div class="w-[1120px] mb-20 max-[1160px]:w-[90%]">
-            <div class="bg-brand-primary rounded-[20px] p-10 relative overflow-hidden flex flex-col gap-8 shadow-[0px_10px_30px_rgba(12,97,207,0.2)] after:content-[''] after:absolute after:w-[390px] after:h-[423px] after:bg-white/12 after:blur-[64px] after:rounded-full after:-top-[203px] after:-right-[100px] after:pointer-events-none">
-                <div class="max-w-[672px] flex flex-col gap-4 z-10">
-                    <span class="text-white/80 text-sm font-medium">PPDB 2027/2028</span>
-                    <h2 class="font-heading text-5xl font-bold text-white leading-tight tracking-[-1px] max-md:text-3xl"><span class="text-brand-orange">Kuota terbatas.</span> Ambil langkahmu hari ini.</h2>
-                    <p class="text-white/85 text-base leading-normal">Gelombang 1 dibuka hingga kuota per jurusan terpenuhi. Daftar sekarang untuk mengamankan tempat dan mendapatkan potongan uang masuk.</p>
-                </div>
-                <div class="flex gap-4 items-center z-10">
-                    <a href="/ppdb" class="group bg-white text-[#0c61cf] py-3 px-6 rounded-full text-base font-semibold leading-none h-[48px] flex items-center justify-center gap-2 shadow-sm transition-all duration-200 hover:bg-slate-100 hover:shadow-md">
-                        <span>Mulai Pendaftaran</span>
-                        <svg class="w-4 h-4 transition-transform duration-200 ease-out group-hover:translate-x-1 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                        </svg>
-                    </a>
-                    <a href="https://wa.me/6282210102006" target="_blank" class="group bg-white/10 border border-white/20 text-white py-3 px-6 rounded-full text-base font-semibold leading-none h-[48px] flex items-center justify-center gap-2 transition-all duration-200 hover:bg-white/20 hover:border-white/40">
-                        <span>Tanya Via WhatsApp</span>
-                        <svg class="w-4 h-4 transition-transform duration-200 ease-out group-hover:translate-x-1 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </div>
+        <x-cta-section padding-class="mb-16 md:mb-20 px-4 sm:px-6" bg-class="bg-transparent" />
 
         <!-- FOOTER SECTION -->
         <x-footer />

@@ -156,39 +156,7 @@
 
 
         <!-- REGISTRATION SECTION (Figma Node 19889:5542) -->
-        <section class="w-full max-w-full overflow-hidden flex flex-col items-center py-12 md:py-[90px] px-6 md:px-[64px] lg:px-[160px] bg-[#fafafa]">
-            <div class="w-full max-w-[706px] lg:max-w-[1120px] mx-auto bg-[#0c61cf] rounded-[20px] p-6 md:p-[40px] text-white flex flex-col justify-between gap-6 md:gap-8 relative overflow-hidden shadow-lg">
-                <!-- BACKGROUND DECORATIVE GLOW -->
-                <div class="absolute -top-40 -right-40 w-[390px] h-[423px] bg-white/20 blur-[64px] rounded-full pointer-events-none"></div>
-
-                <!-- REGISTRATION INFO (Figma Node 19889:5544) -->
-                <div class="flex flex-col gap-4 items-start text-left z-10 max-w-[672px]">
-                    <span class="text-[#d5d7da] text-[14px] font-normal">PPDB 2027/2028</span>
-                    <h2 class="font-heading font-bold text-[32px] sm:text-[40px] md:text-[48px] leading-[40px] sm:leading-[50px] md:leading-[60px] tracking-[-1.92px]">
-                        <span class="text-[#ff7a29]">Kuota terbatas.</span> Ambil langkahmu hari ini.
-                    </h2>
-                    <p class="text-[#d5d7da] text-[15px] md:text-[16px] leading-[24px] font-normal">
-                        Gelombang 1 dibuka hingga kuota per jurusan terpenuhi. Daftar sekarang untuk mengamankan tempat dan mendapatkan potongan uang masuk.
-                    </p>
-                </div>
-
-                <!-- REGISTRATION CTA BUTTONS (Figma Node 19889:5549) -->
-                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 z-10">
-                    <a href="/ppdb" class="group bg-white text-[#0c61cf] px-6 py-3 rounded-full font-semibold text-[16px] leading-none h-[48px] flex items-center justify-center gap-2 hover:bg-slate-100 hover:shadow-md transition-all duration-200 shadow-sm">
-                        <span>Mulai Pendaftaran</span>
-                        <svg class="w-4 h-4 transition-transform duration-200 ease-out group-hover:translate-x-1 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                        </svg>
-                    </a>
-                    <a href="https://wa.me/6282210102006" target="_blank" class="group bg-[#0c61cf] border border-[#d5d7da] text-white px-6 py-3 rounded-full font-semibold text-[16px] leading-none h-[48px] flex items-center justify-center gap-2 hover:bg-[#094fa5] hover:border-white transition-all duration-200">
-                        <span>Tanya Via WhatsApp</span>
-                        <svg class="w-4 h-4 transition-transform duration-200 ease-out group-hover:translate-x-1 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </section>
+        <x-cta-section />
 
     </main>
 

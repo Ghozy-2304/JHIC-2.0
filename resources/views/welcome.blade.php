@@ -37,8 +37,8 @@
     <!-- 2. HERO HEADER SECTION (Figma Node 19900:12342) -->
     <section class="w-full max-w-full overflow-hidden flex flex-col items-center pt-[130px] md:pt-[160px] pb-12 md:pb-[110px] bg-[#fafafa]">
         
-        <!-- MAIN CONTENT CONTAINER (1120px width, centered) -->
-        <div class="w-[1120px] max-w-full mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 md:gap-14 py-4 px-4 sm:px-6">
+        <!-- MAIN CONTENT CONTAINER (1120px base, fluid up to 1360px on large monitors) -->
+        <div class="w-full max-w-[1120px] xl:max-w-[1280px] 2xl:max-w-[1360px] mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 md:gap-14 py-4 px-4 sm:px-6">
             
             <!-- LEFT TEXT CONTAINER (615px width) -->
             <div class="w-full lg:w-[615px] max-w-full flex flex-col gap-6 md:gap-8 items-start text-left">
@@ -81,8 +81,8 @@
 
         </div>
 
-        <!-- METRIC CONTAINER (1120px width x 120px height, centered) -->
-        <div class="w-[1120px] max-w-full mx-auto border-t border-b border-[#e9eaeb] py-3 sm:py-4 mt-6 md:mt-10 grid grid-cols-4 text-center px-1 sm:px-4">
+        <!-- METRIC CONTAINER (1120px base, fluid up to 1360px, centered) -->
+        <div class="w-full max-w-[1120px] xl:max-w-[1280px] 2xl:max-w-[1360px] mx-auto border-t border-b border-[#e9eaeb] py-3 sm:py-4 mt-6 md:mt-10 grid grid-cols-4 text-center px-1 sm:px-4">
             <div class="border-r border-[#e9eaeb] px-1 sm:px-4 md:px-6 py-2 sm:py-3 flex flex-col gap-1 items-center justify-center">
                 <span class="font-bold text-[17px] sm:text-[24px] md:text-[28px] leading-tight md:leading-[38px] text-[#0c61cf]">10+</span>
                 <span class="text-[#717680] text-[10.5px] xs:text-[12px] sm:text-[14px] md:text-[16px] leading-tight md:leading-[24px]">Tahun Berdiri</span>
@@ -106,7 +106,7 @@
 
     <!-- 3. KENAPA MEMILIH IDN BOARDING SCHOOL? (Figma Node 19900:12369) -->
     <section class="w-full max-w-full overflow-hidden flex flex-col items-center py-16 md:py-[110px] bg-[#f5f5f5]">
-        <div class="w-[1120px] max-w-full mx-auto flex flex-col items-center gap-6 md:gap-8 px-4 sm:px-6">
+        <div class="w-full max-w-[1120px] xl:max-w-[1280px] 2xl:max-w-[1360px] mx-auto flex flex-col items-center gap-6 md:gap-8 px-4 sm:px-6">
             
             <!-- SECTION HEADER -->
             <div class="flex flex-col items-center text-center gap-2">
@@ -225,7 +225,7 @@
 
     <!-- 4. JURUSAN YANG ADA DI IDN BOARDING SCHOOL (Figma Node 19900:12404) -->
     <section id="jurusan" class="w-full max-w-full overflow-hidden flex flex-col items-center py-16 md:py-[110px] bg-[#fafafa]">
-        <div class="w-[1120px] max-w-full mx-auto flex flex-col items-center gap-8 md:gap-12 px-4 sm:px-6">
+        <div class="w-full max-w-[1120px] xl:max-w-[1280px] 2xl:max-w-[1360px] mx-auto flex flex-col items-center gap-8 md:gap-12 px-4 sm:px-6">
             
             <!-- SECTION HEADER -->
             <div class="flex flex-col items-center text-center gap-2">
@@ -363,7 +363,7 @@
 
     <!-- 5. PENCAPAIAN WISUDAWAN DARI IDN BOARDING SCHOOL (Figma Node 19900:12412) -->
     <section class="w-full max-w-full overflow-hidden flex flex-col items-center py-16 md:py-[110px] bg-white">
-        <div class="w-[1120px] max-w-full mx-auto flex flex-col items-center gap-8 md:gap-12 px-4 sm:px-6">
+        <div class="w-full max-w-[1120px] xl:max-w-[1280px] 2xl:max-w-[1360px] mx-auto flex flex-col items-center gap-8 md:gap-12 px-4 sm:px-6">
             
             <!-- SECTION HEADER -->
             <div class="flex flex-col items-center text-center gap-2">
@@ -409,7 +409,7 @@
 
     <!-- 6. KERJASAMA INDUSTRI (Figma Node 19900:12425) -->
     <section class="w-full max-w-full overflow-hidden flex flex-col items-center py-16 md:py-[110px] bg-[#fafafa]">
-        <div class="w-[1120px] max-w-full mx-auto flex flex-col items-center gap-8 md:gap-10 px-4 sm:px-6">
+        <div class="w-full max-w-[1120px] xl:max-w-[1280px] 2xl:max-w-[1360px] mx-auto flex flex-col items-center gap-8 md:gap-10 px-4 sm:px-6">
             
             <!-- SECTION HEADER -->
             <div class="flex flex-col items-center text-center gap-2">
@@ -498,7 +498,7 @@
 
     <!-- 7. PRESTASI SISWA IDN BOARDING SCHOOL (Figma Node 19900:12470) -->
     <section class="w-full max-w-full overflow-hidden flex flex-col items-center py-16 md:py-[110px] bg-white">
-        <div class="w-[1120px] max-w-full mx-auto flex flex-col items-center gap-8 md:gap-12 px-4 sm:px-6">
+        <div class="w-full max-w-[1120px] xl:max-w-[1280px] 2xl:max-w-[1360px] mx-auto flex flex-col items-center gap-8 md:gap-12 px-4 sm:px-6">
             
             <!-- SECTION HEADER -->
             <div class="flex flex-col items-center text-center gap-2">
@@ -514,13 +514,13 @@
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 w-full justify-items-center">
                 
                 <!-- Card 1 -->
-                <div class="bg-white rounded-[18px] overflow-hidden border border-[#e9eaeb] flex flex-col justify-between w-full max-w-[450px] h-[460px] shadow-2xs transition-all duration-300 hover:border-[#0c61cf] hover:shadow-lg hover:-translate-y-1">
+                <a href="/artikel/siswa-idn-juara-1-coding-scratch-nasional-di-iibs-almaahira-malang" class="group bg-white rounded-[18px] overflow-hidden border border-[#e9eaeb] flex flex-col justify-between w-full max-w-[450px] h-[460px] shadow-2xs transition-all duration-300 hover:border-[#0c61cf] hover:shadow-lg hover:-translate-y-1">
                     <div class="h-[300px] w-full overflow-hidden bg-slate-100 relative shrink-0">
                         <img src="{{ asset('assets/pages/home/rel_IIBS.avif') }}" alt="Award 1" loading="lazy" decoding="async" class="w-full h-full object-cover object-top">
                     </div>
                     <div class="p-5 flex flex-col justify-between bg-white flex-1">
                         <div class="flex flex-col gap-2">
-                            <h3 class="font-semibold text-[17px] leading-[24px] text-[#181d27]">
+                            <h3 class="font-semibold text-[17px] leading-[24px] text-[#181d27] group-hover:text-[#0c61cf] transition-colors">
                                 Siswa SMP IDN Juara 1 Coding Scratch Nasional di IIBS Almaahira Malang.
                             </h3>
                             <p class="text-[#414651] text-[14px] leading-[20px]">
@@ -531,16 +531,16 @@
                             21 April 2026
                         </p>
                     </div>
-                </div>
+                </a>
 
                 <!-- Card 2 -->
-                <div class="bg-white rounded-[18px] overflow-hidden border border-[#e9eaeb] flex flex-col justify-between w-full max-w-[450px] h-[460px] shadow-2xs transition-all duration-300 hover:border-[#0c61cf] hover:shadow-lg hover:-translate-y-1">
+                <a href="/artikel/siswa-smk-idn-juara-2-nasional-networking-di-universitas-udayana" class="group bg-white rounded-[18px] overflow-hidden border border-[#e9eaeb] flex flex-col justify-between w-full max-w-[450px] h-[460px] shadow-2xs transition-all duration-300 hover:border-[#0c61cf] hover:shadow-lg hover:-translate-y-1">
                     <div class="h-[300px] w-full overflow-hidden bg-slate-100 relative shrink-0">
                         <img src="{{ asset('assets/pages/home/rel_jamnyut.avif') }}" alt="Award 2" loading="lazy" decoding="async" class="w-full h-full object-cover object-top">
                     </div>
                     <div class="p-5 flex flex-col justify-between bg-white flex-1">
                         <div class="flex flex-col gap-2">
-                            <h3 class="font-semibold text-[17px] leading-[24px] text-[#181d27]">
+                            <h3 class="font-semibold text-[17px] leading-[24px] text-[#181d27] group-hover:text-[#0c61cf] transition-colors">
                                 Siswa SMK IDN Raih Juara 2 Nasional Lomba Networking di Universitas Udayana
                             </h3>
                             <p class="text-[#414651] text-[14px] leading-[20px]">
@@ -551,16 +551,16 @@
                             21 April 2026
                         </p>
                     </div>
-                </div>
+                </a>
 
                 <!-- Card 3 -->
-                <div class="bg-white rounded-[18px] overflow-hidden border border-[#e9eaeb] flex flex-col justify-between w-full max-w-[450px] h-[460px] shadow-2xs transition-all duration-300 hover:border-[#0c61cf] hover:shadow-lg hover:-translate-y-1">
+                <a href="/artikel/siswi-smk-idn-akhwat-raih-juara-2-kompetisi-uiux-tech-fest-instiki" class="group bg-white rounded-[18px] overflow-hidden border border-[#e9eaeb] flex flex-col justify-between w-full max-w-[450px] h-[460px] shadow-2xs transition-all duration-300 hover:border-[#0c61cf] hover:shadow-lg hover:-translate-y-1">
                     <div class="h-[300px] w-full overflow-hidden bg-slate-100 relative shrink-0">
                         <img src="{{ asset('assets/pages/home/rel_TFI.avif') }}" alt="Award 3" loading="lazy" decoding="async" class="w-full h-full object-cover object-top">
                     </div>
                     <div class="p-5 flex flex-col justify-between bg-white flex-1">
                         <div class="flex flex-col gap-2">
-                            <h3 class="font-semibold text-[17px] leading-[24px] text-[#181d27]">
+                            <h3 class="font-semibold text-[17px] leading-[24px] text-[#181d27] group-hover:text-[#0c61cf] transition-colors">
                                 Siswi SMK IDN Akhwat Raih Juara 2 Kompetisi UI/UX Design Tech Fest INSTIKI.
                             </h3>
                             <p class="text-[#414651] text-[14px] leading-[20px]">
@@ -571,12 +571,12 @@
                             20 April 2026
                         </p>
                     </div>
-                </div>
+                </a>
 
             </div>
 
             <!-- BUTTON: Selengkapnya -->
-            <a href="/artikel/idn-relawan-dan-markaz-bersama-as-sunnah-salurkan-bantuan-bencana-banjir-di-bali" class="group bg-[#0c61cf] text-white w-[149px] h-[48px] rounded-full font-semibold text-[16px] flex items-center justify-center gap-2 shadow-md transition-all duration-200 hover:bg-[#094fa5]">
+            <a href="/artikel" class="group bg-[#0c61cf] text-white w-[149px] h-[48px] rounded-full font-semibold text-[16px] flex items-center justify-center gap-2 shadow-md transition-all duration-200 hover:bg-[#094fa5]">
                 <span>Selengkapnya</span>
             </a>
 
@@ -586,7 +586,7 @@
 
     <!-- 8. UNIVERSITAS ALUMNI IDN BOARDING SCHOOL (Figma Node 19900:12504) -->
     <section class="w-full max-w-full overflow-hidden flex flex-col items-center py-16 md:py-[110px] bg-[#fafafa]">
-        <div class="w-[1120px] max-w-full mx-auto flex flex-col items-center gap-8 md:gap-10 px-4 sm:px-6">
+        <div class="w-full max-w-[1120px] xl:max-w-[1280px] 2xl:max-w-[1360px] mx-auto flex flex-col items-center gap-8 md:gap-10 px-4 sm:px-6">
             
             <!-- SECTION HEADER -->
             <div class="flex flex-col items-center text-center gap-2">
@@ -654,7 +654,7 @@
                 ];
             @endphp
 
-            <div class="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-7 lg:grid-cols-10 gap-3 sm:gap-4 md:gap-5 w-full max-w-[1120px] mx-auto px-4 justify-items-center max-sm:[&>:nth-child(4n+1):nth-last-child(2)]:col-start-2 md:max-lg:[&>:nth-child(7n+1):last-child]:col-span-7 md:max-lg:[&>:nth-child(7n+1):last-child]:justify-self-center">
+            <div class="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-7 lg:grid-cols-10 gap-3 sm:gap-4 md:gap-5 w-full max-w-[1120px] xl:max-w-[1280px] 2xl:max-w-[1360px] mx-auto px-4 justify-items-center max-sm:[&>:nth-child(4n+1):nth-last-child(2)]:col-start-2 md:max-lg:[&>:nth-child(7n+1):last-child]:col-span-7 md:max-lg:[&>:nth-child(7n+1):last-child]:justify-self-center">
                 @foreach($allUniversities as $index => $u)
                 @php
                     $uName = is_array($u) ? $u['name'] : $u;
@@ -684,7 +684,7 @@
 
     <!-- 9. APA KATA MEREKA TENTANG IDN? (Figma Node 19900:12609) -->
     <section class="w-full max-w-full overflow-hidden flex flex-col items-center py-[90px] bg-[#f5f5f5]" x-data="{ activeTab: 'Perusahaan' }">
-        <div class="w-[1120px] max-w-full mx-auto flex flex-col items-center gap-6 md:gap-8 px-4 sm:px-6">
+        <div class="w-full max-w-[1120px] xl:max-w-[1280px] 2xl:max-w-[1360px] mx-auto flex flex-col items-center gap-6 md:gap-8 px-4 sm:px-6">
             
             <!-- SECTION HEADER -->
             <div class="flex flex-col items-center text-center gap-2">
@@ -996,7 +996,7 @@
 
     <!-- 10. BIAYA PENDIDIKAN (Figma Node 19900:12612) -->
     <section class="w-full max-w-full overflow-hidden flex flex-col items-center py-16 md:py-[110px] bg-[#fafafa]">
-        <div class="w-[1120px] max-w-full mx-auto flex flex-col gap-8 items-start px-4 sm:px-6">
+        <div class="w-full max-w-[1120px] xl:max-w-[1280px] 2xl:max-w-[1360px] mx-auto flex flex-col gap-8 items-start px-4 sm:px-6">
             <div class="flex flex-col md:flex-row items-center md:items-start justify-between gap-10 md:gap-14 w-full">
                 
                 <!-- LEFT TUITION INFO -->
@@ -1045,37 +1045,7 @@
 
 
     <!-- 11. REGISTRATION BANNER / PPDB 2027/2028 (Figma Node 19900:12633) -->
-    <section class="w-full max-w-full overflow-hidden flex flex-col items-center py-12 md:py-[90px] px-6 md:px-[64px] bg-[#fafafa]">
-        <div class="w-full max-w-[1120px] md:max-w-[706px] lg:max-w-[1120px] mx-auto bg-[#0c61cf] rounded-[20px] p-6 sm:p-[40px] min-h-[364px] text-white flex flex-col justify-between gap-6 md:gap-8 relative overflow-hidden shadow-lg">
-            <div class="w-[390px] h-[423px] rounded-full bg-white/20 blur-[64px] absolute -right-20 -top-40 pointer-events-none"></div>
-
-            <div class="flex flex-col gap-4 z-10 max-w-[672px]">
-                <span class="text-[#d5d7da] text-[14px]">PPDB 2027/2028</span>
-                <h2 class="font-heading font-bold text-[28px] sm:text-[36px] md:text-[48px] leading-[36px] sm:leading-[46px] md:leading-[60px] tracking-[-1.5px] md:tracking-[-1.92px]">
-                    <span class="text-[#ff7a29]">Kuota terbatas.</span> Ambil langkahmu hari ini.
-                </h2>
-                <p class="text-[#d5d7da] text-[15px] md:text-[16px] leading-[24px]">
-                    Gelombang 1 dibuka hingga kuota per jurusan terpenuhi. Daftar sekarang untuk mengamankan tempat dan mendapatkan potongan uang masuk.
-                </p>
-            </div>
-
-            <!-- BUTTONS CONTAINER -->
-            <div class="flex flex-wrap items-center gap-4 z-10">
-                <a href="/ppdb" class="group bg-white text-[#0c61cf] px-6 py-3 rounded-full font-semibold text-[15px] md:text-[16px] leading-none h-[48px] flex items-center justify-center gap-2 shadow-sm transition-all duration-200 hover:bg-slate-100 hover:shadow-md">
-                    <span>Mulai Pendaftaran</span>
-                    <svg class="w-4 h-4 transition-transform duration-200 ease-out group-hover:translate-x-1 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                    </svg>
-                </a>
-                <a href="https://wa.me/6282210102006" target="_blank" class="group bg-[#0c61cf] border border-[#d5d7da] text-white px-6 py-3 rounded-full font-semibold text-[15px] md:text-[16px] leading-none h-[48px] flex items-center justify-center gap-2 transition-all duration-200 hover:bg-[#094fa5] hover:border-white">
-                    <span>Tanya Via WhatsApp</span>
-                    <svg class="w-4 h-4 transition-transform duration-200 ease-out group-hover:translate-x-1 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                    </svg>
-                </a>
-            </div>
-        </div>
-    </section>
+    <x-cta-section />
 
 
     <!-- 12. REUSABLE FOOTER COMPONENT -->

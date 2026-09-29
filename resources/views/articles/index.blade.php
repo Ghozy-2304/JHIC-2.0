@@ -197,25 +197,7 @@
                 @endif
 
                 <!-- PPDB CTA Banner -->
-                <div class="bg-[#0c61cf] rounded-[24px] p-8 md:p-14 text-white flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden shadow-xl mt-12 md:mt-20">
-                    <div class="space-y-3 max-w-xl text-left">
-                        <span class="text-blue-100 text-sm font-medium tracking-wide">Pendaftaran 2026</span>
-                        <h2 class="text-2xl md:text-4xl font-bold tracking-tight text-white leading-tight">
-                            Kuota terbatas. Ambil langkahmu hari ini.
-                        </h2>
-                        <p class="text-blue-100 text-sm md:text-base font-normal">
-                            Segera daftarkan putra/putri Anda dan jadilah bagian dari keluarga besar IDN Boarding School.
-                        </p>
-                    </div>
-                    <div class="flex flex-col sm:flex-row items-center gap-4 shrink-0 w-full md:w-auto">
-                        <a href="/ppdb" class="w-full sm:w-auto text-center bg-white text-[#0c61cf] px-6 py-3.5 rounded-full font-semibold hover:bg-slate-100 hover:shadow-md transition-all duration-200 shadow-sm text-sm md:text-base">
-                            Lihat Pendaftaran
-                        </a>
-                        <a href="https://wa.me/6282210102006" target="_blank" class="w-full sm:w-auto text-center border-2 border-white/80 text-white px-6 py-3.5 rounded-full font-semibold hover:bg-white/10 hover:border-white transition-all duration-200 text-sm md:text-base">
-                            Tanya Dulu Melalui WA
-                        </a>
-                    </div>
-                </div>
+                <x-cta-section padding-class="mt-12 md:mt-20 px-0" bg-class="bg-transparent" />
 
             </div>
         </section>

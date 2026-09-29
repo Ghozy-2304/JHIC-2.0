@@ -668,37 +668,7 @@
 
 
     <!-- 7. REGISTRATION BANNER 2 / PPDB CTA SECTION (Figma Node 19889:6339 - py-[90px]) -->
-    <section class="w-full max-w-full overflow-hidden flex flex-col items-center py-12 md:py-[90px] px-6 md:px-[64px] lg:px-[160px] bg-[#fafafa]">
-        <div class="w-full max-w-[706px] lg:max-w-[1120px] mx-auto bg-[#0c61cf] rounded-[20px] p-6 sm:p-[40px] min-h-[364px] text-white flex flex-col justify-between gap-6 md:gap-8 relative overflow-hidden shadow-lg">
-            <div class="w-[390px] h-[423px] rounded-full bg-white/20 blur-[64px] absolute -right-20 -top-40 pointer-events-none"></div>
-
-            <div class="flex flex-col gap-4 z-10 max-w-[672px] text-left">
-                <span class="text-[#e0e7ff] text-[14px]">PPDB 2027/2028</span>
-                <h2 class="font-heading font-bold text-[28px] sm:text-[36px] md:text-[48px] leading-[36px] sm:leading-[46px] md:leading-[60px] tracking-[-1.5px] md:tracking-[-1.92px]">
-                    <span class="text-[#ff7a29]">Kuota terbatas.</span> Ambil langkahmu hari ini.
-                </h2>
-                <p class="text-[#d5d7da] text-[15px] md:text-[16px] leading-[24px]">
-                    Gelombang 1 dibuka hingga kuota per jurusan terpenuhi. Daftar sekarang untuk mengamankan tempat dan mendapatkan potongan uang masuk.
-                </p>
-            </div>
-
-            <!-- BUTTONS CONTAINER -->
-            <div class="flex flex-wrap items-center gap-4 z-10">
-                <a href="/ppdb" class="group bg-white text-[#0c61cf] px-6 py-3 rounded-full font-semibold text-[15px] md:text-[16px] leading-none h-[48px] flex items-center justify-center gap-2 shadow-sm transition-all duration-200 hover:bg-slate-100 hover:shadow-md">
-                    <span>Mulai Pendaftaran</span>
-                    <svg class="w-4 h-4 transition-transform duration-200 ease-out group-hover:translate-x-1 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                    </svg>
-                </a>
-                <a href="https://wa.me/6282210102006" target="_blank" class="group bg-transparent border border-white/60 text-white px-6 py-3 rounded-full font-semibold text-[15px] md:text-[16px] leading-none h-[48px] flex items-center justify-center gap-2 transition-all duration-200 hover:bg-white/10">
-                    <span>Tanya Via WhatsApp</span>
-                    <svg class="w-4 h-4 transition-transform duration-200 ease-out group-hover:translate-x-1 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                    </svg>
-                </a>
-            </div>
-        </div>
-    </section>
+    <x-cta-section />
 
 
     <!-- 8. REUSABLE FOOTER COMPONENT -->
@@ -706,6 +676,32 @@
 
     <!-- 9. REUSABLE CHATBOT COMPONENT -->
     <x-chatbot />
+
+    <!-- Anchor Hash Precise Scroll Handler -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            function handleHashScroll() {
+                if (window.location.hash) {
+                    var hash = window.location.hash;
+                    var target = document.querySelector(hash);
+                    if (target) {
+                        setTimeout(function() {
+                            var navbarOffset = 100;
+                            var elementPosition = target.getBoundingClientRect().top + window.pageYOffset;
+                            var offsetPosition = elementPosition - navbarOffset;
+                            window.scrollTo({
+                                top: Math.max(0, offsetPosition),
+                                behavior: "smooth"
+                            });
+                        }, 200);
+                    }
+                }
+            }
+
+            handleHashScroll();
+            window.addEventListener("hashchange", handleHashScroll);
+        });
+    </script>
 
     </body>
 </html>

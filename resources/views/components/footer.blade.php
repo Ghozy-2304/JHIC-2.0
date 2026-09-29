@@ -1,6 +1,6 @@
 <!-- REUSABLE FOOTER COMPONENT -->
 <footer class="w-full bg-white border-t border-[#e9eaeb] pt-16 md:pt-[110px] pb-10 md:pb-[64px] flex flex-col items-center">
-    <div class="w-[1120px] max-w-full mx-auto flex flex-col gap-10 md:gap-[64px] px-4 sm:px-6">
+    <div class="w-full max-w-[1120px] xl:max-w-[1280px] 2xl:max-w-[1360px] mx-auto flex flex-col gap-10 md:gap-[64px] px-4 sm:px-6">
         
         <!-- TOP FOOTER CONTENT -->
         <div class="flex justify-between items-start gap-8 md:gap-12 w-full max-lg:flex-col">
@@ -31,7 +31,7 @@
                         </svg>
                     </a>
                     <!-- YouTube -->
-                    <a href="https://www.youtube.com/@IDNBoardingSchool" target="_blank" rel="noopener noreferrer" class="group w-10 sm:w-12 h-10 sm:h-12 rounded-full border-2 border-[#e9eaeb] bg-white flex items-center justify-center text-[#717680] transition-all duration-200 hover:border-[#0c61cf] hover:text-[#0c61cf] hover:shadow-[0px_4px_20px_rgba(12,97,207,0.15)]">
+                    <a href="https://www.youtube.com/@IDNTV2022" target="_blank" rel="noopener noreferrer" class="group w-10 sm:w-12 h-10 sm:h-12 rounded-full border-2 border-[#e9eaeb] bg-white flex items-center justify-center text-[#717680] transition-all duration-200 hover:border-[#0c61cf] hover:text-[#0c61cf] hover:shadow-[0px_4px_20px_rgba(12,97,207,0.15)]">
                         <svg class="w-5 sm:w-6 h-5 sm:h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <rect x="2" y="4" width="20" height="16" rx="4" fill="currentColor"/>
                             <path d="M10 9v6l5-3-5-3z" fill="white"/>
@@ -91,8 +91,8 @@
                 <div class="flex flex-col gap-3">
                     <h4 class="font-semibold text-[14px] text-[#181d27]">Artikel</h4>
                     <div class="flex flex-col gap-1.5 text-[14px] text-[#717680]">
-                        <a href="#" class="hover:text-[#0c61cf]">Prestasi</a>
-                        <a href="#" class="hover:text-[#0c61cf]">News & Event</a>
+                        <a href="/artikel?kategori=News&category=Prestasi&page=1" class="hover:text-[#0c61cf]">Prestasi</a>
+                        <a href="/artikel?kategori=News&category=News%20%26%20Event&page=1" class="hover:text-[#0c61cf]">News & Event</a>
                     </div>
                 </div>
 

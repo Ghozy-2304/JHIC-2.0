@@ -1,0 +1,1 @@
+<x-cta-section {{ $attributes }} />
