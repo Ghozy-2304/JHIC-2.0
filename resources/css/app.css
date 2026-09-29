@@ -4,6 +4,10 @@
 @source '../views/**/*.blade.php';
 @source '../../app';
 
+html {
+    scroll-behavior: smooth;
+}
+
 html, body {
     width: 100% !important;
     max-width: 100% !important;
