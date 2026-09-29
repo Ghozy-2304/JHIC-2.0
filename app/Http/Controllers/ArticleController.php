@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Article;
-use Illuminate\Support\Facades\Cache;
 
 class ArticleController extends Controller
 {
@@ -12,7 +11,6 @@ class ArticleController extends Controller
     {
         $selectedCategory = $request->query('category', 'Semua');
         $search = $request->query('search');
-        $page = $request->query('page', 1);
 
         // If user is actively searching or filtering by specific category, execute dynamic query
         if ($search || ($selectedCategory && $selectedCategory !== 'Semua')) {
@@ -40,17 +38,18 @@ class ArticleController extends Controller
                 ->paginate(9)
                 ->withQueryString();
         } else {
-        // Fetch featured article and paginated grid
-        $featuredArticle = Article::where('slug', 'izin-operasional-smk-idn-bogor-resmi-terbit')->first()
-            ?? Article::latest('published_at')->first();
+            // Fetch featured article and paginated grid
+            $featuredArticle = Article::where('slug', 'izin-operasional-smk-idn-bogor-resmi-terbit')->first()
+                ?? Article::latest('published_at')->first();
 
-        $gridQuery = Article::query();
-        if ($featuredArticle) {
-            $gridQuery->where('id', '!=', $featuredArticle->id);
+            $gridQuery = Article::query();
+            if ($featuredArticle) {
+                $gridQuery->where('id', '!=', $featuredArticle->id);
+            }
+
+            $articles = $gridQuery->orderBy('published_at', 'desc')
+                ->paginate(9);
         }
-
-        $articles = $gridQuery->orderBy('published_at', 'desc')
-            ->paginate(9);
 
         $categories = ['Semua', 'Prestasi', 'News & Event'];
 
@@ -69,5 +68,3 @@ class ArticleController extends Controller
         return view('articles.show', compact('article', 'relatedArticles'));
     }
 }
-
-
