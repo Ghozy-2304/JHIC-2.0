@@ -15,9 +15,9 @@
 <link rel="canonical" href="{{ url()->current() }}">
 
 <!-- Favicon & Apple Touch Icon for Google Search Snippet -->
-<link rel="icon" type="image/png" href="{{ asset('assets/logos/logo_idn.png') }}">
-<link rel="shortcut icon" href="{{ asset('assets/logos/logo_idn.png') }}">
-<link rel="apple-touch-icon" href="{{ asset('assets/logos/logo_idn.png') }}">
+<link rel="icon" type="image/png" href="{{ asset('assets/logos/favicon-icon.png') }}">
+<link rel="shortcut icon" href="{{ asset('assets/logos/favicon-icon.png') }}">
+<link rel="apple-touch-icon" href="{{ asset('assets/logos/favicon-icon.png') }}">
 
 <!-- Open Graph / Facebook / WhatsApp -->
 <meta property="og:type" content="{{ $article ? 'article' : $type }}">

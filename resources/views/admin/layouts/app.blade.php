@@ -7,9 +7,9 @@
     <meta name="robots" content="noindex, nofollow">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="{{ asset('assets/logos/logo_idn.png') }}">
-    <link rel="shortcut icon" href="{{ asset('assets/logos/logo_idn.png') }}">
-    <link rel="apple-touch-icon" href="{{ asset('assets/logos/logo_idn.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('assets/logos/favicon-icon.png') }}">
+    <link rel="shortcut icon" href="{{ asset('assets/logos/favicon-icon.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('assets/logos/favicon-icon.png') }}">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
