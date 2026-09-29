@@ -12,7 +12,7 @@
         <!-- Fast Fonts with display=swap -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@600;700&family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap">
 
         <!-- Preload LCP Hero Image -->
         <link rel="preload" as="image" href="{{ asset('assets/pages/home/main-image.avif') }}" type="image/avif" fetchpriority="high">
