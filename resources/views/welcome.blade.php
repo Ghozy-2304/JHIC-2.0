@@ -66,7 +66,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
                         </svg>
                     </a>
-                    <a href="/program" class="group bg-white border-2 border-[#e9eaeb] text-[#414651] hover:text-[#0c61cf] px-6 py-3 rounded-full font-semibold text-[15px] md:text-[16px] leading-none h-[48px] flex items-center justify-center gap-2 transition-all duration-200 hover:bg-slate-50 hover:border-[#0c61cf] shrink-0">
+                    <a href="#jurusan" class="group bg-white border-2 border-[#e9eaeb] text-[#414651] hover:text-[#0c61cf] px-6 py-3 rounded-full font-semibold text-[15px] md:text-[16px] leading-none h-[48px] flex items-center justify-center gap-2 transition-all duration-200 hover:bg-slate-50 hover:border-[#0c61cf] shrink-0">
                         <span>Lihat Jurusan</span>
                     </a>
                 </div>
@@ -224,7 +224,7 @@
 
 
     <!-- 4. JURUSAN YANG ADA DI IDN BOARDING SCHOOL (Figma Node 19900:12404) -->
-    <section class="w-full max-w-full overflow-hidden flex flex-col items-center py-16 md:py-[110px] bg-[#fafafa]">
+    <section id="jurusan" class="w-full max-w-full overflow-hidden flex flex-col items-center py-16 md:py-[110px] bg-[#fafafa]">
         <div class="w-[1120px] max-w-full mx-auto flex flex-col items-center gap-8 md:gap-12 px-4 sm:px-6">
             
             <!-- SECTION HEADER -->
