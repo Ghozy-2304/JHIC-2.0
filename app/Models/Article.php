@@ -20,6 +20,14 @@ class Article extends Model
 
     protected static function booted()
     {
+        static::saving(function ($article) {
+            if (empty($article->read_time) && !empty($article->content)) {
+                $words = count(preg_split('/\s+/', trim(strip_tags($article->content))));
+                $minutes = max(1, (int) ceil($words / 150));
+                $article->read_time = $minutes . ' menit';
+            }
+        });
+
         static::saved(function () {
             Cache::flush();
         });

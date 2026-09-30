@@ -20,7 +20,7 @@ class ArticleSeeder extends Seeder
                 'image' => 'ekskul/basket-hitam.avif',
                 'category' => 'Prestasi',
                 'read_time' => '3 menit',
-                'published_at' => '2025-01-11',
+                'published_at' => '2025-09-30',
                 'content' => '<h3>Boarding School Islami Terbaik Raih Juara 1 Basket Tingkat JABODETABEK</h3>
 
 <p>Tim basket SMP IDNBSBasketball kembali mencatatkan sejarah baru dengan meraih Juara 1 Tingkat JABODETABEK pada ajang Hexagon Fest An Nahl Ciangsana. Prestasi ini menjadi bukti nyata kerja keras, kekompakan, dan semangat pantang menyerah dari para pemain yang terus berlatih secara disiplin.</p>
@@ -86,7 +86,7 @@ class ArticleSeeder extends Seeder
                 'title' => "Santri SMP IDN Jonggol Raih Perak Olimpiade Bahasa Inggris POSN",
                 'image' => 'prestasi/juara-3-smp.avif',
                 'category' => 'Prestasi',
-                'read_time' => '3 menit',
+                'read_time' => '2 menit',
                 'published_at' => '2025-02-01',
                 'content' => '<h3>Boarding School Islami Terbaik Torehkan Prestasi Perak di Olimpiade Bahasa Inggris POSN</h3>
 
@@ -118,7 +118,7 @@ class ArticleSeeder extends Seeder
                 'title' => "Santri SMP IDN Jonggol Raih Emas Olimpiade Bahasa Inggris POSN",
                 'image' => 'prestasi/juara-1-smp.avif',
                 'category' => 'Prestasi',
-                'read_time' => '3 menit',
+                'read_time' => '2 menit',
                 'published_at' => '2025-02-01',
                 'content' => '<h3>Boarding School Islami Terbaik Cetak Prestasi: Medali Emas Olimpiade Bahasa Inggris POSN</h3>
 
@@ -148,10 +148,10 @@ class ArticleSeeder extends Seeder
             ['slug' => 'juara-1-lomba-robot-sumo-nasional-2025'],
             [
                 'title' => "Juara 1 Lomba Robot Sumo Nasional 2025",
-                'image' => 'pages/home/robot-sumo.avif',
+                'image' => 'prestasi/juara-rayyan.avif',
                 'category' => 'Prestasi',
-                'read_time' => '3 menit',
-                'published_at' => '2025-10-02',
+                'read_time' => '2 menit',
+                'published_at' => '2025-05-15',
                 'content' => '<h3>Prestasi Membanggakan dari Boarding School Islami Terbaik</h3>
 
 <p>Perwakilan santri SMK IDN Backpacker School Sentul Bogor kembali menorehkan prestasi gemilang di kancah nasional. Kali ini, mereka berhasil meraih Juara 1 Lomba Robot Sumo 1Kg dalam ajang Elektro Unisma Kompetisi 2025 yang diselenggarakan oleh Unisma University.</p>
@@ -184,8 +184,8 @@ class ArticleSeeder extends Seeder
                 'title' => "Juara 1 Lomba Jenius Medlab 2025",
                 'image' => 'prestasi/juara-1-akhwat.avif',
                 'category' => 'Prestasi',
-                'read_time' => '3 menit',
-                'published_at' => '2025-10-02',
+                'read_time' => '2 menit',
+                'published_at' => '2025-03-20',
                 'content' => '<h3>Boarding School Islami Terbaik Cetak Juara di Jenius Medlab Competition 2025</h3>
 
 <p>IDN Boarding School Akhwat kembali membuktikan kualitasnya sebagai Boarding School Islami Terbaik dengan mencetak prestasi di ajang Jenius Medlab Competition 2025 yang diselenggarakan oleh Poltekkes Kemenkes Yogyakarta. Salah satu siswi berbakatnya, <strong>Quaneisha Syifa Nida</strong> (11 RPL), berhasil meraih <strong>Juara 1</strong> dalam Kategori Video Daily Activity Tingkat Nasional.</p>
@@ -212,10 +212,10 @@ class ArticleSeeder extends Seeder
             ['slug' => 'boarding-school-islami-terbaik-raih-juara-2-3-mazesolving-robotik-nasional'],
             [
                 'title' => "Boarding School Islami Terbaik Raih Juara 2 & 3 Mazesolving Robotik Nasional",
-                'image' => 'prestasi/juara-smp.avif',
+                'image' => 'page/home/robot-sumo.avif',
                 'category' => 'Prestasi',
-                'read_time' => '3 menit',
-                'published_at' => '2025-10-02',
+                'read_time' => '2 menit',
+                'published_at' => '2025-02-18',
                 'content' => '<h3>Boarding School Islami Terbaik Raih Juara 2 & 3 Mazesolving Robotik Nasional</h3>
 
 <p>Santri SMP IDN Boarding School Jonggol kembali menorehkan prestasi luar biasa dalam ajang robotika tingkat nasional. Sebagai bagian dari Boarding School Islami Terbaik, dua santri mereka berhasil meraih Juara 2 dan Juara 3 dalam cabang Lomba Mazesolving yang diselenggarakan oleh Wonderful Indonesia Robot Challenge (WIRC) tahun 2025.</p>
@@ -238,8 +238,8 @@ class ArticleSeeder extends Seeder
                 'title' => "Juara 3 Mobile UI/UX Competition di UDINUS Semarang",
                 'image' => 'prestasi/juara-lomba.avif',
                 'category' => 'Prestasi',
-                'read_time' => '3 menit',
-                'published_at' => '2025-10-02',
+                'read_time' => '2 menit',
+                'published_at' => '2025-06-28',
                 'content' => '<h3>Boarding School Islami Terbaik Juara 3 Mobile UI/UX Competition di UDINUS Semarang</h3>
 
 <p>Santri SMK IDN Boarding School Jonggol kembali menorehkan prestasi membanggakan sebagai bagian dari Boarding School Islami Terbaik. Kali ini, dua siswa jurusan DKV berhasil meraih Juara 3 dalam ajang bergengsi Mobile UI/UX Competition pada event DTI Creative Clash 2025 yang diselenggarakan oleh Universitas Dian Nuswantoro (UDINUS) Semarang, pada 28 Juni 2025.</p>
@@ -260,10 +260,10 @@ class ArticleSeeder extends Seeder
             ['slug' => 'smk-jurusan-rpl-rekomendasi-dan-prospek-masa-depan'],
             [
                 'title' => "SMK Jurusan RPL Rekomendasi dan Prospek Masa Depan",
-                'image' => 'pages/home/view-idn.avif',
+                'image' => 'pages/home/dokum-open-house.avif',
                 'category' => 'Prestasi',
-                'read_time' => '3 menit',
-                'published_at' => '2025-10-02',
+                'read_time' => '7 menit',
+                'published_at' => '2025-09-23',
                 'content' => '<h3>Apa Itu Jurusan RPL?</h3>
 
 <p>In Anak IT we trust! <em>FOMO</em> sesungguhnya adalah <em>fear of missing out</em> dari <em>skill</em> di bidang teknologi. Kemampuan menguasai teknologi bukan lagi pilihan, tetapi kebutuhan. Hampir semua sektor – mulai dari pendidikan, bisnis, kesehatan, hingga industri kreatif – mengandalkan perangkat lunak dan sistem informasi. Maka tak heran jika jurusan Rekayasa Perangkat Lunak (RPL) menjadi salah satu jurusan paling favorit di Sekolah Menengah Kejuruan (SMK).</p>
@@ -349,10 +349,10 @@ Kalau kamu ingin menguasai teknologi, punya karya nyata sebelum lulus, sekaligus
             ['slug' => 'idn-relawan-dan-markaz-bersama-as-sunnah-salurkan-bantuan-bencana-banjir-di-bali'],
             [
                 'title' => "IDN Relawan dan Markaz Bersama As-Sunnah Salurkan Bantuan Bencana Banjir di Bali",
-                'image' => 'pages/tentang-kami/kerja-bakti.avif',
+                'image' => 'pages/home/view-idn.avif',
                 'category' => 'Prestasi',
                 'read_time' => '3 menit',
-                'published_at' => '2025-10-02',
+                'published_at' => '2025-09-16',
                 'content' => '<p>Bali selalu memberikan info menarik tentang destinasi wisata alamnya yang beragam. Namun kabar kali ini datang cukup memprihatinkan setelah Bali diguyur hujan deras berkepanjangan pada pertengahan bulan September 2025. Alhasil banjir besar dan longsor tidak terelakkan. Kabarnya pada banjir besar ini turut jatuh korban jiwa dan mengisolasi para warga serta menyebabkan berbagai kerusakan.</p>
 
 <p>Banjir besar yang melanda sejumlah kawasan di Denpasar, Bali, mengundang kepedulian banyak pihak. Salah satunya datang dari Markaz Bersama As-Sunnah (MBA) bersama lembaga-lembaga yang tergabung di dalamnya. Diwakilkan oleh tim Potensi Lokal Bali Mengaji, aksi tanggap bencana dilakukan selama tiga hari, 14–16 September 2025. Bantuan-bantuan dari 29 lembaga yang berkolaborasi dengan MBA, termasuk IDN Relawan, disalurkan kepada masyarakat.</p>
@@ -377,10 +377,10 @@ Kalau kamu ingin menguasai teknologi, punya karya nyata sebelum lulus, sekaligus
             ['slug' => 'siswa-smk-jalan-kaki-sejauh-72-km-dari-lereng-gunung-lawu-di-solo'],
             [
                 'title' => "Siswa SMK Jalan Kaki Sejauh 72 KM dari Lereng Gunung Lawu di Solo",
-                'image' => 'pages/tentang-kami/apel-pagi.avif',
+                'image' => 'pages/home/view-idn.avif',
                 'category' => 'Prestasi',
-                'read_time' => '3 menit',
-                'published_at' => '2025-10-02',
+                'read_time' => '5 menit',
+                'published_at' => '2025-09-03',
                 'content' => '<h3>Siswa Berjiwa Petualang! Misi Mengelilingi Karanganyar dengan Jalan Kaki</h3>
 
 <p>Program IDN Character Expedition adalah kegiatan yang digelar IDN Boarding School Solo untuk siswa kelas 10 SMK. Program ini dirancang sebagai latihan fisik sekaligus pembentuk karakter, mental juang, dan nilai-nilai sosial. IDN Boarding School Solo merupakan sekolah boarding jenjang SMP dan SMK dengan jurusan TKJ dan RPL. Kurikulumnya juga fokus pada skill Bahasa Inggris aktif dan tahfidz. Namun kali ini, para siswa kelas 10 SMK akan mencoba program character building unggulan IDN Solo.</p>
@@ -441,8 +441,8 @@ Kalau kamu ingin menguasai teknologi, punya karya nyata sebelum lulus, sekaligus
                 'title' => "Dari Malaysia Sekolah di Bogor: Kenal IDN Dari Siswa Backpacker di Istanbul",
                 'image' => 'program/backpacker/bp-11-negara.avif',
                 'category' => 'Prestasi',
-                'read_time' => '3 menit',
-                'published_at' => '2025-10-02',
+                'read_time' => '4 menit',
+                'published_at' => '2025-08-25',
                 'content' => "<h3>Jauh-Jauh dari Malaysia untuk Hadiri Pameran IT Siswa IDN di Bogor</h3>
 
 <p>IDN Boarding School menarik perhatian warga negeri jiran, Malaysia. Pameran IT terbesar IDN Open House 2025 dihadiri oleh ratusan pengunjung dari berbagai kota. Yang menarik adalah salah satu pengunjung yang berasal dari Malaysia. Beliau adalah salah satu ibu dari calon siswa IDN Backpacker School tahun ajaran 2026/2027. Ketua OSIS IDN Boarding School Jonggol sempat mewawancarai beliau tentang mengapa memilih menyekolahkan anaknya di Indonesia, tepatnya di IDN Boarding School. Dan ini jawaban dari beliau yang penuh dengan antusiasme.</p>
@@ -487,9 +487,9 @@ Instagram: @idnboardingschool</p>"
             ['slug' => '6-siswa-sukseskan-program-idn-mengajar-internasional-belanda-dan-arab-saudi'],
             [
                 'title' => "6 Siswa Sukseskan Program IDN Mengajar Internasional Belanda dan Arab Saudi",
-                'image' => 'pages/home/dokum-open-house.avif',
+                'image' => 'program/ngajar/smp-mengajar.avif',
                 'category' => 'Event',
-                'read_time' => '5 menit',
+                'read_time' => '3 menit',
                 'published_at' => '2025-08-18',
                 'content' => '<h3>Siswa IDN Boarding School Bawa Nama Indonesia di Kancah Internasional</h3>
 
@@ -528,7 +528,7 @@ Instagram: @idnboardingschool</p>"
                 'title' => "Pameran Teknologi Karya Siswa: IDN Open House 2025",
                 'image' => 'pages/home/open-house.avif',
                 'category' => 'News & Event',
-                'read_time' => '5 menit',
+                'read_time' => '3 menit',
                 'published_at' => '2025-08-15',
                 'content' => '<h3>Pameran Teknologi di Sekolah Islam Bogor</h3>
 
@@ -641,7 +641,7 @@ Instagram: @idnboardingschool</p>"
                 'title' => "Backpacker School Satu-Satunya di Indonesia! Berangkatkan 30 Siswa Jelajahi 20 Negara",
                 'image' => 'pages/home/poster.avif',
                 'category' => 'Event',
-                'read_time' => '5 menit',
+                'read_time' => '9 menit',
                 'published_at' => '2025-07-11',
                 'content' => '<h3>IDN Satu-Satunya Sekolah dengan Program Backpacker School ke 20 Negara</h3>
 
@@ -720,8 +720,8 @@ Instagram: @idnboardingschool</p>"
                 'title' => "Santriwati SMK IDN Boarding School Akhwat Raih Juara 1 Nasional Infographic Competition",
                 'image' => 'prestasi/juara-1-akhwat-uiux.avif',
                 'category' => 'Prestasi',
-                'read_time' => '3 menit',
-                'published_at' => '2025-10-02',
+                'read_time' => '4 menit',
+                'published_at' => '2025-01-25',
                 'content' => '<h3>SMK IDN Akhwat Ukir Prestasi di Ajang Nasional Infographic Competition</h3>
 
 <p>Alhamdulillah, kabar gembira datang dari siswi SMK IDN Boarding School Akhwat. Perwakilan santri berhasil meraih juara dalam ajang National Infographic Competition yang diselenggarakan oleh Universitas Sunan Ampel Surabaya. Prestasi ini kembali membuktikan bahwa santri SMK IDN Boarding School Akhwat tidak hanya unggul dalam bidang keagamaan, tetapi juga memiliki kompetensi mumpuni di dunia teknologi dan desain.</p>
@@ -752,7 +752,7 @@ Instagram: @idnboardingschool</p>"
             ['slug' => 'deklarasi-anti-bullying-dan-stop-kekerasan-idn-boarding-school'],
             [
                 'title' => "Deklarasi Anti-Bullying dan Stop Kekerasan IDN Boarding School.",
-                'image' => 'program/ngajar/smp-mengajar.avif',
+                'image' => 'pages/tentang-kami/apel-pagi.avif',
                 'category' => 'Berita',
                 'read_time' => '3 menit',
                 'published_at' => '2024-08-19',
@@ -797,8 +797,8 @@ Instagram: @idnboardingschool</p>"
                 'title' => "Siswi SMK IDN Akhwat Raih Juara 2 Kompetisi UI/UX Tech Fest INSTIKI",
                 'image' => 'pages/home/rel_TFI.avif',
                 'category' => 'Prestasi',
-                'read_time' => '3 menit',
-                'published_at' => '2025-10-02',
+                'read_time' => '5 menit',
+                'published_at' => '2026-04-20',
                 'content' => "<p>JONGGOL – Santri SMK IDN Boarding School Akhwat kembali membuktikan taringnya di bidang desain digital. Tim yang beranggotakan tiga siswi kelas X DKV berhasil meraih <strong>Juara 2</strong> dalam UI/UX Competition Tech Fest yang diselenggarakan oleh Institut Bisnis dan Teknologi Indonesia (INSTIKI). Ajang desain tingkat nasional ini berlangsung pada 30 Maret 2026.</p>
 
 <p>Kompetisi tahun ini mengusung tema yang sangat relevan, yaitu “The Architect Within: Strengthening Fundamentals in the Age of AI”. Tema ini menantang para peserta untuk memperkuat fondasi desain fundamental di tengah pesatnya perkembangan kecerdasan buatan (AI).</p>
@@ -851,7 +851,7 @@ Follow sosial media kami:<br>
                 'title' => "Siswa SMK IDN Juara 2 Nasional Networking di Universitas Udayana",
                 'image' => 'pages/home/rel_jamnyut.avif',
                 'category' => 'Prestasi',
-                'read_time' => '3 menit',
+                'read_time' => '2 menit',
                 'published_at' => '2024-05-12',
                 'content' => '<h3>IDN Juara 2 Networking Nasional</h3>
 
@@ -901,7 +901,7 @@ Fasilitas lengkap:</p>
                 'title' => "Siswa IDN Juara 1 Coding Scratch Nasional di IIBS Almaahira Malang",
                 'image' => 'pages/home/rel_IIBS.avif',
                 'category' => 'Prestasi',
-                'read_time' => '3 menit',
+                'read_time' => '2 menit',
                 'published_at' => '2026-04-11',
                 'content' => '<h3>Siswa SMP IDN Juara Coding Scratch</h3>
 
@@ -926,7 +926,7 @@ Fasilitas lengkap:</p>
                 'detail_image' => 'pages/ppdb/izin-operasional.avif',
                 'category' => 'News & Event',
                 'read_time' => '3 menit',
-                'published_at' => '2025-10-02',
+                'published_at' => '2026-05-25',
                 'content' => "<h3>Sekolah Berbasis Teknologi dan Tahfidz, SMK IDN Memperoleh Izin Operasional Kembali</h3>
 
 <p>Kabar gembira dan penuh rasa syukur datang dari dunia pendidikan vokasi di Bogor. SMK IDN Boarding School Bogor secara resmi telah mengantongi Izin Operasional dari Dinas Pendidikan Provinsi Jawa Barat dengan Surat Keputusan Nomor 421.3/1429-Disdik. Keputusan ini diikuti dengan terbitnya Nomor Pokok Sekolah Nasional (NPSN) 70001026, yang menegaskan legalitas dan keabsahan SMK IDN sebagai lembaga pendidikan kejuruan yang diakui pemerintah.</p>

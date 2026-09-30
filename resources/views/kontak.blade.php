@@ -96,7 +96,8 @@
                                 info@idn.sch.id
                             </h2>
                         </div>
-                        <a href="mailto:info@idn.sch.id" class="bg-white border-2 border-[#e9eaeb] text-[#414651] group-hover:border-[#0c61cf] group-hover:bg-[#0c61cf] group-hover:text-white px-5 py-3 rounded-full font-semibold text-[16px] transition-all duration-200 ease-out w-fit">
+                        <a target="_blank"
+   rel="noopener noreferrer" href="https://mail.google.com/mail/?view=cm&fs=1&to=info@idn.sch.id" class="bg-white border-2 border-[#e9eaeb] text-[#414651] group-hover:border-[#0c61cf] group-hover:bg-[#0c61cf] group-hover:text-white px-5 py-3 rounded-full font-semibold text-[16px] transition-all duration-200 ease-out w-fit">
                             Kirim Email
                         </a>
                     </div>
