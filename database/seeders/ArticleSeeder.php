@@ -212,7 +212,7 @@ class ArticleSeeder extends Seeder
             ['slug' => 'boarding-school-islami-terbaik-raih-juara-2-3-mazesolving-robotik-nasional'],
             [
                 'title' => "Boarding School Islami Terbaik Raih Juara 2 & 3 Mazesolving Robotik Nasional",
-                'image' => 'page/home/robot-sumo.avif',
+                'image' => 'pages/home/robot-sumo.avif',
                 'category' => 'Prestasi',
                 'read_time' => '2 menit',
                 'published_at' => '2025-02-18',
@@ -349,7 +349,7 @@ Kalau kamu ingin menguasai teknologi, punya karya nyata sebelum lulus, sekaligus
             ['slug' => 'idn-relawan-dan-markaz-bersama-as-sunnah-salurkan-bantuan-bencana-banjir-di-bali'],
             [
                 'title' => "IDN Relawan dan Markaz Bersama As-Sunnah Salurkan Bantuan Bencana Banjir di Bali",
-                'image' => 'pages/home/view-idn.avif',
+                'image' => 'pages/home/main-bali.avif',
                 'category' => 'Prestasi',
                 'read_time' => '3 menit',
                 'published_at' => '2025-09-16',
