@@ -74,7 +74,7 @@
         
         <!-- HEADER SECTION -->
         <div class="w-[1120px] pt-[130px] md:pt-[160px] pb-5 flex flex-col gap-6 max-[1160px]:w-[90%] px-5">
-            <a href="/" class="flex items-center gap-2 text-text-muted text-base font-medium cursor-pointer transition-colors duration-200 hover:text-brand-primary self-start">
+            <a href="/artikel" class="flex items-center gap-2 text-text-muted text-base font-medium cursor-pointer transition-colors duration-200 hover:text-brand-primary self-start">
                 <img src="{{ asset('assets/icons/arrow_left.svg') }}" alt="Back icon" class="w-5 h-5">
                 Kembali ke artikel
             </a>

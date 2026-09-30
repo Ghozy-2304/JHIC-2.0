@@ -48,7 +48,7 @@
 
                 <!-- BUTTON CONTAINER (Daftar PPDB & Login) -->
                 <div class="flex flex-wrap items-center justify-start gap-4 pt-2 w-full">
-                    <a href="#biaya-pendidikan" class="group bg-[#0c61cf] text-white px-6 py-3 rounded-full font-semibold text-[15px] md:text-[16px] leading-none h-[48px] flex items-center justify-center gap-2 shadow-sm transition-all duration-200 hover:bg-[#094fa5] hover:shadow-md shrink-0">
+                    <a href="https://psb.idn.sch.id/" class="group bg-[#0c61cf] text-white px-6 py-3 rounded-full font-semibold text-[15px] md:text-[16px] leading-none h-[48px] flex items-center justify-center gap-2 shadow-sm transition-all duration-200 hover:bg-[#094fa5] hover:shadow-md shrink-0">
                         <span>Daftar PPDB</span>
                         <svg class="w-4 h-4 transition-transform duration-200 ease-out group-hover:translate-x-1 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
@@ -353,7 +353,7 @@
 
 
     <!-- 6. REGISTRATION BANNER / PPDB CTA SECTION -->
-    <x-cta-section primary-btn-url="#biaya-pendidikan" />
+    <x-cta-section/>
 
 
     <!-- 7. REUSABLE FOOTER COMPONENT -->
