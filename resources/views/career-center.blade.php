@@ -319,7 +319,7 @@
                                     <div class="flex items-center gap-3 pt-2">
                                         <div class="w-10 h-10 rounded-xl overflow-hidden flex items-center justify-center bg-white border border-[#e9eaeb] shrink-0 shadow-sm p-1">
                                             <template x-if="job.companyImg">
-                                                <img :src="job.companyImg" :alt="job.companyName" class="w-full h-full object-contain rounded-lg">
+                                                <img :src="job.companyImg" :alt="job.companyName" class="w-full h-full object-cover object-left rounded-lg">
                                             </template>
                                             <template x-if="!job.companyImg">
                                                 <div class="w-full h-full rounded-lg flex items-center justify-center text-white font-bold text-sm" :class="job.companyBg">

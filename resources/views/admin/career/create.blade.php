@@ -39,6 +39,7 @@
     <form action="{{ route('admin.career.store') }}" method="POST" enctype="multipart/form-data" 
         x-data="{ 
             logoPreview: null,
+            company_logo_url: '',
             fetchUrl: '',
             fetching: false,
             fetchSuccess: false,
@@ -75,6 +76,11 @@
                         const d = json.data;
                         if (d.title) this.title = d.title;
                         if (d.company_name) this.company_name = d.company_name;
+                        if (d.company_logo_url) {
+                            this.company_logo_url = d.company_logo_url;
+                            this.logoPreview = d.company_logo_url;
+                        }
+                        if (d.salary) this.salary = d.salary;
                         if (d.apply_url) this.apply_url = d.apply_url;
                         if (d.source_platform) this.source_platform = d.source_platform;
                         if (d.major) this.major = d.major;
@@ -84,7 +90,7 @@
                         if (d.location_group) this.location_group = d.location_group;
                         if (d.requirements) this.requirements = d.requirements;
                         this.fetchSuccess = true;
-                        this.fetchMessage = 'Alhamdulillah! Data berhasil ditarik otomatis dari ' + d.source_platform + '.';
+                        this.fetchMessage = 'Alhamdulillah! Data berhasil ditarik otomatis dari ' + (d.source_platform || 'URL') + '.';
                     }
                 } catch(e) {
                     this.fetchMessage = 'Gagal menarik metadata secara otomatis. Anda tetap dapat mengisi form secara manual.';
@@ -302,6 +308,7 @@
 
         <!-- Row 7: Logo Perusahaan Upload -->
         <div>
+            <input type="hidden" name="company_logo_url" x-model="company_logo_url">
             <label class="block text-xs font-bold text-[#334155] uppercase tracking-wider mb-2">
                 Logo Mitra Perusahaan
             </label>
@@ -316,14 +323,14 @@
                         </svg>
                     </div>
                     <span class="text-xs font-semibold text-[#0f172a]">Unggah Logo Perusahaan (Opsional)</span>
-                    <span class="text-[11px] text-[#94a3b8] mt-0.5">Jika kosong, inisial nama perusahaan akan otomatis dibuatkan secara rapi</span>
+                    <span class="text-[11px] text-[#94a3b8] mt-0.5">Jika kosong, logo akan ditarik otomatis dari URL lowongan atau menggunakan inisial nama perusahaan</span>
                 </div>
 
                 <div x-show="logoPreview" x-cloak class="flex flex-col items-center">
-                    <div class="w-16 h-16 rounded-xl overflow-hidden border border-[#e2e8f0] shadow-sm p-1 bg-white mb-1.5">
-                        <img :src="logoPreview" alt="Preview Logo" class="w-full h-full object-contain">
+                    <div class="w-16 h-16 rounded-xl overflow-hidden border border-[#e2e8f0] shadow-sm p-1 bg-white mb-1.5 flex items-center justify-center">
+                        <img :src="logoPreview" alt="Preview Logo" class="w-full h-full object-cover object-left rounded-lg">
                     </div>
-                    <span class="text-[11px] text-[#0c61cf] font-semibold">Logo baru terpilih</span>
+                    <span class="text-[11px] text-[#0c61cf] font-semibold">Logo terpilih</span>
                 </div>
             </div>
         </div>

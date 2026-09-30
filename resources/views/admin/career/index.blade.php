@@ -153,7 +153,7 @@
                             <td class="py-3.5 pl-6">
                                 <div class="w-10 h-10 rounded-xl overflow-hidden bg-slate-100 border border-[#e2e8f0] flex items-center justify-center font-bold text-xs shrink-0 {{ $job->company_img ? '' : ($job->company_bg ?: 'bg-[#0c61cf]') . ' text-white' }}">
                                     @if($job->company_img)
-                                        <img src="{{ asset($job->company_img) }}" alt="{{ $job->company_name }}" class="w-full h-full object-contain p-1">
+                                        <img src="{{ asset($job->company_img) }}" alt="{{ $job->company_name }}" class="w-full h-full object-cover object-left rounded-lg p-0.5">
                                     @else
                                         <span>{{ $job->company_logo_char ?: strtoupper(substr($job->company_name, 0, 1)) }}</span>
                                     @endif

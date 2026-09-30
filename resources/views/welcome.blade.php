@@ -1037,7 +1037,7 @@
             </div>
 
             <!-- BUTTON: Selengkapnya -->
-            <a href="/ppdb" class="group bg-[#0c61cf] text-white w-[149px] h-[48px] rounded-full font-semibold text-[16px] flex items-center justify-center gap-2 border border-[#d5d7da] shadow-md transition-all duration-200 hover:bg-[#094fa5] mx-0">
+            <a href="/ppdb#biaya-pendidikan" class="group bg-[#0c61cf] text-white w-[149px] h-[48px] rounded-full font-semibold text-[16px] flex items-center justify-center gap-2 border border-[#d5d7da] shadow-md transition-all duration-200 hover:bg-[#094fa5] mx-0">
                 <span>Selengkapnya</span>
             </a>
         </div>

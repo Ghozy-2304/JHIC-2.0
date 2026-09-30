@@ -41,6 +41,7 @@
     <form action="{{ route('admin.career.update', $career->id) }}" method="POST" enctype="multipart/form-data" 
         x-data="{ 
             logoPreview: null,
+            company_logo_url: '',
             fetchUrl: '',
             fetching: false,
             fetchSuccess: false,
@@ -77,6 +78,11 @@
                         const d = json.data;
                         if (d.title) this.title = d.title;
                         if (d.company_name) this.company_name = d.company_name;
+                        if (d.company_logo_url) {
+                            this.company_logo_url = d.company_logo_url;
+                            this.logoPreview = d.company_logo_url;
+                        }
+                        if (d.salary) this.salary = d.salary;
                         if (d.apply_url) this.apply_url = d.apply_url;
                         if (d.source_platform) this.source_platform = d.source_platform;
                         if (d.major) this.major = d.major;
@@ -86,7 +92,7 @@
                         if (d.location_group) this.location_group = d.location_group;
                         if (d.requirements) this.requirements = d.requirements;
                         this.fetchSuccess = true;
-                        this.fetchMessage = 'Alhamdulillah! Data berhasil ditarik otomatis dari ' + d.source_platform + '.';
+                        this.fetchMessage = 'Alhamdulillah! Data berhasil ditarik otomatis dari ' + (d.source_platform || 'URL') + '.';
                     }
                 } catch(e) {
                     this.fetchMessage = 'Gagal menarik metadata secara otomatis. Anda tetap dapat mengedit form secara manual.';
@@ -298,6 +304,7 @@
 
         <!-- Row 7: Logo Perusahaan -->
         <div>
+            <input type="hidden" name="company_logo_url" x-model="company_logo_url">
             <label class="block text-xs font-bold text-[#334155] uppercase tracking-wider mb-2">
                 Logo Mitra Perusahaan
             </label>
@@ -307,7 +314,7 @@
                     <span class="text-[11px] font-semibold text-[#64748b] mb-2">Logo Saat Ini</span>
                     <div class="w-14 h-14 rounded-xl overflow-hidden bg-white border border-[#e2e8f0] shadow-sm flex items-center justify-center font-bold text-sm {{ $career->company_img ? '' : ($career->company_bg ?: 'bg-[#0c61cf]') . ' text-white' }}">
                         @if($career->company_img)
-                            <img src="{{ asset($career->company_img) }}" alt="{{ $career->company_name }}" class="w-full h-full object-contain p-1">
+                            <img src="{{ asset($career->company_img) }}" alt="{{ $career->company_name }}" class="w-full h-full object-cover object-left rounded-lg p-0.5">
                         @else
                             <span>{{ $career->company_logo_char ?: strtoupper(substr($career->company_name, 0, 1)) }}</span>
                         @endif
@@ -330,8 +337,8 @@
                     </div>
 
                     <div x-show="logoPreview" x-cloak class="flex flex-col items-center">
-                        <div class="w-14 h-14 rounded-xl overflow-hidden border border-[#e2e8f0] shadow-sm p-1 bg-white mb-1.5">
-                            <img :src="logoPreview" alt="Preview Logo Baru" class="w-full h-full object-contain">
+                        <div class="w-14 h-14 rounded-xl overflow-hidden border border-[#e2e8f0] shadow-sm p-1 bg-white mb-1.5 flex items-center justify-center">
+                            <img :src="logoPreview" alt="Preview Logo Baru" class="w-full h-full object-cover object-left rounded-lg">
                         </div>
                         <span class="text-[11px] text-[#0c61cf] font-semibold">Logo baru terpilih</span>
                     </div>
