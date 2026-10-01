@@ -38,18 +38,26 @@ export default function () {
 
     sleep(1);
 
-    // 2. Articles Index
-    const resArticles = http.get(`${BASE_URL}/blog`);
+    // 2. Articles Index (/artikel)
+    const resArticles = http.get(`${BASE_URL}/artikel`);
     check(resArticles, {
-        'Blog status 200': (r) => r.status === 200,
+        'Artikel Index status 200': (r) => r.status === 200,
     });
 
     sleep(1);
 
-    // 3. Career Center
-    const resCareer = http.get(`${BASE_URL}/career`);
+    // 3. Career Center (/career-center)
+    const resCareer = http.get(`${BASE_URL}/career-center`);
     check(resCareer, {
-        'Career status 200': (r) => r.status === 200,
+        'Career Center status 200': (r) => r.status === 200,
+    });
+
+    sleep(1);
+
+    // 4. PPDB Page (/ppdb)
+    const resPpdb = http.get(`${BASE_URL}/ppdb`);
+    check(resPpdb, {
+        'PPDB status 200': (r) => r.status === 200,
     });
 
     sleep(1);
