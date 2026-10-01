@@ -20,6 +20,10 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <style>[x-cloak] { display: none !important; }</style>
 
+    <!-- Cropper.js CDN for Interactive Image Cropping -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js"></script>
+
     @vite(['resources/css/app.css'])
 </head>
 <body class="bg-[#f8fafc] text-[#181d27] font-sans antialiased min-h-screen flex flex-col" x-data="{ sidebarOpen: false }">

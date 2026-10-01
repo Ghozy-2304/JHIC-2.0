@@ -46,7 +46,8 @@
 
     <!-- Form Container -->
     <form action="{{ route('admin.articles.update', $article->id) }}" method="POST" enctype="multipart/form-data" 
-        x-data="{ imagePreview: null }" class="bg-white border border-[#e2e8f0] rounded-2xl shadow-sm p-6 md:p-8 space-y-6">
+        x-data="articleCropHandler()" 
+        class="bg-white border border-[#e2e8f0] rounded-2xl shadow-sm p-6 md:p-8 space-y-6">
         @csrf
         @method('PUT')
 
@@ -126,8 +127,8 @@
 
                 <!-- Upload New Image Box -->
                 <div class="sm:col-span-8 border-2 border-dashed border-[#cbd5e1] hover:border-[#0c61cf] rounded-2xl p-5 text-center bg-[#f8fafc] transition-colors relative cursor-pointer group">
-                    <input type="file" name="image" accept="image/*" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                        @change="const file = $event.target.files[0]; if(file) { const reader = new FileReader(); reader.onload = (e) => imagePreview = e.target.result; reader.readAsDataURL(file); }">
+                    <input type="file" id="articleImageInput" name="image" accept="image/*" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                        @change="handleFileSelect($event)">
                     
                     <!-- Placeholder State -->
                     <div x-show="!imagePreview" class="flex flex-col items-center">
@@ -136,16 +137,21 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                             </svg>
                         </div>
-                        <span class="text-xs font-semibold text-[#0f172a]">Klik untuk mengganti dengan gambar baru</span>
+                        <span class="text-xs font-semibold text-[#0f172a]">Klik untuk memilih gambar baru & potong (*crop*)</span>
                         <span class="text-[11px] text-[#94a3b8] mt-0.5">Biarkan kosong jika tetap menggunakan gambar saat ini</span>
                     </div>
 
                     <!-- New Selected Preview State -->
                     <div x-show="imagePreview" x-cloak class="flex flex-col items-center">
-                        <div class="h-28 max-w-xs rounded-xl overflow-hidden border border-[#e2e8f0] shadow-md mb-1.5">
+                        <div class="h-28 max-w-xs rounded-xl overflow-hidden border border-[#e2e8f0] shadow-md mb-2">
                             <img :src="imagePreview" alt="Preview Gambar Baru" class="w-full h-full object-cover">
                         </div>
-                        <span class="text-[11px] text-[#0c61cf] font-semibold">Gambar baru terpilih</span>
+                        <div class="flex items-center gap-2">
+                            <span class="text-[11px] text-[#0c61cf] font-semibold">Gambar baru hasil crop siap diunggah</span>
+                            <button type="button" @click.stop="openCropAgain()" class="text-[10px] bg-slate-200 hover:bg-slate-300 text-slate-700 px-2 py-0.5 rounded transition-colors font-medium">
+                                Ubah Crop
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -189,7 +195,170 @@
             </button>
         </div>
 
+        <!-- INTERACTIVE CROP MODAL -->
+        <div x-show="cropModalOpen" x-cloak class="fixed inset-0 z-50 flex items-center justify-center p-4">
+            <div class="fixed inset-0 bg-slate-900/75 backdrop-blur-md transition-opacity" @click="closeCropModal()"></div>
+            
+            <div class="bg-white rounded-3xl border border-[#e2e8f0] shadow-2xl max-w-2xl w-full overflow-hidden relative z-10 flex flex-col max-h-[90vh]">
+                <!-- Modal Header -->
+                <div class="p-5 border-b border-[#e2e8f0] flex items-center justify-between bg-[#f8fafc]">
+                    <div>
+                        <h3 class="text-base font-bold text-[#0f172a] font-['Funnel_Display',sans-serif]">
+                            Sesuaikan Area Gambar Baru (Crop)
+                        </h3>
+                        <p class="text-xs text-[#64748b] mt-0.5">Geser & ubah ukuran kotak fokus untuk menentukan area gambar yang akan ditampilkan.</p>
+                    </div>
+                    <button type="button" @click="closeCropModal()" class="p-2 rounded-xl hover:bg-slate-200 text-slate-500 transition-colors">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                    </button>
+                </div>
+
+                <!-- Cropper Canvas Container -->
+                <div class="p-6 bg-slate-950 flex-grow flex items-center justify-center min-h-[320px] max-h-[500px] overflow-hidden relative">
+                    <img id="cropperTargetImage" :src="rawImageSource" class="max-w-full max-h-[460px] block">
+                </div>
+
+                <!-- Modal Controls & Footer -->
+                <div class="p-5 border-t border-[#e2e8f0] bg-white flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <!-- Tools Toolbar -->
+                    <div class="flex items-center gap-2">
+                        <button type="button" @click="rotateLeft()" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 rounded-xl text-xs font-medium text-slate-700 flex items-center gap-1">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"/></svg>
+                            <span>Rotasi -90°</span>
+                        </button>
+                        <button type="button" @click="rotateRight()" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 rounded-xl text-xs font-medium text-slate-700 flex items-center gap-1">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 10H11a8 8 0 00-8 8v2m18-10l-6 6m6-6l-6-6"/></svg>
+                            <span>Rotasi +90°</span>
+                        </button>
+                        <button type="button" @click="setAspectRatio(16/9)" class="px-3 py-1.5 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-xl text-xs font-medium">
+                            Rasio 16:9
+                        </button>
+                        <button type="button" @click="setAspectRatio(NaN)" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-medium">
+                            Bebas
+                        </button>
+                    </div>
+
+                    <!-- Action Submit -->
+                    <div class="flex items-center gap-2.5 w-full sm:w-auto justify-end">
+                        <button type="button" @click="closeCropModal()" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-xl text-xs font-semibold">
+                            Batal
+                        </button>
+                        <button type="button" @click="applyCrop()" class="px-5 py-2 bg-[#0c61cf] hover:bg-[#0b54b5] text-white rounded-xl text-xs font-semibold shadow-sm transition-all flex items-center gap-1.5">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span>Potong & Gunakan</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </form>
 
 </div>
+
+<script>
+function articleCropHandler() {
+    return {
+        imagePreview: null,
+        rawImageSource: '',
+        cropModalOpen: false,
+        cropper: null,
+        selectedFile: null,
+
+        handleFileSelect(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            this.selectedFile = file;
+
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                this.rawImageSource = e.target.result;
+                this.cropModalOpen = true;
+                this.$nextTick(() => {
+                    this.initCropper();
+                });
+            };
+            reader.readAsDataURL(file);
+        },
+
+        openCropAgain() {
+            if (this.rawImageSource) {
+                this.cropModalOpen = true;
+                this.$nextTick(() => {
+                    this.initCropper();
+                });
+            }
+        },
+
+        initCropper() {
+            const img = document.getElementById('cropperTargetImage');
+            if (!img) return;
+
+            if (this.cropper) {
+                this.cropper.destroy();
+            }
+
+            this.cropper = new Cropper(img, {
+                aspectRatio: 16 / 9,
+                viewMode: 1,
+                autoCropArea: 0.9,
+                responsive: true,
+                background: true,
+                zoomable: true,
+            });
+        },
+
+        rotateLeft() {
+            if (this.cropper) this.cropper.rotate(-90);
+        },
+
+        rotateRight() {
+            if (this.cropper) this.cropper.rotate(90);
+        },
+
+        setAspectRatio(ratio) {
+            if (this.cropper) this.cropper.setAspectRatio(ratio);
+        },
+
+        closeCropModal() {
+            this.cropModalOpen = false;
+            if (this.cropper) {
+                this.cropper.destroy();
+                this.cropper = null;
+            }
+        },
+
+        applyCrop() {
+            if (!this.cropper) return;
+
+            const canvas = this.cropper.getCroppedCanvas({
+                width: 1200,
+                height: 675,
+                imageSmoothingEnabled: true,
+                imageSmoothingQuality: 'high',
+            });
+
+            if (canvas) {
+                this.imagePreview = canvas.toDataURL('image/jpeg', 0.9);
+
+                canvas.toBlob((blob) => {
+                    if (blob) {
+                        const fileInput = document.getElementById('articleImageInput');
+                        const croppedFile = new File([blob], this.selectedFile ? this.selectedFile.name : 'article_banner.jpg', {
+                            type: 'image/jpeg',
+                            lastModified: Date.now()
+                        });
+
+                        const dataTransfer = new DataTransfer();
+                        dataTransfer.items.add(croppedFile);
+                        fileInput.files = dataTransfer.files;
+                    }
+                }, 'image/jpeg', 0.9);
+            }
+
+            this.closeCropModal();
+        }
+    }
+}
+</script>
 @endsection
