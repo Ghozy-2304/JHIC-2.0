@@ -155,28 +155,57 @@
             </div>
         </div>
 
-        <!-- Konten Artikel (Textarea + Formatting Help) -->
-        <div>
+        <!-- Konten Artikel (Visual Note Editor / Quill.js) -->
+        <div x-data="quillEditorHandler()" x-init="initQuill()">
             <div class="flex items-center justify-between mb-2">
-                <label for="content" class="text-xs font-bold text-[#334155] uppercase tracking-wider">
-                    Isi Konten Artikel <span class="text-rose-500">*</span>
+                <label for="articleContentInput" class="text-xs font-bold text-[#334155] uppercase tracking-wider flex items-center gap-2">
+                    <span>Isi Konten Artikel</span>
+                    <span class="text-rose-500">*</span>
+
                 </label>
-                <span class="text-[11px] text-[#94a3b8]">Mendukung tag HTML standar</span>
             </div>
 
-            <!-- Formatting Quick Helper Toolbar -->
-            <div class="p-2.5 bg-[#f1f5f9] border border-[#e2e8f0] rounded-t-xl flex flex-wrap items-center gap-1.5 text-xs text-[#475569]">
-                <span class="text-[11px] font-semibold text-[#64748b] mr-1">Helper tag:</span>
-                <code class="px-1.5 py-0.5 bg-white border border-[#cbd5e1] rounded text-[11px]">&lt;p&gt;...&lt;/p&gt;</code>
-                <code class="px-1.5 py-0.5 bg-white border border-[#cbd5e1] rounded text-[11px]">&lt;h3&gt;...&lt;/h3&gt;</code>
-                <code class="px-1.5 py-0.5 bg-white border border-[#cbd5e1] rounded text-[11px]">&lt;strong&gt;...&lt;/strong&gt;</code>
-                <code class="px-1.5 py-0.5 bg-white border border-[#cbd5e1] rounded text-[11px]">&lt;ul&gt;&lt;li&gt;...&lt;/li&gt;&lt;/ul&gt;</code>
-                <code class="px-1.5 py-0.5 bg-white border border-[#cbd5e1] rounded text-[11px]">&lt;blockquote&gt;...&lt;/blockquote&gt;</code>
-            </div>
+            <!-- Hidden textarea for initial content & form submission -->
+            <textarea name="content" id="articleContentInput" class="hidden" required>{{ old('content', '') }}</textarea>
 
-            <textarea id="content" name="content" rows="12" required
-                placeholder="Tuliskan isi artikel Anda di sini. Anda dapat menggunakan format paragraf <p>...</p> atau teks biasa."
-                class="w-full p-4 bg-[#f8fafc] border border-t-0 border-[#e2e8f0] rounded-b-xl text-sm text-[#0f172a] placeholder-[#94a3b8] focus:outline-none focus:border-[#0c61cf] focus:ring-2 focus:ring-[#0c61cf]/10 font-mono text-xs leading-relaxed transition-all">{{ old('content') }}</textarea>
+            <!-- Custom Styled Quill Editor Box -->
+            <div class="border border-[#e2e8f0] rounded-2xl overflow-hidden bg-white shadow-sm focus-within:border-[#0c61cf] focus-within:ring-4 focus-within:ring-[#0c61cf]/10 transition-all">
+                <!-- Toolbar Container -->
+                <div id="quillToolbar" class="border-b border-[#e2e8f0] bg-[#f8fafc]">
+                    <span class="ql-formats">
+                        <select class="ql-header">
+                            <option value="1">Judul Utama (H1)</option>
+                            <option value="2">Judul Sub-Bab (H2)</option>
+                            <option value="3">Judul Kecil (H3)</option>
+                            <option selected>Teks Normal</option>
+                        </select>
+                    </span>
+                    <span class="ql-formats">
+                        <button class="ql-bold" title="Tebal (Ctrl+B)"></button>
+                        <button class="ql-italic" title="Miring (Ctrl+I)"></button>
+                        <button class="ql-underline" title="Garis Bawah (Ctrl+U)"></button>
+                        <button class="ql-strike" title="Coret"></button>
+                    </span>
+                    <span class="ql-formats">
+                        <button class="ql-list" value="ordered" title="Daftar Angka"></button>
+                        <button class="ql-list" value="bullet" title="Daftar Poin"></button>
+                    </span>
+                    <span class="ql-formats">
+                        <button class="ql-blockquote" title="Kutipan"></button>
+                        <button class="ql-code-block" title="Blok Kode"></button>
+                    </span>
+                    <span class="ql-formats">
+                        <button class="ql-link" title="Sisip Link"></button>
+                        <button class="ql-image" title="Sisip Gambar"></button>
+                    </span>
+                    <span class="ql-formats">
+                        <button class="ql-clean" title="Hapus Format"></button>
+                    </span>
+                </div>
+
+                <!-- Quill Editable Area -->
+                <div id="quillEditor" class="min-h-[280px] text-sm text-[#0f172a] leading-relaxed font-sans"></div>
+            </div>
         </div>
 
         <!-- Action Buttons -->
@@ -364,6 +393,53 @@ function articleCropHandler() {
             }
 
             this.closeCropModal();
+        }
+    }
+}
+
+function quillEditorHandler() {
+    return {
+        content: '',
+        quill: null,
+
+        initQuill() {
+            this.$nextTick(() => {
+                const container = document.getElementById('quillEditor');
+                if (!container) return;
+
+                const hiddenInput = document.getElementById('articleContentInput');
+                const initialContent = hiddenInput ? hiddenInput.value : '';
+                this.content = initialContent;
+
+                this.quill = new Quill(container, {
+                    modules: {
+                        toolbar: '#quillToolbar'
+                    },
+                    placeholder: 'Tuliskan isi konten artikel Anda di sini... (Blok teks lalu klik pilihan Judul, Tebal, Poin-poin, Kutipan, atau Link pada toolbar di atas)',
+                    theme: 'snow'
+                });
+
+                if (initialContent) {
+                    this.quill.root.innerHTML = initialContent;
+                }
+
+                this.quill.on('text-change', () => {
+                    const html = this.quill.root.innerHTML;
+                    this.content = html;
+                    if (hiddenInput) {
+                        hiddenInput.value = html;
+                    }
+                });
+
+                const form = container.closest('form');
+                if (form) {
+                    form.addEventListener('submit', () => {
+                        if (hiddenInput && this.quill) {
+                            hiddenInput.value = this.quill.root.innerHTML;
+                        }
+                    });
+                }
+            });
         }
     }
 }

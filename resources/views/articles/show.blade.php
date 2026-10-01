@@ -24,20 +24,58 @@
 
     <style>
         [x-cloak] { display: none !important; }
-        .article-body h3 {
+        .article-body h1 {
+            font-size: 1.625rem;
+            line-height: 2rem;
+            font-weight: 700;
+            color: #181d27;
+            font-family: 'Outfit', 'Funnel Display', sans-serif;
+            margin-top: 1.75rem;
+            margin-bottom: 0.75rem;
+        }
+        .article-body h2 {
             font-size: 1.375rem;
             line-height: 1.875rem;
             font-weight: 700;
             color: #181d27;
             font-family: 'Outfit', 'Funnel Display', sans-serif;
             margin-top: 1.5rem;
+            margin-bottom: 0.625rem;
+        }
+        .article-body h3 {
+            font-size: 1.15rem;
+            line-height: 1.625rem;
+            font-weight: 700;
+            color: #181d27;
+            font-family: 'Outfit', 'Funnel Display', sans-serif;
+            margin-top: 1.25rem;
             margin-bottom: 0.5rem;
         }
         .article-body p {
             color: #545e6f;
             font-size: 1rem;
-            line-height: 1.625;
+            line-height: 1.75;
             font-weight: 400;
+            margin-bottom: 1.25rem;
+        }
+        .article-body p:empty,
+        .article-body p:has(br:only-child) {
+            display: none !important;
+        }
+        .article-body blockquote {
+            background-color: #eff6ff !important;
+            border-left: 4px solid #0c61cf !important;
+            border-radius: 1rem !important;
+            padding: 1.25rem 1.5rem !important;
+            margin: 1.5rem 0 !important;
+            color: #334155 !important;
+            font-style: italic !important;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.02) !important;
+        }
+        .article-body blockquote p {
+            margin-bottom: 0 !important;
+            color: #334155 !important;
+            font-style: italic !important;
         }
         .article-body strong {
             color: #181d27;
@@ -53,14 +91,27 @@
             color: #0b54b5;
         }
         .article-body ul, .article-body ol {
-            color: #545e6f;
-            margin-top: 0.75rem;
-            margin-bottom: 0.75rem;
+            color: #545e6f !important;
+            margin-top: 0.75rem !important;
+            margin-bottom: 1.25rem !important;
+            padding-left: 1.5rem !important;
+        }
+        .article-body ul {
+            list-style-type: disc !important;
+        }
+        .article-body ol {
+            list-style-type: decimal !important;
         }
         .article-body li {
-            line-height: 1.625;
-            font-size: 1rem;
-            font-weight: 400;
+            display: list-item !important;
+            line-height: 1.625 !important;
+            font-size: 1rem !important;
+            font-weight: 400 !important;
+            color: #545e6f !important;
+            margin-bottom: 0.375rem !important;
+        }
+        .article-body li strong {
+            color: #181d27 !important;
         }
     </style>
 </head>
@@ -158,8 +209,13 @@
                     </div>
                 @endif
                 
-                <div class="article-body text-text-muted text-base font-normal leading-[1.625] flex flex-col gap-5">
-                    {!! $article->content !!}
+                <div class="article-body text-text-muted text-base font-normal leading-[1.625]">
+                    @php
+                        $cleanedContent = preg_replace_callback('/\\\\u([0-9a-fA-F]{4})/', function ($matches) {
+                            return mb_chr(hexdec($matches[1]), 'UTF-8');
+                        }, $article->content);
+                    @endphp
+                    {!! $cleanedContent !!}
                 </div>
                 
                 <!-- CTA & Inquiry Box -->
