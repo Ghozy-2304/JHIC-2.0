@@ -278,18 +278,24 @@ function articleCropHandler() {
             const img = document.getElementById('cropperTargetImage');
             if (!img) return;
 
-            if (this.cropper) {
-                this.cropper.destroy();
-            }
+            const startCropper = () => {
+                if (this.cropper) this.cropper.destroy();
+                this.cropper = new Cropper(img, {
+                    aspectRatio: 16 / 9,
+                    viewMode: 1,
+                    autoCropArea: 0.9,
+                    responsive: true,
+                    background: true,
+                    zoomable: true,
+                    checkCrossOrigin: false
+                });
+            };
 
-            this.cropper = new Cropper(img, {
-                aspectRatio: 16 / 9,
-                viewMode: 1,
-                autoCropArea: 0.9,
-                responsive: true,
-                background: true,
-                zoomable: true,
-            });
+            if (img.complete && img.naturalWidth !== 0) {
+                startCropper();
+            } else {
+                img.onload = startCropper;
+            }
         },
 
         rotateLeft() {

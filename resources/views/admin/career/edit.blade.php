@@ -322,14 +322,47 @@
                 reader.readAsDataURL(file);
             },
 
-            openCropForCurrentLogo() {
+            async openCropForCurrentLogo() {
+                let targetUrl = '';
                 if (logoPreview) {
-                    this.rawLogoSource = logoPreview;
-                    this.openLogoCropModal();
+                    targetUrl = logoPreview;
                 } else if ('{{ $career->company_img }}') {
-                    this.rawLogoSource = '{{ asset($career->company_img) }}';
-                    this.openLogoCropModal();
+                    targetUrl = '{{ asset($career->company_img) }}';
                 }
+
+                if (!targetUrl) return;
+
+                if (targetUrl.startsWith('http')) {
+                    try {
+                        const imgObj = new Image();
+                        imgObj.crossOrigin = 'anonymous';
+                        imgObj.src = targetUrl + (targetUrl.includes('?') ? '&' : '?') + 't=' + Date.now();
+                        await new Promise((resolve) => {
+                            imgObj.onload = () => {
+                                try {
+                                    const cvs = document.createElement('canvas');
+                                    cvs.width = imgObj.naturalWidth;
+                                    cvs.height = imgObj.naturalHeight;
+                                    const ctx = cvs.getContext('2d');
+                                    ctx.drawImage(imgObj, 0, 0);
+                                    this.rawLogoSource = cvs.toDataURL('image/png');
+                                } catch(err) {
+                                    this.rawLogoSource = targetUrl;
+                                }
+                                resolve();
+                            };
+                            imgObj.onerror = () => {
+                                this.rawLogoSource = targetUrl;
+                                resolve();
+                            };
+                        });
+                    } catch(e) {
+                        this.rawLogoSource = targetUrl;
+                    }
+                } else {
+                    this.rawLogoSource = targetUrl;
+                }
+                this.openLogoCropModal();
             },
 
             openLogoCropModal() {
@@ -337,15 +370,25 @@
                 this.$nextTick(() => {
                     const img = document.getElementById('logoCropperTargetEdit');
                     if (!img) return;
-                    if (this.logoCropper) this.logoCropper.destroy();
-                    this.logoCropper = new Cropper(img, {
-                        aspectRatio: 1, // 1:1 Square for company logos
-                        viewMode: 1,
-                        autoCropArea: 0.9,
-                        responsive: true,
-                        background: true,
-                        zoomable: true
-                    });
+
+                    const startCropper = () => {
+                        if (this.logoCropper) this.logoCropper.destroy();
+                        this.logoCropper = new Cropper(img, {
+                            aspectRatio: 1, // 1:1 Square for company logos
+                            viewMode: 1,
+                            autoCropArea: 0.9,
+                            responsive: true,
+                            background: true,
+                            zoomable: true,
+                            checkCrossOrigin: false
+                        });
+                    };
+
+                    if (img.complete && img.naturalWidth !== 0) {
+                        startCropper();
+                    } else {
+                        img.onload = startCropper;
+                    }
                 });
             },
 
@@ -367,27 +410,31 @@
 
             applyLogoCrop() {
                 if (!this.logoCropper) return;
-                const canvas = this.logoCropper.getCroppedCanvas({
-                    width: 300,
-                    height: 300,
-                    imageSmoothingEnabled: true,
-                    imageSmoothingQuality: 'high'
-                });
+                try {
+                    const canvas = this.logoCropper.getCroppedCanvas({
+                        width: 300,
+                        height: 300,
+                        imageSmoothingEnabled: true,
+                        imageSmoothingQuality: 'high'
+                    });
 
-                if (canvas) {
-                    logoPreview = canvas.toDataURL('image/png');
-                    canvas.toBlob((blob) => {
-                        if (blob) {
-                            const input = document.getElementById('companyImgInputEdit');
-                            const croppedFile = new File([blob], this.selectedLogoFile ? this.selectedLogoFile.name : 'company_logo.png', {
-                                type: 'image/png',
-                                lastModified: Date.now()
-                            });
-                            const dataTransfer = new DataTransfer();
-                            dataTransfer.items.add(croppedFile);
-                            input.files = dataTransfer.files;
-                        }
-                    }, 'image/png');
+                    if (canvas) {
+                        logoPreview = canvas.toDataURL('image/png');
+                        canvas.toBlob((blob) => {
+                            if (blob) {
+                                const input = document.getElementById('companyImgInputEdit');
+                                const croppedFile = new File([blob], this.selectedLogoFile ? this.selectedLogoFile.name : 'company_logo.png', {
+                                    type: 'image/png',
+                                    lastModified: Date.now()
+                                });
+                                const dataTransfer = new DataTransfer();
+                                dataTransfer.items.add(croppedFile);
+                                input.files = dataTransfer.files;
+                            }
+                        }, 'image/png');
+                    }
+                } catch (e) {
+                    console.error('Crop error:', e);
                 }
                 this.closeLogoCropModal();
             }
