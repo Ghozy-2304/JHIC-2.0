@@ -306,15 +306,100 @@
                 class="w-full px-4 py-2.5 bg-[#f8fafc] border border-[#e2e8f0] rounded-xl text-sm text-[#0f172a] placeholder-[#94a3b8] focus:outline-none focus:border-[#0c61cf] focus:ring-4 focus:ring-[#0c61cf]/10 transition-all"></textarea>
         </div>
 
-        <!-- Row 7: Logo Perusahaan Upload -->
-        <div>
+        <!-- Row 7: Logo Perusahaan Upload with Interactive Cropper -->
+        <div x-data="{
+            logoCropModalOpen: false,
+            rawLogoSource: '',
+            logoCropper: null,
+            selectedLogoFile: null,
+
+            handleLogoSelect(event) {
+                const file = event.target.files[0];
+                if (!file) return;
+                this.selectedLogoFile = file;
+
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    this.rawLogoSource = e.target.result;
+                    this.openLogoCropModal();
+                };
+                reader.readAsDataURL(file);
+            },
+
+            openCropForCurrentLogo() {
+                if (logoPreview) {
+                    this.rawLogoSource = logoPreview;
+                    this.openLogoCropModal();
+                }
+            },
+
+            openLogoCropModal() {
+                this.logoCropModalOpen = true;
+                this.$nextTick(() => {
+                    const img = document.getElementById('logoCropperTarget');
+                    if (!img) return;
+                    if (this.logoCropper) this.logoCropper.destroy();
+                    this.logoCropper = new Cropper(img, {
+                        aspectRatio: 1, // 1:1 Square for company logos
+                        viewMode: 1,
+                        autoCropArea: 0.9,
+                        responsive: true,
+                        background: true,
+                        zoomable: true
+                    });
+                });
+            },
+
+            closeLogoCropModal() {
+                this.logoCropModalOpen = false;
+                if (this.logoCropper) {
+                    this.logoCropper.destroy();
+                    this.logoCropper = null;
+                }
+            },
+
+            rotateLogoLeft() {
+                if (this.logoCropper) this.logoCropper.rotate(-90);
+            },
+
+            rotateLogoRight() {
+                if (this.logoCropper) this.logoCropper.rotate(90);
+            },
+
+            applyLogoCrop() {
+                if (!this.logoCropper) return;
+                const canvas = this.logoCropper.getCroppedCanvas({
+                    width: 300,
+                    height: 300,
+                    imageSmoothingEnabled: true,
+                    imageSmoothingQuality: 'high'
+                });
+
+                if (canvas) {
+                    logoPreview = canvas.toDataURL('image/png');
+                    canvas.toBlob((blob) => {
+                        if (blob) {
+                            const input = document.getElementById('companyImgInput');
+                            const croppedFile = new File([blob], this.selectedLogoFile ? this.selectedLogoFile.name : 'company_logo.png', {
+                                type: 'image/png',
+                                lastModified: Date.now()
+                            });
+                            const dataTransfer = new DataTransfer();
+                            dataTransfer.items.add(croppedFile);
+                            input.files = dataTransfer.files;
+                        }
+                    }, 'image/png');
+                }
+                this.closeLogoCropModal();
+            }
+        }">
             <input type="hidden" name="company_logo_url" x-model="company_logo_url">
             <label class="block text-xs font-bold text-[#334155] uppercase tracking-wider mb-2">
                 Logo Mitra Perusahaan
             </label>
             <div class="border-2 border-dashed border-[#cbd5e1] hover:border-[#0c61cf] rounded-2xl p-5 text-center bg-[#f8fafc] transition-colors relative cursor-pointer group">
-                <input type="file" name="company_img" accept="image/*" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                    @change="const file = $event.target.files[0]; if(file) { const reader = new FileReader(); reader.onload = (e) => logoPreview = e.target.result; reader.readAsDataURL(file); }">
+                <input type="file" id="companyImgInput" name="company_img" accept="image/*" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
+                    @change="handleLogoSelect($event)">
                 
                 <div x-show="!logoPreview" class="flex flex-col items-center">
                     <div class="w-10 h-10 rounded-xl bg-white border border-[#e2e8f0] shadow-sm flex items-center justify-center text-[#64748b] group-hover:text-[#0c61cf] mb-2">
@@ -323,14 +408,62 @@
                         </svg>
                     </div>
                     <span class="text-xs font-semibold text-[#0f172a]">Unggah Logo Perusahaan (Opsional)</span>
-                    <span class="text-[11px] text-[#94a3b8] mt-0.5">Jika kosong, logo akan ditarik otomatis dari URL lowongan atau menggunakan inisial nama perusahaan</span>
+                    <span class="text-[11px] text-[#94a3b8] mt-0.5">Dapat dipotong presisi rasio 1:1 (Persegi). Jika kosong, ditarik dari URL atau inisial nama</span>
                 </div>
 
-                <div x-show="logoPreview" x-cloak class="flex flex-col items-center">
-                    <div class="w-16 h-16 rounded-xl overflow-hidden border border-[#e2e8f0] shadow-sm p-1 bg-white mb-1.5 flex items-center justify-center">
-                        <img :src="logoPreview" alt="Preview Logo" class="w-full h-full object-cover object-left rounded-lg">
+                <div x-show="logoPreview" x-cloak class="flex flex-col items-center z-20 relative">
+                    <div class="w-16 h-16 rounded-xl overflow-hidden border border-[#e2e8f0] shadow-sm p-1 bg-white mb-2 flex items-center justify-center">
+                        <img :src="logoPreview" alt="Preview Logo" class="w-full h-full object-cover rounded-lg">
                     </div>
-                    <span class="text-[11px] text-[#0c61cf] font-semibold">Logo terpilih</span>
+                    <div class="flex items-center gap-2">
+                        <span class="text-[11px] text-[#0c61cf] font-semibold">Logo Siap Dipakai</span>
+                        <button type="button" @click.stop="openCropForCurrentLogo()" 
+                            class="text-[11px] bg-slate-200 hover:bg-slate-300 text-slate-700 px-2.5 py-1 rounded-lg font-medium transition-colors cursor-pointer">
+                            Potong / Crop Logo Ini
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- INTERACTIVE LOGO CROP MODAL (1:1 Aspect Ratio) -->
+            <div x-show="logoCropModalOpen" x-cloak class="fixed inset-0 z-50 flex items-center justify-center p-4">
+                <div class="fixed inset-0 bg-slate-900/75 backdrop-blur-md transition-opacity" @click="closeLogoCropModal()"></div>
+                
+                <div class="bg-white rounded-3xl border border-[#e2e8f0] shadow-2xl max-w-lg w-full overflow-hidden relative z-10 flex flex-col max-h-[90vh]">
+                    <div class="p-4 border-b border-[#e2e8f0] flex items-center justify-between bg-[#f8fafc]">
+                        <div>
+                            <h3 class="text-sm font-bold text-[#0f172a] font-['Funnel_Display',sans-serif]">
+                                Sesuaikan Crop Logo Perusahaan (1:1)
+                            </h3>
+                            <p class="text-[11px] text-[#64748b]">Posisikan logo di dalam kotak persegi transparan.</p>
+                        </div>
+                        <button type="button" @click="closeLogoCropModal()" class="p-1.5 rounded-xl hover:bg-slate-200 text-slate-500">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                        </button>
+                    </div>
+
+                    <div class="p-4 bg-slate-950 flex items-center justify-center min-h-[280px] max-h-[420px] overflow-hidden">
+                        <img id="logoCropperTarget" :src="rawLogoSource" class="max-w-full max-h-[380px] block">
+                    </div>
+
+                    <div class="p-4 border-t border-[#e2e8f0] bg-white flex items-center justify-between gap-3">
+                        <div class="flex items-center gap-2">
+                            <button type="button" @click="rotateLogoLeft()" class="px-2.5 py-1.5 bg-slate-100 hover:bg-slate-200 rounded-lg text-xs font-medium text-slate-700">
+                                ↺ Rotasi -90°
+                            </button>
+                            <button type="button" @click="rotateLogoRight()" class="px-2.5 py-1.5 bg-slate-100 hover:bg-slate-200 rounded-lg text-xs font-medium text-slate-700">
+                                ↻ Rotasi +90°
+                            </button>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button type="button" @click="closeLogoCropModal()" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-lg text-xs font-semibold">
+                                Batal
+                            </button>
+                            <button type="button" @click="applyLogoCrop()" class="px-4 py-1.5 bg-[#0c61cf] hover:bg-[#0b54b5] text-white rounded-lg text-xs font-semibold shadow-sm">
+                                Potong & Gunakan Logo
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
