@@ -126,13 +126,13 @@
                 </div>
 
                 <!-- Upload New Image Box -->
-                <div class="sm:col-span-8 border-2 border-dashed border-[#cbd5e1] hover:border-[#0c61cf] rounded-2xl p-5 text-center bg-[#f8fafc] transition-colors relative cursor-pointer group">
-                    <input type="file" id="articleImageInput" name="image" accept="image/*" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                <div class="sm:col-span-8 border-2 border-dashed border-[#cbd5e1] hover:border-[#0c61cf] rounded-2xl p-5 text-center bg-[#f8fafc] transition-colors relative">
+                    <input type="file" id="articleImageInput" name="image" accept="image/*" class="hidden"
                         @change="handleFileSelect($event)">
                     
-                    <!-- Placeholder State -->
-                    <div x-show="!imagePreview" class="flex flex-col items-center">
-                        <div class="w-10 h-10 rounded-xl bg-white border border-[#e2e8f0] shadow-sm flex items-center justify-center text-[#64748b] group-hover:text-[#0c61cf] transition-all mb-2">
+                    <!-- Placeholder State (No new image chosen yet) -->
+                    <div x-show="!imagePreview" class="flex flex-col items-center cursor-pointer py-1" @click="triggerFileSelect()">
+                        <div class="w-10 h-10 rounded-xl bg-white border border-[#e2e8f0] shadow-sm flex items-center justify-center text-[#64748b] hover:text-[#0c61cf] transition-all mb-2">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                             </svg>
@@ -141,15 +141,25 @@
                         <span class="text-[11px] text-[#94a3b8] mt-0.5">Biarkan kosong jika tetap menggunakan gambar saat ini</span>
                     </div>
 
-                    <!-- New Selected Preview State -->
+                    <!-- New Selected Preview State with 2 Action Buttons -->
                     <div x-show="imagePreview" x-cloak class="flex flex-col items-center">
-                        <div class="h-28 max-w-xs rounded-xl overflow-hidden border border-[#e2e8f0] shadow-md mb-2">
-                            <img :src="imagePreview" alt="Preview Gambar Baru" class="w-full h-full object-cover">
+                        <div class="h-28 max-w-xs rounded-xl overflow-hidden border border-[#e2e8f0] shadow-md mb-2 bg-white p-1">
+                            <img :src="imagePreview" alt="Preview Gambar Baru" class="w-full h-full object-cover rounded-lg">
                         </div>
-                        <div class="flex items-center gap-2">
-                            <span class="text-[11px] text-[#0c61cf] font-semibold">Gambar baru hasil crop siap diunggah</span>
-                            <button type="button" @click.stop="openCropAgain()" class="text-[10px] bg-slate-200 hover:bg-slate-300 text-slate-700 px-2 py-0.5 rounded transition-colors font-medium">
-                                Ubah Crop
+                        <span class="text-[11px] text-emerald-600 font-semibold mb-2">Gambar baru hasil crop siap diunggah</span>
+                        
+                        <div class="flex flex-wrap items-center justify-center gap-2">
+                            <button type="button" @click="openCropAgain()"
+                                class="px-3 py-1.5 bg-[#0c61cf] hover:bg-[#0b54b5] text-white rounded-lg text-[11px] font-semibold transition-all shadow-sm flex items-center gap-1 cursor-pointer">
+                                <span>Sesuaikan Crop</span>
+                            </button>
+
+                            <button type="button" @click="triggerFileSelect()"
+                                class="px-3 py-1.5 bg-white hover:bg-slate-100 text-slate-700 border border-[#cbd5e1] rounded-lg text-[11px] font-semibold transition-all shadow-sm flex items-center gap-1 cursor-pointer">
+                                <svg class="w-3 h-3 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                                </svg>
+                                <span>Pilih Gambar Lain</span>
                             </button>
                         </div>
                     </div>
@@ -265,6 +275,11 @@ function articleCropHandler() {
         cropper: null,
         selectedFile: null,
 
+        triggerFileSelect() {
+            const input = document.getElementById('articleImageInput');
+            if (input) input.click();
+        },
+
         handleFileSelect(event) {
             const file = event.target.files[0];
             if (!file) return;
@@ -345,21 +360,18 @@ function articleCropHandler() {
             });
 
             if (canvas) {
-                this.imagePreview = canvas.toDataURL('image/jpeg', 0.9);
+                const croppedDataUrl = canvas.toDataURL('image/jpeg', 0.9);
+                this.imagePreview = croppedDataUrl;
 
-                canvas.toBlob((blob) => {
-                    if (blob) {
-                        const fileInput = document.getElementById('articleImageInput');
-                        const croppedFile = new File([blob], this.selectedFile ? this.selectedFile.name : 'article_banner.jpg', {
-                            type: 'image/jpeg',
-                            lastModified: Date.now()
-                        });
-
+                const croppedFile = dataURLtoFile(croppedDataUrl, this.selectedFile ? this.selectedFile.name : 'article_banner.jpg');
+                if (croppedFile) {
+                    const fileInput = document.getElementById('articleImageInput');
+                    if (fileInput) {
                         const dataTransfer = new DataTransfer();
                         dataTransfer.items.add(croppedFile);
                         fileInput.files = dataTransfer.files;
                     }
-                }, 'image/jpeg', 0.9);
+                }
             }
 
             this.closeCropModal();

@@ -107,33 +107,48 @@
         <!-- Banner Image Upload with Interactive Cropper -->
         <div>
             <label class="block text-xs font-bold text-[#334155] uppercase tracking-wider mb-2">
-                Banner / Cover Gambar
+                Banner / Cover Gambar Artikel
             </label>
             
-            <div class="border-2 border-dashed border-[#cbd5e1] hover:border-[#0c61cf] rounded-2xl p-6 text-center bg-[#f8fafc] transition-colors relative cursor-pointer group">
-                <input type="file" id="articleImageInput" name="image" accept="image/*" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                    @change="handleFileSelect($event)">
+            <input type="file" id="articleImageInput" name="image" accept="image/*" class="hidden"
+                @change="handleFileSelect($event)">
+
+            <div class="border-2 border-dashed border-[#cbd5e1] hover:border-[#0c61cf] rounded-2xl p-6 text-center bg-[#f8fafc] transition-colors relative">
                 
-                <!-- Placeholder State -->
-                <div x-show="!imagePreview" class="flex flex-col items-center">
-                    <div class="w-12 h-12 rounded-xl bg-white border border-[#e2e8f0] shadow-sm flex items-center justify-center text-[#64748b] group-hover:text-[#0c61cf] group-hover:scale-105 transition-all mb-3">
+                <!-- Placeholder State (No image chosen) -->
+                <div x-show="!imagePreview" class="flex flex-col items-center cursor-pointer py-2" @click="triggerFileSelect()">
+                    <div class="w-12 h-12 rounded-2xl bg-white border border-[#e2e8f0] shadow-sm flex items-center justify-center text-[#64748b] hover:text-[#0c61cf] hover:scale-105 transition-all mb-3">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                         </svg>
                     </div>
-                    <span class="text-xs font-semibold text-[#0f172a]">Klik untuk memilih gambar & sesuaikan area potong (*crop*)</span>
-                    <span class="text-[11px] text-[#94a3b8] mt-1">Format: JPG, PNG, WEBP, AVIF (Dilengkapi Pemotong Interaktif)</span>
+                    <span class="text-xs font-bold text-[#0f172a]">Klik di sini untuk memilih gambar banner</span>
+                    <span class="text-[11px] text-[#94a3b8] mt-1">Format: JPG, PNG, WEBP, AVIF (Rasio 16:9 disarankan)</span>
                 </div>
 
-                <!-- Preview State -->
-                <div x-show="imagePreview" x-cloak class="flex flex-col items-center">
-                    <div class="max-h-56 max-w-md rounded-xl overflow-hidden border border-[#e2e8f0] shadow-md mb-3">
-                        <img :src="imagePreview" alt="Preview Hasil Crop" class="w-full h-full object-cover">
+                <!-- Active Preview State with 2 Clear Buttons -->
+                <div x-show="imagePreview" x-cloak class="flex flex-col items-center py-1">
+                    <div class="max-h-56 max-w-md rounded-2xl overflow-hidden border border-[#e2e8f0] shadow-md mb-3 bg-white p-1">
+                        <img :src="imagePreview" alt="Preview Banner" class="w-full h-full object-cover rounded-xl">
                     </div>
-                    <div class="flex items-center gap-3">
-                        <span class="text-xs text-[#0c61cf] font-semibold">Gambar berhasil dipotong & siap diunggah</span>
-                        <button type="button" @click.stop="openCropAgain()" class="text-xs bg-slate-200 hover:bg-slate-300 text-slate-700 px-3 py-1 rounded-lg transition-colors font-medium">
-                            Sesuaikan Area Potong
+                    
+                    <span class="text-xs font-semibold text-emerald-600 mb-3 flex items-center gap-1">
+                        <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                        Gambar Banner Siap Digunakan
+                    </span>
+
+                    <div class="flex flex-wrap items-center justify-center gap-2.5">
+                        <button type="button" @click="openCropAgain()"
+                            class="px-4 py-2 bg-[#0c61cf] hover:bg-[#0b54b5] text-white rounded-xl text-xs font-bold shadow-sm transition-all flex items-center gap-1.5 cursor-pointer">
+                            <span>Sesuaikan Crop Gambar</span>
+                        </button>
+
+                        <button type="button" @click="triggerFileSelect()"
+                            class="px-4 py-2 bg-white hover:bg-slate-100 text-slate-700 border border-[#cbd5e1] rounded-xl text-xs font-bold shadow-sm transition-all flex items-center gap-1.5 cursor-pointer">
+                            <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                            </svg>
+                            <span>Ganti Gambar Baru</span>
                         </button>
                     </div>
                 </div>
@@ -249,6 +264,11 @@ function articleCropHandler() {
         cropper: null,
         selectedFile: null,
 
+        triggerFileSelect() {
+            const input = document.getElementById('articleImageInput');
+            if (input) input.click();
+        },
+
         handleFileSelect(event) {
             const file = event.target.files[0];
             if (!file) return;
@@ -329,21 +349,18 @@ function articleCropHandler() {
             });
 
             if (canvas) {
-                this.imagePreview = canvas.toDataURL('image/jpeg', 0.9);
+                const croppedDataUrl = canvas.toDataURL('image/jpeg', 0.9);
+                this.imagePreview = croppedDataUrl;
 
-                canvas.toBlob((blob) => {
-                    if (blob) {
-                        const fileInput = document.getElementById('articleImageInput');
-                        const croppedFile = new File([blob], this.selectedFile ? this.selectedFile.name : 'article_banner.jpg', {
-                            type: 'image/jpeg',
-                            lastModified: Date.now()
-                        });
-
+                const croppedFile = dataURLtoFile(croppedDataUrl, this.selectedFile ? this.selectedFile.name : 'article_banner.jpg');
+                if (croppedFile) {
+                    const fileInput = document.getElementById('articleImageInput');
+                    if (fileInput) {
                         const dataTransfer = new DataTransfer();
                         dataTransfer.items.add(croppedFile);
                         fileInput.files = dataTransfer.files;
                     }
-                }, 'image/jpeg', 0.9);
+                }
             }
 
             this.closeCropModal();
