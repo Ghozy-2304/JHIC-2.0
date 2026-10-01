@@ -58,6 +58,7 @@
 
 # Gzip Compression
 <IfModule mod_deflate.c>
+    # Compress HTML, CSS, JavaScript, Text, XML and fonts
     AddOutputFilterByType DEFLATE text/plain
     AddOutputFilterByType DEFLATE text/html
     AddOutputFilterByType DEFLATE text/xml
@@ -70,4 +71,12 @@
     AddOutputFilterByType DEFLATE application/x-javascript
     AddOutputFilterByType DEFLATE application/json
     AddOutputFilterByType DEFLATE image/svg+xml
+    AddOutputFilterByType DEFLATE font/woff
+    AddOutputFilterByType DEFLATE font/woff2
+    AddOutputFilterByType DEFLATE font/ttf
+
+    # Force DEFLATE for dynamic PHP responses
+    <FilesMatch "\.(php|html)$">
+        SetOutputFilter DEFLATE
+    </FilesMatch>
 </IfModule>
