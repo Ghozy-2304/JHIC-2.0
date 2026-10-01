@@ -29,6 +29,22 @@ class PerformanceOptimizationMiddleware
             }
         }
 
+        // Automatic Gzip Compression for HTML/Text responses if supported by client
+        if (function_exists('gzencode')
+            && str_contains($request->header('Accept-Encoding', ''), 'gzip')
+            && !$response->headers->has('Content-Encoding')
+            && !in_array($response->getStatusCode(), [204, 304])
+            && is_string($response->getContent())
+            && strlen($response->getContent()) > 1024) {
+            
+            $compressed = gzencode($response->getContent(), 6);
+            if ($compressed !== false) {
+                $response->setContent($compressed);
+                $response->headers->set('Content-Encoding', 'gzip');
+                $response->headers->set('Content-Length', (string) strlen($compressed));
+            }
+        }
+
         return $response;
     }
 }
