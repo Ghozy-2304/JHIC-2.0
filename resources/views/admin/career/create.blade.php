@@ -372,12 +372,18 @@
                         if (this.logoCropper) this.logoCropper.destroy();
                         this.logoCropper = new Cropper(img, {
                             aspectRatio: 1, // 1:1 Square for company logos
-                            viewMode: 1,
-                            autoCropArea: 0.9,
+                            viewMode: 0, // Allow free drag and move left/right/up/down
+                            dragMode: 'crop',
+                            autoCropArea: 0.95, // Cover 95% of image initially
                             responsive: true,
-                            background: true,
-                            zoomable: true,
-                            checkCrossOrigin: false
+                            restore: true,
+                            checkCrossOrigin: false,
+                            modal: true,
+                            guides: true,
+                            center: true,
+                            cropBoxMovable: true,
+                            cropBoxResizable: true,
+                            toggleDragModeOnDblclick: false,
                         });
                     };
 
@@ -409,8 +415,8 @@
                 if (!this.logoCropper) return;
                 try {
                     const canvas = this.logoCropper.getCroppedCanvas({
-                        width: 300,
-                        height: 300,
+                        width: 400,
+                        height: 400,
                         imageSmoothingEnabled: true,
                         imageSmoothingQuality: 'high'
                     });
@@ -468,41 +474,42 @@
                 </div>
             </div>
 
-            <!-- INTERACTIVE LOGO CROP MODAL (1:1 Aspect Ratio) -->
+            <!-- INTERACTIVE LOGO CROP MODAL (Clean Light Background & Smooth Movement) -->
             <div x-show="logoCropModalOpen" x-cloak class="fixed inset-0 z-50 flex items-center justify-center p-4">
-                <div class="fixed inset-0 bg-slate-900/75 backdrop-blur-md transition-opacity" @click="closeLogoCropModal()"></div>
+                <div class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity" @click="closeLogoCropModal()"></div>
                 
-                <div class="bg-white rounded-3xl border border-[#e2e8f0] shadow-2xl max-w-lg w-full overflow-hidden relative z-10 flex flex-col max-h-[90vh]">
-                    <div class="p-4 border-b border-[#e2e8f0] flex items-center justify-between bg-[#f8fafc]">
+                <div class="bg-white rounded-3xl border border-[#e2e8f0] shadow-2xl max-w-xl w-full overflow-hidden relative z-10 flex flex-col max-h-[92vh]">
+                    <div class="p-4 px-6 border-b border-[#e2e8f0] flex items-center justify-between bg-white">
                         <div>
                             <h3 class="text-sm font-bold text-[#0f172a] font-['Funnel_Display',sans-serif]">
-                                Sesuaikan Crop Logo Perusahaan (1:1)
+                                Sesuaikan Area Logo Perusahaan (1:1)
                             </h3>
-                            <p class="text-[11px] text-[#64748b]">Posisikan logo di dalam kotak persegi transparan.</p>
+                            <p class="text-[11px] text-[#64748b] mt-0.5">Geser atau tarik sudut kotak seleksi untuk menyesuaikan posisi logo.</p>
                         </div>
-                        <button type="button" @click="closeLogoCropModal()" class="p-1.5 rounded-xl hover:bg-slate-200 text-slate-500">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                        <button type="button" @click="closeLogoCropModal()" class="p-1.5 rounded-xl hover:bg-slate-100 text-slate-500 transition-colors">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
                         </button>
                     </div>
 
-                    <div class="p-4 bg-slate-950 flex items-center justify-center min-h-[280px] max-h-[420px] overflow-hidden">
-                        <img id="logoCropperTarget" :src="rawLogoSource" class="max-w-full max-h-[380px] block">
+                    <!-- Clean Light Grey Background Container -->
+                    <div class="p-6 bg-[#f8fafc] border-y border-[#e2e8f0] flex items-center justify-center min-h-[350px] max-h-[480px] overflow-hidden relative">
+                        <img id="logoCropperTarget" :src="rawLogoSource" class="max-w-full max-h-[420px] block">
                     </div>
 
-                    <div class="p-4 border-t border-[#e2e8f0] bg-white flex items-center justify-between gap-3">
+                    <div class="p-4 px-6 bg-white flex items-center justify-between gap-3">
                         <div class="flex items-center gap-2">
-                            <button type="button" @click="rotateLogoLeft()" class="px-2.5 py-1.5 bg-slate-100 hover:bg-slate-200 rounded-lg text-xs font-medium text-slate-700">
+                            <button type="button" @click="rotateLogoLeft()" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 rounded-xl text-xs font-medium text-slate-700 transition-colors">
                                 ↺ Rotasi -90°
                             </button>
-                            <button type="button" @click="rotateLogoRight()" class="px-2.5 py-1.5 bg-slate-100 hover:bg-slate-200 rounded-lg text-xs font-medium text-slate-700">
+                            <button type="button" @click="rotateLogoRight()" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 rounded-xl text-xs font-medium text-slate-700 transition-colors">
                                 ↻ Rotasi +90°
                             </button>
                         </div>
                         <div class="flex items-center gap-2">
-                            <button type="button" @click="closeLogoCropModal()" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-lg text-xs font-semibold">
+                            <button type="button" @click="closeLogoCropModal()" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-xl text-xs font-semibold transition-colors">
                                 Batal
                             </button>
-                            <button type="button" @click="applyLogoCrop()" class="px-4 py-1.5 bg-[#0c61cf] hover:bg-[#0b54b5] text-white rounded-lg text-xs font-semibold shadow-sm">
+                            <button type="button" @click="applyLogoCrop()" class="px-5 py-2 bg-[#0c61cf] hover:bg-[#0b54b5] text-white rounded-xl text-xs font-semibold shadow-sm transition-all">
                                 Potong & Gunakan Logo
                             </button>
                         </div>
