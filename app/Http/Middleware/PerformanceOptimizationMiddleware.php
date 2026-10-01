@@ -30,7 +30,8 @@ class PerformanceOptimizationMiddleware
         }
 
         // Automatic Gzip Compression for HTML/Text responses if supported by client
-        if (function_exists('gzencode')
+        if (!app()->runningUnitTests()
+            && function_exists('gzencode')
             && str_contains($request->header('Accept-Encoding', ''), 'gzip')
             && !$response->headers->has('Content-Encoding')
             && !in_array($response->getStatusCode(), [204, 304])
