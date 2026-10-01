@@ -426,6 +426,41 @@ class CareerJobController extends Controller
     }
 
     /**
+     * Proxies external logo URL to base64 DataURL for client-side Cropper without CORS issues.
+     */
+    public function proxyLogo(Request $request)
+    {
+        $request->validate([
+            'url' => 'required|string',
+        ]);
+
+        $url = trim($request->input('url'));
+        try {
+            $res = Http::timeout(6)
+                ->withHeaders([
+                    'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+                ])
+                ->get($url);
+
+            if ($res->successful()) {
+                $mime = $res->header('Content-Type') ?: 'image/png';
+                $base64 = base64_encode($res->body());
+                return response()->json([
+                    'success' => true,
+                    'dataUrl' => "data:{$mime};base64,{$base64}"
+                ]);
+            }
+        } catch (\Throwable $e) {
+            // Fallback
+        }
+
+        return response()->json([
+            'success' => false,
+            'message' => 'Gagal mengambil logo dari URL eksternal.'
+        ], 400);
+    }
+
+    /**
      * Simpan lowongan kerja baru ke database.
      */
     public function store(Request $request)

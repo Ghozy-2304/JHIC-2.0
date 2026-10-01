@@ -114,6 +114,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         
         // Career Center Admin Routes
         Route::post('career/fetch-meta', [App\Http\Controllers\Admin\CareerJobController::class, 'fetchMeta'])->name('career.fetch-meta');
+        Route::post('career/proxy-logo', [App\Http\Controllers\Admin\CareerJobController::class, 'proxyLogo'])->name('career.proxy-logo');
         Route::post('career/{career}/duplicate', [App\Http\Controllers\Admin\CareerJobController::class, 'duplicate'])->name('career.duplicate');
         Route::patch('career/{career}/toggle', [App\Http\Controllers\Admin\CareerJobController::class, 'toggle'])->name('career.toggle');
         Route::resource('career', App\Http\Controllers\Admin\CareerJobController::class)->except(['show']);

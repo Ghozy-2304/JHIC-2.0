@@ -81,6 +81,7 @@
                         if (d.company_logo_url) {
                             this.company_logo_url = d.company_logo_url;
                             this.logoPreview = d.company_logo_url;
+                            window.dispatchEvent(new CustomEvent('logo-fetched', { detail: { url: d.company_logo_url } }));
                         }
                         if (d.salary) this.salary = d.salary;
                         if (d.apply_url) this.apply_url = d.apply_url;
@@ -306,8 +307,17 @@
         <div x-data="{
             logoCropModalOpen: false,
             rawLogoSource: '',
+            originalRawLogoSource: '{{ $career->company_img ? asset($career->company_img) : '' }}',
             logoCropper: null,
             selectedLogoFile: null,
+            loadingProxy: false,
+
+            init() {
+                window.addEventListener('logo-fetched', (e) => {
+                    this.originalRawLogoSource = e.detail.url;
+                    this.selectedLogoFile = null;
+                });
+            },
 
             handleLogoSelect(event) {
                 const file = event.target.files[0];
@@ -316,6 +326,7 @@
 
                 const reader = new FileReader();
                 reader.onload = (e) => {
+                    this.originalRawLogoSource = e.target.result;
                     this.rawLogoSource = e.target.result;
                     this.openLogoCropModal();
                 };
@@ -323,45 +334,44 @@
             },
 
             async openCropForCurrentLogo() {
-                let targetUrl = '';
-                if (logoPreview) {
-                    targetUrl = logoPreview;
-                } else if ('{{ $career->company_img }}') {
-                    targetUrl = '{{ asset($career->company_img) }}';
+                let sourceToUse = this.originalRawLogoSource;
+
+                if (!sourceToUse && logoPreview) {
+                    sourceToUse = logoPreview;
+                }
+                if (!sourceToUse && '{{ $career->company_img }}') {
+                    sourceToUse = '{{ asset($career->company_img) }}';
                 }
 
-                if (!targetUrl) return;
+                if (!sourceToUse) return;
 
-                if (targetUrl.startsWith('http')) {
+                if (sourceToUse.startsWith('http')) {
+                    this.loadingProxy = true;
                     try {
-                        const imgObj = new Image();
-                        imgObj.crossOrigin = 'anonymous';
-                        imgObj.src = targetUrl + (targetUrl.includes('?') ? '&' : '?') + 't=' + Date.now();
-                        await new Promise((resolve) => {
-                            imgObj.onload = () => {
-                                try {
-                                    const cvs = document.createElement('canvas');
-                                    cvs.width = imgObj.naturalWidth;
-                                    cvs.height = imgObj.naturalHeight;
-                                    const ctx = cvs.getContext('2d');
-                                    ctx.drawImage(imgObj, 0, 0);
-                                    this.rawLogoSource = cvs.toDataURL('image/png');
-                                } catch(err) {
-                                    this.rawLogoSource = targetUrl;
-                                }
-                                resolve();
-                            };
-                            imgObj.onerror = () => {
-                                this.rawLogoSource = targetUrl;
-                                resolve();
-                            };
+                        const res = await fetch('{{ route('admin.career.proxy-logo') }}', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                            },
+                            body: JSON.stringify({ url: sourceToUse })
                         });
+                        const json = await res.json();
+                        if (json.success && json.dataUrl) {
+                            this.originalRawLogoSource = json.dataUrl;
+                            this.rawLogoSource = json.dataUrl;
+                        } else {
+                            this.rawLogoSource = sourceToUse;
+                        }
                     } catch(e) {
-                        this.rawLogoSource = targetUrl;
+                        this.rawLogoSource = sourceToUse;
+                    } finally {
+                        this.loadingProxy = false;
                     }
                 } else {
-                    this.rawLogoSource = targetUrl;
+                    this.rawLogoSource = sourceToUse;
                 }
+
                 this.openLogoCropModal();
             },
 
@@ -425,19 +435,22 @@
                     });
 
                     if (canvas) {
-                        logoPreview = canvas.toDataURL('image/png');
-                        canvas.toBlob((blob) => {
-                            if (blob) {
-                                const input = document.getElementById('companyImgInputEdit');
-                                const croppedFile = new File([blob], this.selectedLogoFile ? this.selectedLogoFile.name : 'company_logo.png', {
-                                    type: 'image/png',
-                                    lastModified: Date.now()
-                                });
+                        const croppedDataUrl = canvas.toDataURL('image/png');
+                        logoPreview = croppedDataUrl;
+                        
+                        company_logo_url = '';
+                        const hiddenInput = document.querySelector('input[name=\'company_logo_url\']');
+                        if (hiddenInput) hiddenInput.value = '';
+
+                        const croppedFile = dataURLtoFile(croppedDataUrl, this.selectedLogoFile ? this.selectedLogoFile.name : 'company_logo.png');
+                        if (croppedFile) {
+                            const input = document.getElementById('companyImgInputEdit');
+                            if (input) {
                                 const dataTransfer = new DataTransfer();
                                 dataTransfer.items.add(croppedFile);
                                 input.files = dataTransfer.files;
                             }
-                        }, 'image/png');
+                        }
                     }
                 } catch (e) {
                     console.error('Crop error:', e);
@@ -461,9 +474,13 @@
                         @endif
                     </div>
                     @if($career->company_img)
-                        <button type="button" @click.stop="openCropForCurrentLogo()" 
-                            class="text-[11px] bg-slate-200 hover:bg-slate-300 text-slate-700 px-2.5 py-1 rounded-lg font-medium transition-colors cursor-pointer">
-                            Potong Logo Saat Ini
+                        <button type="button" @click.stop="openCropForCurrentLogo()" :disabled="loadingProxy"
+                            class="text-[11px] bg-slate-200 hover:bg-slate-300 disabled:opacity-50 text-slate-700 px-2.5 py-1 rounded-lg font-medium transition-colors cursor-pointer flex items-center gap-1.5">
+                            <svg x-show="loadingProxy" class="animate-spin w-3 h-3 text-slate-600" fill="none" viewBox="0 0 24 24">
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                            </svg>
+                            <span x-text="loadingProxy ? 'Memuat Gambar...' : 'Potong Logo Saat Ini'"></span>
                         </button>
                     @endif
                 </div>
@@ -489,9 +506,13 @@
                         </div>
                         <div class="flex items-center gap-2">
                             <span class="text-[11px] text-[#0c61cf] font-semibold">Logo baru siap</span>
-                            <button type="button" @click.stop="openCropForCurrentLogo()" 
-                                class="text-[10px] bg-slate-200 hover:bg-slate-300 text-slate-700 px-2 py-0.5 rounded font-medium transition-colors cursor-pointer">
-                                Ubah Crop
+                            <button type="button" @click.stop="openCropForCurrentLogo()" :disabled="loadingProxy"
+                                class="text-[10px] bg-slate-200 hover:bg-slate-300 disabled:opacity-50 text-slate-700 px-2 py-0.5 rounded font-medium transition-colors cursor-pointer flex items-center gap-1">
+                                <svg x-show="loadingProxy" class="animate-spin w-2.5 h-2.5 text-slate-600" fill="none" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                </svg>
+                                <span x-text="loadingProxy ? 'Memuat...' : 'Ubah Crop'"></span>
                             </button>
                         </div>
                     </div>
