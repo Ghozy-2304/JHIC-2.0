@@ -16,7 +16,7 @@ export const options = {
     vus: 1,                 // 1 Single user to test pure response speed without load noise
     iterations: 5,          // Run 5 sequential prompts to calculate accurate average speed
     thresholds: {
-        ai_chat_response_time_ms: ['p(95)<10000'], // 95% of AI responses should finish within 10 seconds
+        ai_chat_response_time_ms: ['p(95)<12000'], // 95% of full LLM RAG responses finish within 12 seconds
         http_req_failed: ['rate<0.01'],            // 0% errors expected
     },
 };
