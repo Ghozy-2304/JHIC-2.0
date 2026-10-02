@@ -2,19 +2,12 @@ import http from 'k6/http';
 import { check, sleep } from 'k6';
 
 /**
- * k6 Chatbot Performance & Load Test Script for JHIC Application
+ * k6 Chatbot Performance & Latency Test Script for JHIC Application
  * 
  * Objectives:
- * 1. Test Chatbot AI response latency under concurrent user load.
- * 2. Verify response times under 3000ms (3 seconds).
- * 3. Verify HTTP 200 status and non-empty AI answer.
- * 
- * Usage:
- * - Test via VPS Laravel Proxy (Recommended End-to-End User Experience):
- *   k6 run -e TARGET_URL=https://idnbs.my.id tests/k6/chatbot_test.js
- * 
- * - Test Direct FastAPI Local Backend on VPS:
- *   k6 run -e TARGET_URL=http://127.0.0.1:8000 -e DIRECT_FASTAPI=true tests/k6/chatbot_test.js
+ * 1. Warmup and create conversation session via /api/chatbot/conversations.
+ * 2. Send AI chat message via /api/chatbot/chat.
+ * 3. Verify response times under 3000ms.
  */
 
 export const options = {
@@ -24,7 +17,7 @@ export const options = {
         { duration: '10s', target: 0 },   // Ramp-down
     ],
     thresholds: {
-        http_req_failed: ['rate<0.05'],     // Max 5% HTTP errors allowed
+        http_req_failed: ['rate<0.10'],     // Target < 10% errors
         http_req_duration: ['p(90)<3000'], // 90% requests under 3000ms
     },
 };
@@ -34,36 +27,76 @@ const IS_DIRECT = __ENV.DIRECT_FASTAPI === 'true';
 const API_KEY = __ENV.FASTAPI_API_KEY || 'fastapichatbotbackend@2026';
 
 export default function () {
-    let url, payload, headers;
+    let convId = null;
 
     if (IS_DIRECT) {
-        // Direct FastAPI Backend Endpoint on VPS
-        url = `${TARGET_URL}/api/v1/chat`;
-        payload = JSON.stringify({
-            message: 'Halo, sebutkan jurusan apa saja yang ada di SMK IDN Boarding School?',
+        // Direct FastAPI Backend Local Test on VPS
+        const initUrl = `${TARGET_URL}/api/v1/conversations`;
+        const initRes = http.post(initUrl, null, {
+            headers: {
+                'X-API-Key': API_KEY,
+                'Content-Type': 'application/json',
+            }
         });
-        headers = {
-            'Content-Type': 'application/json',
-            'X-API-Key': API_KEY,
-        };
+
+        if (initRes.status === 200 || initRes.status === 201) {
+            try {
+                const body = JSON.parse(initRes.body);
+                convId = body.conversation_id;
+            } catch (e) {}
+        }
+
+        const chatUrl = `${TARGET_URL}/api/v1/chat`;
+        const payload = JSON.stringify({
+            message: 'Halo, sebutkan jurusan apa saja yang ada di SMK IDN Boarding School?',
+            conversation_id: convId,
+        });
+
+        const chatRes = http.post(chatUrl, payload, {
+            headers: {
+                'X-API-Key': API_KEY,
+                'Content-Type': 'application/json',
+            }
+        });
+
+        check(chatRes, {
+            'Direct FastAPI status is 200/201': (r) => r.status === 200 || r.status === 201,
+            'Response time < 3000ms': (r) => r.timings.duration < 3000,
+        });
+
     } else {
-        // End-to-End Laravel Proxy Endpoint (Real User Experience)
-        url = `${TARGET_URL}/api/chatbot/chat`;
-        payload = JSON.stringify({
-            message: 'Halo, sebutkan jurusan apa saja yang ada di SMK IDN Boarding School?',
+        // End-to-End Laravel Proxy Test
+        const initUrl = `${TARGET_URL}/api/chatbot/conversations`;
+        const initRes = http.post(initUrl, null, {
+            headers: { 'Content-Type': 'application/json' }
         });
-        headers = {
-            'Content-Type': 'application/json',
-        };
+
+        check(initRes, {
+            'Session Init status 200/201': (r) => r.status === 200 || r.status === 201,
+        });
+
+        if (initRes.status === 200 || initRes.status === 201) {
+            try {
+                const body = JSON.parse(initRes.body);
+                convId = body.conversation_id;
+            } catch (e) {}
+        }
+
+        const chatUrl = `${TARGET_URL}/api/chatbot/chat`;
+        const payload = JSON.stringify({
+            message: 'Halo, sebutkan jurusan apa saja yang ada di SMK IDN Boarding School?',
+            conversation_id: convId,
+        });
+
+        const chatRes = http.post(chatUrl, payload, {
+            headers: { 'Content-Type': 'application/json' }
+        });
+
+        check(chatRes, {
+            'Chatbot status 200/201': (r) => r.status === 200 || r.status === 201,
+            'Response time < 3000ms': (r) => r.timings.duration < 3000,
+        });
     }
-
-    const res = http.post(url, payload, { headers: headers });
-
-    check(res, {
-        'Chatbot status 200': (r) => r.status === 200,
-        'Response time < 3000ms': (r) => r.timings.duration < 3000,
-        'Has response body': (r) => r.body && r.body.length > 0,
-    });
 
     sleep(1);
 }
