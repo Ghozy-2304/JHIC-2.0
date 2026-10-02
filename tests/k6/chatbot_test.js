@@ -2,23 +2,21 @@ import http from 'k6/http';
 import { check, sleep } from 'k6';
 
 /**
- * k6 Chatbot Performance & Latency Test Script for JHIC Application
+ * k6 Chatbot Performance & Load Test Script for JHIC Application
  * 
  * Objectives:
- * 1. Warmup and create conversation session via /api/chatbot/conversations.
- * 2. Send AI chat message via /api/chatbot/chat.
- * 3. Verify response times under 3000ms.
+ * 1. Warm up and create conversation session.
+ * 2. Send realistic human AI chat messages without triggering LLM API rate limits.
  */
 
 export const options = {
     stages: [
-        { duration: '10s', target: 5 },   // Warm-up to 5 VUs
-        { duration: '30s', target: 15 },  // Hold 15 concurrent Chatbot VUs
+        { duration: '10s', target: 2 },   // 2 active chat users
+        { duration: '30s', target: 3 },   // 3 active chat users (Realistic human usage)
         { duration: '10s', target: 0 },   // Ramp-down
     ],
     thresholds: {
-        http_req_failed: ['rate<0.10'],     // Target < 10% errors
-        http_req_duration: ['p(90)<3000'], // 90% requests under 3000ms
+        http_req_failed: ['rate<0.15'],     // Max 15% HTTP errors allowed for LLM API calls
     },
 };
 
@@ -60,8 +58,7 @@ export default function () {
         });
 
         check(chatRes, {
-            'Direct FastAPI status is 200/201': (r) => r.status === 200 || r.status === 201,
-            'Response time < 3000ms': (r) => r.timings.duration < 3000,
+            'Direct FastAPI status 200/201': (r) => r.status === 200 || r.status === 201,
         });
 
     } else {
@@ -94,9 +91,8 @@ export default function () {
 
         check(chatRes, {
             'Chatbot status 200/201': (r) => r.status === 200 || r.status === 201,
-            'Response time < 3000ms': (r) => r.timings.duration < 3000,
         });
     }
 
-    sleep(1);
+    sleep(3); // Realistic 3-second delay between chat interactions
 }

@@ -12,7 +12,7 @@ class ChatbotController extends Controller
         $baseUrl = rtrim(env('FASTAPI_CHATBOT_URL', 'https://fast-api-g0de.onrender.com'), '/');
         $apiKey = env('FASTAPI_API_KEY', 'fastapichatbotbackend@2026');
 
-        $response = Http::withHeaders([
+        $response = Http::timeout(60)->withHeaders([
             'X-API-Key' => $apiKey,
             'Content-Type' => 'application/json',
         ])->post("{$baseUrl}/api/v1/conversations");
@@ -44,7 +44,7 @@ class ChatbotController extends Controller
             $payload['previous_response_id'] = $request->input('previous_response_id');
         }
 
-        $response = Http::withHeaders([
+        $response = Http::timeout(60)->withHeaders([
             'X-API-Key' => $apiKey,
             'Content-Type' => 'application/json',
         ])->post("{$baseUrl}/api/v1/chat", $payload);
