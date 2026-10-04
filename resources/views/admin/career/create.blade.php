@@ -101,6 +101,9 @@
                                 this.logoPreview = d.company_logo_url;
                             }
                             window.dispatchEvent(new CustomEvent('logo-fetched', { detail: { url: this.logoPreview } }));
+                        } else {
+                            this.company_logo_url = '';
+                            this.logoPreview = null;
                         }
                         if (d.salary) this.salary = d.salary;
                         if (d.apply_url) this.apply_url = d.apply_url;

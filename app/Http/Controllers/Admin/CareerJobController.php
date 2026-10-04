@@ -312,7 +312,7 @@ class CareerJobController extends Controller
                         }
                     }
                 }
-                // Extract company logo URL from HTML
+                // Extract company logo URL from HTML (Jobstreet, Glints, Seek, Kalibrr, JSON-LD)
                 if (preg_match_all('/<script[^>]+type=["\']application\/ld\+json["\'][^>]*>(.*?)<\/script>/is', $html, $ldMatches)) {
                     foreach ($ldMatches[1] as $ldText) {
                         $ldJson = json_decode($ldText, true);
@@ -324,18 +324,30 @@ class CareerJobController extends Controller
                     }
                 }
 
+                if (!$companyLogoUrl && preg_match('/"branding"\s*:\s*\{[^}]*"logoUrl"\s*:\s*"([^"]+)"/i', $html, $mLogo)) {
+                    $companyLogoUrl = str_replace(['\u002F', '\/'], '/', stripslashes($mLogo[1]));
+                }
+                if (!$companyLogoUrl && preg_match('/"branding"\s*:\s*\{[^}]*"logo"\s*:\s*\{[^}]*"url"\s*:\s*"([^"]+)"/i', $html, $mLogo)) {
+                    $companyLogoUrl = str_replace(['\u002F', '\/'], '/', stripslashes($mLogo[1]));
+                }
+                if (!$companyLogoUrl && preg_match('/"advertiser"\s*:\s*\{[^}]*"logoUrl"\s*:\s*"([^"]+)"/i', $html, $mLogo)) {
+                    $companyLogoUrl = str_replace(['\u002F', '\/'], '/', stripslashes($mLogo[1]));
+                }
+                if (!$companyLogoUrl && preg_match('/"companyLogo"\s*:\s*"([^"]+)"/i', $html, $mLogo)) {
+                    $companyLogoUrl = str_replace(['\u002F', '\/'], '/', stripslashes($mLogo[1]));
+                }
                 if (!$companyLogoUrl && preg_match('/"logo"\s*:\s*\{[^}]*"url"\s*:\s*"([^"]+)"/i', $html, $mLogo)) {
-                    $companyLogoUrl = str_replace('\u002F', '/', stripslashes($mLogo[1]));
+                    $companyLogoUrl = str_replace(['\u002F', '\/'], '/', stripslashes($mLogo[1]));
                 }
                 if (!$companyLogoUrl && preg_match('/"logoUrl"\s*:\s*"([^"]+)"/i', $html, $mLogo)) {
-                    $companyLogoUrl = str_replace('\u002F', '/', stripslashes($mLogo[1]));
+                    $companyLogoUrl = str_replace(['\u002F', '\/'], '/', stripslashes($mLogo[1]));
                 }
                 if (!$companyLogoUrl && preg_match('/"logo"\s*:\s*"([^"]+)"/i', $html, $mLogo)) {
-                    $companyLogoUrl = str_replace('\u002F', '/', stripslashes($mLogo[1]));
+                    $companyLogoUrl = str_replace(['\u002F', '\/'], '/', stripslashes($mLogo[1]));
                 }
                 if (!$companyLogoUrl && preg_match('/<meta[^>]+property=["\']og:image["\'][^>]+content=["\']([^"\']+)["\']/i', $html, $ogImg)) {
                     $img = $ogImg[1];
-                    if (!str_contains($img, 'shared-web/banner') && !str_contains($img, 'glints-logo') && !str_contains($img, 'default')) {
+                    if (!str_contains($img, 'shared-web/banner') && !str_contains($img, 'glints-logo') && !str_contains($img, 'jobstreet-logo') && !str_contains($img, 'seek-logo') && !str_contains($img, 'default')) {
                         $companyLogoUrl = $img;
                     }
                 }
