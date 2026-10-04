@@ -840,8 +840,6 @@ Mau Tau Lebih Banyak Edukasi Bermanfaat?<br>
 Follow sosial media kami:<br>
 <strong>Jonggol:</strong> <a href=\"https://www.instagram.com/idnboardingschool/\" target=\"_blank\" class=\"text-brand-primary underline font-semibold hover:text-brand-hover\">@idnboardingschool</a><br>
 <strong>Solo:</strong> <a href=\"https://www.instagram.com/idnboardingschoolsolo/\" target=\"_blank\" class=\"text-brand-primary underline font-semibold hover:text-brand-hover\">@idnboardingschoolsolo</a><br>
-<strong>Pamijahan:</strong> <a href=\"https://www.instagram.com/idnboardingschoolpmjbogor/\" target=\"_blank\" class=\"text-brand-primary underline font-semibold hover:text-brand-hover\">@idnboardingschoolpmjbogor</a><br>
-<strong>Sentul:</strong> <a href=\"https://www.instagram.com/idnboardingschoolsentul/\" target=\"_blank\" class=\"text-brand-primary underline font-semibold hover:text-brand-hover\">@idnboardingschoolsentul</a><br>
 <strong>idn akhwat :</strong> <a href=\"https://www.instagram.com/smpsmk.idnakhwat/\" target=\"_blank\" class=\"text-brand-primary underline font-semibold hover:text-brand-hover\">@smpsmk.idnakhwat</a></p>"
             ]
         );
@@ -998,8 +996,6 @@ Fasilitas lengkap:</p>
 <p>Mau Tau Lebih Banyak Edukasi Bermanfaat? Follow sosial media kami:<br>
 <strong>Jonggol:</strong> <a href=\"https://www.instagram.com/idnboardingschool/\" target=\"_blank\" class=\"text-brand-primary underline font-semibold hover:text-brand-hover\">@idnboardingschool</a><br>
 <strong>Solo:</strong> <a href=\"https://www.instagram.com/idnboardingschoolsolo/\" target=\"_blank\" class=\"text-brand-primary underline font-semibold hover:text-brand-hover\">@idnboardingschoolsolo</a><br>
-<strong>Pamijahan:</strong> <a href=\"https://www.instagram.com/idnboardingschoolpmjbogor/\" target=\"_blank\" class=\"text-brand-primary underline font-semibold hover:text-brand-hover\">@idnboardingschoolpmjbogor</a><br>
-<strong>Sentul:</strong> <a href=\"https://www.instagram.com/idnboardingschoolsentul/\" target=\"_blank\" class=\"text-brand-primary underline font-semibold hover:text-brand-hover\">@idnboardingschoolsentul</a><br>
 <strong>idn akhwat:</strong> <a href=\"https://www.instagram.com/smpsmk.idnakhwat/\" target=\"_blank\" class=\"text-brand-primary underline font-semibold hover:text-brand-hover\">@smpsmk.idnakhwat</a></p>"
             ]
         );

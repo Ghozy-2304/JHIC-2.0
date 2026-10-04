@@ -3,7 +3,7 @@
     <div class="w-full max-w-[1120px] xl:max-w-[1280px] 2xl:max-w-[1360px] mx-auto flex flex-col gap-10 md:gap-[64px] px-4 sm:px-6">
         
         <!-- TOP FOOTER CONTENT -->
-        <div class="flex justify-between items-start gap-8 md:gap-12 w-full max-lg:flex-col">
+        <div class="flex justify-start items-start gap-10 md:gap-12 lg:gap-[170px] w-full max-lg:flex-col">
             
             <!-- BRAND & SOCIALS -->
             <div class="flex flex-col gap-6 md:gap-8 w-full lg:w-[253px] shrink-0">
@@ -54,7 +54,7 @@
             </div>
 
             <!-- LINKS & SCHOOL INFO -->
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-8 md:gap-14 items-start w-full">
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-8 md:gap-[16px] items-start w-full">
                 
                 <!-- Menu Utama -->
                 <div class="flex flex-col gap-3">

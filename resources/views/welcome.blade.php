@@ -235,10 +235,10 @@
             </div>
 
             <!-- 3 MAJOR CARDS GRID (1 column on mobile/tablet, 3 on desktop) -->
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 w-full max-w-[1120px] justify-items-center lg:justify-items-stretch">
                 
                 <!-- Major 1: RPL -->
-                <div class="bg-white border border-[#e9eaeb] rounded-[18px] p-6 flex flex-col gap-8 items-center w-full justify-between transition-all duration-300 hover:border-[#0c61cf] hover:shadow-lg hover:-translate-y-1">
+                <div class="bg-white border border-[#e9eaeb] rounded-[18px] p-6 flex flex-col gap-8 items-center w-full max-w-[360px] lg:max-w-none justify-between transition-all duration-300 hover:border-[#0c61cf] hover:shadow-lg hover:-translate-y-1">
                     <div class="flex flex-col gap-6 w-full items-start">
                         <div class="flex items-center justify-between w-full">
                             <div class="w-12 h-12 rounded-full border border-[#c2d8f5] bg-white flex items-center justify-center text-[#0c61cf]">
@@ -271,7 +271,7 @@
                 </div>
 
                 <!-- Major 2: TKJ -->
-                <div class="bg-white border border-[#e9eaeb] rounded-[18px] p-6 flex flex-col gap-8 items-center w-full justify-between transition-all duration-300 hover:border-[#0c61cf] hover:shadow-lg hover:-translate-y-1">
+                <div class="bg-white border border-[#e9eaeb] rounded-[18px] p-6 flex flex-col gap-8 items-center w-full max-w-[360px] lg:max-w-none justify-between transition-all duration-300 hover:border-[#0c61cf] hover:shadow-lg hover:-translate-y-1">
                     <div class="flex flex-col gap-6 w-full items-start">
                         <div class="flex items-center justify-between w-full">
                             <div class="w-12 h-12 rounded-full border border-[#c2d8f5] bg-white flex items-center justify-center text-[#0c61cf]">
@@ -305,7 +305,7 @@
                 </div>
 
                 <!-- Major 3: DKV -->
-                <div class="bg-white border border-[#e9eaeb] rounded-[18px] p-6 flex flex-col gap-8 items-center w-full justify-between transition-all duration-300 hover:border-[#0c61cf] hover:shadow-lg hover:-translate-y-1">
+                <div class="bg-white border border-[#e9eaeb] rounded-[18px] p-6 flex flex-col gap-8 items-center w-full max-w-[360px] lg:max-w-none justify-between transition-all duration-300 hover:border-[#0c61cf] hover:shadow-lg hover:-translate-y-1">
                     <div class="flex flex-col gap-6 w-full items-start">
                         <div class="flex items-center justify-between w-full">
                             <div class="w-12 h-12 rounded-full border border-[#c2d8f5] bg-white flex items-center justify-center text-[#0c61cf]">
@@ -348,7 +348,7 @@
 
     <!-- 5. PENCAPAIAN WISUDAWAN DARI IDN BOARDING SCHOOL (Figma Node 19900:12412) -->
     <section class="w-full max-w-full overflow-hidden flex flex-col items-center py-16 md:py-[110px] bg-white">
-        <div class="w-full max-w-[1120px] xl:max-w-[1280px] 2xl:max-w-[1360px] mx-auto flex flex-col items-center gap-8 md:gap-12 px-4 sm:px-6">
+        <div class="w-full max-w-[1120px] mx-auto flex flex-col items-center gap-8 md:gap-12 px-4 sm:px-6">
             
             <!-- SECTION HEADER -->
             <div class="flex flex-col items-center text-center gap-2">
@@ -360,30 +360,30 @@
                 </p>
             </div>
 
-            <!-- AWARDS GRID (1 column on mobile/tablet, 2 on desktop - 550x312px) -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 w-full justify-items-center">
-                <div class="group w-full max-w-[550px] aspect-[550/312] rounded-[14px] overflow-hidden bg-slate-200 shadow-sm border border-[#e9eaeb] transition-all duration-300 hover:shadow-md">
+            <!-- AWARDS GRID (2 columns with exact 20px gap) -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 w-full">
+                <div class="group w-full aspect-[550/312] rounded-[14px] overflow-hidden bg-slate-200 shadow-sm border border-[#e9eaeb] transition-all duration-300 hover:shadow-md">
                     <img src="{{ asset('assets/prestasi/award-image-1.avif') }}" alt="Pencapaian Wisudawan 1" loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105">
                 </div>
-                <div class="group w-full max-w-[550px] aspect-[550/312] rounded-[14px] overflow-hidden bg-slate-200 shadow-sm border border-[#e9eaeb] transition-all duration-300 hover:shadow-md">
+                <div class="group w-full aspect-[550/312] rounded-[14px] overflow-hidden bg-slate-200 shadow-sm border border-[#e9eaeb] transition-all duration-300 hover:shadow-md">
                     <img src="{{ asset('assets/prestasi/award-image-2.avif') }}" alt="Pencapaian Wisudawan 2" loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105">
                 </div>
-                <div class="group w-full max-w-[550px] aspect-[550/312] rounded-[14px] overflow-hidden bg-slate-200 shadow-sm border border-[#e9eaeb] transition-all duration-300 hover:shadow-md">
+                <div class="group w-full aspect-[550/312] rounded-[14px] overflow-hidden bg-slate-200 shadow-sm border border-[#e9eaeb] transition-all duration-300 hover:shadow-md">
                     <img src="{{ asset('assets/prestasi/award-image-3.avif') }}" alt="Pencapaian Wisudawan 3" loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105">
                 </div>
-                <div class="group w-full max-w-[550px] aspect-[550/312] rounded-[14px] overflow-hidden bg-slate-200 shadow-sm border border-[#e9eaeb] transition-all duration-300 hover:shadow-md">
+                <div class="group w-full aspect-[550/312] rounded-[14px] overflow-hidden bg-slate-200 shadow-sm border border-[#e9eaeb] transition-all duration-300 hover:shadow-md">
                     <img src="{{ asset('assets/prestasi/award-image-4.avif') }}" alt="Pencapaian Wisudawan 4" loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105">
                 </div>
-                <div class="group w-full max-w-[550px] aspect-[550/312] rounded-[14px] overflow-hidden bg-slate-200 shadow-sm border border-[#e9eaeb] transition-all duration-300 hover:shadow-md">
+                <div class="group w-full aspect-[550/312] rounded-[14px] overflow-hidden bg-slate-200 shadow-sm border border-[#e9eaeb] transition-all duration-300 hover:shadow-md">
                     <img src="{{ asset('assets/prestasi/award-image-5.avif') }}" alt="Pencapaian Wisudawan 5" loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105">
                 </div>
-                <div class="group w-full max-w-[550px] aspect-[550/312] rounded-[14px] overflow-hidden bg-slate-200 shadow-sm border border-[#e9eaeb] transition-all duration-300 hover:shadow-md">
+                <div class="group w-full aspect-[550/312] rounded-[14px] overflow-hidden bg-slate-200 shadow-sm border border-[#e9eaeb] transition-all duration-300 hover:shadow-md">
                     <img src="{{ asset('assets/prestasi/award-image-6.avif') }}" alt="Pencapaian Wisudawan 6" loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105">
                 </div>
-                <div class="group w-full max-w-[550px] aspect-[550/312] rounded-[14px] overflow-hidden bg-slate-200 shadow-sm border border-[#e9eaeb] transition-all duration-300 hover:shadow-md">
+                <div class="group w-full aspect-[550/312] rounded-[14px] overflow-hidden bg-slate-200 shadow-sm border border-[#e9eaeb] transition-all duration-300 hover:shadow-md">
                     <img src="{{ asset('assets/prestasi/award-image-7.avif') }}" alt="Pencapaian Wisudawan 7" loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105">
                 </div>
-                <div class="group w-full max-w-[550px] aspect-[550/312] rounded-[14px] overflow-hidden bg-slate-200 shadow-sm border border-[#e9eaeb] transition-all duration-300 hover:shadow-md">
+                <div class="group w-full aspect-[550/312] rounded-[14px] overflow-hidden bg-slate-200 shadow-sm border border-[#e9eaeb] transition-all duration-300 hover:shadow-md">
                     <img src="{{ asset('assets/prestasi/award-image-8.avif') }}" alt="Pencapaian Wisudawan 8" loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105">
                 </div>
             </div>

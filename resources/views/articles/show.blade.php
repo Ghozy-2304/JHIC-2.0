@@ -219,7 +219,7 @@
                 </div>
                 
                 <!-- CTA & Inquiry Box -->
-                <div class="pt-8 flex flex-col gap-6 article-body">
+                <div class="pt-6 article-body">
                     <h3 class="!text-2xl !mt-0 font-bold text-[#181d27]">Mau ikuti jejak para juara dan bergabung di Boarding School Islami terbaik?</h3>
                     
                     <p>Pendaftaran Santri Baru Tahun Ajaran 2025/2026 telah dibuka!<br>
@@ -231,7 +231,7 @@
                     Kurikulum berbasis teknologi dan entrepreneurship<br>
                     Fasilitas lengkap:</p>
 
-                    <ul class="space-y-1.5 my-3 pl-4 list-disc">
+                    <ul class="list-disc pl-5">
                       <li>Asrama</li>
                       <li>Masjid</li>
                       <li>Bengkel</li>
@@ -241,7 +241,7 @@
 
                     <p>Jalur Masuk Tersedia:</p>
 
-                    <ul class="space-y-1.5 my-3 pl-4 list-disc">
+                    <ul class="list-disc pl-5">
                       <li>Jalur Regular SMP-SMK</li>
                       <li>Jalur Beasiswa SMP (khusus santri berprestasi)</li>
                       <li>Jalur Beasiswa Yatim/Dhuafa</li>
@@ -251,25 +251,21 @@
                       <li>Beasiswa Prestasi 2 (Syarat ketentuan berlaku)</li>
                     </ul>
 
-                    <div class="text-text-muted text-base leading-[1.625] flex flex-col gap-3 pt-4">
-                        <p>Baca juga artikel lain tentang prestasi siswa SMK IDN <a href="https://idn.sch.id/blog" target="_blank" class="text-brand-primary underline font-semibold hover:text-brand-hover">di sini</a>.</p>
-                        <p>Semoga bermanfaat. Kunjungi youtube kami: <a href="https://www.youtube.com/@IDNTV2022" target="_blank" class="text-brand-primary underline font-semibold hover:text-brand-hover">https://www.youtube.com/@IDNTV2022</a></p>
-                        
-                        <p>Ada yang ingin ditanyakan? Silahkan konsultasikan dengan Admin Kami.<br>
-                        Hubungi Kami (Admin): <strong>0822 – 1010 – 2006</strong></p>
-                        
-                        <p>Klik link di bawah ini untuk melihat semua cabang sekolah kami Ikhwan & Akhwat:<br>
-                        – Pamijahan | – Solo | – Sentul | – Jonggol | – Akhwat | – Malang</p>
-                        
-                        <p><strong>Kita Sharing Bareng Yuk</strong><br>
-                        Like, Comment & Share<br>
-                        Mau Tau Lebih Banyak Edukasi Bermanfaat? Follow sosial media kami:<br>
-                        <strong>Jonggol:</strong> <a href="https://www.instagram.com/idnboardingschool/" target="_blank" class="text-brand-primary underline font-semibold hover:text-brand-hover">@idnboardingschool</a><br>
-                        <strong>Solo:</strong> <a href="https://www.instagram.com/idnboardingschoolsolo/" target="_blank" class="text-brand-primary underline font-semibold hover:text-brand-hover">@idnboardingschoolsolo</a><br>
-                        <strong>Pamijahan:</strong> <a href="https://www.instagram.com/idnboardingschoolpmjbogor/" target="_blank" class="text-brand-primary underline font-semibold hover:text-brand-hover">@idnboardingschoolpmjbogor</a><br>
-                        <strong>Sentul:</strong> <a href="https://www.instagram.com/idnboardingschoolsentul/" target="_blank" class="text-brand-primary underline font-semibold hover:text-brand-hover">@idnboardingschoolsentul</a><br>
-                        <strong>IDN Akhwat:</strong> <a href="https://www.instagram.com/smpsmk.idnakhwat/" target="_blank" class="text-brand-primary underline font-semibold hover:text-brand-hover">@smpsmk.idnakhwat</a></p>
-                    </div>
+                    <p>Baca juga artikel lain tentang prestasi siswa SMK IDN <a href="https://idn.sch.id/blog" target="_blank" class="text-brand-primary underline font-semibold hover:text-brand-hover">di sini</a>.</p>
+                    <p>Semoga bermanfaat. Kunjungi youtube kami: <a href="https://www.youtube.com/@IDNTV2022" target="_blank" class="text-brand-primary underline font-semibold hover:text-brand-hover">https://www.youtube.com/@IDNTV2022</a></p>
+                    
+                    <p>Ada yang ingin ditanyakan? Silahkan konsultasikan dengan Admin Kami.<br>
+                    Hubungi Kami (Admin): <strong>0822 – 1010 – 2006</strong></p>
+                    
+                    <p>Klik link di bawah ini untuk melihat semua cabang sekolah kami Ikhwan & Akhwat:<br>
+                    – Pamijahan | – Solo | – Sentul | – Jonggol | – Akhwat | – Malang</p>
+                    
+                    <p><strong>Kita Sharing Bareng Yuk</strong><br>
+                    Like, Comment & Share<br>
+                    Mau Tau Lebih Banyak Edukasi Bermanfaat? Follow sosial media kami:<br>
+                    <strong>Jonggol:</strong> <a href="https://www.instagram.com/idnboardingschool/" target="_blank" class="text-brand-primary underline font-semibold hover:text-brand-hover">@idnboardingschool</a><br>
+                    <strong>Solo:</strong> <a href="https://www.instagram.com/idnboardingschoolsolo/" target="_blank" class="text-brand-primary underline font-semibold hover:text-brand-hover">@idnboardingschoolsolo</a><br>
+                    <strong>IDN Akhwat:</strong> <a href="https://www.instagram.com/smpsmk.idnakhwat/" target="_blank" class="text-brand-primary underline font-semibold hover:text-brand-hover">@smpsmk.idnakhwat</a></p>
                 </div>
             </div>
 
