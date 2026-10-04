@@ -223,7 +223,7 @@ class CareerJobController extends Controller
                             if (isset($ldJson['@type']) && $ldJson['@type'] === 'JobPosting') {
                                 if (!empty($ldJson['title'])) $title = html_entity_decode($ldJson['title'], ENT_QUOTES);
                                 if (!empty($ldJson['hiringOrganization']['name'])) $companyName = html_entity_decode($ldJson['hiringOrganization']['name'], ENT_QUOTES);
-                                if (!empty($ldJson['description'])) $description = Str::limit(strip_tags($ldJson['description']), 300);
+                                if (!empty($ldJson['description'])) $description = Str::limit(strip_tags($ldJson['description']), 2500);
                                 if (!empty($ldJson['jobLocation']['address']['addressLocality'])) {
                                     $location = $ldJson['jobLocation']['address']['addressLocality'];
                                 }
@@ -275,7 +275,7 @@ class CareerJobController extends Controller
                 $extractedSite = !empty($ogSite[1]) ? html_entity_decode($ogSite[1], ENT_QUOTES) : '';
 
                 if (!$description && $extractedDesc) {
-                    $description = Str::limit(strip_tags($extractedDesc), 300);
+                    $description = Str::limit(strip_tags($extractedDesc), 2500);
                 }
 
                 if ($extractedTitle) {

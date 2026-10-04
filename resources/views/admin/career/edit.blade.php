@@ -319,9 +319,9 @@
             <label for="requirements" class="block text-xs font-bold text-[#334155] uppercase tracking-wider mb-2">
                 Persyaratan & Kualifikasi Singkat (Opsional)
             </label>
-            <textarea id="requirements" name="requirements" x-model="requirements" rows="3"
+            <textarea id="requirements" name="requirements" x-model="requirements" rows="6"
                 placeholder="Contoh: Menguasai HTML/CSS & dasar Flutter, Terbuka untuk santri aktif kelas 11-12, Disiplin dan berakhlak mulia."
-                class="w-full px-4 py-2.5 bg-[#f8fafc] border border-[#e2e8f0] rounded-xl text-sm text-[#0f172a] placeholder-[#94a3b8] focus:outline-none focus:border-[#0c61cf] focus:ring-4 focus:ring-[#0c61cf]/10 transition-all"></textarea>
+                class="w-full px-4 py-3 bg-[#f8fafc] border border-[#e2e8f0] rounded-xl text-sm text-[#0f172a] leading-relaxed min-h-[160px] placeholder-[#94a3b8] focus:outline-none focus:border-[#0c61cf] focus:ring-4 focus:ring-[#0c61cf]/10 transition-all"></textarea>
         </div>
 
         <!-- Row 7: Logo Perusahaan with Interactive Cropper -->
