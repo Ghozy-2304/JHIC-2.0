@@ -786,14 +786,62 @@ class CareerJobController extends Controller
     }
 
     /**
-     * Hapus lowongan dari database.
+     * Hapus lowongan dari database (Soft Delete).
      */
     public function destroy(CareerJob $career)
     {
         $career->delete();
 
         return redirect()->route('admin.career.index')
-            ->with('success', 'Lowongan berhasil dihapus!');
+            ->with('success', 'Lowongan berhasil dipindahkan ke tempat sampah!');
+    }
+
+    /**
+     * Tampilkan lowongan yang di-soft delete (Tempat Sampah).
+     */
+    public function trash(Request $request)
+    {
+        $search = $request->query('search');
+        $query = CareerJob::onlyTrashed();
+
+        if ($search) {
+            $query->where(function ($q) use ($search) {
+                $q->where('title', 'like', "%{$search}%")
+                  ->orWhere('company_name', 'like', "%{$search}%");
+            });
+        }
+
+        $jobs = $query->orderBy('deleted_at', 'desc')
+            ->paginate(10)
+            ->withQueryString();
+
+        return view('admin.career.trash', compact('jobs', 'search'));
+    }
+
+    /**
+     * Pulihkan lowongan dari tempat sampah.
+     */
+    public function restore($id)
+    {
+        $job = CareerJob::onlyTrashed()->findOrFail($id);
+        $job->restore();
+
+        return redirect()->route('admin.career.index')
+            ->with('success', "Lowongan “{$job->title}” berhasil dipulihkan!");
+    }
+
+    /**
+     * Hapus lowongan secara permanen dari database.
+     */
+    public function forceDelete($id)
+    {
+        $job = CareerJob::onlyTrashed()->findOrFail($id);
+        if ($job->company_img && str_starts_with($job->company_img, 'assets/uploads/') && File::exists(public_path($job->company_img))) {
+            File::delete(public_path($job->company_img));
+        }
+        $job->forceDelete();
+
+        return back()->with('success', 'Lowongan berhasil dihapus secara permanen!');
     }
 
     /**

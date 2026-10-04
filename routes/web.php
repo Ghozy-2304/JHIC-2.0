@@ -110,11 +110,19 @@ Route::prefix('admin')->name('admin.')->group(function () {
             return redirect()->route('admin.dashboard');
         });
         Route::get('/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
+        
+        // Articles Admin & Soft Delete Routes
+        Route::get('articles/trash', [App\Http\Controllers\Admin\ArticleController::class, 'trash'])->name('articles.trash');
+        Route::post('articles/{id}/restore', [App\Http\Controllers\Admin\ArticleController::class, 'restore'])->name('articles.restore');
+        Route::delete('articles/{id}/force-delete', [App\Http\Controllers\Admin\ArticleController::class, 'forceDelete'])->name('articles.force-delete');
         Route::resource('articles', App\Http\Controllers\Admin\ArticleController::class)->except(['show']);
         
-        // Career Center Admin Routes
+        // Career Center Admin & Soft Delete Routes
         Route::post('career/fetch-meta', [App\Http\Controllers\Admin\CareerJobController::class, 'fetchMeta'])->name('career.fetch-meta');
         Route::post('career/proxy-logo', [App\Http\Controllers\Admin\CareerJobController::class, 'proxyLogo'])->name('career.proxy-logo');
+        Route::get('career/trash', [App\Http\Controllers\Admin\CareerJobController::class, 'trash'])->name('career.trash');
+        Route::post('career/{id}/restore', [App\Http\Controllers\Admin\CareerJobController::class, 'restore'])->name('career.restore');
+        Route::delete('career/{id}/force-delete', [App\Http\Controllers\Admin\CareerJobController::class, 'forceDelete'])->name('career.force-delete');
         Route::post('career/{career}/duplicate', [App\Http\Controllers\Admin\CareerJobController::class, 'duplicate'])->name('career.duplicate');
         Route::patch('career/{career}/toggle', [App\Http\Controllers\Admin\CareerJobController::class, 'toggle'])->name('career.toggle');
         Route::resource('career', App\Http\Controllers\Admin\CareerJobController::class)->except(['show']);

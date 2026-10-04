@@ -175,13 +175,61 @@ class ArticleController extends Controller
     }
 
     /**
-     * Hapus artikel dari database.
+     * Hapus artikel dari database (Soft Delete).
      */
     public function destroy(Article $article)
     {
         $article->delete();
 
         return redirect()->route('admin.articles.index')
-            ->with('success', 'Artikel berhasil dihapus!');
+            ->with('success', 'Artikel berhasil dipindahkan ke tempat sampah!');
+    }
+
+    /**
+     * Tampilkan artikel yang di-soft delete (Tempat Sampah).
+     */
+    public function trash(Request $request)
+    {
+        $search = $request->query('search');
+        $query = Article::onlyTrashed();
+
+        if ($search) {
+            $query->where(function ($q) use ($search) {
+                $q->where('title', 'like', "%{$search}%")
+                  ->orWhere('content', 'like', "%{$search}%");
+            });
+        }
+
+        $articles = $query->orderBy('deleted_at', 'desc')
+            ->paginate(10)
+            ->withQueryString();
+
+        return view('admin.articles.trash', compact('articles', 'search'));
+    }
+
+    /**
+     * Pulihkan artikel dari tempat sampah.
+     */
+    public function restore($id)
+    {
+        $article = Article::onlyTrashed()->findOrFail($id);
+        $article->restore();
+
+        return redirect()->route('admin.articles.index')
+            ->with('success', "Artikel “{$article->title}” berhasil dipulihkan!");
+    }
+
+    /**
+     * Hapus artikel secara permanen dari database.
+     */
+    public function forceDelete($id)
+    {
+        $article = Article::onlyTrashed()->findOrFail($id);
+        if ($article->image && !str_contains($article->image, 'artikel-img.avif') && File::exists(public_path('assets/' . $article->image))) {
+            File::delete(public_path('assets/' . $article->image));
+        }
+        $article->forceDelete();
+
+        return back()->with('success', 'Artikel berhasil dihapus secara permanen!');
     }
 }
