@@ -204,13 +204,27 @@ class CareerJobController extends Controller
 
         // 3. Tarik HTML dengan headers browser asli
         try {
-            $response = Http::timeout(6)
+            $isGlints = str_contains(strtolower($url), 'glints');
+            $initialUa = $isGlints
+                ? 'axios/1.6.8'
+                : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36';
+
+            $response = Http::timeout(8)
                 ->withHeaders([
-                    'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+                    'User-Agent' => $initialUa,
                     'Accept-Language' => 'id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7',
-                    'Accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+                    'Accept' => '*/*',
                 ])
                 ->get($url);
+
+            if ((!$response->successful() || str_contains($response->body(), 'Firewall') || str_contains($response->body(), 'Access Denied')) && !$isGlints) {
+                $response = Http::timeout(8)
+                    ->withHeaders([
+                        'User-Agent' => 'axios/1.6.8',
+                        'Accept' => '*/*',
+                    ])
+                    ->get($url);
+            }
 
             if ($response->successful() && !str_contains($response->body(), 'Firewall') && !str_contains($response->body(), 'Access Denied')) {
                 $html = $response->body();
@@ -225,7 +239,9 @@ class CareerJobController extends Controller
                                 if (!empty($ldJson['hiringOrganization']['name'])) $companyName = html_entity_decode($ldJson['hiringOrganization']['name'], ENT_QUOTES);
                                 if (!empty($ldJson['description'])) $description = Str::limit(strip_tags($ldJson['description']), 2500);
                                 if (!empty($ldJson['jobLocation']['address']['addressLocality'])) {
-                                    $location = $ldJson['jobLocation']['address']['addressLocality'];
+                                    $locality = $ldJson['jobLocation']['address']['addressLocality'];
+                                    $region = $ldJson['jobLocation']['address']['addressRegion'] ?? '';
+                                    $location = ($locality && $region && strtolower($locality) !== strtolower($region)) ? "{$locality}, {$region}" : ($locality ?: $region);
                                 }
                                 if (isset($ldJson['baseSalary'])) {
                                     if (is_string($ldJson['baseSalary'])) {
@@ -351,9 +367,53 @@ class CareerJobController extends Controller
                         $companyLogoUrl = $img;
                     }
                 }
+
+                // Smart Fallback for famous company logos if employer logo is not in HTML
+                if (!$companyLogoUrl && $companyName && !in_array(strtolower($companyName), ['jobstreet', 'glints', 'linkedin', 'kalibrr'])) {
+                    $cleanCompName = preg_replace('/^(PT|CV|TBK|INC|LLC|LTD)\s+/i', '', $companyName);
+                    $cleanCompName = strtolower(trim(str_replace(' ', '', $cleanCompName)));
+                    if (strlen($cleanCompName) >= 3) {
+                        $candidateLogo = "https://logo.clearbit.com/{$cleanCompName}.com";
+                        try {
+                            $cRes = Http::timeout(2)->head($candidateLogo);
+                            if ($cRes->successful()) {
+                                $companyLogoUrl = $candidateLogo;
+                            }
+                        } catch (\Throwable $e) {}
+                    }
+                }
             }
         } catch (\Throwable $e) {
             // Silently fallback to URL slug detection
+        }
+
+        // Auto convert external logo URL to Base64 DataURL directly in fetchMeta
+        if ($companyLogoUrl) {
+            $companyLogoUrl = str_replace(['u002F', 'u002f', '\u002F', '\/'], '/', $companyLogoUrl);
+            $companyLogoUrl = preg_replace('#https?:/+([^/])#', 'https://$1', $companyLogoUrl);
+        }
+
+        if ($companyLogoUrl && str_starts_with($companyLogoUrl, 'http')) {
+            try {
+                $headers = [
+                    'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+                    'Accept' => 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8',
+                ];
+                $lowerImg = strtolower($companyLogoUrl);
+                if (str_contains($lowerImg, 'jobstreet') || str_contains($lowerImg, 'seek')) {
+                    $headers['Referer'] = 'https://id.jobstreet.com/';
+                } elseif (str_contains($lowerImg, 'glints')) {
+                    $headers['Referer'] = 'https://glints.com/';
+                } elseif (str_contains($lowerImg, 'linkedin')) {
+                    $headers['Referer'] = 'https://www.linkedin.com/';
+                }
+
+                $imgRes = Http::timeout(6)->withHeaders($headers)->get($companyLogoUrl);
+                if ($imgRes->successful()) {
+                    $mime = $imgRes->header('Content-Type') ?: 'image/jpeg';
+                    $companyLogoUrl = 'data:' . $mime . ';base64,' . base64_encode($imgRes->body());
+                }
+            } catch (\Throwable $e) {}
         }
 
         // 4. Deteksi Gaji dari Judul / Deskripsi jika belum ada
@@ -448,10 +508,22 @@ class CareerJobController extends Controller
 
         $url = trim($request->input('url'));
         try {
+            $headers = [
+                'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+                'Accept' => 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8',
+            ];
+
+            $lowerUrl = strtolower($url);
+            if (str_contains($lowerUrl, 'jobstreet') || str_contains($lowerUrl, 'seek')) {
+                $headers['Referer'] = 'https://id.jobstreet.com/';
+            } elseif (str_contains($lowerUrl, 'glints')) {
+                $headers['Referer'] = 'https://glints.com/';
+            } elseif (str_contains($lowerUrl, 'linkedin')) {
+                $headers['Referer'] = 'https://www.linkedin.com/';
+            }
+
             $res = Http::timeout(6)
-                ->withHeaders([
-                    'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
-                ])
+                ->withHeaders($headers)
                 ->get($url);
 
             if ($res->successful()) {
@@ -539,7 +611,16 @@ class CareerJobController extends Controller
             }
         }
 
-        $logoChar = $validated['company_logo_char'] ?? strtoupper(substr($validated['company_name'], 0, 1));
+        $rawComp = trim(preg_replace('/^(PT|CV|TBK|INC|LLC|LTD)\s+/i', '', $validated['company_name']));
+        $words = array_values(array_filter(explode(' ', $rawComp)));
+        if (count($words) >= 2) {
+            $logoChar = strtoupper(substr($words[0], 0, 1) . substr($words[1], 0, 1));
+        } else {
+            $logoChar = strtoupper(substr($words[0] ?? $validated['company_name'], 0, 2));
+        }
+        if (!empty($validated['company_logo_char'])) {
+            $logoChar = strtoupper($validated['company_logo_char']);
+        }
 
         $postedAt = !empty($validated['posted_at']) ? Carbon::parse($validated['posted_at']) : Carbon::now();
         $expiresAt = !empty($validated['expires_at']) ? Carbon::parse($validated['expires_at']) : null;
@@ -668,7 +749,15 @@ class CareerJobController extends Controller
         $career->expires_at = !empty($validated['expires_at']) ? Carbon::parse($validated['expires_at']) : null;
 
         if (!empty($validated['company_logo_char'])) {
-            $career->company_logo_char = $validated['company_logo_char'];
+            $career->company_logo_char = strtoupper($validated['company_logo_char']);
+        } else {
+            $rawComp = trim(preg_replace('/^(PT|CV|TBK|INC|LLC|LTD)\s+/i', '', $validated['company_name']));
+            $words = array_values(array_filter(explode(' ', $rawComp)));
+            if (count($words) >= 2) {
+                $career->company_logo_char = strtoupper(substr($words[0], 0, 1) . substr($words[1], 0, 1));
+            } else {
+                $career->company_logo_char = strtoupper(substr($words[0] ?? $validated['company_name'], 0, 2));
+            }
         }
         $career->is_active = $request->boolean('is_active');
         $career->save();
