@@ -367,94 +367,231 @@
         <!-- Job Detail Modal Dialog -->
         <div x-show="selectedJobModal !== null" 
              x-cloak
-             class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
-             @keydown.escape.window="selectedJobModal = null">
+             class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 md:p-6 bg-slate-900/60 backdrop-blur-md overflow-hidden"
+             x-transition:enter="transition ease-out duration-300"
+             x-transition:enter-start="opacity-0"
+             x-transition:enter-end="opacity-100"
+             x-transition:leave="transition ease-in duration-200"
+             x-transition:leave-start="opacity-100"
+             x-transition:leave-end="opacity-0"
+             @keydown.escape.window="closeJobModal()">
             
-            <div class="bg-white rounded-3xl max-w-lg w-full p-6 md:p-8 space-y-6 shadow-2xl relative border border-[#e9eaeb]"
-                 @click.outside="selectedJobModal = null">
+            <div class="bg-white rounded-[24px] sm:rounded-[28px] max-w-2xl w-full max-h-[92vh] flex flex-col shadow-[0_25px_70px_rgba(15,23,42,0.25)] relative border border-slate-100 overflow-hidden"
+                 x-transition:enter="transition ease-out duration-300"
+                 x-transition:enter-start="opacity-0 scale-95 translate-y-3"
+                 x-transition:enter-end="opacity-100 scale-100 translate-y-0"
+                 x-transition:leave="transition ease-in duration-200"
+                 x-transition:leave-start="opacity-100 scale-100 translate-y-0"
+                 x-transition:leave-end="opacity-0 scale-95 translate-y-3"
+                 @click.outside="closeJobModal()">
                 
-                <button @click="selectedJobModal = null" class="absolute right-5 top-5 text-[#717680] hover:text-[#181d27] p-1 rounded-full hover:bg-slate-100">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-                </button>
+                <!-- Top Brand Decorative Accent Bar -->
+                <div class="h-1.5 w-full bg-gradient-to-r from-[#0c61cf] via-[#38bdf8] to-[#6366f1] shrink-0"></div>
 
                 <template x-if="selectedJobModal">
-                    <div class="space-y-5">
-                        <div class="flex items-center gap-4">
-                            <div class="w-14 h-14 rounded-2xl overflow-hidden flex items-center justify-center bg-white border border-[#e9eaeb] shadow-md shrink-0 p-1.5">
-                                <template x-if="selectedJobModal.companyImg">
-                                    <img :src="selectedJobModal.companyImg" :alt="selectedJobModal.companyName" class="w-full h-full object-contain rounded-xl">
-                                </template>
-                                <template x-if="!selectedJobModal.companyImg">
-                                    <div class="w-full h-full rounded-xl flex items-center justify-center text-white font-bold text-lg" :class="selectedJobModal.companyBg">
-                                        <span x-text="selectedJobModal.companyLogo"></span>
+                    <div class="flex flex-col flex-1 min-h-0 overflow-hidden">
+                        
+                        <!-- MODAL HEADER -->
+                        <div class="p-6 md:p-7 pb-5 border-b border-slate-100 shrink-0 relative bg-white">
+                            <!-- Close Button -->
+                            <button @click="closeJobModal()" 
+                                    class="absolute right-5 top-5 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-400 hover:text-slate-700 flex items-center justify-center transition-all duration-200 cursor-pointer shadow-xs"
+                                    title="Tutup Modal (Esc)">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                            </button>
+
+                            <div class="flex items-start gap-4 pr-10">
+                                <!-- Company Logo Container -->
+                                <div class="w-14 h-14 md:w-16 md:h-16 rounded-2xl overflow-hidden flex items-center justify-center bg-white border border-slate-100 shadow-md shrink-0 p-1.5 ring-1 ring-slate-900/5">
+                                    <template x-if="selectedJobModal.companyImg">
+                                        <img :src="selectedJobModal.companyImg" :alt="selectedJobModal.companyName" class="w-full h-full object-contain rounded-xl">
+                                    </template>
+                                    <template x-if="!selectedJobModal.companyImg">
+                                        <div class="w-full h-full rounded-xl flex items-center justify-center text-white font-extrabold text-xl shadow-inner" :class="selectedJobModal.companyBg">
+                                            <span x-text="selectedJobModal.companyLogo"></span>
+                                        </div>
+                                    </template>
+                                </div>
+
+                                <!-- Job Title & Company Information -->
+                                <div class="space-y-1.5 flex-1 min-w-0">
+                                    <!-- Badges Row -->
+                                    <div class="flex flex-wrap items-center gap-2">
+                                        <!-- Major Badge -->
+                                        <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full"
+                                              :class="{
+                                                  'bg-blue-50 text-blue-700 border border-blue-200/80': selectedJobModal.major === 'RPL',
+                                                  'bg-emerald-50 text-emerald-700 border border-emerald-200/80': selectedJobModal.major === 'TKJ',
+                                                  'bg-purple-50 text-purple-700 border border-purple-200/80': selectedJobModal.major === 'DKV',
+                                                  'bg-slate-100 text-slate-700 border border-slate-200/80': selectedJobModal.major !== 'RPL' && selectedJobModal.major !== 'TKJ' && selectedJobModal.major !== 'DKV'
+                                              }"
+                                              x-text="`Jurusan: ${selectedJobModal.major}`">
+                                        </span>
+
+                                        <!-- Status Badge -->
+                                        <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-200/60">
+                                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                                            <span>Lowongan Aktif</span>
+                                        </span>
+
+                                        <!-- Source Platform -->
+                                        <span class="hidden sm:inline-flex items-center gap-1 text-xs text-slate-500 font-medium bg-slate-50 border border-slate-200/70 px-2 py-0.5 rounded-full">
+                                            <svg class="w-3 h-3 text-[#0c61cf]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
+                                            <span x-text="selectedJobModal.sourcePlatform || 'Mitra Resmi IDN'"></span>
+                                        </span>
                                     </div>
-                                </template>
-                            </div>
-                            <div>
-                                <h2 class="text-xl font-bold text-[#181d27]" x-text="selectedJobModal.title"></h2>
-                                <p class="text-sm text-[#0c61cf] font-semibold" x-text="selectedJobModal.companyName"></p>
-                                <p class="text-xs text-[#717680]" x-text="selectedJobModal.location"></p>
+
+                                    <!-- Job Title -->
+                                    <h2 class="text-lg sm:text-xl md:text-2xl font-bold text-[#0f172a] leading-tight tracking-tight break-words" x-text="selectedJobModal.title"></h2>
+
+                                    <!-- Company Name & Verified Badge -->
+                                    <div class="flex flex-wrap items-center gap-2 text-xs sm:text-sm text-slate-600">
+                                        <span class="font-semibold text-[#0c61cf] hover:underline" x-text="selectedJobModal.companyName"></span>
+                                        <span class="inline-flex items-center gap-0.5 text-blue-600" title="Mitra Industri Terverifikasi">
+                                            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                            </svg>
+                                        </span>
+                                        <span class="text-slate-300">·</span>
+                                        <span class="flex items-center gap-1 text-slate-500">
+                                            <svg class="w-3.5 h-3.5 text-slate-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                                            <span x-text="selectedJobModal.location"></span>
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="bg-[#f8fafc] p-4 rounded-2xl border border-[#e2e8f0] space-y-2 text-sm">
-                            <div class="flex justify-between">
-                                <span class="text-[#717680]">Gaji Estimasi:</span>
-                                <span class="font-bold text-[#0c61cf]" x-text="selectedJobModal.salary"></span>
+                        <!-- MODAL SCROLLABLE BODY -->
+                        <div class="p-6 md:p-7 space-y-6 overflow-y-auto flex-1 custom-scrollbar bg-white">
+                            
+                            <!-- Highlight Salary & Work Mode Box -->
+                            <div class="bg-gradient-to-br from-blue-50/70 via-indigo-50/40 to-slate-50 border border-blue-100 rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-xs">
+                                <div>
+                                    <span class="text-[11px] font-bold text-slate-400 tracking-wider uppercase flex items-center gap-1">
+                                        <svg class="w-3.5 h-3.5 text-[#0c61cf]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                        Estimasi Gaji Bulanan
+                                    </span>
+                                    <p class="text-xl sm:text-2xl font-black text-[#0c61cf] mt-0.5 tracking-tight" x-text="selectedJobModal.salary"></p>
+                                </div>
+                                <div class="flex flex-wrap items-center gap-2">
+                                    <div class="bg-white px-3 py-1.5 rounded-xl border border-slate-200/80 shadow-xs flex items-center gap-1.5 text-xs font-semibold text-[#181d27]">
+                                        <svg class="w-3.5 h-3.5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m46 0v2m-6 0a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2V10a2 2 0 00-2-2h-2m-4-3H9"/></svg>
+                                        <span x-text="selectedJobModal.workType"></span>
+                                    </div>
+                                    <div class="bg-white px-3 py-1.5 rounded-xl border border-slate-200/80 shadow-xs flex items-center gap-1.5 text-xs font-semibold text-[#181d27]">
+                                        <svg class="w-3.5 h-3.5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/></svg>
+                                        <span x-text="selectedJobModal.workLocation"></span>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="flex justify-between">
-                                <span class="text-[#717680]">Jurusan:</span>
-                                <span class="font-semibold text-[#181d27]" x-text="selectedJobModal.major"></span>
+
+                            <!-- 4 Key Specs Quick Grid -->
+                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+                                <div class="p-3 bg-slate-50/80 rounded-xl border border-slate-100 flex flex-col gap-1">
+                                    <span class="text-slate-400 font-medium">Tipe Pekerjaan</span>
+                                    <span class="font-bold text-slate-800 text-sm truncate" x-text="selectedJobModal.workType"></span>
+                                </div>
+                                <div class="p-3 bg-slate-50/80 rounded-xl border border-slate-100 flex flex-col gap-1">
+                                    <span class="text-slate-400 font-medium">Sistem Kerja</span>
+                                    <span class="font-bold text-slate-800 text-sm truncate" x-text="selectedJobModal.workLocation"></span>
+                                </div>
+                                <div class="p-3 bg-slate-50/80 rounded-xl border border-slate-100 flex flex-col gap-1">
+                                    <span class="text-slate-400 font-medium">Rekomendasi</span>
+                                    <span class="font-bold text-slate-800 text-sm truncate" x-text="`SMK ${selectedJobModal.major}`"></span>
+                                </div>
+                                <div class="p-3 bg-slate-50/80 rounded-xl border border-slate-100 flex flex-col gap-1">
+                                    <span class="text-slate-400 font-medium">Waktu Posting</span>
+                                    <span class="font-bold text-slate-800 text-sm truncate" x-text="selectedJobModal.postedTime"></span>
+                                </div>
                             </div>
-                            <div class="flex justify-between">
-                                <span class="text-[#717680]">Tipe & Mode:</span>
-                                <span class="font-semibold text-[#181d27]" x-text="`${selectedJobModal.workLocation} · ${selectedJobModal.workType}`"></span>
+
+                            <!-- Requirements & Qualifications -->
+                            <div class="space-y-3">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-7 h-7 rounded-lg bg-blue-50 text-[#0c61cf] flex items-center justify-center font-bold text-xs">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                    </div>
+                                    <h4 class="font-bold text-base text-[#0f172a]">Kualifikasi & Persyaratan</h4>
+                                </div>
+
+                                <div class="bg-[#f8fafc] p-4 sm:p-5 rounded-2xl border border-slate-200/80 text-sm text-slate-700 leading-relaxed">
+                                    <template x-if="selectedJobModal.requirements">
+                                        <div class="space-y-2 text-xs sm:text-sm text-slate-700">
+                                            <template x-for="(req, idx) in selectedJobModal.requirements.split('\n').filter(r => r.trim() !== '')" :key="idx">
+                                                <div class="flex items-start gap-2.5">
+                                                    <svg class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                                                    <span class="flex-1" x-text="req.replace(/^[-*•]\s*/, '')"></span>
+                                                </div>
+                                            </template>
+                                        </div>
+                                    </template>
+                                    <template x-if="!selectedJobModal.requirements">
+                                        <div class="space-y-2.5 text-xs sm:text-sm text-slate-700">
+                                            <div class="flex items-start gap-2.5">
+                                                <svg class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                                                <span>Lulusan atau santri aktif SMK IDN Boarding School jurusan terkait (<span x-text="selectedJobModal.major"></span>).</span>
+                                            </div>
+                                            <div class="flex items-start gap-2.5">
+                                                <svg class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                                                <span>Memiliki portofolio karya nyata atau sertifikasi internasional pendukung.</span>
+                                            </div>
+                                            <div class="flex items-start gap-2.5">
+                                                <svg class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                                                <span>Memiliki etos kerja tinggi, disiplin, berakhlak mulia, dan siap berkembang di industri.</span>
+                                            </div>
+                                        </div>
+                                    </template>
+                                </div>
                             </div>
-                            <div class="flex justify-between">
-                                <span class="text-[#717680]">Platform:</span>
-                                <span class="font-semibold text-[#0c61cf]" x-text="selectedJobModal.sourcePlatform || 'Mitra Resmi IDN'"></span>
+
+                            <!-- Career Center Trust Banner -->
+                            <div class="bg-blue-50/60 border border-blue-200/60 rounded-2xl p-3.5 flex items-start gap-3 text-xs text-blue-900 leading-relaxed">
+                                <svg class="w-5 h-5 text-[#0c61cf] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                                </svg>
+                                <div>
+                                    <span class="font-bold">Fasilitas Penyaluran Kerja Resmi:</span>
+                                    <span> Lowongan ini diverifikasi dan dikurasi oleh tim Career Center IDN untuk mempermudah santri dan alumni mendapatkan karir impian di industri teknologi.</span>
+                                </div>
                             </div>
-                            <div class="flex justify-between">
-                                <span class="text-[#717680]">Waktu Rilis:</span>
-                                <span class="font-semibold text-[#181d27]" x-text="selectedJobModal.postedTime"></span>
-                            </div>
+
                         </div>
 
-                        <div class="space-y-2 text-sm text-[#414651]">
-                            <h4 class="font-semibold text-[#181d27]">Kualifikasi / Persyaratan:</h4>
-                            <template x-if="selectedJobModal.requirements">
-                                <p class="text-xs md:text-sm text-[#475569] whitespace-pre-line leading-relaxed" x-text="selectedJobModal.requirements"></p>
-                            </template>
-                            <template x-if="!selectedJobModal.requirements">
-                                <ul class="list-disc pl-5 space-y-1 text-xs md:text-sm">
-                                    <li>Lulusan atau santri aktif SMK IDN (RPL / TKJ / DKV).</li>
-                                    <li>Memiliki portofolio karya / sertifikasi internasional pendukung.</li>
-                                    <li>Mampu bekerja secara mandiri maupun dalam tim dengan akhlak mulia.</li>
-                                </ul>
-                            </template>
-                        </div>
-
-                        <div class="pt-2 flex gap-3">
-                            <template x-if="selectedJobModal.applyUrl">
-                                <a :href="selectedJobModal.applyUrl" target="_blank" rel="noopener noreferrer"
-                                   class="flex-1 bg-[#0c61cf] hover:bg-[#094fa5] hover:shadow-lg text-white py-3 rounded-full font-semibold text-center text-sm md:text-base shadow-md transition-all duration-200 flex items-center justify-center gap-2">
-                                    <span>Lamar di <span x-text="selectedJobModal.sourcePlatform || 'Portal Resmi'"></span></span>
-                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-                                    </svg>
-                                </a>
-                            </template>
-                            <template x-if="!selectedJobModal.applyUrl">
-                                <a href="https://wa.me/6282210102006?text=Halo%20Admin%20Career%20Center%20IDN,%20saya%20ingin%20melamar%20posisi%20pekerjaan%20ini" target="_blank" rel="noopener noreferrer"
-                                   class="flex-1 bg-[#0c61cf] hover:bg-[#094fa5] hover:shadow-lg text-white py-3 rounded-full font-semibold text-center text-sm md:text-base shadow-md transition-all duration-200 flex items-center justify-center gap-2">
-                                    <span>Hubungi Admin IDN</span>
-                                </a>
-                            </template>
-                            <button @click="selectedJobModal = null" 
-                                    class="px-5 border border-[#e9eaeb] text-[#414651] hover:bg-slate-100 hover:border-[#0c61cf] hover:text-[#0c61cf] py-3 rounded-full font-semibold text-sm transition-all duration-200">
+                        <!-- MODAL STICKY FOOTER -->
+                        <div class="p-4 sm:p-5 md:px-7 border-t border-slate-100 bg-slate-50/90 flex flex-col-reverse sm:flex-row items-center justify-between gap-3 shrink-0">
+                            <button @click="closeJobModal()" 
+                                    type="button"
+                                    class="w-full sm:w-auto px-6 py-2.5 rounded-full border border-slate-200 bg-white text-slate-600 hover:text-slate-900 hover:border-slate-300 font-semibold text-sm transition-all duration-150 cursor-pointer shadow-xs text-center">
                                 Tutup
                             </button>
+
+                            <div class="w-full sm:w-auto flex items-center gap-3">
+                                <template x-if="selectedJobModal.applyUrl">
+                                    <a :href="selectedJobModal.applyUrl" 
+                                       target="_blank" 
+                                       rel="noopener noreferrer"
+                                       class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#0c61cf] to-[#094fa5] hover:from-[#094fa5] hover:to-[#073d82] text-white py-2.5 px-6 rounded-full font-semibold text-sm shadow-md shadow-blue-500/20 hover:shadow-lg transition-all duration-200 group">
+                                        <span>Lamar di <span x-text="selectedJobModal.sourcePlatform || 'Portal Resmi'"></span></span>
+                                        <svg class="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                                        </svg>
+                                    </a>
+                                </template>
+                                <template x-if="!selectedJobModal.applyUrl">
+                                    <a :href="`https://wa.me/6282210102006?text=${encodeURIComponent('Halo Admin Career Center IDN, saya ingin melamar posisi ' + selectedJobModal.title + ' di ' + selectedJobModal.companyName + ' (ID Lowongan #' + selectedJobModal.id + ')')}`" 
+                                       target="_blank" 
+                                       rel="noopener noreferrer"
+                                       class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#0c61cf] to-[#094fa5] hover:from-[#094fa5] hover:to-[#073d82] text-white py-2.5 px-6 rounded-full font-semibold text-sm shadow-md shadow-blue-500/20 hover:shadow-lg transition-all duration-200 group">
+                                        <span>Lamar via Admin Career Center</span>
+                                        <svg class="w-4 h-4 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                                        </svg>
+                                    </a>
+                                </template>
+                            </div>
                         </div>
+
                     </div>
                 </template>
             </div>
@@ -497,6 +634,19 @@
                 postTimeOptions: ['Semua', 'Hari ini', 'Minggu ini', 'Bulan ini', 'Tahun ini'],
                 // Dynamic Jobs injected from Database (managed via Super Admin Panel)
                 jobs: @json($jobs ?? []),
+
+                init() {
+                    // Lock background body & html scroll whenever a modal is open
+                    this.$watch('selectedJobModal', (val) => {
+                        if (val) {
+                            document.body.style.overflow = 'hidden';
+                            document.documentElement.style.overflow = 'hidden';
+                        } else {
+                            document.body.style.overflow = '';
+                            document.documentElement.style.overflow = '';
+                        }
+                    });
+                },
 
                 selectMajor(major) {
                     this.selectedMajor = major;
@@ -559,6 +709,14 @@
 
                 openJobDetail(job) {
                     this.selectedJobModal = job;
+                    document.body.style.overflow = 'hidden';
+                    document.documentElement.style.overflow = 'hidden';
+                },
+
+                closeJobModal() {
+                    this.selectedJobModal = null;
+                    document.body.style.overflow = '';
+                    document.documentElement.style.overflow = '';
                 },
 
                 get filteredJobs() {
