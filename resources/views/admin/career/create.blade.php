@@ -188,12 +188,29 @@
                 <label for="major" class="block text-xs font-bold text-[#334155] uppercase tracking-wider mb-2">
                     Jurusan IDN <span class="text-rose-500">*</span>
                 </label>
-                <select id="major" name="major" x-model="major" required
-                    class="w-full px-4 py-2.5 bg-[#f8fafc] border border-[#e2e8f0] rounded-xl text-sm text-[#0f172a] focus:outline-none focus:border-[#0c61cf] focus:ring-4 focus:ring-[#0c61cf]/10 transition-all cursor-pointer font-semibold">
-                    <option value="RPL">RPL (Software / Coding)</option>
-                    <option value="TKJ">TKJ (Network & Cloud)</option>
-                    <option value="DKV">DKV (Design & Creative)</option>
-                </select>
+                <div class="relative" x-data="{ open: false }" @click.outside="open = false">
+                    <input type="hidden" name="major" :value="major">
+                    <button type="button" @click="open = !open"
+                        class="w-full flex items-center justify-between pl-4 pr-3.5 py-2.5 bg-[#f8fafc] border border-[#e2e8f0] rounded-xl text-sm text-[#0f172a] focus:outline-none focus:border-[#0c61cf] focus:ring-4 focus:ring-[#0c61cf]/10 transition-all cursor-pointer font-semibold">
+                        <span x-text="major === 'RPL' ? 'RPL (Software / Coding)' : (major === 'TKJ' ? 'TKJ (Network & Cloud)' : (major === 'DKV' ? 'DKV (Design & Creative)' : (major || 'Pilih Jurusan')))" class="truncate text-left"></span>
+                        <svg class="w-4 h-4 text-[#64748b] dropdown-arrow shrink-0 ml-2" :class="{ 'is-open': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </button>
+                    <div x-show="open" 
+                        x-transition:enter="transition ease-out duration-150"
+                        x-transition:enter-start="opacity-0 translate-y-1 scale-[0.98]"
+                        x-transition:enter-end="opacity-100 translate-y-0 scale-100"
+                        x-transition:leave="transition ease-in duration-100"
+                        x-transition:leave-start="opacity-100 translate-y-0 scale-100"
+                        x-transition:leave-end="opacity-0 translate-y-1 scale-[0.98]"
+                        x-cloak
+                        class="absolute z-50 left-0 right-0 mt-1.5 bg-white border border-[#e2e8f0] rounded-xl shadow-xl py-1.5 max-h-60 overflow-y-auto">
+                        <div @click="major = 'RPL'; open = false" class="px-4 py-2 text-sm hover:bg-[#f8fafc] hover:text-[#0c61cf] cursor-pointer transition-colors" :class="{ 'font-semibold text-[#0c61cf] bg-[#0c61cf]/5': major === 'RPL' }">RPL (Software / Coding)</div>
+                        <div @click="major = 'TKJ'; open = false" class="px-4 py-2 text-sm hover:bg-[#f8fafc] hover:text-[#0c61cf] cursor-pointer transition-colors" :class="{ 'font-semibold text-[#0c61cf] bg-[#0c61cf]/5': major === 'TKJ' }">TKJ (Network & Cloud)</div>
+                        <div @click="major = 'DKV'; open = false" class="px-4 py-2 text-sm hover:bg-[#f8fafc] hover:text-[#0c61cf] cursor-pointer transition-colors" :class="{ 'font-semibold text-[#0c61cf] bg-[#0c61cf]/5': major === 'DKV' }">DKV (Design & Creative)</div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -224,42 +241,93 @@
                 <label for="work_type" class="block text-xs font-bold text-[#334155] uppercase tracking-wider mb-2">
                     Tipe Pekerjaan <span class="text-rose-500">*</span>
                 </label>
-                <select id="work_type" name="work_type" x-model="work_type" required
-                    class="w-full px-4 py-2.5 bg-[#f8fafc] border border-[#e2e8f0] rounded-xl text-sm text-[#0f172a] focus:outline-none focus:border-[#0c61cf] focus:ring-4 focus:ring-[#0c61cf]/10 transition-all cursor-pointer">
-                    <option value="Full-time">Full-time</option>
-                    <option value="Internship">Internship (Magang/PKL)</option>
-                    <option value="Contract">Contract</option>
-                    <option value="Part-time">Part-time</option>
-                    <option value="Freelance">Freelance</option>
-                </select>
+                <div class="relative" x-data="{ open: false }" @click.outside="open = false">
+                    <input type="hidden" name="work_type" :value="work_type">
+                    <button type="button" @click="open = !open"
+                        class="w-full flex items-center justify-between pl-4 pr-3.5 py-2.5 bg-[#f8fafc] border border-[#e2e8f0] rounded-xl text-sm text-[#0f172a] focus:outline-none focus:border-[#0c61cf] focus:ring-4 focus:ring-[#0c61cf]/10 transition-all cursor-pointer">
+                        <span x-text="work_type === 'Internship' ? 'Internship (Magang/PKL)' : (work_type || 'Pilih Tipe')" class="truncate text-left"></span>
+                        <svg class="w-4 h-4 text-[#64748b] dropdown-arrow shrink-0 ml-2" :class="{ 'is-open': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </button>
+                    <div x-show="open" 
+                        x-transition:enter="transition ease-out duration-150"
+                        x-transition:enter-start="opacity-0 translate-y-1 scale-[0.98]"
+                        x-transition:enter-end="opacity-100 translate-y-0 scale-100"
+                        x-transition:leave="transition ease-in duration-100"
+                        x-transition:leave-start="opacity-100 translate-y-0 scale-100"
+                        x-transition:leave-end="opacity-0 translate-y-1 scale-[0.98]"
+                        x-cloak
+                        class="absolute z-50 left-0 right-0 mt-1.5 bg-white border border-[#e2e8f0] rounded-xl shadow-xl py-1.5 max-h-60 overflow-y-auto">
+                        <div @click="work_type = 'Full-time'; open = false" class="px-4 py-2 text-sm hover:bg-[#f8fafc] hover:text-[#0c61cf] cursor-pointer transition-colors" :class="{ 'font-semibold text-[#0c61cf] bg-[#0c61cf]/5': work_type === 'Full-time' }">Full-time</div>
+                        <div @click="work_type = 'Internship'; open = false" class="px-4 py-2 text-sm hover:bg-[#f8fafc] hover:text-[#0c61cf] cursor-pointer transition-colors" :class="{ 'font-semibold text-[#0c61cf] bg-[#0c61cf]/5': work_type === 'Internship' }">Internship (Magang/PKL)</div>
+                        <div @click="work_type = 'Contract'; open = false" class="px-4 py-2 text-sm hover:bg-[#f8fafc] hover:text-[#0c61cf] cursor-pointer transition-colors" :class="{ 'font-semibold text-[#0c61cf] bg-[#0c61cf]/5': work_type === 'Contract' }">Contract</div>
+                        <div @click="work_type = 'Part-time'; open = false" class="px-4 py-2 text-sm hover:bg-[#f8fafc] hover:text-[#0c61cf] cursor-pointer transition-colors" :class="{ 'font-semibold text-[#0c61cf] bg-[#0c61cf]/5': work_type === 'Part-time' }">Part-time</div>
+                        <div @click="work_type = 'Freelance'; open = false" class="px-4 py-2 text-sm hover:bg-[#f8fafc] hover:text-[#0c61cf] cursor-pointer transition-colors" :class="{ 'font-semibold text-[#0c61cf] bg-[#0c61cf]/5': work_type === 'Freelance' }">Freelance</div>
+                    </div>
+                </div>
             </div>
 
             <div>
                 <label for="work_location" class="block text-xs font-bold text-[#334155] uppercase tracking-wider mb-2">
                     Sistem Kerja <span class="text-rose-500">*</span>
                 </label>
-                <select id="work_location" name="work_location" x-model="work_location" required
-                    class="w-full px-4 py-2.5 bg-[#f8fafc] border border-[#e2e8f0] rounded-xl text-sm text-[#0f172a] focus:outline-none focus:border-[#0c61cf] focus:ring-4 focus:ring-[#0c61cf]/10 transition-all cursor-pointer">
-                    <option value="Onsite">Onsite (Di Kantor)</option>
-                    <option value="Hybrid">Hybrid (Fleksibel)</option>
-                    <option value="Remote/WFH">Remote / WFH</option>
-                </select>
+                <div class="relative" x-data="{ open: false }" @click.outside="open = false">
+                    <input type="hidden" name="work_location" :value="work_location">
+                    <button type="button" @click="open = !open"
+                        class="w-full flex items-center justify-between pl-4 pr-3.5 py-2.5 bg-[#f8fafc] border border-[#e2e8f0] rounded-xl text-sm text-[#0f172a] focus:outline-none focus:border-[#0c61cf] focus:ring-4 focus:ring-[#0c61cf]/10 transition-all cursor-pointer">
+                        <span x-text="work_location === 'Onsite' ? 'Onsite (Di Kantor)' : (work_location === 'Hybrid' ? 'Hybrid (Fleksibel)' : (work_location === 'Remote/WFH' ? 'Remote / WFH' : (work_location || 'Pilih Sistem Kerja')))" class="truncate text-left"></span>
+                        <svg class="w-4 h-4 text-[#64748b] dropdown-arrow shrink-0 ml-2" :class="{ 'is-open': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </button>
+                    <div x-show="open" 
+                        x-transition:enter="transition ease-out duration-150"
+                        x-transition:enter-start="opacity-0 translate-y-1 scale-[0.98]"
+                        x-transition:enter-end="opacity-100 translate-y-0 scale-100"
+                        x-transition:leave="transition ease-in duration-100"
+                        x-transition:leave-start="opacity-100 translate-y-0 scale-100"
+                        x-transition:leave-end="opacity-0 translate-y-1 scale-[0.98]"
+                        x-cloak
+                        class="absolute z-50 left-0 right-0 mt-1.5 bg-white border border-[#e2e8f0] rounded-xl shadow-xl py-1.5 max-h-60 overflow-y-auto">
+                        <div @click="work_location = 'Onsite'; open = false" class="px-4 py-2 text-sm hover:bg-[#f8fafc] hover:text-[#0c61cf] cursor-pointer transition-colors" :class="{ 'font-semibold text-[#0c61cf] bg-[#0c61cf]/5': work_location === 'Onsite' }">Onsite (Di Kantor)</div>
+                        <div @click="work_location = 'Hybrid'; open = false" class="px-4 py-2 text-sm hover:bg-[#f8fafc] hover:text-[#0c61cf] cursor-pointer transition-colors" :class="{ 'font-semibold text-[#0c61cf] bg-[#0c61cf]/5': work_location === 'Hybrid' }">Hybrid (Fleksibel)</div>
+                        <div @click="work_location = 'Remote/WFH'; open = false" class="px-4 py-2 text-sm hover:bg-[#f8fafc] hover:text-[#0c61cf] cursor-pointer transition-colors" :class="{ 'font-semibold text-[#0c61cf] bg-[#0c61cf]/5': work_location === 'Remote/WFH' }">Remote / WFH</div>
+                    </div>
+                </div>
             </div>
 
             <div>
                 <label for="location_group" class="block text-xs font-bold text-[#334155] uppercase tracking-wider mb-2">
                     Wilayah <span class="text-rose-500">*</span>
                 </label>
-                <select id="location_group" name="location_group" x-model="location_group" required
-                    class="w-full px-4 py-2.5 bg-[#f8fafc] border border-[#e2e8f0] rounded-xl text-sm text-[#0f172a] focus:outline-none focus:border-[#0c61cf] focus:ring-4 focus:ring-[#0c61cf]/10 transition-all cursor-pointer">
-                    <option value="Jabodetabek">Jabodetabek</option>
-                    <option value="Jawa">Jawa</option>
-                    <option value="Kalimantan">Kalimantan</option>
-                    <option value="Sumatra">Sumatra</option>
-                    <option value="Sulawesi">Sulawesi</option>
-                    <option value="Papua">Papua</option>
-                    <option value="Other">Lainnya</option>
-                </select>
+                <div class="relative" x-data="{ open: false }" @click.outside="open = false">
+                    <input type="hidden" name="location_group" :value="location_group">
+                    <button type="button" @click="open = !open"
+                        class="w-full flex items-center justify-between pl-4 pr-3.5 py-2.5 bg-[#f8fafc] border border-[#e2e8f0] rounded-xl text-sm text-[#0f172a] focus:outline-none focus:border-[#0c61cf] focus:ring-4 focus:ring-[#0c61cf]/10 transition-all cursor-pointer">
+                        <span x-text="location_group === 'Other' ? 'Lainnya' : (location_group || 'Pilih Wilayah')" class="truncate text-left"></span>
+                        <svg class="w-4 h-4 text-[#64748b] dropdown-arrow shrink-0 ml-2" :class="{ 'is-open': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </button>
+                    <div x-show="open" 
+                        x-transition:enter="transition ease-out duration-150"
+                        x-transition:enter-start="opacity-0 translate-y-1 scale-[0.98]"
+                        x-transition:enter-end="opacity-100 translate-y-0 scale-100"
+                        x-transition:leave="transition ease-in duration-100"
+                        x-transition:leave-start="opacity-100 translate-y-0 scale-100"
+                        x-transition:leave-end="opacity-0 translate-y-1 scale-[0.98]"
+                        x-cloak
+                        class="absolute z-50 left-0 right-0 mt-1.5 bg-white border border-[#e2e8f0] rounded-xl shadow-xl py-1.5 max-h-60 overflow-y-auto">
+                        <div @click="location_group = 'Jabodetabek'; open = false" class="px-4 py-2 text-sm hover:bg-[#f8fafc] hover:text-[#0c61cf] cursor-pointer transition-colors" :class="{ 'font-semibold text-[#0c61cf] bg-[#0c61cf]/5': location_group === 'Jabodetabek' }">Jabodetabek</div>
+                        <div @click="location_group = 'Jawa'; open = false" class="px-4 py-2 text-sm hover:bg-[#f8fafc] hover:text-[#0c61cf] cursor-pointer transition-colors" :class="{ 'font-semibold text-[#0c61cf] bg-[#0c61cf]/5': location_group === 'Jawa' }">Jawa</div>
+                        <div @click="location_group = 'Kalimantan'; open = false" class="px-4 py-2 text-sm hover:bg-[#f8fafc] hover:text-[#0c61cf] cursor-pointer transition-colors" :class="{ 'font-semibold text-[#0c61cf] bg-[#0c61cf]/5': location_group === 'Kalimantan' }">Kalimantan</div>
+                        <div @click="location_group = 'Sumatra'; open = false" class="px-4 py-2 text-sm hover:bg-[#f8fafc] hover:text-[#0c61cf] cursor-pointer transition-colors" :class="{ 'font-semibold text-[#0c61cf] bg-[#0c61cf]/5': location_group === 'Sumatra' }">Sumatra</div>
+                        <div @click="location_group = 'Sulawesi'; open = false" class="px-4 py-2 text-sm hover:bg-[#f8fafc] hover:text-[#0c61cf] cursor-pointer transition-colors" :class="{ 'font-semibold text-[#0c61cf] bg-[#0c61cf]/5': location_group === 'Sulawesi' }">Sulawesi</div>
+                        <div @click="location_group = 'Papua'; open = false" class="px-4 py-2 text-sm hover:bg-[#f8fafc] hover:text-[#0c61cf] cursor-pointer transition-colors" :class="{ 'font-semibold text-[#0c61cf] bg-[#0c61cf]/5': location_group === 'Papua' }">Papua</div>
+                        <div @click="location_group = 'Other'; open = false" class="px-4 py-2 text-sm hover:bg-[#f8fafc] hover:text-[#0c61cf] cursor-pointer transition-colors" :class="{ 'font-semibold text-[#0c61cf] bg-[#0c61cf]/5': location_group === 'Other' }">Lainnya</div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -278,17 +346,34 @@
                 <label for="source_platform" class="block text-xs font-bold text-[#334155] uppercase tracking-wider mb-2">
                     Platform Sumber Lowongan <span class="text-rose-500">*</span>
                 </label>
-                <select id="source_platform" name="source_platform" x-model="source_platform" required
-                    class="w-full px-4 py-2.5 bg-[#f8fafc] border border-[#e2e8f0] rounded-xl text-sm text-[#0f172a] focus:outline-none focus:border-[#0c61cf] focus:ring-4 focus:ring-[#0c61cf]/10 transition-all cursor-pointer">
-                    <option value="Mitra Resmi IDN">Mitra Resmi IDN (Eksklusif)</option>
-                    <option value="Glints">Glints</option>
-                    <option value="Jobstreet">Jobstreet</option>
-                    <option value="LinkedIn">LinkedIn</option>
-                    <option value="Kalibrr">Kalibrr</option>
-                    <option value="KitaLulus">KitaLulus</option>
-                    <option value="Dealls">Dealls</option>
-                    <option value="Website Resmi Perusahaan">Website Resmi Perusahaan</option>
-                </select>
+                <div class="relative" x-data="{ open: false }" @click.outside="open = false">
+                    <input type="hidden" name="source_platform" :value="source_platform">
+                    <button type="button" @click="open = !open"
+                        class="w-full flex items-center justify-between pl-4 pr-3.5 py-2.5 bg-[#f8fafc] border border-[#e2e8f0] rounded-xl text-sm text-[#0f172a] focus:outline-none focus:border-[#0c61cf] focus:ring-4 focus:ring-[#0c61cf]/10 transition-all cursor-pointer">
+                        <span x-text="source_platform === 'Mitra Resmi IDN' ? 'Mitra Resmi IDN (Eksklusif)' : (source_platform || 'Pilih Platform')" class="truncate text-left"></span>
+                        <svg class="w-4 h-4 text-[#64748b] dropdown-arrow shrink-0 ml-2" :class="{ 'is-open': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </button>
+                    <div x-show="open" 
+                        x-transition:enter="transition ease-out duration-150"
+                        x-transition:enter-start="opacity-0 translate-y-1 scale-[0.98]"
+                        x-transition:enter-end="opacity-100 translate-y-0 scale-100"
+                        x-transition:leave="transition ease-in duration-100"
+                        x-transition:leave-start="opacity-100 translate-y-0 scale-100"
+                        x-transition:leave-end="opacity-0 translate-y-1 scale-[0.98]"
+                        x-cloak
+                        class="absolute z-50 left-0 right-0 mt-1.5 bg-white border border-[#e2e8f0] rounded-xl shadow-xl py-1.5 max-h-60 overflow-y-auto">
+                        <div @click="source_platform = 'Mitra Resmi IDN'; open = false" class="px-4 py-2 text-sm hover:bg-[#f8fafc] hover:text-[#0c61cf] cursor-pointer transition-colors" :class="{ 'font-semibold text-[#0c61cf] bg-[#0c61cf]/5': source_platform === 'Mitra Resmi IDN' }">Mitra Resmi IDN (Eksklusif)</div>
+                        <div @click="source_platform = 'Glints'; open = false" class="px-4 py-2 text-sm hover:bg-[#f8fafc] hover:text-[#0c61cf] cursor-pointer transition-colors" :class="{ 'font-semibold text-[#0c61cf] bg-[#0c61cf]/5': source_platform === 'Glints' }">Glints</div>
+                        <div @click="source_platform = 'Jobstreet'; open = false" class="px-4 py-2 text-sm hover:bg-[#f8fafc] hover:text-[#0c61cf] cursor-pointer transition-colors" :class="{ 'font-semibold text-[#0c61cf] bg-[#0c61cf]/5': source_platform === 'Jobstreet' }">Jobstreet</div>
+                        <div @click="source_platform = 'LinkedIn'; open = false" class="px-4 py-2 text-sm hover:bg-[#f8fafc] hover:text-[#0c61cf] cursor-pointer transition-colors" :class="{ 'font-semibold text-[#0c61cf] bg-[#0c61cf]/5': source_platform === 'LinkedIn' }">LinkedIn</div>
+                        <div @click="source_platform = 'Kalibrr'; open = false" class="px-4 py-2 text-sm hover:bg-[#f8fafc] hover:text-[#0c61cf] cursor-pointer transition-colors" :class="{ 'font-semibold text-[#0c61cf] bg-[#0c61cf]/5': source_platform === 'Kalibrr' }">Kalibrr</div>
+                        <div @click="source_platform = 'KitaLulus'; open = false" class="px-4 py-2 text-sm hover:bg-[#f8fafc] hover:text-[#0c61cf] cursor-pointer transition-colors" :class="{ 'font-semibold text-[#0c61cf] bg-[#0c61cf]/5': source_platform === 'KitaLulus' }">KitaLulus</div>
+                        <div @click="source_platform = 'Dealls'; open = false" class="px-4 py-2 text-sm hover:bg-[#f8fafc] hover:text-[#0c61cf] cursor-pointer transition-colors" :class="{ 'font-semibold text-[#0c61cf] bg-[#0c61cf]/5': source_platform === 'Dealls' }">Dealls</div>
+                        <div @click="source_platform = 'Website Resmi Perusahaan'; open = false" class="px-4 py-2 text-sm hover:bg-[#f8fafc] hover:text-[#0c61cf] cursor-pointer transition-colors" :class="{ 'font-semibold text-[#0c61cf] bg-[#0c61cf]/5': source_platform === 'Website Resmi Perusahaan' }">Website Resmi Perusahaan</div>
+                    </div>
+                </div>
             </div>
         </div>
 

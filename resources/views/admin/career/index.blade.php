@@ -104,24 +104,98 @@
 
             <!-- Major Filter Dropdown -->
             <div class="sm:col-span-3">
-                <select name="major" onchange="this.form.submit()"
-                    class="w-full px-3 py-2 bg-[#f8fafc] border border-[#e2e8f0] rounded-xl text-xs md:text-sm text-[#0f172a] focus:outline-none focus:border-[#0c61cf] focus:ring-2 focus:ring-[#0c61cf]/10 transition-all cursor-pointer">
-                    <option value="">Semua Jurusan</option>
-                    @foreach($majors as $m)
-                        <option value="{{ $m }}" {{ $major === $m ? 'selected' : '' }}>{{ $m }}</option>
-                    @endforeach
-                </select>
+                <div class="relative" x-data="{
+                    open: false,
+                    selected: '{{ $major ?? '' }}',
+                    selectedLabel: '{{ $major ? $major : 'Semua Jurusan' }}'
+                }" @click.outside="open = false">
+                    <input type="hidden" name="major" :value="selected">
+                    
+                    <button type="button" @click="open = !open"
+                        class="w-full flex items-center justify-between pl-4 pr-3.5 py-2 bg-[#f8fafc] border border-[#e2e8f0] rounded-xl text-xs md:text-sm text-[#0f172a] focus:outline-none focus:border-[#0c61cf] focus:ring-2 focus:ring-[#0c61cf]/10 transition-all cursor-pointer">
+                        <span x-text="selectedLabel" class="truncate text-left font-normal"></span>
+                        <svg class="w-4 h-4 text-[#64748b] dropdown-arrow shrink-0 ml-2"
+                            :class="{ 'is-open': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </button>
+
+                    <!-- Dropdown Menu -->
+                    <div x-show="open" 
+                        x-transition:enter="transition ease-out duration-150"
+                        x-transition:enter-start="opacity-0 translate-y-1 scale-[0.98]"
+                        x-transition:enter-end="opacity-100 translate-y-0 scale-100"
+                        x-transition:leave="transition ease-in duration-100"
+                        x-transition:leave-start="opacity-100 translate-y-0 scale-100"
+                        x-transition:leave-end="opacity-0 translate-y-1 scale-[0.98]"
+                        x-cloak
+                        class="absolute z-50 left-0 right-0 mt-1.5 bg-white border border-[#e2e8f0] rounded-xl shadow-xl py-1.5 max-h-60 overflow-y-auto">
+                        <div @click="selected = ''; selectedLabel = 'Semua Jurusan'; open = false; $nextTick(() => $el.closest('form').submit())"
+                            class="px-4 py-2 text-xs md:text-sm hover:bg-[#f8fafc] hover:text-[#0c61cf] cursor-pointer transition-colors"
+                            :class="{ 'font-semibold text-[#0c61cf] bg-[#0c61cf]/5': selected === '' }">
+                            Semua Jurusan
+                        </div>
+                        @foreach($majors as $m)
+                            <div @click="selected = '{{ addslashes($m) }}'; selectedLabel = '{{ addslashes($m) }}'; open = false; $nextTick(() => $el.closest('form').submit())"
+                                class="px-4 py-2 text-xs md:text-sm hover:bg-[#f8fafc] hover:text-[#0c61cf] cursor-pointer transition-colors"
+                                :class="{ 'font-semibold text-[#0c61cf] bg-[#0c61cf]/5': selected === '{{ addslashes($m) }}' }">
+                                {{ $m }}
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
             </div>
 
             <!-- Status Filter Dropdown -->
             <div class="sm:col-span-2">
-                <select name="status" onchange="this.form.submit()"
-                    class="w-full px-3 py-2 bg-[#f8fafc] border border-[#e2e8f0] rounded-xl text-xs md:text-sm text-[#0f172a] focus:outline-none focus:border-[#0c61cf] focus:ring-2 focus:ring-[#0c61cf]/10 transition-all cursor-pointer">
-                    <option value="">Semua Status</option>
-                    <option value="1" {{ $status === '1' ? 'selected' : '' }}>Aktif (Buka)</option>
-                    <option value="expired" {{ $status === 'expired' ? 'selected' : '' }}>Kedaluwarsa (Expired)</option>
-                    <option value="0" {{ $status === '0' ? 'selected' : '' }}>Ditutup Manual</option>
-                </select>
+                <div class="relative" x-data="{
+                    open: false,
+                    selected: '{{ $status ?? '' }}',
+                    selectedLabel: '{{ $status === '1' ? 'Aktif (Buka)' : ($status === 'expired' ? 'Kedaluwarsa (Expired)' : ($status === '0' ? 'Ditutup Manual' : 'Semua Status')) }}'
+                }" @click.outside="open = false">
+                    <input type="hidden" name="status" :value="selected">
+                    
+                    <button type="button" @click="open = !open"
+                        class="w-full flex items-center justify-between pl-4 pr-3.5 py-2 bg-[#f8fafc] border border-[#e2e8f0] rounded-xl text-xs md:text-sm text-[#0f172a] focus:outline-none focus:border-[#0c61cf] focus:ring-2 focus:ring-[#0c61cf]/10 transition-all cursor-pointer">
+                        <span x-text="selectedLabel" class="truncate text-left font-normal"></span>
+                        <svg class="w-4 h-4 text-[#64748b] dropdown-arrow shrink-0 ml-2"
+                            :class="{ 'is-open': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </button>
+
+                    <!-- Dropdown Menu -->
+                    <div x-show="open" 
+                        x-transition:enter="transition ease-out duration-150"
+                        x-transition:enter-start="opacity-0 translate-y-1 scale-[0.98]"
+                        x-transition:enter-end="opacity-100 translate-y-0 scale-100"
+                        x-transition:leave="transition ease-in duration-100"
+                        x-transition:leave-start="opacity-100 translate-y-0 scale-100"
+                        x-transition:leave-end="opacity-0 translate-y-1 scale-[0.98]"
+                        x-cloak
+                        class="absolute z-50 left-0 right-0 mt-1.5 bg-white border border-[#e2e8f0] rounded-xl shadow-xl py-1.5 max-h-60 overflow-y-auto">
+                        <div @click="selected = ''; selectedLabel = 'Semua Status'; open = false; $nextTick(() => $el.closest('form').submit())"
+                            class="px-4 py-2 text-xs md:text-sm hover:bg-[#f8fafc] hover:text-[#0c61cf] cursor-pointer transition-colors"
+                            :class="{ 'font-semibold text-[#0c61cf] bg-[#0c61cf]/5': selected === '' }">
+                            Semua Status
+                        </div>
+                        <div @click="selected = '1'; selectedLabel = 'Aktif (Buka)'; open = false; $nextTick(() => $el.closest('form').submit())"
+                            class="px-4 py-2 text-xs md:text-sm hover:bg-[#f8fafc] hover:text-[#0c61cf] cursor-pointer transition-colors"
+                            :class="{ 'font-semibold text-[#0c61cf] bg-[#0c61cf]/5': selected === '1' }">
+                            Aktif (Buka)
+                        </div>
+                        <div @click="selected = 'expired'; selectedLabel = 'Kedaluwarsa (Expired)'; open = false; $nextTick(() => $el.closest('form').submit())"
+                            class="px-4 py-2 text-xs md:text-sm hover:bg-[#f8fafc] hover:text-[#0c61cf] cursor-pointer transition-colors"
+                            :class="{ 'font-semibold text-[#0c61cf] bg-[#0c61cf]/5': selected === 'expired' }">
+                            Kedaluwarsa (Expired)
+                        </div>
+                        <div @click="selected = '0'; selectedLabel = 'Ditutup Manual'; open = false; $nextTick(() => $el.closest('form').submit())"
+                            class="px-4 py-2 text-xs md:text-sm hover:bg-[#f8fafc] hover:text-[#0c61cf] cursor-pointer transition-colors"
+                            :class="{ 'font-semibold text-[#0c61cf] bg-[#0c61cf]/5': selected === '0' }">
+                            Ditutup Manual
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- Submit & Reset Buttons -->

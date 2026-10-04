@@ -18,7 +18,18 @@
 
     <!-- Alpine.js -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <style>[x-cloak] { display: none !important; }</style>
+    <style>
+        [x-cloak] { display: none !important; }
+        .dropdown-arrow {
+            display: inline-block;
+            transform-origin: 50% 50%;
+            transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: rotate(0deg);
+        }
+        .dropdown-arrow.is-open {
+            transform: rotate(180deg);
+        }
+    </style>
 
     <!-- Cropper.js CDN for Interactive Image Cropping -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.css">

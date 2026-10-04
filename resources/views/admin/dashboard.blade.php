@@ -131,8 +131,8 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td class="py-3.5 px-3">
-                                    <span class="inline-flex px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-[#0c61cf]/10 text-[#0c61cf]">
+                                <td class="py-3.5 px-3 whitespace-nowrap">
+                                    <span class="inline-flex px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-[#0c61cf]/10 text-[#0c61cf] whitespace-nowrap">
                                         {{ $art->category }}
                                     </span>
                                 </td>

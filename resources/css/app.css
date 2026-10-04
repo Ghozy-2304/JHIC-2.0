@@ -126,3 +126,16 @@ html, body {
     border-color: #0c61cf !important;
     color: #0c61cf !important;
 }
+
+/* Smooth Dropdown Arrow Animation */
+.dropdown-arrow {
+    display: inline-block;
+    transform-origin: 50% 50%;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: rotate(0deg);
+}
+
+.dropdown-arrow.is-open {
+    transform: rotate(180deg);
+}
+

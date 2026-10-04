@@ -62,14 +62,46 @@
             </div>
 
             <div class="sm:col-span-3 lg:col-span-3">
-                <select name="subject" class="w-full px-3 py-2 bg-slate-50 border border-[#e2e8f0] rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-[#0c61cf]/20 focus:border-[#0c61cf] transition-all">
-                    <option value="">Semua Topik</option>
-                    @foreach($subjects as $subj)
-                        <option value="{{ $subj }}" {{ request('subject') == $subj ? 'selected' : '' }}>
-                            {{ $subj }}
-                        </option>
-                    @endforeach
-                </select>
+                <div class="relative" x-data="{
+                    open: false,
+                    selected: '{{ request('subject') ?? '' }}',
+                    selectedLabel: '{{ request('subject') ? request('subject') : 'Semua Topik' }}'
+                }" @click.outside="open = false">
+                    <input type="hidden" name="subject" :value="selected">
+                    
+                    <button type="button" @click="open = !open"
+                        class="w-full flex items-center justify-between pl-4 pr-3.5 py-2 bg-slate-50 border border-[#e2e8f0] rounded-xl text-xs text-[#0f172a] focus:outline-none focus:ring-2 focus:ring-[#0c61cf]/20 focus:border-[#0c61cf] transition-all cursor-pointer">
+                        <span x-text="selectedLabel" class="truncate text-left font-normal"></span>
+                        <svg class="w-4 h-4 text-[#64748b] dropdown-arrow shrink-0 ml-2"
+                            :class="{ 'is-open': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </button>
+
+                    <!-- Dropdown Menu -->
+                    <div x-show="open" 
+                        x-transition:enter="transition ease-out duration-150"
+                        x-transition:enter-start="opacity-0 translate-y-1 scale-[0.98]"
+                        x-transition:enter-end="opacity-100 translate-y-0 scale-100"
+                        x-transition:leave="transition ease-in duration-100"
+                        x-transition:leave-start="opacity-100 translate-y-0 scale-100"
+                        x-transition:leave-end="opacity-0 translate-y-1 scale-[0.98]"
+                        x-cloak
+                        class="absolute z-50 left-0 right-0 mt-1.5 bg-white border border-[#e2e8f0] rounded-xl shadow-xl py-1.5 max-h-60 overflow-y-auto">
+                        <div @click="selected = ''; selectedLabel = 'Semua Topik'; open = false; $nextTick(() => $el.closest('form').submit())"
+                            class="px-4 py-2 text-xs hover:bg-[#f8fafc] hover:text-[#0c61cf] cursor-pointer transition-colors"
+                            :class="{ 'font-semibold text-[#0c61cf] bg-[#0c61cf]/5': selected === '' }">
+                            Semua Topik
+                        </div>
+                        @foreach($subjects as $subj)
+                            <div @click="selected = '{{ addslashes($subj) }}'; selectedLabel = '{{ addslashes($subj) }}'; open = false; $nextTick(() => $el.closest('form').submit())"
+                                class="px-4 py-2 text-xs hover:bg-[#f8fafc] hover:text-[#0c61cf] cursor-pointer transition-colors"
+                                :class="{ 'font-semibold text-[#0c61cf] bg-[#0c61cf]/5': selected === '{{ addslashes($subj) }}' }">
+                                {{ $subj }}
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
             </div>
 
             <div class="sm:col-span-2 lg:col-span-1 flex gap-2">

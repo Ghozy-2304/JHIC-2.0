@@ -53,13 +53,46 @@
 
             <!-- Category Filter Dropdown -->
             <div class="sm:col-span-4 md:col-span-3">
-                <select name="category" onchange="this.form.submit()"
-                    class="w-full px-3 py-2 bg-[#f8fafc] border border-[#e2e8f0] rounded-xl text-xs md:text-sm text-[#0f172a] focus:outline-none focus:border-[#0c61cf] focus:ring-2 focus:ring-[#0c61cf]/10 transition-all cursor-pointer">
-                    <option value="">Semua Kategori</option>
-                    @foreach($categories as $cat)
-                        <option value="{{ $cat }}" {{ $category === $cat ? 'selected' : '' }}>{{ $cat }}</option>
-                    @endforeach
-                </select>
+                <div class="relative" x-data="{
+                    open: false,
+                    selected: '{{ $category ?? '' }}',
+                    selectedLabel: '{{ $category ? $category : 'Semua Kategori' }}'
+                }" @click.outside="open = false">
+                    <input type="hidden" name="category" :value="selected">
+                    
+                    <button type="button" @click="open = !open"
+                        class="w-full flex items-center justify-between pl-4 pr-3.5 py-2 bg-[#f8fafc] border border-[#e2e8f0] rounded-xl text-xs md:text-sm text-[#0f172a] focus:outline-none focus:border-[#0c61cf] focus:ring-2 focus:ring-[#0c61cf]/10 transition-all cursor-pointer">
+                        <span x-text="selectedLabel" class="truncate text-left font-normal"></span>
+                        <svg class="w-4 h-4 text-[#64748b] dropdown-arrow shrink-0 ml-2"
+                            :class="{ 'is-open': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </button>
+
+                    <!-- Dropdown Menu -->
+                    <div x-show="open" 
+                        x-transition:enter="transition ease-out duration-150"
+                        x-transition:enter-start="opacity-0 translate-y-1 scale-[0.98]"
+                        x-transition:enter-end="opacity-100 translate-y-0 scale-100"
+                        x-transition:leave="transition ease-in duration-100"
+                        x-transition:leave-start="opacity-100 translate-y-0 scale-100"
+                        x-transition:leave-end="opacity-0 translate-y-1 scale-[0.98]"
+                        x-cloak
+                        class="absolute z-50 left-0 right-0 mt-1.5 bg-white border border-[#e2e8f0] rounded-xl shadow-xl py-1.5 max-h-60 overflow-y-auto">
+                        <div @click="selected = ''; selectedLabel = 'Semua Kategori'; open = false; $nextTick(() => $el.closest('form').submit())"
+                            class="px-4 py-2 text-xs md:text-sm hover:bg-[#f8fafc] hover:text-[#0c61cf] cursor-pointer transition-colors"
+                            :class="{ 'font-semibold text-[#0c61cf] bg-[#0c61cf]/5': selected === '' }">
+                            Semua Kategori
+                        </div>
+                        @foreach($categories as $cat)
+                            <div @click="selected = '{{ addslashes($cat) }}'; selectedLabel = '{{ addslashes($cat) }}'; open = false; $nextTick(() => $el.closest('form').submit())"
+                                class="px-4 py-2 text-xs md:text-sm hover:bg-[#f8fafc] hover:text-[#0c61cf] cursor-pointer transition-colors"
+                                :class="{ 'font-semibold text-[#0c61cf] bg-[#0c61cf]/5': selected === '{{ addslashes($cat) }}' }">
+                                {{ $cat }}
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
             </div>
 
             <!-- Submit & Reset Buttons -->
@@ -85,8 +118,8 @@
                     <tr>
                         <th class="py-3.5 pl-6 w-16">Preview</th>
                         <th class="py-3.5 px-4 min-w-[240px]">Judul & Deskripsi</th>
-                        <th class="py-3.5 px-4">Kategori</th>
-                        <th class="py-3.5 px-4">Waktu Baca</th>
+                        <th class="py-3.5 px-4 whitespace-nowrap">Kategori</th>
+                        <th class="py-3.5 px-4 whitespace-nowrap">Waktu Baca</th>
                         <th class="py-3.5 px-4">Tanggal Rilis</th>
                         <th class="py-3.5 pr-6 text-right w-36">Aksi</th>
                     </tr>
@@ -113,8 +146,8 @@
                             </td>
 
                             <!-- Category -->
-                            <td class="py-3.5 px-4">
-                                <span class="inline-flex px-2.5 py-1 rounded-full text-[11px] font-semibold bg-[#0c61cf]/10 text-[#0c61cf] border border-[#0c61cf]/20">
+                            <td class="py-3.5 px-4 whitespace-nowrap">
+                                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-semibold bg-[#0c61cf]/10 text-[#0c61cf] border border-[#0c61cf]/20 whitespace-nowrap">
                                     {{ $art->category }}
                                 </span>
                             </td>
