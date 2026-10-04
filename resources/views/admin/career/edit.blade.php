@@ -80,8 +80,29 @@
                         if (d.company_name) this.company_name = d.company_name;
                         if (d.company_logo_url) {
                             this.company_logo_url = d.company_logo_url;
-                            this.logoPreview = d.company_logo_url;
-                            window.dispatchEvent(new CustomEvent('logo-fetched', { detail: { url: d.company_logo_url } }));
+                            if (d.company_logo_url.startsWith('http')) {
+                                try {
+                                    const proxyRes = await fetch('{{ route('admin.career.proxy-logo') }}', {
+                                        method: 'POST',
+                                        headers: {
+                                            'Content-Type': 'application/json',
+                                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                                        },
+                                        body: JSON.stringify({ url: d.company_logo_url })
+                                    });
+                                    const proxyJson = await proxyRes.json();
+                                    if (proxyJson.success && proxyJson.dataUrl) {
+                                        this.logoPreview = proxyJson.dataUrl;
+                                    } else {
+                                        this.logoPreview = d.company_logo_url;
+                                    }
+                                } catch (e) {
+                                    this.logoPreview = d.company_logo_url;
+                                }
+                            } else {
+                                this.logoPreview = d.company_logo_url;
+                            }
+                            window.dispatchEvent(new CustomEvent('logo-fetched', { detail: { url: this.logoPreview } }));
                         }
                         if (d.salary) this.salary = d.salary;
                         if (d.apply_url) this.apply_url = d.apply_url;
@@ -510,7 +531,15 @@
                     <!-- Selected / New Logo Preview State with 2 Action Buttons -->
                     <div x-show="logoPreview" x-cloak class="flex flex-col items-center py-1">
                         <div class="w-16 h-16 rounded-2xl overflow-hidden border border-[#e2e8f0] shadow-md p-1 bg-white mb-2 flex items-center justify-center">
-                            <img :src="logoPreview" alt="Preview Logo Baru" class="w-full h-full object-cover rounded-xl">
+                            <img :src="logoPreview" @error="
+                                if (logoPreview && logoPreview.startsWith('http')) {
+                                    fetch('{{ route('admin.career.proxy-logo') }}', {
+                                        method: 'POST',
+                                        headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': '{{ csrf_token() }}' },
+                                        body: JSON.stringify({ url: logoPreview })
+                                    }).then(r => r.json()).then(j => { if (j.success && j.dataUrl) logoPreview = j.dataUrl; });
+                                }
+                            " alt="Preview Logo Baru" class="w-full h-full object-cover rounded-xl">
                         </div>
                         
                         <span class="text-[11px] font-semibold text-emerald-600 mb-2 flex items-center gap-1">
