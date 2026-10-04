@@ -202,7 +202,7 @@
                 </div>
 
                 <!-- WARNING BADGE ALERT -->
-                <div class="w-full bg-[#fff7ed] border border-[#fb923c] text-[#ea580c] px-5 py-2.5 rounded-full flex items-center gap-2.5 text-[13px] md:text-[14px]">
+                <div class="w-full bg-[#fff7ed] border border-[#fb923c] text-[#ea580c] px-5 py-2.5 rounded-[14px] flex items-center gap-2.5 text-[13px] md:text-[14px]">
                     <div class="w-5 h-5 rounded-full border border-[#ea580c] flex items-center justify-center font-bold text-[12px] shrink-0">!</div>
                     <span>Semua berkas di atas disediakan dalam bentuk <b>Soft Copy/Scan</b></span>
                 </div>

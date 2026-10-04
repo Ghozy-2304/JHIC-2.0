@@ -47,8 +47,8 @@
             </div>
 
             <!-- RIGHT IMAGE CONTAINER (Stack below text on mobile/tablet/laptop, side-by-side on xl) -->
-            <div class="w-full max-w-[706px] xl:w-[410px] xl:max-w-[410px] h-[300px] sm:h-[400px] md:h-[450px] xl:h-[300px] shrink-0 relative rounded-[18px] bg-[#eaecf0] shadow-[12px_12px_56px_0px_rgba(0,4,45,0.16)] flex items-center justify-center overflow-hidden mx-auto xl:mx-0">
-                <img src="{{ asset('assets/pages/tentang-kami/ojan.avif') }}" alt="Team-OSIS" class="w-full h-full object-cover">
+            <div class="w-full max-w-[340px] sm:max-w-[380px] md:max-w-[420px] xl:w-[410px] xl:max-w-[410px] aspect-square min-h-[320px] sm:min-h-[380px] xl:min-h-[410px] shrink-0 relative rounded-[18px] bg-[#eaecf0] shadow-[12px_12px_56px_0px_rgba(0,4,45,0.16)] flex items-center justify-center overflow-hidden mx-auto xl:mx-0">
+                <img src="{{ asset('assets/pages/tentang-kami/ojan.avif') }}" alt="Team-OSIS" class="w-full h-full object-cover object-top">
             </div>
 
         </div>
@@ -138,18 +138,18 @@
             <!-- RIGHT VISI MISI IMAGE PLACEHOLDERS (Image collage underneath text) -->
             <div class="w-full max-w-[500px] xl:w-[500px] shrink-0 relative my-8 xl:my-0 p-4 sm:p-6">
                 <!-- MAIN CENTER CARD -->
-                <div class="w-full h-[260px] sm:h-[340px] md:h-[374px] relative rounded-[18px] bg-[#eaecf0] shadow-[12px_12px_56px_0px_rgba(0,4,45,0.16)] overflow-hidden flex items-center justify-center">
-                    <img src="{{ asset('assets/campuses/jonggol-ikhwan.avif') }}" alt="Visi Misi IDN Boarding School" class="w-full h-full object-cover">
+                <div class="w-full aspect-[4/3] sm:aspect-[1000/748] min-h-[300px] sm:min-h-[380px] md:min-h-[400px] relative rounded-[18px] bg-[#eaecf0] shadow-[12px_12px_56px_0px_rgba(0,4,45,0.16)] overflow-hidden flex items-center justify-center">
+                    <img src="{{ asset('assets/campuses/jonggol-ikhwan.avif') }}" alt="Visi Misi IDN Boarding School" class="w-full h-full object-cover object-top">
                 </div>
 
                 <!-- FLOATING TOP-RIGHT ROTATED CARD -->
-                <div class="absolute top-0 right-0 w-[130px] sm:w-[160px] h-[80px] sm:h-[100px] rounded-[12px] bg-white shadow-xl overflow-hidden transform rotate-6 z-10 transition-transform duration-300 hover:rotate-0">
-                    <img src="{{ asset('assets/program/backpacker/backpacker.avif') }}" alt="Backpacker IDN" class="w-full h-full object-cover">
+                <div class="absolute top-0 right-0 w-[130px] sm:w-[160px] h-[85px] sm:h-[105px] rounded-[12px] bg-white shadow-xl overflow-hidden transform rotate-6 z-10 transition-transform duration-300 hover:rotate-0">
+                    <img src="{{ asset('assets/program/backpacker/backpacker.avif') }}" alt="Backpacker IDN" class="w-full h-full object-cover object-top">
                 </div>
 
                 <!-- FLOATING BOTTOM-LEFT ROTATED CARD -->
-                <div class="absolute bottom-0 left-0 w-[130px] sm:w-[160px] h-[80px] sm:h-[100px] rounded-[12px] bg-white shadow-xl overflow-hidden transform -rotate-6 z-10 transition-transform duration-300 hover:rotate-0">
-                    <img src="{{ asset('assets/ekskul/basket.avif') }}" alt="Kegiatan Santri IDN" class="w-full h-full object-cover">
+                <div class="absolute bottom-0 left-0 w-[130px] sm:w-[160px] h-[85px] sm:h-[105px] rounded-[12px] bg-white shadow-xl overflow-hidden transform -rotate-6 z-10 transition-transform duration-300 hover:rotate-0">
+                    <img src="{{ asset('assets/ekskul/basket.avif') }}" alt="Kegiatan Santri IDN" class="w-full h-full object-cover object-center">
                 </div>
             </div>
 
@@ -436,9 +436,9 @@
                 
                 <!-- FEATURED SCHOOL 1: IDN Jonggol (Full Width) -->
                 <div class="flex flex-col gap-8 w-full">
-                    <!-- IMAGE PLACEHOLDER (500px height - Empty placeholder per directive) -->
-                    <div class="w-full h-[300px] sm:h-[500px] rounded-[20px] bg-[#eaecf0] border-4 border-[#e9eaeb] flex items-center justify-center overflow-hidden">
-                        <img src="{{ asset('assets/campuses/idn_jonggol.avif') }}" alt="IDN Jonggol" class="w-full h-full object-cover">
+                    <!-- IMAGE PLACEHOLDER (Heightened with object-top so roof is not cut off) -->
+                    <div class="w-full aspect-[16/9] md:aspect-[1120/500] min-h-[280px] sm:min-h-[400px] md:min-h-[480px] lg:h-[500px] rounded-[20px] bg-[#eaecf0] border-4 border-[#e9eaeb] flex items-center justify-center overflow-hidden">
+                        <img src="{{ asset('assets/campuses/idn_jonggol.avif') }}" alt="IDN Jonggol" class="w-full h-full object-cover object-top">
                     </div>
 
                     <!-- INFO ROW -->
@@ -489,8 +489,8 @@
                     
                     <!-- SCHOOL 2: IDN Akhwat -->
                     <div class="flex flex-col gap-6 w-full">
-                        <div class="w-full h-[250px] sm:h-[350px] rounded-[20px] bg-[#eaecf0] flex items-center justify-center overflow-hidden">
-                            <img src="{{ asset('assets/campuses/idn_akhwat.avif') }}" alt="IDN Akhwat" class="w-full h-full object-cover">
+                        <div class="w-full aspect-[11/7] min-h-[280px] sm:min-h-[360px] md:min-h-[400px] lg:h-[360px] xl:h-[380px] rounded-[20px] bg-[#eaecf0] flex items-center justify-center overflow-hidden">
+                            <img src="{{ asset('assets/campuses/idn_akhwat.avif') }}" alt="IDN Akhwat" class="w-full h-full object-cover object-top">
                         </div>
                         <div class="flex flex-col gap-6 items-start text-left w-full">
                             <div class="flex flex-col gap-4 items-start w-full">
@@ -532,8 +532,8 @@
 
                     <!-- SCHOOL 3: IDN Solo -->
                     <div class="flex flex-col gap-6 w-full">
-                        <div class="w-full h-[250px] sm:h-[350px] rounded-[20px] bg-[#eaecf0] flex items-center justify-center overflow-hidden">
-                            <img src="{{ asset('assets/campuses/idn_solo.avif') }}" alt="IDN Solo" class="w-full h-full object-cover">
+                        <div class="w-full aspect-[11/7] min-h-[280px] sm:min-h-[360px] md:min-h-[400px] lg:h-[360px] xl:h-[380px] rounded-[20px] bg-[#eaecf0] flex items-center justify-center overflow-hidden">
+                            <img src="{{ asset('assets/campuses/idn_solo.avif') }}" alt="IDN Solo" class="w-full h-full object-cover object-top">
                         </div>
                         <div class="flex flex-col gap-6 items-start text-left w-full">
                             <div class="flex flex-col gap-4 items-start w-full">
@@ -575,8 +575,8 @@
 
                     <!-- SCHOOL 4: IDN Pamijahan -->
                     <div class="flex flex-col gap-6 w-full">
-                        <div class="w-full h-[250px] sm:h-[350px] rounded-[20px] bg-[#eaecf0] flex items-center justify-center overflow-hidden">
-                            <img src="{{ asset('assets/campuses/idn_pamijahan.avif') }}" alt="IDN Pamijahan" class="w-full h-full object-cover">
+                        <div class="w-full aspect-[11/7] min-h-[280px] sm:min-h-[360px] md:min-h-[400px] lg:h-[360px] xl:h-[380px] rounded-[20px] bg-[#eaecf0] flex items-center justify-center overflow-hidden">
+                            <img src="{{ asset('assets/campuses/idn_pamijahan.avif') }}" alt="IDN Pamijahan" class="w-full h-full object-cover object-top">
                         </div>
                         <div class="flex flex-col gap-6 items-start text-left w-full">
                             <div class="flex flex-col gap-4 items-start w-full">
@@ -618,8 +618,8 @@
 
                     <!-- SCHOOL 5: IDN Sentul -->
                     <div class="flex flex-col gap-6 w-full">
-                        <div class="w-full h-[250px] sm:h-[350px] rounded-[20px] bg-[#eaecf0] flex items-center justify-center overflow-hidden">
-                            <img src="{{ asset('assets/campuses/idn_sentul.avif') }}" alt="IDN Sentul" class="w-full h-full object-cover">
+                        <div class="w-full aspect-[11/7] min-h-[280px] sm:min-h-[360px] md:min-h-[400px] lg:h-[360px] xl:h-[380px] rounded-[20px] bg-[#eaecf0] flex items-center justify-center overflow-hidden">
+                            <img src="{{ asset('assets/campuses/idn_sentul.avif') }}" alt="IDN Sentul" class="w-full h-full object-cover object-top">
                         </div>
                         <div class="flex flex-col gap-6 items-start text-left w-full">
                             <div class="flex flex-col gap-4 items-start w-full">
