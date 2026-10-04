@@ -235,10 +235,10 @@
             </div>
 
             <!-- 3 MAJOR CARDS GRID (1 column on mobile/tablet, 3 on desktop) -->
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 w-full justify-items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 w-full">
                 
                 <!-- Major 1: RPL -->
-                <div class="bg-white border border-[#e9eaeb] rounded-[18px] p-6 flex flex-col gap-8 items-center w-full max-w-none lg:max-w-[360px] justify-between transition-all duration-300 hover:border-[#0c61cf] hover:shadow-lg hover:-translate-y-1">
+                <div class="bg-white border border-[#e9eaeb] rounded-[18px] p-6 flex flex-col gap-8 items-center w-full justify-between transition-all duration-300 hover:border-[#0c61cf] hover:shadow-lg hover:-translate-y-1">
                     <div class="flex flex-col gap-6 w-full items-start">
                         <div class="flex items-center justify-between w-full">
                             <div class="w-12 h-12 rounded-full border border-[#c2d8f5] bg-white flex items-center justify-center text-[#0c61cf]">
@@ -254,16 +254,12 @@
                                 Membentuk developer muda yang menguasai web, mobile, dan pemrograman modern yang profesional.
                             </p>
                         </div>
-                        <div class="flex flex-col gap-2.5 w-full">
-                            <div class="flex gap-2 flex-wrap items-center">
-                                <span class="bg-white border border-[#e9eaeb] px-3 py-1.5 rounded-full text-[13px] text-[#181d27] font-medium">Web Development</span>
-                                <span class="bg-white border border-[#e9eaeb] px-3 py-1.5 rounded-full text-[13px] text-[#181d27] font-medium">Mobile App</span>
-                            </div>
-                            <div class="flex gap-2 flex-wrap items-center">
-                                <span class="bg-white border border-[#e9eaeb] px-3 py-1.5 rounded-full text-[13px] text-[#181d27] font-medium">Database</span>
-                                <span class="bg-white border border-[#e9eaeb] px-3 py-1.5 rounded-full text-[13px] text-[#181d27] font-medium">Front-End</span>
-                                <span class="bg-white border border-[#e9eaeb] px-3 py-1.5 rounded-full text-[13px] text-[#181d27] font-medium">Back-End</span>
-                            </div>
+                        <div class="flex gap-2 flex-wrap items-center w-full">
+                            <span class="bg-white border border-[#e9eaeb] px-3 py-1.5 rounded-full text-[13px] text-[#181d27] font-medium">Web Development</span>
+                            <span class="bg-white border border-[#e9eaeb] px-3 py-1.5 rounded-full text-[13px] text-[#181d27] font-medium">Mobile App</span>
+                            <span class="bg-white border border-[#e9eaeb] px-3 py-1.5 rounded-full text-[13px] text-[#181d27] font-medium">Database</span>
+                            <span class="bg-white border border-[#e9eaeb] px-3 py-1.5 rounded-full text-[13px] text-[#181d27] font-medium">Front-End</span>
+                            <span class="bg-white border border-[#e9eaeb] px-3 py-1.5 rounded-full text-[13px] text-[#181d27] font-medium">Back-End</span>
                         </div>
                     </div>
                     <a href="/tentang-kami#jurusan-rpl" class="group bg-[#0c61cf] text-white w-full h-[48px] rounded-full font-semibold text-[16px] leading-none flex items-center justify-center gap-2 transition-all duration-200 hover:bg-[#094fa5]">
@@ -275,7 +271,7 @@
                 </div>
 
                 <!-- Major 2: TKJ -->
-                <div class="bg-white border border-[#e9eaeb] rounded-[18px] p-6 flex flex-col gap-8 items-center w-full max-w-none lg:max-w-[360px] justify-between transition-all duration-300 hover:border-[#0c61cf] hover:shadow-lg hover:-translate-y-1">
+                <div class="bg-white border border-[#e9eaeb] rounded-[18px] p-6 flex flex-col gap-8 items-center w-full justify-between transition-all duration-300 hover:border-[#0c61cf] hover:shadow-lg hover:-translate-y-1">
                     <div class="flex flex-col gap-6 w-full items-start">
                         <div class="flex items-center justify-between w-full">
                             <div class="w-12 h-12 rounded-full border border-[#c2d8f5] bg-white flex items-center justify-center text-[#0c61cf]">
@@ -291,17 +287,13 @@
                                 Menyiapkan network engineer, administrator server, dan spesialis cybersecurity yang profesional.
                             </p>
                         </div>
-                        <div class="flex flex-col gap-2.5 w-full">
-                            <div class="flex gap-2 flex-wrap items-center">
-                                <span class="bg-white border border-[#e9eaeb] px-3 py-1.5 rounded-full text-[13px] text-[#181d27] font-medium">Cisco CCNA</span>
-                                <span class="bg-white border border-[#e9eaeb] px-3 py-1.5 rounded-full text-[13px] text-[#181d27] font-medium">CCNP</span>
-                                <span class="bg-white border border-[#e9eaeb] px-3 py-1.5 rounded-full text-[13px] text-[#181d27] font-medium">AWS Cloud</span>
-                            </div>
-                            <div class="flex gap-2 flex-wrap items-center">
-                                <span class="bg-white border border-[#e9eaeb] px-3 py-1.5 rounded-full text-[13px] text-[#181d27] font-medium">CCIE</span>
-                                <span class="bg-white border border-[#e9eaeb] px-3 py-1.5 rounded-full text-[13px] text-[#181d27] font-medium">Mikrotik</span>
-                                <span class="bg-white border border-[#e9eaeb] px-3 py-1.5 rounded-full text-[13px] text-[#181d27] font-medium">DevOps</span>
-                            </div>
+                        <div class="flex gap-2 flex-wrap items-center w-full">
+                            <span class="bg-white border border-[#e9eaeb] px-3 py-1.5 rounded-full text-[13px] text-[#181d27] font-medium">Cisco CCNA</span>
+                            <span class="bg-white border border-[#e9eaeb] px-3 py-1.5 rounded-full text-[13px] text-[#181d27] font-medium">CCNP</span>
+                            <span class="bg-white border border-[#e9eaeb] px-3 py-1.5 rounded-full text-[13px] text-[#181d27] font-medium">AWS Cloud</span>
+                            <span class="bg-white border border-[#e9eaeb] px-3 py-1.5 rounded-full text-[13px] text-[#181d27] font-medium">CCIE</span>
+                            <span class="bg-white border border-[#e9eaeb] px-3 py-1.5 rounded-full text-[13px] text-[#181d27] font-medium">Mikrotik</span>
+                            <span class="bg-white border border-[#e9eaeb] px-3 py-1.5 rounded-full text-[13px] text-[#181d27] font-medium">DevOps</span>
                         </div>
                     </div>
                     <a href="/tentang-kami#jurusan-tkj" class="group bg-[#0c61cf] text-white w-full h-[48px] rounded-full font-semibold text-[16px] leading-none flex items-center justify-center gap-2 transition-all duration-200 hover:bg-[#094fa5]">
@@ -313,7 +305,7 @@
                 </div>
 
                 <!-- Major 3: DKV -->
-                <div class="bg-white border border-[#e9eaeb] rounded-[18px] p-6 flex flex-col gap-8 items-center w-full max-w-none lg:max-w-[360px] justify-between transition-all duration-300 hover:border-[#0c61cf] hover:shadow-lg hover:-translate-y-1">
+                <div class="bg-white border border-[#e9eaeb] rounded-[18px] p-6 flex flex-col gap-8 items-center w-full justify-between transition-all duration-300 hover:border-[#0c61cf] hover:shadow-lg hover:-translate-y-1">
                     <div class="flex flex-col gap-6 w-full items-start">
                         <div class="flex items-center justify-between w-full">
                             <div class="w-12 h-12 rounded-full border border-[#c2d8f5] bg-white flex items-center justify-center text-[#0c61cf]">
@@ -332,16 +324,12 @@
                                 Melahirkan UI/UX Designer, kreator konten, motion designer, dan visual storyteller yang profesional.
                             </p>
                         </div>
-                        <div class="flex flex-col gap-2.5 w-full">
-                            <div class="flex gap-2 flex-wrap items-center">
-                                <span class="bg-white border border-[#e9eaeb] px-3 py-1.5 rounded-full text-[13px] text-[#181d27] font-medium">UI/UX</span>
-                                <span class="bg-white border border-[#e9eaeb] px-3 py-1.5 rounded-full text-[13px] text-[#181d27] font-medium">3D Design</span>
-                                <span class="bg-white border border-[#e9eaeb] px-3 py-1.5 rounded-full text-[13px] text-[#181d27] font-medium">Graphic Design</span>
-                            </div>
-                            <div class="flex gap-2 flex-wrap items-center">
-                                <span class="bg-white border border-[#e9eaeb] px-3 py-1.5 rounded-full text-[13px] text-[#181d27] font-medium">Video Editing</span>
-                                <span class="bg-white border border-[#e9eaeb] px-3 py-1.5 rounded-full text-[13px] text-[#181d27] font-medium">Motion Graphic</span>
-                            </div>
+                        <div class="flex gap-2 flex-wrap items-center w-full">
+                            <span class="bg-white border border-[#e9eaeb] px-3 py-1.5 rounded-full text-[13px] text-[#181d27] font-medium">UI/UX</span>
+                            <span class="bg-white border border-[#e9eaeb] px-3 py-1.5 rounded-full text-[13px] text-[#181d27] font-medium">3D Design</span>
+                            <span class="bg-white border border-[#e9eaeb] px-3 py-1.5 rounded-full text-[13px] text-[#181d27] font-medium">Graphic Design</span>
+                            <span class="bg-white border border-[#e9eaeb] px-3 py-1.5 rounded-full text-[13px] text-[#181d27] font-medium">Video Editing</span>
+                            <span class="bg-white border border-[#e9eaeb] px-3 py-1.5 rounded-full text-[13px] text-[#181d27] font-medium">Motion Graphic</span>
                         </div>
                     </div>
                     <a href="/tentang-kami#jurusan-dkv" class="group bg-[#0c61cf] text-white w-full h-[48px] rounded-full font-semibold text-[16px] leading-none flex items-center justify-center gap-2 transition-all duration-200 hover:bg-[#094fa5]">
