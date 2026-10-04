@@ -508,7 +508,7 @@
                 <!-- Preview State with 2 Clear Action Buttons -->
                 <div x-show="logoPreview" x-cloak class="flex flex-col items-center py-1">
                     <div class="w-20 h-20 rounded-2xl overflow-hidden border border-[#e2e8f0] shadow-md p-1 bg-white mb-2 flex items-center justify-center">
-                        <img :src="logoPreview" @error="
+                        <img :src="logoPreview" x-on:error="
                             if (logoPreview && logoPreview.startsWith('http')) {
                                 fetch('{{ route('admin.career.proxy-logo') }}', {
                                     method: 'POST',
