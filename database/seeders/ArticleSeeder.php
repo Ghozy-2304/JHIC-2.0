@@ -859,38 +859,7 @@ Follow sosial media kami:<br>
 
 <h3>SMK Jurusan TKJ Terbaik di Bogor, Jawa Barat</h3>
 
-<p>SMK IDN Boarding School sejak awal menanamkan pondasi yang jelas pada para santrinya: berilmu, beramal, dan berprestasi. Keberhasilan Syahrul Azzam di ajang Universitas Udayana ini mempertegas posisi SMK IDN sebagai salah satu SMK jurusan TKJ (Teknik Komputer dan Jaringan) terbaik di Bogor dan Jawa Barat yang secara konsisten melahirkan talenta-talenta muda unggul di bidang IT &amp; Networking.</p>
-
-<h3>Mau ikuti jejak para juara dan bergabung di Boarding School Islami terbaik?</h3>
-
-<p>Pendaftaran Santri Baru Tahun Ajaran 2025/2026 telah dibuka!<br>
-Daftar sekarang melalui:<br>
-<a href="http://psb.idn.sch.id" target="_blank" class="text-brand-primary underline font-semibold hover:text-brand-hover">http://psb.idn.sch.id</a> atau hubungi 08115670010</p>
-
-<p>Dapatkan lingkungan belajar Islam yang nyaman dan berprestasi!<br>
-Gedung Pembelajaran SMP - SMK IDN<br>
-Kurikulum berbasis teknologi dan entrepreneurship<br>
-Fasilitas lengkap:</p>
-
-<ul class="space-y-1.5 my-3 pl-4 list-disc">
-  <li>Asrama</li>
-  <li>Masjid</li>
-  <li>Bengkel</li>
-  <li>Lab Komputer</li>
-  <li>Lapangan</li>
-</ul>
-
-<p>Jalur Masuk Tersedia:</p>
-
-<ul class="space-y-1.5 my-3 pl-4 list-disc">
-  <li>Jalur Regular SMP-SMK</li>
-  <li>Jalur Beasiswa SMP (khusus santri berprestasi)</li>
-  <li>Jalur Beasiswa Yatim/Dhuafa</li>
-  <li>Jalur Juara 1 Nasional (Beasiswa 100%)</li>
-  <li>Jalur Beasiswa 50% (Siswa ranking 1 di sekolah)</li>
-  <li>Jalur Hafiz 30 Juz (Beasiswa 100%)</li>
-  <li>Beasiswa Prestasi 2 (Syarat ketentuan berlaku)</li>
-</ul>'
+<p>SMK IDN Boarding School sejak awal menanamkan pondasi yang jelas pada para santrinya: berilmu, beramal, dan berprestasi. Keberhasilan Syahrul Azzam di ajang Universitas Udayana ini mempertegas posisi SMK IDN sebagai salah satu SMK jurusan TKJ (Teknik Komputer dan Jaringan) terbaik di Bogor dan Jawa Barat yang secara konsisten melahirkan talenta-talenta muda unggul di bidang IT &amp; Networking.</p>'
             ]
         );
         Article::updateOrCreate(
@@ -981,22 +950,7 @@ Fasilitas lengkap:</p>
 
 <blockquote class=\"my-4 p-4 border-l-4 border-[#0c61cf] bg-[#f8fafc] text-[#334155] italic rounded-r-lg\">
   \u201cBismillah, SMK IDN Bogor siap menyambut santri baru dengan kurikulum yang relevan dengan kebutuhan industri digital masa kini.\u201d
-</blockquote>
-
-<h3>Mau ikuti jejak para juara dan bergabung di Boarding School Islami terbaik?</h3>
-
-<p>Baca juga artikel lain tentang <a href=\"https://idn.sch.id\" target=\"_blank\" class=\"text-brand-primary underline font-semibold hover:text-brand-hover\">prestasi siswa SMK IDN</a> di sini. Semoga bermanfaat. Kunjungi <a href=\"https://www.youtube.com/@IDNBoardingSchool\" target=\"_blank\" class=\"text-brand-primary underline font-semibold hover:text-brand-hover\">youtube kami</a> <a href=\"https://www.youtube.com/@IDNTV2022\" target=\"_blank\" class=\"text-brand-primary underline font-semibold hover:text-brand-hover\">https://www.youtube.com/@IDNTV2022</a> Ada yang ingin ditanyakan? Silahkan konsultasikan dengan Admin Kami. <strong>Hubungi Kami (Admin):</strong> 0822 – 1010 – 2006 Klik link di bawah ini untuk melihat semua cabang sekolah kami Ikhwan &amp; Akhwat</p>
-
-<ul class=\"space-y-1.5 my-3 pl-4 list-disc\">
-  <li>Pamijahan</li>
-  <li>Solo</li>
-  <li>Sentul -Jonggol -Akhwat -Malang Kita Sharing Bareng Yuk Like, Comment &amp; Share</li>
-</ul>
-
-<p>Mau Tau Lebih Banyak Edukasi Bermanfaat? Follow sosial media kami:<br>
-<strong>Jonggol:</strong> <a href=\"https://www.instagram.com/idnboardingschool/\" target=\"_blank\" class=\"text-brand-primary underline font-semibold hover:text-brand-hover\">@idnboardingschool</a><br>
-<strong>Solo:</strong> <a href=\"https://www.instagram.com/idnboardingschoolsolo/\" target=\"_blank\" class=\"text-brand-primary underline font-semibold hover:text-brand-hover\">@idnboardingschoolsolo</a><br>
-<strong>idn akhwat:</strong> <a href=\"https://www.instagram.com/smpsmk.idnakhwat/\" target=\"_blank\" class=\"text-brand-primary underline font-semibold hover:text-brand-hover\">@smpsmk.idnakhwat</a></p>"
+</blockquote>"
             ]
         );
     }
